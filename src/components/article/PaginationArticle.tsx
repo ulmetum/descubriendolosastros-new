@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import Image from "next/image"
+import Image from 'next/image'
 
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from 'framer-motion'
 
-import { Datum } from "@/interfaces"
-import { useMouseParallax } from "@/hooks"
-import { Link } from "next-view-transitions"
+import { Datum } from '@/interfaces'
+import { useMouseParallax } from '@/hooks'
+import { Link } from 'next-view-transitions'
 
 interface Props {
   dataPrevArticle: Datum
@@ -23,25 +23,26 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
   } = useMouseParallax({ movement: -25 })
 
   // Datos
-  const prevTitleArticle = dataPrevArticle.attributes.title
-  const prevUrlArticle = dataPrevArticle.attributes.slug
-  const prevImageArticle =
-    dataPrevArticle.attributes.featuredImage.data.attributes.url
-  const nextTitleArticle = dataNextArticle.attributes.title
-  const nextUrlArticle = dataNextArticle.attributes.slug
-  const nextImageArticle =
-    dataNextArticle.attributes.featuredImage.data.attributes.url
+  const prevTitleArticle = dataPrevArticle.title
+  const prevUrlArticle = dataPrevArticle.slug
+  const prevImageArticle = dataPrevArticle.featuredImage.url
+  const nextTitleArticle = dataNextArticle.title
+  const nextUrlArticle = dataNextArticle.slug
+  const nextImageArticle = dataNextArticle.featuredImage.url
+
+  const nextImage = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${nextImageArticle}`
+  const prevImage = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${prevImageArticle}`
 
   return (
-    <div className="space-y-8 border-t px-4 py-16 text-center font-headings text-amber-900 lg:flex lg:items-center lg:justify-between lg:space-y-0">
+    <div className='space-y-8 border-t px-4 py-16 text-center font-headings text-amber-900 lg:flex lg:items-center lg:justify-between lg:space-y-0'>
       <Link
-        href={`/blog/article/${nextUrlArticle}`}
-        className="relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2"
+        href={`/${nextUrlArticle}`}
+        className='relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2'
       >
         <AnimatePresence>
           {hoveredImage === 2 && (
             <motion.div
-              className="pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover"
+              className='pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover'
               style={{
                 x: mousePosition.x,
                 y: mousePosition.y,
@@ -51,7 +52,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
                 opacity: 1,
                 scale: 1,
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 260,
                   damping: 20,
                 },
@@ -59,11 +60,11 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               exit={{ opacity: 0, scale: 0.6 }}
             >
               <Image
-                className="aspect-video h-[100px] w-[200px] rounded object-cover"
+                className='aspect-video h-[125px] w-[200px] rounded object-cover'
                 width={200}
                 height={100}
-                src={`${nextImageArticle}`}
-                alt="Imagen destacada del post siguiente"
+                src={`${nextImage}`}
+                alt='Imagen destacada del post siguiente'
               />
             </motion.div>
           )}
@@ -78,25 +79,25 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           onHoverEnd={() => {
             handleHoverEnd()
           }}
-          className="w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]"
+          className='w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]'
         >
           {nextTitleArticle}
         </motion.h4>
       </Link>
       <Link
-        href={`/blog/article/${prevUrlArticle}`}
-        className="relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2"
+        href={`/${prevUrlArticle}`}
+        className='relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2'
       >
         <AnimatePresence>
           {hoveredImage === 1 && (
             <motion.div
-              className="pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover"
+              className='pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover'
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{
                 opacity: 1,
                 scale: 1,
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 260,
                   damping: 20,
                 },
@@ -110,9 +111,9 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               <Image
                 width={200}
                 height={100}
-                src={prevImageArticle}
-                alt="Imagen destacada del post previo"
-                className="aspect-video h-[100px] w-[200px] rounded object-cover"
+                src={prevImage}
+                alt='Imagen destacada del post previo'
+                className='aspect-video h-[125px] w-[200px] rounded object-cover'
               />
             </motion.div>
           )}
@@ -127,7 +128,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           onHoverEnd={() => {
             handleHoverEnd()
           }}
-          className="w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]"
+          className='w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]'
         >
           {prevTitleArticle}
         </motion.h4>

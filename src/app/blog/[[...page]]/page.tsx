@@ -38,7 +38,7 @@ const BlogPage = async ({
   const paramsResolved = await params
   const page = paramsResolved?.page?.[0] ?? '1'
 
-  console.log({ page })
+  // console.log({ page })
 
   const res = await getArticlesByPageAction({ page })
 

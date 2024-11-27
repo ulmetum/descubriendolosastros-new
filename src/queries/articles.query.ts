@@ -28,8 +28,11 @@ export const getAllArticlesQuery = () => {
           fields: ['url'],
         },
         writer: {
-          fields: ['name', 'email'],
-          populate: { picture: { fields: ['url'] } },
+          fields: ['name', 'email', 'description'],
+          populate: {
+            picture: { fields: ['url'] },
+            social: { populate: { icon: { fields: ['url'] } } },
+          },
         },
         metadata: {
           populate: { sharedImage: { fields: ['url'] } },
@@ -71,8 +74,11 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
           fields: ['url'],
         },
         writer: {
-          fields: ['name', 'email'],
-          populate: { picture: { fields: ['url'] } },
+          fields: ['name', 'email', 'description'],
+          populate: {
+            picture: { fields: ['url'] },
+            social: { populate: { icon: { fields: ['url'] } } },
+          },
         },
         metadata: {
           populate: { sharedImage: { fields: ['url'] } },
@@ -114,8 +120,11 @@ export const getArticlesByPageQuery = ({ page }: { page: string }) => {
           fields: ['url'],
         },
         writer: {
-          fields: ['name', 'email'],
-          populate: { picture: { fields: ['url'] } },
+          fields: ['name', 'email', 'description'],
+          populate: {
+            picture: { fields: ['url'] },
+            social: { populate: { icon: { fields: ['url'] } } },
+          },
         },
         metadata: {
           populate: { sharedImage: { fields: ['url'] } },
@@ -161,8 +170,11 @@ export const getArticleByIdQuery = ({ id }: { id: number }) => {
           fields: ['url'],
         },
         writer: {
-          fields: ['name', 'email'],
-          populate: { picture: { fields: ['url'] } },
+          fields: ['name', 'email', 'description'],
+          populate: {
+            picture: { fields: ['url'] },
+            social: { populate: { icon: { fields: ['url'] } } },
+          },
         },
         metadata: {
           populate: { sharedImage: { fields: ['url'] } },

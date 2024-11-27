@@ -14,7 +14,17 @@
 //   getArticleBySlug,
 //   getNextAndPrevArticles,
 // } from "@/services"
-import { getAllArticlesAction, getArticleBySlugAction } from '@/actions'
+import {
+  getAllArticlesAction,
+  getArticleBySlugAction,
+  getNextAndPrevArticlesAction,
+} from '@/actions'
+import {
+  BackBlogBtn,
+  Container,
+  ElementsManager,
+  PaginationArticle,
+} from '@/components'
 import { BgImageArticle } from '@/components/article/BgImageArticle'
 import { ErrorArticle } from '@/errors'
 import { notFound } from 'next/navigation'
@@ -65,7 +75,7 @@ const page = async ({ params }: Props) => {
 
   const articleBySlug = res?.data?.article.data
 
-  console.log({ res })
+  // console.log({ res })
 
   // // Si se produce un error
   if (res?.serverError) {
@@ -81,7 +91,7 @@ const page = async ({ params }: Props) => {
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
     articleBySlug[0]
   const imageArticle = featuredImage.url
-  const { name, picture, email } = writer
+  const { name, picture, social } = writer
 
   /* Datos de los artículos previos y siguientes */
   // const article = articleBySlug[0]
@@ -91,9 +101,14 @@ const page = async ({ params }: Props) => {
   //   currentArticleId,
   // })
 
+  const { dataNextArticle, dataPrevArticle } =
+    await getNextAndPrevArticlesAction({
+      currentArticleId: articleBySlug[0].id,
+    })
+
   return (
     <div className='article ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
-      {/* <BackBlogBtn /> */}
+      <BackBlogBtn />
       <BgImageArticle
         createdAt={createdAt}
         subtitle={subtitle}
@@ -101,12 +116,12 @@ const page = async ({ params }: Props) => {
         title={title}
         name={name}
         picture={picture}
-        // socials={social}
+        socials={social}
       />
-      {/*
       <Container className='min-h-screen px-4 py-16'>
-        {parse(content, { replace: replaceOembedWithIframe })}
+        <ElementsManager elements={elements} />
       </Container>
+
       <Container>
         {dataPrevArticle && dataNextArticle && (
           <PaginationArticle
@@ -114,7 +129,7 @@ const page = async ({ params }: Props) => {
             dataNextArticle={dataNextArticle}
           />
         )}
-      </Container> */}
+      </Container>
     </div>
   )
 }

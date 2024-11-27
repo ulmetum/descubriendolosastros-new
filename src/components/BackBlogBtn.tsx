@@ -13,7 +13,7 @@ export const BackBlogBtn = () => {
         hidden: { opacity: 0, x: '100%' },
         visible: { opacity: 1, x: 0 },
       }}
-      className='fixed inset-y-0 -right-7 z-30 flex items-center'
+      className='fixed inset-y-0 -right-4 z-30 flex items-center'
     >
       <Link
         href='/blog'

@@ -1,17 +1,20 @@
 import { getArticleByIdQuery } from '@/queries'
+import { safeAction } from '../safeAction'
+import { z } from 'zod'
+import { fetchData } from '@/utils'
+import { Articles } from '@/interfaces'
 
-export const getArticleByIdAction = async ({ id }: { id: number }) => {
-  const query = getArticleByIdQuery({ id })
-  const url = `articles?${query}`
-  // const res = await fetch(url, { cache: "no-store" })
-  console.log({ url })
+const schema = z.object({
+  id: z.number(),
+})
 
-  // if (res.status !== 200) {
-  //   return { error: "Hubo un error al obtener el artículo" }
-  // }
+export const getArticleByIdAction = safeAction
+  .schema(schema)
+  .action(async ({ parsedInput: { id } }) => {
+    const query = getArticleByIdQuery({ id })
+    const url = `articles?${query}`
 
-  // const { data } = (await res.json()) as Post
+    const article = await fetchData<Articles>(url)
 
-  // return { success: data }
-  return {}
-}
+    return { article }
+  })

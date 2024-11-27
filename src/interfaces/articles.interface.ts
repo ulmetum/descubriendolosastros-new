@@ -22,7 +22,7 @@ export interface Element {
   __component: string
   id: number
   alt?: string
-  position?: string
+  position?: 'left' | 'right' | 'center'
   image?: FeaturedImage
   videoUrl?: VideoURL
   richText?: string
@@ -32,7 +32,7 @@ export interface ElementPhoto {
   __component: string
   id: number
   image?: FeaturedImage
-  position?: string
+  position?: 'left' | 'right' | 'center'
 }
 
 export interface ElementText {
@@ -84,7 +84,9 @@ export interface Writer {
   documentId: string
   name: string
   email: string
+  description: string
   picture: FeaturedImage
+  social: Social[]
 }
 
 export interface Meta {

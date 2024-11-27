@@ -2,7 +2,7 @@ import { ErrorArticles } from '@/errors'
 import { getAllArticlesAction } from '@/actions/articles/get-all-articles.action'
 import { getArticleByIdAction } from '@/actions/articles/get-article-by-id.action'
 
-export const getNextAndPrevArticles = async ({
+export const getNextAndPrevArticlesAction = async ({
   currentArticleId,
 }: {
   currentArticleId: number
@@ -38,8 +38,9 @@ export const getNextAndPrevArticles = async ({
   const responsePrevArticle = await getArticleByIdAction({ id: prevArticleId })
   const responseNextArticle = await getArticleByIdAction({ id: nextArticleId })
 
-  // const dataPrevArticle = prevArticle && prevArticle[0]
-  // const dataNextArticle = nextArticle && nextArticle[0]
+  // console.log({ responseNextArticle, responsePrevArticle })
+  const dataPrevArticle = responsePrevArticle?.data?.article.data[0]
+  const dataNextArticle = responseNextArticle?.data?.article.data[0]
 
-  // return { dataPrevArticle, dataNextArticle }
+  return { dataPrevArticle, dataNextArticle }
 }

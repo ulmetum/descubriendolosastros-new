@@ -7,11 +7,12 @@ import { MotionValue, motion, useTransform } from 'framer-motion'
 
 // Types
 import { Social } from '@/interfaces'
+import { PostDate, SocialIcons } from '@/components/article'
 
 interface Props {
   scrollY: MotionValue<number>
   createdAt: Date
-  socials: Social[]
+  socials: Social[] | undefined
 }
 
 export function DateSocialArticle({ scrollY, createdAt, socials }: Props) {
@@ -23,11 +24,11 @@ export function DateSocialArticle({ scrollY, createdAt, socials }: Props) {
       }}
       className='date absolute bottom-0 left-1/2 z-20 flex w-[min(100%,480px)] items-center justify-between px-4 opacity-0 transition-all duration-500 -translate-x-1/2'
     >
-      {/* <PostDate
+      <PostDate
         color='amber'
         createdAt={createdAt}
       />
-      <SocialIcons socials={socials} /> */}
+      <SocialIcons socials={socials} />
     </motion.div>
   )
 }

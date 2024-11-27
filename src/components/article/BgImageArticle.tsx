@@ -32,18 +32,18 @@ export function BgImageArticle({
   imageArticle,
   title,
   subtitle,
-  // createdAt,
+  createdAt,
   name,
   picture,
-}: // socials,
-Props) {
+  socials,
+}: Props) {
   const { scrollY } = useScroll()
 
   const profileImg = picture.url
 
   return (
     <div className='relative'>
-      <div className='relative overflow-hidden'>
+      <div className='relative '>
         <BgArticle scrollY={scrollY} />
         <ImageArticle imageArticle={imageArticle} />
       </div>
@@ -69,11 +69,11 @@ Props) {
           transition={transition}
           profileImg={profileImg}
         />
-        {/* <DateSocialArticle
+        <DateSocialArticle
           createdAt={createdAt}
           scrollY={scrollY}
           socials={socials}
-        /> */}
+        />
       </div>
     </div>
   )
