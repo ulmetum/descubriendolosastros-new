@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ViewTransitions } from 'next-view-transitions'
+
+// Fuentes
+import { oswald, merriweather } from '@/fonts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,8 +16,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
-      <body className={` antialiased`}>{children}</body>
-    </html>
+    <ViewTransitions>
+      <html lang='en'>
+        <body
+          className={`${oswald.variable} ${merriweather.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }

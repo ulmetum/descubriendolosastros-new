@@ -28,10 +28,36 @@ export interface Element {
   richText?: string
 }
 
+export interface ElementPhoto {
+  __component: string
+  id: number
+  image?: FeaturedImage
+  position?: string
+}
+
+export interface ElementText {
+  __component: string
+  id: number
+  richText?: string
+}
+
+export interface ElementVideo {
+  __component: string
+  id: number
+  videoUrl?: VideoURL
+}
+
 export interface FeaturedImage {
   id: number
   documentId: string
   url: string
+}
+
+export interface Social {
+  id: number
+  socialLink: string
+  url: string
+  icon: FeaturedImage
 }
 
 export interface VideoURL {

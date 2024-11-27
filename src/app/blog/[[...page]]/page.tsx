@@ -1,11 +1,12 @@
+import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
+
 import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
 
 import { Posts, Search } from '@/components/blogpage'
 import { Container, Skeleton } from '@/components'
 
 import { wrap } from '@/utils'
-import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Descubriendo los astros | Blog',
@@ -29,8 +30,16 @@ export async function generateStaticParams() {
   // ]
 }
 
-const BlogPage = async ({ params }: { params: { page?: string[] } }) => {
-  const page = params.page?.[0] ?? '1'
+const BlogPage = async ({
+  params,
+}: {
+  params: Promise<{ page: string[] }>
+}) => {
+  const paramsResolved = await params
+  const page = paramsResolved?.page?.[0] ?? '1'
+
+  console.log({ page })
+
   const res = await getArticlesByPageAction({ page })
 
   const pagination = res?.data?.articles?.meta.pagination

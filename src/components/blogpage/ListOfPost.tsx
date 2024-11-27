@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 // import { Post } from '.'
-import { Post } from '@/components/blogpage'
+import { PaginationBlog, Post } from '@/components/blogpage'
 import { Datum, Meta } from '@/interfaces'
 import { useSearchStore } from '@/stores'
 import { useShallow } from 'zustand/shallow'
@@ -18,8 +18,8 @@ interface Props {
 export const ListOfPosts = ({
   articlesByPage = [],
   allArticles = [],
-}: // meta,
-Props) => {
+  meta,
+}: Props) => {
   const { search } = useSearchStore(
     useShallow((state) => ({
       search: state.search,
@@ -62,9 +62,9 @@ Props) => {
           />
         ))}
       </div>
-      {/* {(meta.pagination.total !== 0 || search !== "") && (
+      {(meta?.pagination.total !== 0 || search !== '') && (
         <PaginationBlog meta={meta} />
-      )} */}
+      )}
     </div>
   )
 }
