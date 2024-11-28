@@ -17,7 +17,7 @@ export const getArticleBySlugAction = safeAction
 
     const url = `articles?${query}`
 
-    console.log({ url })
+    // console.log({ url })
 
     const article = await fetchData<Articles>(url)
 

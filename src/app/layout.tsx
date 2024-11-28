@@ -4,6 +4,7 @@ import { ViewTransitions } from 'next-view-transitions'
 
 // Fuentes
 import { oswald, merriweather } from '@/fonts'
+import { Header } from '@/components'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <body
           className={`${oswald.variable} ${merriweather.variable} antialiased`}
         >
+          <Header />
           {children}
         </body>
       </html>

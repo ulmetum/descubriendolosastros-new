@@ -75,8 +75,6 @@ const page = async ({ params }: Props) => {
 
   const articleBySlug = res?.data?.article.data
 
-  // console.log({ res })
-
   // // Si se produce un error
   if (res?.serverError) {
     throw new ErrorArticle(res?.serverError)
@@ -92,14 +90,6 @@ const page = async ({ params }: Props) => {
     articleBySlug[0]
   const imageArticle = featuredImage.url
   const { name, picture, social } = writer
-
-  /* Datos de los artículos previos y siguientes */
-  // const article = articleBySlug[0]
-  // const currentArticleId = article.id
-
-  // const { dataPrevArticle, dataNextArticle } = await getNextAndPrevArticles({
-  //   currentArticleId,
-  // })
 
   const { dataNextArticle, dataPrevArticle } =
     await getNextAndPrevArticlesAction({

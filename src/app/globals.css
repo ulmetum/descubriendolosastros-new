@@ -6,6 +6,8 @@
   --main-header-height: 90px;
   --header-height: 80px;
   --carousel-height: calc(100svh - var(--header-height));
+  --ease-elastic-smooth: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease: cubic-bezier(0.83, 0, 0.17, 1);
 
   /* Transition */
   --transition-ease: 0.83, 0, 0.17, 1;
@@ -354,4 +356,8 @@ figure.media > iframe {
     filter: brightness(0) saturate(100%) invert(4%) sepia(2%) saturate(6960%)
       hue-rotate(201deg) brightness(97%) contrast(87%);
   }
+}
+
+.no-animation * {
+  transition: none !important;
 }

@@ -42,7 +42,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
         <AnimatePresence>
           {hoveredImage === 2 && (
             <motion.div
-              className='pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover'
+              className='pointer-events-none absolute bottom-[170%] aspect-video h-[100px] w-[200px] object-cover'
               style={{
                 x: mousePosition.x,
                 y: mousePosition.y,
@@ -91,7 +91,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
         <AnimatePresence>
           {hoveredImage === 1 && (
             <motion.div
-              className='pointer-events-none absolute bottom-full aspect-video h-[100px] w-[200px] object-cover'
+              className='pointer-events-none absolute bottom-[170%] aspect-video h-[100px] w-[200px] object-cover'
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{
                 opacity: 1,
