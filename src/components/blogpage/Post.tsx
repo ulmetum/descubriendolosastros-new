@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
 import { Datum } from '@/interfaces'
-import { ImagePost, PostDate } from '@/components/blogpage'
+import { ImagePost, PostDate } from '@/components'
 
 interface Props {
   post: Datum
