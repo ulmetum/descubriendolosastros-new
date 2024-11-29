@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { MotionValue, motion, useTransform } from 'framer-motion'
+import { MotionValue, motion, useTransform } from 'motion/react'
 
 interface Props {
   scrollY: MotionValue<number>

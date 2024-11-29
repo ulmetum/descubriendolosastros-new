@@ -1,3 +1,9 @@
+import { SectionIntro } from '@/components'
+
 export default async function HomePage() {
-  return <div>hola mundo</div>
+  return (
+    <>
+      <SectionIntro />
+    </>
+  )
 }

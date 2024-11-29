@@ -1,19 +1,3 @@
-// import { notFound } from 'next/navigation'
-
-// // Components
-// import { BgImageArticle } from '@/components/article'
-// import { PaginationArticle } from '@/components/article/PaginationArticle'
-// import { BackBlogBtn, Container } from '@/components'
-
-// // General
-// import parse from 'html-react-parser'
-// import { ErrorArticle } from '@/errors'
-// import { Metadata } from 'next'
-// import {
-//   getAllArticles,
-//   getArticleBySlug,
-//   getNextAndPrevArticles,
-// } from "@/services"
 import {
   getAllArticlesAction,
   getArticleBySlugAction,
@@ -27,35 +11,38 @@ import {
 } from '@/components'
 import { BgImageArticle } from '@/components/article/BgImageArticle'
 import { ErrorArticle } from '@/errors'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const { slug } = params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
 
-//   const res = await getArticleBySlugAction({
-//     slug,
-//   })
+  const res = await getArticleBySlugAction({
+    slug,
+  })
 
-//   if (error || !articleBySlug || articleBySlug.length === 0) {
-//     return {
-//       title: 'Página del artículo del Blog',
-//       description:
-//         'Se ha producido un error y no se ha podido generar la información adecuada',
-//     }
-//   }
+  const articleBySlug = res?.data?.article.data
 
-//   const dataArticle = articleBySlug[0].attributes
-//   const { title } = dataArticle
+  if (res?.serverError || !articleBySlug || articleBySlug.length === 0) {
+    return {
+      title: 'Página del artículo del Blog',
+      description:
+        'Se ha producido un error y no se ha podido generar la información adecuada',
+    }
+  }
 
-//   return {
-//     title: `Descubriendo los Astros | ${title}`,
-//     description: `${title} | Descubre interesantes artículos sobre los astros, sus influencias y cómo realizar cartas astrales en Descubriendo los Astros.`,
-//   }
-// }
+  const dataArticle = articleBySlug[0]
+  const { metaTitle, metaDescription } = dataArticle.metadata
+
+  return {
+    title: `Descubriendo los Astros | ${metaTitle}`,
+    description: `${metaDescription}`,
+  }
+}
 
 // Generamos de forma estáticas todas las páginas del blog (en build time)
 export async function generateStaticParams() {

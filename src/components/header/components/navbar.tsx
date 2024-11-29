@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Navigation } from './navigation'
 import { MenuElement } from '@/interfaces'
 import { useHidden } from '@/hooks'

@@ -3,7 +3,7 @@
 import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { MenuElement } from '@/interfaces'
 import { cn } from '@/utils'
 
@@ -48,21 +48,19 @@ export function Menu({ menuItems }: Props) {
                 className={`font-headings uppercase sm:text-xl`}
                 variants={{
                   initial: { y: 0 },
-                  hovered: { y: '-100%' },
+                  hovered: { y: '-110%' },
                 }}
-                transition={{ duration: 0.5, type: 'spring', bounce: 0.5 }}
-                animate={isActive ? 'hovered' : 'initial'}
+                transition={{ duration: 0.75, type: 'spring', bounce: 0.5 }}
               >
                 <Link href={item.url}>{item.label}</Link>
               </motion.div>
               <motion.div
                 className={`absolute inset-0 font-headings uppercase text-amber-700 sm:text-xl`}
                 variants={{
-                  initial: { y: '100%' },
+                  initial: { y: '110%' },
                   hovered: { y: 0 },
                 }}
-                transition={{ duration: 0.5, type: 'spring', bounce: 0.5 }}
-                animate={isActive ? 'hovered' : 'initial'}
+                transition={{ duration: 0.75, type: 'spring', bounce: 0.5 }}
               >
                 <Link
                   id={item.label}

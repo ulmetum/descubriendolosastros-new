@@ -4,7 +4,10 @@ import { ViewTransitions } from 'next-view-transitions'
 
 // Fuentes
 import { oswald, merriweather } from '@/fonts'
-import { Header } from '@/components'
+
+import { Header, MagneticButton } from '@/components'
+import { ScrollTop } from '@/components'
+import { ScrollLayout } from '@/layouts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,11 +22,17 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang='en'>
+        <ScrollTop />
         <body
           className={`${oswald.variable} ${merriweather.variable} antialiased`}
         >
-          <Header />
-          {children}
+          <ScrollLayout>
+            <Header />
+            <main>
+              {children}
+              <MagneticButton size='sm' />
+            </main>
+          </ScrollLayout>
         </body>
       </html>
     </ViewTransitions>

@@ -357,7 +357,3 @@ figure.media > iframe {
       hue-rotate(201deg) brightness(97%) contrast(87%);
   }
 }
-
-.no-animation * {
-  transition: none !important;
-}

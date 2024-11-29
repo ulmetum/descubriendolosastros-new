@@ -1,5 +1,5 @@
-import { useSpring } from "framer-motion"
-import { MouseEvent, useState } from "react"
+import { useSpring } from 'motion/react'
+import { MouseEvent, useState } from 'react'
 
 export const useMouseParallax = ({ movement }: { movement: number }) => {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null)

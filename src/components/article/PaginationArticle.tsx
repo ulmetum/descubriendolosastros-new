@@ -2,11 +2,12 @@
 
 import Image from 'next/image'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 
 import { Datum } from '@/interfaces'
 import { useMouseParallax } from '@/hooks'
 import { Link } from 'next-view-transitions'
+import { MouseEvent } from 'react'
 
 interface Props {
   dataPrevArticle: Datum
@@ -70,7 +71,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           )}
         </AnimatePresence>
         <motion.h4
-          onMouseMove={(e) => {
+          onMouseMove={(e: MouseEvent<HTMLHeadingElement>) => {
             handleMouseMove(e)
           }}
           onHoverStart={() => {
@@ -119,7 +120,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           )}
         </AnimatePresence>
         <motion.h4
-          onMouseMove={(e) => {
+          onMouseMove={(e: MouseEvent<HTMLHeadingElement>) => {
             handleMouseMove(e)
           }}
           onHoverStart={() => {

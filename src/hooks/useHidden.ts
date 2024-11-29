@@ -1,6 +1,6 @@
-"use client"
-import { useMotionValueEvent, useScroll } from "framer-motion"
-import { useRef, useState } from "react"
+'use client'
+import { useMotionValueEvent, useScroll } from 'motion/react'
+import { useRef, useState } from 'react'
 
 export const useHidden = () => {
   const [isHidden, setIsHidden] = useState<boolean>(false)
@@ -11,7 +11,7 @@ export const useHidden = () => {
     setIsHidden(state)
   }
 
-  useMotionValueEvent(scrollY, "change", (y) => {
+  useMotionValueEvent(scrollY, 'change', (y) => {
     const difference = y - lastYRef.current
     if (Math.abs(difference) > 50) {
       setIsHidden(difference > 0)

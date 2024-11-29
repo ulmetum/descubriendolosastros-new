@@ -1,7 +1,7 @@
 'use client'
 
 import { useHidden } from '@/hooks'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Link } from 'next-view-transitions'
 
 export const BackBlogBtn = () => {
