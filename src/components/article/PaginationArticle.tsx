@@ -21,7 +21,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
     handleHoverEnd,
     handleHoverStart,
     handleMouseMove,
-  } = useMouseParallax({ movement: -25 })
+  } = useMouseParallax({ movement: -50 })
 
   // Datos
   const prevTitleArticle = dataPrevArticle.title
@@ -80,7 +80,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           onHoverEnd={() => {
             handleHoverEnd()
           }}
-          className='w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]'
+          className='w-max cursor-pointer text-4xl text-primary lg:text-[2.75rem]'
         >
           {nextTitleArticle}
         </motion.h4>
@@ -129,7 +129,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           onHoverEnd={() => {
             handleHoverEnd()
           }}
-          className='w-max cursor-pointer text-4xl text-amber-700 lg:text-[2.75rem]'
+          className='w-max cursor-pointer text-4xl text-primary lg:text-[2.75rem]'
         >
           {prevTitleArticle}
         </motion.h4>

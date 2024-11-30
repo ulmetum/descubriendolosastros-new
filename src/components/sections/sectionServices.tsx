@@ -13,7 +13,7 @@ import { motion } from 'motion/react'
 
 export default function SectionServices() {
   return (
-    <section className='relative z-10 mb-48 bg-pampas-50'>
+    <section className='relative z-10 mb-48 bg-light'>
       <Container className='px-2'>
         <ServiceTitleSection />
         <ServicesContent />

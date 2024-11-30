@@ -3,11 +3,11 @@
 // import { getDataMenu } from "@/services"
 import { Navbar } from '@/components/header'
 
-import { getMenuAction } from '@/actions'
+import { getDataMenuAction } from '@/actions'
 import { ErrorMenu } from '@/errors'
 
 export async function Header() {
-  const res = await getMenuAction({ name: 'principal' })
+  const res = await getDataMenuAction({ name: 'principal' })
   // console.log({ res })
   if (res?.serverError) throw new ErrorMenu(res?.serverError)
   const menu = res?.data?.menu.data[0]

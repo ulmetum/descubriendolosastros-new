@@ -8,7 +8,7 @@ const schema = z.object({
   name: z.string(),
 })
 
-export const getMenuAction = safeAction
+export const getDataMenuAction = safeAction
   .schema(schema)
   .action(async ({ parsedInput: { name } }) => {
     const query = getMenuQuery({ name })

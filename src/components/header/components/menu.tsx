@@ -40,8 +40,8 @@ export function Menu({ menuItems }: Props) {
               className={cn(
                 'xs:px-2 relative mx-1.5 overflow-hidden leading-tight sm:mx-3',
                 isActive || isArticlePage
-                  ? 'pointer-events-none text-amber-700'
-                  : 'pointer-events-auto text-zinc-900'
+                  ? 'pointer-events-none text-primary'
+                  : 'pointer-events-auto text-dark'
               )}
             >
               <motion.div
@@ -55,7 +55,7 @@ export function Menu({ menuItems }: Props) {
                 <Link href={item.url}>{item.label}</Link>
               </motion.div>
               <motion.div
-                className={`absolute inset-0 font-headings uppercase text-amber-700 sm:text-xl`}
+                className={`absolute inset-0 font-headings uppercase text-primary sm:text-xl`}
                 variants={{
                   initial: { y: '110%' },
                   hovered: { y: 0 },

@@ -1,3 +1,5 @@
+import { Writer } from './writer.interface'
+
 export interface Articles {
   data: Datum[]
   meta: Meta
@@ -77,16 +79,6 @@ export interface Tag {
   id: number
   documentId: string
   slug: string
-}
-
-export interface Writer {
-  id: number
-  documentId: string
-  name: string
-  email: string
-  description: string
-  picture: FeaturedImage
-  social: Social[]
 }
 
 export interface Meta {

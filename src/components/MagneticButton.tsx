@@ -99,7 +99,7 @@ const MagnetButton = ({
       }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
       className={cn(
-        'group relative grid place-content-center rounded-full border-2 border-black bg-pampas-50/70 backdrop-blur-sm transition-colors duration-700 ease-out scale-[40%] lg:scale-[45%]',
+        'group relative grid place-content-center rounded-full border-2 border-black bg-light/70 backdrop-blur-sm transition-colors duration-700 ease-out scale-[40%] lg:scale-[45%]',
         classNames,
         sizes[size]
       )}

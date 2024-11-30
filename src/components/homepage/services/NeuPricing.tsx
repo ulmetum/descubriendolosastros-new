@@ -20,7 +20,7 @@ export const NeuPricing = () => {
 
   return (
     <MotionConfig transition={{ ease: [0.83, 0, 0.17, 1], duration: 0.65 }}>
-      <div className='mx-auto w-[min(100%,1024px)] bg-pampas-50'>
+      <div className='mx-auto w-[min(100%,1024px)] bg-light'>
         <section className='mx-auto max-w-7xl'>
           <Title />
           <Toggle
@@ -85,7 +85,7 @@ const BackgroundNeuPricing = ({
           height: highlighted === 0 ? height1 : height2,
         }}
         layout
-        className='absolute w-full rounded-lg bg-pampas-50 lg:w-[calc(50%-1rem)]'
+        className='absolute w-full rounded-lg bg-light lg:w-[calc(50%-1rem)]'
       ></motion.div>
     </div>
   )
@@ -132,7 +132,7 @@ const PriceColumn = ({
         layout
         className={cn(
           `pointer-events-none absolute inset-0 -z-10 rounded-lg bg-white [transition:border_.35s_ease]`,
-          highlighted !== id ? 'border border-zinc-900' : ''
+          highlighted !== id ? 'border border-text' : ''
         )}
       />
       <div className='flex flex-row-reverse items-center justify-between'>
@@ -165,7 +165,7 @@ const PriceColumn = ({
                 opacity: 0,
               }}
               key={price}
-              className='block text-6xl font-bold text-zinc-900'
+              className='block text-6xl font-bold text-dark'
             >
               <small>{price}</small>
               <small>€</small>
@@ -174,7 +174,7 @@ const PriceColumn = ({
           <Link href='/contacto'>
             <motion.p
               layout
-              className='absolute bottom-4 right-4 rounded-md bg-zinc-900 px-3 py-1.5 font-headings text-2xl leading-tight text-pampas-50'
+              className='absolute bottom-4 right-4 rounded-md bg-dark px-3 py-1.5 font-headings text-2xl leading-tight text-light'
             >
               Solicitar Mapa
             </motion.p>
@@ -223,7 +223,7 @@ const Toggle = ({
 }) => {
   const [toggle, setToggle] = useState(false)
   return (
-    <div className='relative mx-auto mt-3 flex w-fit items-center rounded-xl bg-zinc-900'>
+    <div className='relative mx-auto mt-3 flex w-fit items-center rounded-xl bg-dark'>
       <button
         className={cn(
           'relative z-10 flex items-center gap-2 px-3 py-1.5 text-sm font-medium mix-blend-difference',
@@ -254,7 +254,7 @@ const Toggle = ({
         <motion.span
           layout
           onLayoutAnimationComplete={() => setToggle(!toggle)}
-          className='relative z-20 h-full w-1/2 rounded-xl border border-zinc-900 bg-pampas-50 mix-blend-difference'
+          className='relative z-20 h-full w-1/2 rounded-xl border border-text bg-light mix-blend-difference'
         />
       </div>
     </div>
@@ -264,7 +264,7 @@ const Toggle = ({
 const CheckListItem = ({ children }: CheckListItemType) => {
   return (
     <div className='flex items-center gap-2 text-lg'>
-      <CheckIcon classNames='text-xl text-zinc-900' />
+      <CheckIcon classNames='text-xl text-dark' />
       {children}
     </div>
   )

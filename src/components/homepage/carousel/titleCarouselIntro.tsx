@@ -24,7 +24,7 @@ export const TitleCarouselIntro = () => {
               transition: { ease: [0.83, 0, 0.17, 1], duration: 0.5 },
             }}
             viewport={{ margin: '0px 0px -300px 0px' }}
-            className='block h-[3px] bg-zinc-900'
+            className='block h-[3px] bg-dark'
           />
         </div>
       </motion.h2>

@@ -19,7 +19,7 @@ export const Post = ({ post }: Props) => {
   return (
     <article
       key={post.id}
-      className='post after:left[5%] relative flex justify-center pb-12 after:absolute after:bottom-0 after:h-[1px] after:w-[90%] after:bg-sky-950/10 last-of-type:after:hidden md:pb-20 xl:my-0 xl:after:hidden xl:[&:nth-child(1)]:col-span-1 xl:[&:nth-child(2)]:col-span-1 xl:[&:nth-child(3)>div]:w-[80%] xl:[&:nth-child(3)]:col-[2/4] xl:[&:nth-child(3)]:row-span-full xl:[&:nth-child(3)]:flex xl:[&:nth-child(3)]:items-center xl:[&:nth-child(3)]:justify-center xl:[&:nth-child(4)]:col-span-1 xl:[&:nth-child(5)]:col-span-1'
+      className='post after:left[5%] relative flex justify-center pb-12 after:absolute after:bottom-0 after:h-[1px] after:w-[90%] after:bg-secondary/10 last-of-type:after:hidden md:pb-20 xl:my-0 xl:after:hidden xl:[&:nth-child(1)]:col-span-1 xl:[&:nth-child(2)]:col-span-1 xl:[&:nth-child(3)>div]:w-[80%] xl:[&:nth-child(3)]:col-[2/4] xl:[&:nth-child(3)]:row-span-full xl:[&:nth-child(3)]:flex xl:[&:nth-child(3)]:items-center xl:[&:nth-child(3)]:justify-center xl:[&:nth-child(4)]:col-span-1 xl:[&:nth-child(5)]:col-span-1'
     >
       <div className='post__content w-full md:flex md:justify-between md:gap-2 xl:mx-0 xl:flex-col'>
         <Link
@@ -36,15 +36,15 @@ export const Post = ({ post }: Props) => {
           <h3 className='my-4 md:mt-0 xl:mt-4'>
             <Link
               href={`/${slug}`}
-              className='font-headings leading-4 text-sky-950'
+              className='font-headings leading-4 text-secondary'
             >
               {title}
             </Link>
           </h3>
-          <h5 className='mb-4 mt-0 font-light italic leading-6 text-gray-600 xl:flex-1'>
+          <h5 className='mb-4 mt-0 font-light italic leading-6 text-dark/70 xl:flex-1'>
             {subtitle}
           </h5>
-          <div className='writtenBy font-headings text-amber-700 md:mb-0 md:flex md:items-end'>
+          <div className='writtenBy font-headings text-primary md:mb-0 md:flex md:items-end'>
             <div className='profile xs:h-[50px] flex h-10 items-center justify-center md:w-full'>
               <Image
                 className='xs:h-[50px] xs:w-[50px] h-10 w-10 rounded-full'

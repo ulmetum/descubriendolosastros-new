@@ -5,12 +5,12 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/es'
 
 const textColorVariant = {
-  white: 'text-pampas-50',
+  white: 'text-light',
   amber: 'text-amber-800',
 }
 
 const borderColorLineVariant = {
-  white: 'border-pampas-50',
+  white: 'border-light',
   amber: 'border-amber-900',
 }
 

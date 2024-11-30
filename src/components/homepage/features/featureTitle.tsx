@@ -39,7 +39,7 @@ export const FeatureTitle = ({ children, classNames, id }: Props) => {
       className={cn(
         'py-32 font-headings text-5xl font-semibold text-zinc-300 transition-colors duration-1000 xl:text-6xl',
         classNames,
-        isInView ? 'text-zinc-900' : 'text-zinc-300'
+        isInView ? 'text-dark' : 'text-zinc-300'
       )}
     >
       {children}

@@ -70,7 +70,7 @@ export const Search = ({ className }: Props) => {
           >
             🗙
           </span>
-          <div className='absolute right-0 top-0 ml-2 flex h-full items-center justify-center rounded-r-md border border-sky-950 bg-sky-900 p-2.5 text-sm font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+          <div className='absolute right-0 top-0 ml-2 flex h-full items-center justify-center rounded-r-md border border-secondary bg-sky-900 p-2.5 text-sm font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
             <svg
               className='h-4 w-4'
               aria-hidden='true'

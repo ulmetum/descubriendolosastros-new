@@ -14,9 +14,10 @@ export default {
         },
       },
       colors: {
-        pampas: {
-          '50': '#f6f2ef',
-        },
+        primary: '#b45309',
+        secondary: '#082f49',
+        dark: '#18181b',
+        light: '#f6f2ef',
       },
       fontFamily: {
         body: ['var(--font-body)'],

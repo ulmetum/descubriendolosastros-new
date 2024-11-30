@@ -53,7 +53,7 @@ const AnimatedText = ({ phrases }: { phrases: string[] }) => {
                 scale: 0,
               },
             }}
-            className='absolute left-1/2 top-0 w-full text-zinc-900'
+            className='absolute left-1/2 top-0 w-full text-dark'
           >
             {phrase}
           </motion.div>

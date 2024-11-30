@@ -20,7 +20,7 @@ export const CarouselIntro = () => {
       <div className='flex justify-end'>
         <div className='group relative cursor-pointer font-headings text-2xl transition hover:text-red-800'>
           Contact me
-          <span className='absolute -bottom-1 left-1/2 h-[2px] w-0 bg-zinc-900 transition-all group-hover:left-0 group-hover:w-full group-hover:bg-red-800'></span>
+          <span className='absolute -bottom-1 left-1/2 h-[2px] w-0 bg-dark transition-all group-hover:left-0 group-hover:w-full group-hover:bg-red-800'></span>
         </div>
       </div>
     </div>

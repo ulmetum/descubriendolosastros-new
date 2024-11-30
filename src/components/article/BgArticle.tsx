@@ -13,14 +13,14 @@ export function BgArticle({ scrollY }: Props) {
           scaleY: useTransform(scrollY, [0, 1], [0, 1]),
           transition: 'transform 1s cubic-bezier(var(--transition-ease))',
         }}
-        className='absolute -top-[5%] h-[20%] w-full origin-top bg-pampas-50'
+        className='absolute -top-[5%] h-[20%] w-full origin-top bg-light'
       ></motion.div>
       <motion.div
         style={{
           scaleY: useTransform(scrollY, [0, 1], [0, 1]),
           transition: 'transform 1s cubic-bezier(var(--transition-ease))',
         }}
-        className='absolute -bottom-[5%] h-[20%] w-full origin-bottom bg-pampas-50'
+        className='absolute -bottom-[5%] h-[20%] w-full origin-bottom bg-light'
       ></motion.div>
     </div>
   )

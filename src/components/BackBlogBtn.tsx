@@ -17,7 +17,7 @@ export const BackBlogBtn = () => {
     >
       <Link
         href='/blog'
-        className='group relative overflow-hidden rounded-md border border-zinc-900 bg-pampas-50/50 px-2 py-3 leading-none backdrop-blur-sm transition rotate-90'
+        className='group relative overflow-hidden rounded-md border border-text bg-light/50 px-2 py-3 leading-none backdrop-blur-sm transition rotate-90'
       >
         <small>Volver Blog</small>
         <small className='absolute inset-0 top-full -z-10 bg-white transition-all duration-300 group-hover:top-1/2' />

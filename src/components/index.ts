@@ -4,6 +4,7 @@ export * from './BackBlogBtn'
 export * from './ScrollTop'
 export * from './MagneticButton'
 export * from './FadeIn'
+export * from './CopyClipboard'
 
 // Folders
 export * from './header'
@@ -12,3 +13,4 @@ export * from './sections'
 export * from './homepage'
 export * from './icons'
 export * from './blogpage'
+export * from './footer'

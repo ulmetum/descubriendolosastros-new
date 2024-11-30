@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import { Social } from '@/interfaces'
+import { SocialWriter } from '@/interfaces'
 import { cn } from '@/utils'
 
 interface Props {
-  socials: Social[] | undefined
+  socials: SocialWriter[] | undefined
   color?: 'amber' | 'pampas' | 'zinc'
   size?: 'small' | 'medium' | 'large'
 }
@@ -47,7 +47,7 @@ export const SocialIcons = ({
               <Image
                 fill
                 sizes='100%'
-                alt={`${socialIcon.socialLink}`}
+                alt={`${socialIcon.url}`}
                 src={urlIcon}
                 className={cn(
                   'transition-transform duration-300 hover:scale-125',

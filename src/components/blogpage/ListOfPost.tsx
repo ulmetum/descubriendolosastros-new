@@ -44,10 +44,10 @@ export const ListOfPosts = ({
           className='absolute w-full opacity-15'
         />
         <div className='relative flex flex-col items-center justify-center gap-4 text-center'>
-          <h2 className='text-center text-5xl uppercase text-amber-700'>
+          <h2 className='text-center text-5xl uppercase text-primary'>
             No hay artículos que mostrar
           </h2>
-          <p className='text-sky-900'>Intente buscar otra palabra clave</p>
+          <p className='text-secondary'>Intente buscar otra palabra clave</p>
         </div>
       </div>
     )

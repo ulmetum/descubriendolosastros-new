@@ -5,7 +5,7 @@ import { ViewTransitions } from 'next-view-transitions'
 // Fuentes
 import { oswald, merriweather } from '@/fonts'
 
-import { Header, MagneticButton } from '@/components'
+import { Footer, Header, MagneticButton } from '@/components'
 import { ScrollTop } from '@/components'
 import { ScrollLayout } from '@/layouts'
 
@@ -32,6 +32,7 @@ export default function RootLayout({
               {children}
               <MagneticButton size='sm' />
             </main>
+            <Footer />
           </ScrollLayout>
         </body>
       </html>

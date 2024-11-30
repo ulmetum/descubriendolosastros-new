@@ -23,14 +23,14 @@ export const ImageIntro = () => {
     >
       <div
         ref={scope}
-        className='wrap-section flex items-center justify-center text-pampas-50'
+        className='wrap-section flex items-center justify-center text-light'
       >
         <motion.div
           style={{
             x: useMotionTemplate`${mousePosition.x}px`,
             y: useMotionTemplate`${mousePosition.y}px`,
           }}
-          className='wrap-circle relative h-[15vw] w-[15vw] overflow-hidden rounded-full border border-pampas-50/30 mix-blend-difference'
+          className='wrap-circle relative h-[15vw] w-[15vw] overflow-hidden rounded-full border border-light/30 mix-blend-difference'
         >
           <motion.div
             onAnimationComplete={() => {
@@ -58,7 +58,7 @@ export const ImageIntro = () => {
               duration: 2,
               ease: [0.83, 0, 0.17, 1],
             }}
-            className='bg-circle h-full origin-bottom bg-pampas-50'
+            className='bg-circle h-full origin-bottom bg-light'
           ></motion.div>
 
           <div className='moon-image absolute inset-0 opacity-0'>

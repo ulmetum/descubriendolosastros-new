@@ -28,7 +28,7 @@ export const SectionFeatures = () => {
           </ul>
         </div>
         <div className='sticky top-0 hidden h-screen w-full items-center justify-center sm:flex'>
-          <div className='relative hidden aspect-square w-full max-w-96 rounded-2xl bg-pampas-50 sm:flex'>
+          <div className='relative hidden aspect-square w-full max-w-96 rounded-2xl bg-light sm:flex'>
             {features.map((feature) => {
               switch (feature.card) {
                 case 'cardone':
