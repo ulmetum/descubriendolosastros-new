@@ -1,3 +1,6 @@
 export * from './ArrowUp.icon'
 export * from './Check.icon'
 export * from './Scorpio.icon'
+export * from './CheckContact.icon'
+export * from './PersonalInfoContact.icon'
+export * from './StelarMapContact.icon'

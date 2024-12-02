@@ -28,7 +28,7 @@ export default function RootLayout({
         >
           <ScrollLayout>
             <Header />
-            <main>
+            <main className='min-h-[100dvh]'>
               {children}
               <MagneticButton size='sm' />
             </main>
