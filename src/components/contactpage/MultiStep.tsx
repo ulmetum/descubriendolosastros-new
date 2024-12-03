@@ -4,12 +4,12 @@ import { useState } from 'react'
 
 import { FormUser, FormComplete, FormMap } from '@/components'
 
-import { AnimatePresence, useMotionValue } from 'motion/react'
 import {
   CheckContact,
   PersonalInfoContact,
   StelarMapContact,
 } from '@/components/icons'
+
 import { cn } from '@/utils'
 
 const steps = [
@@ -17,96 +17,80 @@ const steps = [
     id: 1,
     name: 'Información del Usuario',
     description: 'Información del usuario',
-    icon: <PersonalInfoContact />,
+    icon: () => <PersonalInfoContact />,
     fields: ['firstName', 'lastName', 'email'],
+    form: () => <FormUser />,
   },
   {
     id: 2,
     name: 'Mapa Estelar',
     description: 'Datos del mapa estelar',
-    icon: <StelarMapContact />,
+    icon: () => <StelarMapContact />,
     fields: ['country', 'state', 'city', 'street', 'zip'],
+    form: () => <FormMap />,
   },
   {
     id: 3,
     name: 'Complete',
-    icon: <CheckContact />,
+    icon: () => <CheckContact />,
     description: 'Formulario completado',
+    form: () => <FormComplete />,
   },
 ]
-// Usage
-export const MultiStep = () => {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [previousStep, setPreviousStep] = useState(1)
-  const opacity = useMotionValue(1)
 
-  const direction = currentStep > previousStep ? 'forward' : 'backward'
+export const MultiStep = () => {
+  const [currentStep, setCurrentStep] = useState(0)
 
   const nextStep = () => {
     if (currentStep <= steps.length - 1) {
-      setPreviousStep(currentStep)
       setCurrentStep((step) => step + 1)
     }
 
     if (currentStep === steps.length) {
-      opacity.set(0)
     }
   }
 
   const prevStep = () => {
     if (currentStep > 0) {
-      setPreviousStep(currentStep)
       setCurrentStep((step) => step - 1)
     }
   }
 
-  console.log({ currentStep })
-
-  const variants = {
-    enter: (direction: string) => ({
-      x: direction === 'forward' ? -25 : 25,
-      opacity: 0,
-    }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction: string) => ({
-      x: direction === 'forward' ? 25 : -25,
-      opacity: 0,
-    }),
-  }
-
   return (
-    <div className='w-full'>
+    <div className='w-full  px-2'>
       <ol className='overflow-hidden lg:space-y-0 lg:gap-4 space-y-8 flex flex-col items-center lg:flex-row justify-center max-w-6xl mx-auto'>
         {steps.map((step) => (
           <li
             key={step.id}
             className={cn(
-              "w-[min(100%,480px)] after:-translate-x-1/2 relative flex-1 after:content-['']  after:w-0.5 after:h-full after:inline-block after:absolute after:-bottom-11  lg:after:h-[2px] lg:after:w-4 after:left-1/2  lg:after:left-auto lg:after:-right-6 lg:after:top-1/2",
-              currentStep === step.id ? 'after:bg-[var(--primary)]' : ''
+              "w-[min(100%,480px)] after:-translate-x-1/2 relative flex-1 after:content-['']  after:w-0.5 after:h-full after:inline-block after:absolute after:-bottom-11  lg:after:h-[2px] lg:after:w-4 after:left-1/2  lg:after:left-auto lg:after:-right-6 lg:after:top-1/2 after:transition-all after:duration-700",
+              currentStep + 1 === step.id ? 'after:bg-[var(--primary)] ' : ''
             )}
           >
             <div className='flex items-center justify-center gap-8 w-full '>
               <div
                 className={cn(
-                  'flex items-center gap-3.5 bg-white p-3.5 rounded-xl relative z-10 border  w-full',
-                  currentStep === step.id ? 'border-[var(--primary)]' : ''
+                  'transition-all border border-gray-300 duration-700 flex items-center gap-3.5 bg-white p-3.5 rounded-xl relative z-10  w-full',
+                  currentStep + 1 === step.id ? 'border-[var(--primary)]' : ''
                 )}
               >
                 <div
                   className={cn(
-                    'rounded-lg  flex items-center justify-center',
-                    currentStep === step.id
+                    'rounded-lg transition-all duration-700 flex items-center justify-center',
+                    currentStep + 1 === step.id || currentStep + 1 > step.id
                       ? 'bg-[var(--primary)]'
                       : 'bg-gray-300'
                   )}
                 >
                   <span
                     className={cn(
-                      ' p-3',
-                      currentStep === step.id ? 'text-white' : 'text-gray-600'
+                      'transition-all duration-700 p-3',
+                      currentStep + 1 === step.id || currentStep + 1 > step.id
+                        ? 'text-white'
+                        : 'text-gray-600'
                     )}
                   >
-                    <PersonalInfoContact />
+                    {step.icon()}
                   </span>
                 </div>
                 <div className=' flex items-start rounded-md justify-center flex-col '>
@@ -123,113 +107,45 @@ export const MultiStep = () => {
         ))}
       </ol>
 
-      {/* Dynamic content based on `step` */}
-      <div className='relative min-h-[15vh]  mt-12'>
-        <AnimatePresence
-          initial={false}
-          custom={direction}
-          mode='wait'
-        >
-          {currentStep === 1 && (
-            <FormUser
-              key={`form-user-${currentStep}`}
-              direction={direction}
-              variants={variants}
-            />
-          )}
-          {currentStep === 2 && (
-            <FormMap
-              key={`form-map-${currentStep}`}
-              direction={direction}
-              variants={variants}
-            />
-          )}
-          {currentStep === 3 && (
-            <FormComplete
-              key={`form-complete-${currentStep}`}
-              direction={direction}
-              variants={variants}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* <AnimatePresence
-          initial={false}
-          custom={direction}
-          mode='sync'
-        >
-          {currentStep === 1 && (
-            <motion.div
-              key={currentStep}
-              variants={variants}
-              initial='enter'
-              animate='center'
-              exit='exit'
-              custom={direction}
-              className='space-y-2 px-8 absolute inset-0'
-            >
-              <h3>Paso 1</h3>
-              <div className='h-4 w-5/6 rounded bg-neutral-500' />
-              <div className='h-4 rounded bg-neutral-500' />
-              <div className='h-4 w-4/6 rounded bg-neutral-500' />
-            </motion.div>
-          )}
-          {currentStep === 2 && (
-            <motion.div
-              key={currentStep}
-              variants={variants}
-              initial='enter'
-              animate='center'
-              exit='exit'
-              custom={direction}
-              className='space-y-2 px-8 absolute inset-0'
-            >
-              <h3>Paso 2</h3>
-              <div className='h-4 w-5/6 rounded bg-neutral-500' />
-              <div className='h-4 rounded bg-neutral-500' />
-              <div className='h-4 w-4/6 rounded bg-neutral-500' />
-            </motion.div>
-          )}
-          {currentStep === 3 && (
-            <motion.div
-              key={currentStep}
-              style={{ opacity }}
-              variants={variants}
-              initial='enter'
-              animate='center'
-              exit='exit'
-              custom={direction}
-              className='space-y-2 px-8 absolute inset-0'
-            >
-              <h3>Paso 3</h3>
-              <div className='h-4 w-5/6 rounded bg-neutral-500' />
-              <div className='h-4 rounded bg-neutral-500' />
-              <div className='h-4 w-4/6 rounded bg-neutral-500' />
-            </motion.div>
-          )} */}
-        {/* </AnimatePresence> */}
-      </div>
-
-      <div className='px-8 pb-8'>
-        <div className='mt-10 flex justify-between'>
-          <button
-            onClick={prevStep}
-            className={`${
-              currentStep === 1 ? 'pointer-events-none opacity-50' : ''
-            } duration-350 rounded px-2 py-1 text-neutral-400 transition hover:text-neutral-700`}
+      <div className='relative max-w-3xl mx-auto overflow-hidden  mt-12'>
+        <form className=''>
+          <div
+            className='flex transition-all duration-1000 ease-[var(--ease)]'
+            style={{ translate: `-${currentStep * 100}%` }}
+            // transition={{ duration: 1.5, ease: [0.83, 0, 0.17, 1] }}
           >
-            Back
-          </button>
-          <button
-            onClick={nextStep}
-            className={`${
-              currentStep > steps.length - 1
-                ? 'pointer-events-none opacity-50'
-                : ''
-            } bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700`}
-          >
-            {currentStep === steps.length ? 'Finish' : 'Next'}
-          </button>
+            {steps.map((step) => (
+              <div
+                key={step.id}
+                className='w-full flex-shrink-0 '
+              >
+                {step.form()}
+              </div>
+            ))}
+          </div>
+        </form>
+
+        <div className=' pb-8 '>
+          <div className='mt-10 flex justify-between'>
+            <button
+              onClick={prevStep}
+              className={`${
+                currentStep === 0 ? 'pointer-events-none opacity-50' : ''
+              } duration-350 rounded px-2 py-1 text-neutral-400 transition hover:text-neutral-700`}
+            >
+              Back
+            </button>
+            <button
+              onClick={nextStep}
+              className={`${
+                currentStep + 1 > steps.length - 1
+                  ? 'pointer-events-none opacity-50'
+                  : ''
+              } bg duration-500 flex items-center justify-center rounded-full bg-primary/85 py-1.5 px-3.5 font-medium tracking-tight text-white transition-all hover:bg-primary `}
+            >
+              {currentStep + 1 === steps.length ? 'Finish' : 'Next'}
+            </button>
+          </div>
         </div>
       </div>
     </div>
