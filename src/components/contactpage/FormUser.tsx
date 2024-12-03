@@ -19,7 +19,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
       </header>
 
       <div>
-        <div className='sm:col-span-3'>
+        <div className='sm:col-span-3 mb-6'>
           <label
             htmlFor='name'
             className=' block text-sm/6 font-medium text-dark'
@@ -45,7 +45,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-4'>
+        <div className='sm:col-span-4 mb-6'>
           <label
             htmlFor='email'
             className=' block text-sm/6 font-medium text-dark'
@@ -70,7 +70,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3'>
+        <div className='sm:col-span-3 mb-6'>
           <label
             htmlFor='address'
             className=' block text-sm/6 font-medium text-dark'
@@ -95,7 +95,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3'>
+        <div className='sm:col-span-3 mb-6'>
           <label
             htmlFor='city'
             className=' block text-sm/6 font-medium text-dark'
@@ -120,7 +120,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3'>
+        <div className='sm:col-span-3 mb-6'>
           <label
             htmlFor='postal-code'
             className=' block text-sm/6 font-medium text-dark'

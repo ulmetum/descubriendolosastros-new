@@ -49,7 +49,7 @@ const steps = [
     name: 'Mapa Estelar',
     description: 'Datos del mapa estelar',
     icon: () => <StelarMapContact />,
-    fields: ['country', 'state', 'city', 'street', 'zip'],
+    fields: ['event', 'city-event'],
     form: ({
       register,
       errors,
@@ -95,6 +95,8 @@ export const MultiStep = () => {
     const fields = steps[currentStep].fields
     const output = await trigger(fields as FieldName[], { shouldFocus: true })
 
+    console.log({ output })
+
     if (!output) return
 
     if (currentStep <= steps.length - 1) {
@@ -112,7 +114,7 @@ export const MultiStep = () => {
   }
 
   const processForm: SubmitHandler<FormContact> = (data) => {
-    console.log(data)
+    console.log({ data })
   }
 
   console.log({ errors })
@@ -169,7 +171,10 @@ export const MultiStep = () => {
       </ol>
 
       <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden lg:mt-16'>
-        <form className='order-1 lg:order-none '>
+        <form
+          className='order-1 lg:order-none '
+          onSubmit={handleSubmit(processForm)}
+        >
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
             style={{ translate: `-${currentStep * 100}%` }}
