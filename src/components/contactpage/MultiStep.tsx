@@ -11,6 +11,7 @@ import {
 } from '@/components/icons'
 
 import { cn } from '@/utils'
+import { motion } from 'motion/react'
 
 const steps = [
   {
@@ -57,7 +58,7 @@ export const MultiStep = () => {
   }
 
   return (
-    <div className='w-full  px-2'>
+    <div className='w-full px-2'>
       <ol className='overflow-hidden lg:space-y-0 lg:gap-4 space-y-8 flex flex-col items-center lg:flex-row justify-center max-w-6xl mx-auto'>
         {steps.map((step) => (
           <li
@@ -107,12 +108,11 @@ export const MultiStep = () => {
         ))}
       </ol>
 
-      <div className='relative max-w-3xl mx-auto overflow-hidden  mt-12'>
-        <form className=''>
+      <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden lg:mt-16'>
+        <form className='order-1 lg:order-none '>
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
             style={{ translate: `-${currentStep * 100}%` }}
-            // transition={{ duration: 1.5, ease: [0.83, 0, 0.17, 1] }}
           >
             {steps.map((step) => (
               <div
@@ -125,27 +125,34 @@ export const MultiStep = () => {
           </div>
         </form>
 
-        <div className=' pb-8 '>
-          <div className='mt-10 flex justify-between'>
-            <button
-              onClick={prevStep}
-              className={`${
-                currentStep === 0 ? 'pointer-events-none opacity-50' : ''
-              } duration-350 rounded px-2 py-1 text-neutral-400 transition hover:text-neutral-700`}
+        <div className='mt-12 px-2 flex justify-between pb-10  lg:justify-start lg:gap-6'>
+          <button
+            onClick={prevStep}
+            className={`${
+              currentStep === 0 ? 'pointer-events-none opacity-50' : ''
+            } border border-dark/40 duration-350 rounded-full font-headings py-1.5 px-3.5 text-dark transition-all hover:brightness-90 hover:scale-[1.1] text-lg`}
+          >
+            Atrás
+          </button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            layout
+            onClick={nextStep}
+            className={`${
+              currentStep + 1 > steps.length - 1
+                ? 'pointer-events-none opacity-50'
+                : ''
+            } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.span
+              layout
+              transition={{ duration: 0.2 }}
+              className='font-headings text-lg text-white'
             >
-              Back
-            </button>
-            <button
-              onClick={nextStep}
-              className={`${
-                currentStep + 1 > steps.length - 1
-                  ? 'pointer-events-none opacity-50'
-                  : ''
-              } bg duration-500 flex items-center justify-center rounded-full bg-primary/85 py-1.5 px-3.5 font-medium tracking-tight text-white transition-all hover:bg-primary `}
-            >
-              {currentStep + 1 === steps.length ? 'Finish' : 'Next'}
-            </button>
-          </div>
+              {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
+            </motion.span>
+          </motion.button>
         </div>
       </div>
     </div>
