@@ -12,6 +12,14 @@ import {
 
 import { cn } from '@/utils'
 import { motion } from 'motion/react'
+import {
+  FieldErrors,
+  SubmitHandler,
+  useForm,
+  UseFormRegister,
+} from 'react-hook-form'
+import { FormContact, formContactSchema } from '@/validations'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const steps = [
   {
@@ -19,8 +27,22 @@ const steps = [
     name: 'Información del Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['firstName', 'lastName', 'email'],
-    form: () => <FormUser />,
+    fields: ['name', 'email', 'address', 'city', 'postalCode'],
+    form: ({
+      register,
+      errors,
+      currentStep,
+    }: {
+      register: UseFormRegister<FormContact>
+      errors: FieldErrors<FormContact>
+      currentStep: number
+    }) => (
+      <FormUser
+        register={register}
+        errors={errors}
+        currentStep={currentStep}
+      />
+    ),
   },
   {
     id: 2,
@@ -28,7 +50,21 @@ const steps = [
     description: 'Datos del mapa estelar',
     icon: () => <StelarMapContact />,
     fields: ['country', 'state', 'city', 'street', 'zip'],
-    form: () => <FormMap />,
+    form: ({
+      register,
+      errors,
+      currentStep,
+    }: {
+      register: UseFormRegister<FormContact>
+      errors: FieldErrors<FormContact>
+      currentStep: number
+    }) => (
+      <FormMap
+        register={register}
+        errors={errors}
+        currentStep={currentStep}
+      />
+    ),
   },
   {
     id: 3,
@@ -39,15 +75,33 @@ const steps = [
   },
 ]
 
+type FieldName = keyof FormContact
+
 export const MultiStep = () => {
+  const {
+    control,
+    register,
+    handleSubmit,
+    reset,
+    trigger,
+    formState: { errors },
+  } = useForm<FormContact>({
+    resolver: zodResolver(formContactSchema),
+  })
+
   const [currentStep, setCurrentStep] = useState(0)
 
-  const nextStep = () => {
-    if (currentStep <= steps.length - 1) {
-      setCurrentStep((step) => step + 1)
-    }
+  const nextStep = async () => {
+    const fields = steps[currentStep].fields
+    const output = await trigger(fields as FieldName[], { shouldFocus: true })
 
-    if (currentStep === steps.length) {
+    if (!output) return
+
+    if (currentStep <= steps.length - 1) {
+      if (currentStep === steps.length - 2) {
+        await handleSubmit(processForm)()
+      }
+      setCurrentStep((step) => step + 1)
     }
   }
 
@@ -56,6 +110,12 @@ export const MultiStep = () => {
       setCurrentStep((step) => step - 1)
     }
   }
+
+  const processForm: SubmitHandler<FormContact> = (data) => {
+    console.log(data)
+  }
+
+  console.log({ errors })
 
   return (
     <div className='w-full px-2'>
@@ -119,21 +179,28 @@ export const MultiStep = () => {
                 key={step.id}
                 className='w-full flex-shrink-0 '
               >
-                {step.form()}
+                {step.form({ register, errors, currentStep })}
               </div>
             ))}
           </div>
         </form>
 
         <div className='mt-12 px-2 flex justify-between pb-10  lg:justify-start lg:gap-6'>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            transition={{
+              duration: 1.2,
+              type: 'spring', // Usa un efecto de resorte para el rebote
+              stiffness: 300, // Controla la rigidez del resorte
+              damping: 10,
+            }}
             onClick={prevStep}
             className={`${
               currentStep === 0 ? 'pointer-events-none opacity-50' : ''
-            } border border-dark/40 duration-350 rounded-full font-headings py-1.5 px-3.5 text-dark transition-all hover:brightness-90 hover:scale-[1.1] text-lg`}
+            } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
           >
             Atrás
-          </button>
+          </motion.button>
           <motion.button
             whileHover={{ scale: 1.1 }}
             layout
@@ -143,7 +210,12 @@ export const MultiStep = () => {
                 ? 'pointer-events-none opacity-50'
                 : ''
             } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
-            transition={{ duration: 0.2 }}
+            transition={{
+              duration: 1.2,
+              type: 'spring', // Usa un efecto de resorte para el rebote
+              stiffness: 300, // Controla la rigidez del resorte
+              damping: 10,
+            }}
           >
             <motion.span
               layout
