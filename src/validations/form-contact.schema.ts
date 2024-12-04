@@ -27,6 +27,14 @@ export const formContactSchema = z.object({
   'city-event': z
     .string()
     .min(1, { message: 'Debe escribir la ciudad del evento' }),
+  'date-event': z.coerce.date({
+    errorMap: (issue, { defaultError }) => ({
+      message:
+        issue.code === 'invalid_date'
+          ? 'Debes introducir la fecha del evento'
+          : defaultError,
+    }),
+  }),
 })
 
 export type FormContact = z.infer<typeof formContactSchema>

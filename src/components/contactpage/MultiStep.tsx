@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { FormUser, FormComplete, FormMap } from '@/components'
+import { FormUser, FormMap } from '@/components'
 
 import {
   CheckContact,
@@ -12,12 +12,7 @@ import {
 
 import { cn } from '@/utils'
 import { motion } from 'motion/react'
-import {
-  FieldErrors,
-  SubmitHandler,
-  useForm,
-  UseFormRegister,
-} from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { FormContact, formContactSchema } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -28,50 +23,50 @@ const steps = [
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
     fields: ['name', 'email', 'address', 'city', 'postalCode'],
-    form: ({
-      register,
-      errors,
-      currentStep,
-    }: {
-      register: UseFormRegister<FormContact>
-      errors: FieldErrors<FormContact>
-      currentStep: number
-    }) => (
-      <FormUser
-        register={register}
-        errors={errors}
-        currentStep={currentStep}
-      />
-    ),
+    // form: ({
+    //   register,
+    //   errors,
+    //   currentStep,
+    // }: {
+    //   register: UseFormRegister<FormContact>
+    //   errors: FieldErrors<FormContact>
+    //   currentStep: number
+    // }) => (
+    //   <FormUser
+    //     register={register}
+    //     errors={errors}
+    //     currentStep={currentStep}
+    //   />
+    // ),
   },
   {
     id: 2,
     name: 'Mapa Estelar',
     description: 'Datos del mapa estelar',
     icon: () => <StelarMapContact />,
-    fields: ['event', 'city-event'],
-    form: ({
-      register,
-      errors,
-      currentStep,
-    }: {
-      register: UseFormRegister<FormContact>
-      errors: FieldErrors<FormContact>
-      currentStep: number
-    }) => (
-      <FormMap
-        register={register}
-        errors={errors}
-        currentStep={currentStep}
-      />
-    ),
+    fields: ['event', 'city-event', 'date-event'],
+    // form: ({
+    //   register,
+    //   errors,
+    //   currentStep,
+    // }: {
+    //   register: UseFormRegister<FormContact>
+    //   errors: FieldErrors<FormContact>
+    //   currentStep: number
+    // }) => (
+    //   <FormMap
+    //     register={register}
+    //     errors={errors}
+    //     currentStep={currentStep}
+    //   />
+    // ),
   },
   {
     id: 3,
     name: 'Complete',
     icon: () => <CheckContact />,
     description: 'Formulario completado',
-    form: () => <FormComplete />,
+    // form: () => <FormComplete />,
   },
 ]
 
@@ -82,7 +77,7 @@ export const MultiStep = () => {
     control,
     register,
     handleSubmit,
-    reset,
+    // reset,
     trigger,
     formState: { errors },
   } = useForm<FormContact>({
@@ -184,7 +179,22 @@ export const MultiStep = () => {
                 key={step.id}
                 className='w-full flex-shrink-0 '
               >
-                {step.form({ register, errors, currentStep })}
+                {step.id === 1 && (
+                  <FormUser
+                    register={register}
+                    errors={errors}
+                    currentStep={currentStep}
+                  />
+                )}
+                {step.id === 2 && (
+                  <FormMap
+                    register={register}
+                    errors={errors}
+                    currentStep={currentStep}
+                    control={control}
+                  />
+                )}
+                {/* {step.form({ register, errors, currentStep })} */}
               </div>
             ))}
           </div>
