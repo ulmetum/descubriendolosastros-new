@@ -10,7 +10,7 @@ interface Props {
 export const FormUser = ({ register, errors, currentStep }: Props) => {
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
-      <header className=' space-y-2'>
+      <header className=' space-y-2 text-center'>
         <h2 className='text-primary'>Información Personal</h2>
         <p className='text-base'>
           Para poder hacerte llegar el pedido necesito saber algunos datos sobre
@@ -26,7 +26,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           >
             Nombre
           </label>
-          <div className='mt-2'>
+          <div className='mt-2 '>
             <input
               tabIndex={currentStep === 0 ? 0 : -1}
               placeholder='José Luis Campos Ruíz'
@@ -52,7 +52,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           >
             Email address
           </label>
-          <div className='mt-2'>
+          <div className='mt-2 '>
             <input
               placeholder='joseluiscamposruiz@gmail.com'
               id='email'
@@ -77,7 +77,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           >
             Dirección
           </label>
-          <div className='mt-2'>
+          <div className='mt-2 '>
             <input
               placeholder='Calle 1, Nº 123'
               id='address'
@@ -102,7 +102,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           >
             Ciudad
           </label>
-          <div className='mt-2'>
+          <div className='mt-2 '>
             <input
               placeholder='Santiago de Compostela'
               id='city'
@@ -127,7 +127,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           >
             Código Postal
           </label>
-          <div className='mt-2'>
+          <div className='mt-2 '>
             <input
               placeholder='05001'
               id='postal-code'

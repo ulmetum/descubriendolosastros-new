@@ -275,31 +275,10 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
-/* Antd */
-.ant-picker-dropdown .ant-picker-ranges {
-  gap: 0.5rem;
-  .ant-picker-ok {
-    button.ant-btn {
-      span {
-        color: var(--text);
-        font-family: var(--font-headings);
-        display: inline-block;
-        font-size: 1rem;
-        padding: 0.25rem 0.5rem;
-      }
-    }
-    button.ant-btn:not([disabled]) {
-      background-color: var(--sky-700);
-      &:hover {
-        background-color: var(--sky-600);
-      }
-      span {
-        color: var(--white);
-      }
-    }
-  }
+/* Botón limpiar input DatePicker */
+.react-datepicker__close-icon {
+  @apply after:!bg-primary after:text-primary;
 }
-/* Antd */
 
 figure.image {
   @apply mx-auto my-4;

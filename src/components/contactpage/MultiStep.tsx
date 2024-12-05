@@ -23,50 +23,19 @@ const steps = [
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
     fields: ['name', 'email', 'address', 'city', 'postalCode'],
-    // form: ({
-    //   register,
-    //   errors,
-    //   currentStep,
-    // }: {
-    //   register: UseFormRegister<FormContact>
-    //   errors: FieldErrors<FormContact>
-    //   currentStep: number
-    // }) => (
-    //   <FormUser
-    //     register={register}
-    //     errors={errors}
-    //     currentStep={currentStep}
-    //   />
-    // ),
   },
   {
     id: 2,
     name: 'Mapa Estelar',
     description: 'Datos del mapa estelar',
     icon: () => <StelarMapContact />,
-    fields: ['event', 'city-event', 'date-event'],
-    // form: ({
-    //   register,
-    //   errors,
-    //   currentStep,
-    // }: {
-    //   register: UseFormRegister<FormContact>
-    //   errors: FieldErrors<FormContact>
-    //   currentStep: number
-    // }) => (
-    //   <FormMap
-    //     register={register}
-    //     errors={errors}
-    //     currentStep={currentStep}
-    //   />
-    // ),
+    fields: ['event', 'city-event', 'date-event', 'terms'],
   },
   {
     id: 3,
     name: 'Complete',
     icon: () => <CheckContact />,
     description: 'Formulario completado',
-    // form: () => <FormComplete />,
   },
 ]
 
@@ -90,7 +59,7 @@ export const MultiStep = () => {
     const fields = steps[currentStep].fields
     const output = await trigger(fields as FieldName[], { shouldFocus: true })
 
-    console.log({ output })
+    // console.log({ output })
 
     if (!output) return
 
@@ -112,7 +81,7 @@ export const MultiStep = () => {
     console.log({ data })
   }
 
-  console.log({ errors })
+  // console.log({ errors })
 
   return (
     <div className='w-full px-2'>
@@ -165,9 +134,9 @@ export const MultiStep = () => {
         ))}
       </ol>
 
-      <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden lg:mt-16'>
+      <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden '>
         <form
-          className='order-1 lg:order-none '
+          className='order-1  '
           onSubmit={handleSubmit(processForm)}
         >
           <div
@@ -194,13 +163,12 @@ export const MultiStep = () => {
                     control={control}
                   />
                 )}
-                {/* {step.form({ register, errors, currentStep })} */}
               </div>
             ))}
           </div>
         </form>
 
-        <div className='mt-12 px-2 flex justify-between pb-10  lg:justify-start lg:gap-6'>
+        <div className='mt-14 px-2 flex justify-around pb-12'>
           <motion.button
             whileHover={{ scale: 1.1 }}
             transition={{
