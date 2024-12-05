@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+const formats = ['fisico', 'digital'] as const
+
 export const formContactSchema = z.object({
   name: z
     .string()
@@ -12,14 +14,19 @@ export const formContactSchema = z.object({
   address: z
     .string()
     .min(1, { message: 'Debe introducir una dirección postal' })
-    .min(5, { message: 'La dirección es demasiado corta' }),
+    .min(5, { message: 'La dirección es demasiado corta' })
+    .optional(),
   city: z
     .string()
     .min(1, { message: 'Debe introducir la ciudad donde vive' })
-    .min(5, { message: 'La ciudad es demasiado corta' }),
-  postalCode: z.string().regex(/^\d{5}$/, {
-    message: 'El código postal debe tener exactamente 5 dígitos numéricos',
-  }),
+    .min(5, { message: 'La ciudad es demasiado corta' })
+    .optional(),
+  postalCode: z
+    .string()
+    .regex(/^\d{5}$/, {
+      message: 'El código postal debe tener exactamente 5 dígitos numéricos',
+    })
+    .optional(),
   event: z
     .string()
     .min(1, { message: 'Debe escribir el nombre del evento' })
@@ -43,6 +50,35 @@ export const formContactSchema = z.object({
     .min(1, { message: 'Debe escribir un comentario' })
     .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
     .trim(),
+  format: z
+    .enum(formats, {
+      errorMap: () => ({
+        message: 'Debes seleccionar un formato para completar tu pedido',
+      }),
+    })
+    .default('fisico'),
 })
+// .refine(
+//   (data) => {
+//     // Si el formato es 'fisico', validamos los campos address, city y postalCode
+//     if (data.format === 'fisico') {
+//       return (
+//         data.address &&
+//         data.address?.length > 0 &&
+//         data.city &&
+//         data.city?.length > 0 &&
+//         data.postalCode?.length === 5 // Validación de código postal con 5 caracteres
+//       )
+//     }
+
+//     // Si el formato es 'digital', no validamos esos campos
+//     return true
+//   },
+//   {
+//     message:
+//       "Los campos address, city y postalCode son obligatorios cuando el formato es 'fisico'.",
+//     path: ['address', 'city', 'postalCode'], // Aquí podemos especificar la ruta de los campos para el mensaje de error
+//   }
+// )
 
 export type FormContact = z.infer<typeof formContactSchema>

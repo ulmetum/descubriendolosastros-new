@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { FormUser, FormMap, FormComplete } from '@/components'
 
@@ -12,7 +12,7 @@ import {
 
 import { cn } from '@/utils'
 import { motion } from 'motion/react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
 import { FormContact, formContactSchema } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -22,7 +22,7 @@ const steps = [
     name: 'Información del Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['name', 'email', 'address', 'city', 'postalCode'],
+    fields: ['name', 'email', 'address', 'city', 'postalCode', 'format'],
   },
   {
     id: 2,
@@ -40,26 +40,56 @@ const steps = [
 ]
 
 type FieldName = keyof FormContact
+export type Format = 'fisico' | 'digital'
 
 export const MultiStep = () => {
   const {
     control,
     register,
     handleSubmit,
-    // reset,
+    reset,
     trigger,
     formState: { errors },
   } = useForm<FormContact>({
     resolver: zodResolver(formContactSchema),
   })
 
+  const format = useWatch({
+    control, // Aquí pasa tu control de react-hook-form
+    name: 'format', // Observa el campo "format"
+  })
+
+  // console.log({ format })
+
+  useEffect(() => {
+    if (format === 'digital') {
+      reset({
+        city: undefined,
+        postalCode: undefined,
+        address: undefined,
+        format: format,
+      })
+    }
+  }, [format, reset])
+
   const [currentStep, setCurrentStep] = useState(0)
 
+  console.log({ currentStep })
+
+  const initialStep = () => {
+    setCurrentStep(0)
+  }
+
   const nextStep = async () => {
-    const fields = steps[currentStep].fields
+    let fields: string[] = []
+    if (format === 'digital' && currentStep === 0) {
+      fields = ['name', 'email', 'format']
+    } else {
+      fields = steps[currentStep]?.fields ?? []
+    }
     const output = await trigger(fields as FieldName[], { shouldFocus: true })
 
-    // console.log({ output })
+    // console.log({ output, errors, fields })
 
     if (!output) return
 
@@ -79,9 +109,8 @@ export const MultiStep = () => {
 
   const processForm: SubmitHandler<FormContact> = (data) => {
     console.log({ data })
+    reset()
   }
-
-  // console.log({ errors })
 
   return (
     <div className='w-full px-2'>
@@ -135,51 +164,111 @@ export const MultiStep = () => {
       </ol>
 
       <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden '>
-        <div className='mt-14 px-2 flex justify-around pb-12'>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            transition={{
-              duration: 1.2,
-              type: 'spring',
-              stiffness: 300,
-              damping: 10,
-            }}
-            onClick={prevStep}
-            className={`${
-              currentStep === 0 ? 'pointer-events-none opacity-50' : ''
-            } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
-          >
-            Atrás
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            layout
-            onClick={nextStep}
-            className={`${
-              currentStep + 1 > steps.length - 1
-                ? 'pointer-events-none opacity-50'
-                : ''
-            } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
-            transition={{
-              duration: 1.2,
-              type: 'spring', // Usa un efecto de resorte para el rebote
-              stiffness: 300, // Controla la rigidez del resorte
-              damping: 10,
-            }}
-          >
-            <motion.span
-              layout
-              transition={{ duration: 0.2 }}
-              className='font-headings text-lg text-white'
+        {currentStep === steps.length - 1 && (
+          <div onClick={initialStep}>Envia Otro mensaje</div>
+        )}
+        {currentStep !== steps.length - 1 && (
+          <div className='mt-14 px-2 flex justify-around '>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              transition={{
+                duration: 1.2,
+                type: 'spring',
+                stiffness: 300,
+                damping: 10,
+              }}
+              onClick={prevStep}
+              className={`${
+                currentStep === 0 ? 'pointer-events-none opacity-50' : ''
+              } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
             >
-              {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
-            </motion.span>
-          </motion.button>
-        </div>
+              Atrás
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              layout
+              onClick={nextStep}
+              className={`${
+                currentStep + 1 > steps.length - 1
+                  ? 'pointer-events-none opacity-50'
+                  : ''
+              } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
+              transition={{
+                duration: 1.2,
+                type: 'spring', // Usa un efecto de resorte para el rebote
+                stiffness: 300, // Controla la rigidez del resorte
+                damping: 10,
+              }}
+            >
+              <motion.span
+                layout
+                transition={{ duration: 0.2 }}
+                className='font-headings text-lg text-white'
+              >
+                {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
+              </motion.span>
+            </motion.button>
+          </div>
+        )}
         <form
           className=' '
           onSubmit={handleSubmit(processForm)}
         >
+          <div className='flex flex-col gap-4 items-center my-12'>
+            <h3 className='text-center'>
+              Elige el formato que desees recibir:
+            </h3>
+            <div className='flex gap-4'>
+              <div className='inline-flex items-center'>
+                <label
+                  className='relative flex items-center cursor-pointer'
+                  htmlFor='fisico'
+                >
+                  <input
+                    {...register('format')}
+                    type='radio'
+                    value='fisico'
+                    className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
+                    id='fisico'
+                  />
+                  <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
+                </label>
+                <label
+                  className='ml-2 text-slate-600 cursor-pointer text-lg'
+                  htmlFor='fisico'
+                >
+                  Físico
+                </label>
+              </div>
+
+              <div className='inline-flex items-center'>
+                <label
+                  className='relative flex items-center cursor-pointer'
+                  htmlFor='digital'
+                >
+                  <input
+                    {...register('format')}
+                    type='radio'
+                    value='digital'
+                    className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
+                    id='digital'
+                  />
+                  <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
+                </label>
+                <label
+                  className='ml-2 text-slate-600 cursor-pointer text-lg'
+                  htmlFor='digital'
+                >
+                  Digital
+                </label>
+              </div>
+            </div>
+            {errors.format?.message && (
+              <p className='my-4  text-base text-light bg-primary px-3 rounded-lg'>
+                {errors.format?.message}
+              </p>
+            )}
+          </div>
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
             style={{ translate: `-${currentStep * 100}%` }}
@@ -191,6 +280,7 @@ export const MultiStep = () => {
               >
                 {step.id === 1 && (
                   <FormUser
+                    format={format}
                     register={register}
                     errors={errors}
                     currentStep={currentStep}
@@ -210,47 +300,52 @@ export const MultiStep = () => {
           </div>
         </form>
 
-        <div className='mt-14 px-2 flex justify-around pb-12'>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            transition={{
-              duration: 1.2,
-              type: 'spring',
-              stiffness: 300,
-              damping: 10,
-            }}
-            onClick={prevStep}
-            className={`${
-              currentStep === 0 ? 'pointer-events-none opacity-50' : ''
-            } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
-          >
-            Atrás
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            layout
-            onClick={nextStep}
-            className={`${
-              currentStep + 1 > steps.length - 1
-                ? 'pointer-events-none opacity-50'
-                : ''
-            } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
-            transition={{
-              duration: 1.2,
-              type: 'spring', // Usa un efecto de resorte para el rebote
-              stiffness: 300, // Controla la rigidez del resorte
-              damping: 10,
-            }}
-          >
-            <motion.span
-              layout
-              transition={{ duration: 0.2 }}
-              className='font-headings text-lg text-white'
+        {currentStep === steps.length - 1 && (
+          <div onClick={initialStep}>Envia Otro mensaje</div>
+        )}
+        {currentStep !== steps.length - 1 && (
+          <div className='mt-14 px-2 flex justify-around '>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              transition={{
+                duration: 1.2,
+                type: 'spring',
+                stiffness: 300,
+                damping: 10,
+              }}
+              onClick={prevStep}
+              className={`${
+                currentStep === 0 ? 'pointer-events-none opacity-50' : ''
+              } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
             >
-              {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
-            </motion.span>
-          </motion.button>
-        </div>
+              Atrás
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              layout
+              onClick={nextStep}
+              className={`${
+                currentStep + 1 > steps.length - 1
+                  ? 'pointer-events-none opacity-50'
+                  : ''
+              } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
+              transition={{
+                duration: 1.2,
+                type: 'spring', // Usa un efecto de resorte para el rebote
+                stiffness: 300, // Controla la rigidez del resorte
+                damping: 10,
+              }}
+            >
+              <motion.span
+                layout
+                transition={{ duration: 0.2 }}
+                className='font-headings text-lg text-white'
+              >
+                {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
+              </motion.span>
+            </motion.button>
+          </div>
+        )}
       </div>
     </div>
   )

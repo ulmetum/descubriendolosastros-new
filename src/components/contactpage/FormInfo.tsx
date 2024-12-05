@@ -1,14 +1,15 @@
 'use client'
+
 import { CopyClipboard } from '@/components'
 import { motion } from 'motion/react'
 
 export const FormInfo = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      className='px-4 py-20   '
+      transition={{ duration: 1.5, delay: 1.5 }}
+      className='bg-white px-2 lg:px-8 py-20 w-[min(100%,1024px)] mx-auto -mt-[10rem] relative z-10 mb-20 rounded-xl'
     >
       <p className='text-xl sm:text-2xl'>
         Si quieres conocer qué mensaje tienen para ti las estrellas y develar el

@@ -1,4 +1,4 @@
-import { FormInfo, MultiStep } from '@/components/contactpage'
+import { FormHero, FormInfo, MultiStep } from '@/components'
 
 export const metadata = {
   title: 'Descubriendo los astros | Contacto',
@@ -9,6 +9,7 @@ export const metadata = {
 const ContactPage = () => {
   return (
     <section className='mt-[calc(var(--main-header-height)*1.5)] min-h-[100dvh] flex-col flex justify-center w-full pb-16'>
+      <FormHero />
       <FormInfo />
       <MultiStep />
     </section>
