@@ -24,10 +24,10 @@ export const formContactSchema = z.object({
     .string()
     .min(1, { message: 'Debe escribir el nombre del evento' })
     .min(5, { message: 'El nombre del evento es demasiado corto' }),
-  'city-event': z
+  cityEvent: z
     .string()
     .min(1, { message: 'Debe escribir la ciudad del evento' }),
-  'date-event': z.coerce.date({
+  dateEvent: z.coerce.date({
     errorMap: (issue, { defaultError }) => ({
       message:
         issue.code === 'invalid_date'
@@ -38,6 +38,11 @@ export const formContactSchema = z.object({
   terms: z.boolean().refine((value) => value === true, {
     message: 'Debes aceptar los términos y condiciones',
   }),
+  comments: z
+    .string()
+    .min(1, { message: 'Debe escribir un comentario' })
+    .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
+    .trim(),
 })
 
 export type FormContact = z.infer<typeof formContactSchema>

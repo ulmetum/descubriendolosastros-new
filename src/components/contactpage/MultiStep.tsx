@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { FormUser, FormMap } from '@/components'
+import { FormUser, FormMap, FormComplete } from '@/components'
 
 import {
   CheckContact,
@@ -29,7 +29,7 @@ const steps = [
     name: 'Mapa Estelar',
     description: 'Datos del mapa estelar',
     icon: () => <StelarMapContact />,
-    fields: ['event', 'city-event', 'date-event', 'terms'],
+    fields: ['event', 'cityEvent', 'dateEvent', 'comments', 'terms'],
   },
   {
     id: 3,
@@ -135,8 +135,49 @@ export const MultiStep = () => {
       </ol>
 
       <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden '>
+        <div className='mt-14 px-2 flex justify-around pb-12'>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            transition={{
+              duration: 1.2,
+              type: 'spring',
+              stiffness: 300,
+              damping: 10,
+            }}
+            onClick={prevStep}
+            className={`${
+              currentStep === 0 ? 'pointer-events-none opacity-50' : ''
+            } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
+          >
+            Atrás
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            layout
+            onClick={nextStep}
+            className={`${
+              currentStep + 1 > steps.length - 1
+                ? 'pointer-events-none opacity-50'
+                : ''
+            } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
+            transition={{
+              duration: 1.2,
+              type: 'spring', // Usa un efecto de resorte para el rebote
+              stiffness: 300, // Controla la rigidez del resorte
+              damping: 10,
+            }}
+          >
+            <motion.span
+              layout
+              transition={{ duration: 0.2 }}
+              className='font-headings text-lg text-white'
+            >
+              {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'}
+            </motion.span>
+          </motion.button>
+        </div>
         <form
-          className='order-1  '
+          className=' '
           onSubmit={handleSubmit(processForm)}
         >
           <div
@@ -163,6 +204,7 @@ export const MultiStep = () => {
                     control={control}
                   />
                 )}
+                {step.id === 3 && <FormComplete />}
               </div>
             ))}
           </div>
@@ -173,8 +215,8 @@ export const MultiStep = () => {
             whileHover={{ scale: 1.1 }}
             transition={{
               duration: 1.2,
-              type: 'spring', // Usa un efecto de resorte para el rebote
-              stiffness: 300, // Controla la rigidez del resorte
+              type: 'spring',
+              stiffness: 300,
               damping: 10,
             }}
             onClick={prevStep}

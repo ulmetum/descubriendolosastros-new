@@ -12,14 +12,14 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className=' space-y-2 text-center'>
         <h2 className='text-primary'>Información Personal</h2>
-        <p className='text-base'>
+        <p className='text-lg'>
           Para poder hacerte llegar el pedido necesito saber algunos datos sobre
           ti.
         </p>
       </header>
 
       <div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='name'
             className=' block text-sm/6 font-medium text-dark'
@@ -33,7 +33,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               id='name'
               type='text'
               autoComplete='given-name'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('name')}
             />
             {errors.name?.message && (
@@ -45,7 +45,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-4 mb-6'>
+        <div className='sm:col-span-4 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='email'
             className=' block text-sm/6 font-medium text-dark'
@@ -58,7 +58,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               id='email'
               type='email'
               autoComplete='email'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('email')}
             />
             {errors.email?.message && (
@@ -70,7 +70,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='address'
             className=' block text-sm/6 font-medium text-dark'
@@ -83,7 +83,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               id='address'
               type='text'
               autoComplete='address-line1'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('address')}
             />
             {errors.address?.message && (
@@ -95,7 +95,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='city'
             className=' block text-sm/6 font-medium text-dark'
@@ -108,7 +108,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               id='city'
               type='text'
               autoComplete='home city'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('city')}
             />
             {errors.city?.message && (
@@ -120,7 +120,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='postal-code'
             className=' block text-sm/6 font-medium text-dark'
@@ -133,7 +133,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               id='postal-code'
               type='text'
               autoComplete='postal-code'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('postalCode')}
             />
             {errors.postalCode?.message && (

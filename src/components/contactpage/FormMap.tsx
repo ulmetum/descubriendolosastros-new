@@ -28,12 +28,12 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className='space-y-2 text-center'>
         <h2 className='text-primary'>Datos del Mapa Estelar</h2>
-        <p className='text-base'>
+        <p className='text-lg'>
           ¿Qué evento quieres que se vea reflejado en tu mapa estelar?
         </p>
       </header>
       <div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='event'
             className=' block text-sm/6 font-medium text-dark'
@@ -46,7 +46,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
               placeholder='Nacimiento, bautizo, boda...'
               id='event'
               type='text'
-              className=' block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              className=' block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
               {...register('event')}
             />
             {errors.event?.message && (
@@ -58,7 +58,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='city-event'
             className=' block text-sm/6 font-medium text-dark'
@@ -68,24 +68,24 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
           <div className='mt-2'>
             <input
               tabIndex={currentStep === 1 ? 0 : -1}
-              placeholder='José Luis Campos Ruíz'
-              id='city-event'
+              placeholder='Bilbao, Vigo, Leon...'
+              id='cityEvent'
               type='text'
-              className='block w-[min(100%,480px)] h-12 rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
-              {...register('city-event')}
+              className='block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              {...register('cityEvent')}
             />
-            {errors['city-event']?.message && (
+            {errors['cityEvent']?.message && (
               <p className='my-4 w-[max-content]  text-base text-primary'>
                 {' - '}
-                {errors['city-event']?.message}
+                {errors['cityEvent']?.message}
                 {' - '}
               </p>
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6'>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
-            htmlFor='city-event'
+            htmlFor='cityEvent'
             className=' block text-sm/6 font-medium text-dark'
           >
             Fecha del Evento
@@ -93,7 +93,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
           <div className='mt-2'>
             <Controller
               control={control}
-              name='date-event'
+              name='dateEvent'
               render={({ field: { onChange, value, onBlur, name } }) => {
                 return (
                   <DatePicker
@@ -117,16 +117,40 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
                 )
               }}
             />
-            {errors['date-event']?.message && (
+            {errors['dateEvent']?.message && (
               <p className='my-4 w-[max-content]  text-base text-primary'>
                 {' - '}
-                {errors['date-event']?.message}
+                {errors['dateEvent']?.message}
                 {' - '}
               </p>
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6 '>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
+          <label
+            htmlFor='city-event'
+            className=' block text-sm/6 font-medium text-dark'
+          >
+            Comentario
+          </label>
+          <div className='flex items-center gap-2'>
+            <textarea
+              {...register('comments')}
+              id='message'
+              rows={4}
+              className='block w-full resize-none rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-lg text-dark focus:outline-primary focus:ring-sky-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:primary dark:focus:ring-sky-600'
+              placeholder='Escribe aquí tu comentario...'
+            ></textarea>
+          </div>
+          {errors.comments?.message && (
+            <p className='my-4 w-[max-content] text-base text-primary'>
+              {' - '}
+              {errors.comments?.message}
+              {' - '}
+            </p>
+          )}
+        </div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <div className='flex items-center gap-2'>
             <div className='inline-flex items-center'>
               <label
