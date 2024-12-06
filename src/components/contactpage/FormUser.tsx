@@ -3,7 +3,9 @@ import { FieldErrors, UseFormRegister, UseFormReset } from 'react-hook-form'
 
 interface Props {
   register: UseFormRegister<FormContact>
-  errors: FieldErrors<FormContact>
+  errors: FieldErrors<
+    FormContact & { address?: string; city?: string; postalCode?: string }
+  >
   currentStep: number
   format: 'fisico' | 'digital'
   reset: UseFormReset<FormContact>
@@ -14,8 +16,8 @@ export const FormUser = ({
   errors,
   currentStep,
   format,
-  reset,
-}: Props) => {
+}: // reset,
+Props) => {
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className=' space-y-2 text-center'>
@@ -34,21 +36,7 @@ export const FormUser = ({
               htmlFor='fisico'
             >
               <input
-                {...register('format', {
-                  onChange: (e) => {
-                    const selectedFormat = e.target.value
-
-                    // Resetea los campos solo cuando se selecciona 'digital'
-                    if (selectedFormat === 'digital') {
-                      reset({
-                        city: undefined,
-                        postalCode: undefined,
-                        address: undefined,
-                        format: selectedFormat,
-                      })
-                    }
-                  },
-                })}
+                {...register('format')}
                 type='radio'
                 value='fisico'
                 className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
@@ -70,21 +58,7 @@ export const FormUser = ({
               htmlFor='digital'
             >
               <input
-                {...register('format', {
-                  onChange: (e) => {
-                    const selectedFormat = e.target.value
-
-                    // Resetea los campos solo cuando se selecciona 'digital'
-                    if (selectedFormat === 'digital') {
-                      reset({
-                        city: undefined,
-                        postalCode: undefined,
-                        address: undefined,
-                        format: selectedFormat,
-                      })
-                    }
-                  },
-                })}
+                {...register('format')}
                 type='radio'
                 value='digital'
                 className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'

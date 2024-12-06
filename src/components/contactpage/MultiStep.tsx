@@ -176,12 +176,12 @@ export const MultiStep = () => {
               stiffness: 300,
               damping: 10,
             }}
-            onClick={prevStep}
+            onClick={currentStep === steps.length - 1 ? initialStep : prevStep}
             className={`${
               currentStep === 0 ? 'pointer-events-none opacity-50' : ''
             } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
           >
-            Atrás
+            {currentStep === steps.length - 1 ? 'Inicio' : 'Atrás'}
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.1 }}
