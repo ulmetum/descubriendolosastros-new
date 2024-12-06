@@ -50,35 +50,11 @@ export const formContactSchema = z.object({
     .min(1, { message: 'Debe escribir un comentario' })
     .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
     .trim(),
-  format: z
-    .enum(formats, {
-      errorMap: () => ({
-        message: 'Debes seleccionar un formato para completar tu pedido',
-      }),
-    })
-    .default('fisico'),
+  format: z.enum(formats, {
+    errorMap: () => ({
+      message: 'Debes seleccionar un formato para completar tu pedido',
+    }),
+  }),
 })
-// .refine(
-//   (data) => {
-//     // Si el formato es 'fisico', validamos los campos address, city y postalCode
-//     if (data.format === 'fisico') {
-//       return (
-//         data.address &&
-//         data.address?.length > 0 &&
-//         data.city &&
-//         data.city?.length > 0 &&
-//         data.postalCode?.length === 5 // Validación de código postal con 5 caracteres
-//       )
-//     }
-
-//     // Si el formato es 'digital', no validamos esos campos
-//     return true
-//   },
-//   {
-//     message:
-//       "Los campos address, city y postalCode son obligatorios cuando el formato es 'fisico'.",
-//     path: ['address', 'city', 'postalCode'], // Aquí podemos especificar la ruta de los campos para el mensaje de error
-//   }
-// )
 
 export type FormContact = z.infer<typeof formContactSchema>

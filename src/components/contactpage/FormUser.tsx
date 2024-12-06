@@ -1,14 +1,21 @@
 import { FormContact } from '@/validations'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister, UseFormReset } from 'react-hook-form'
 
 interface Props {
   register: UseFormRegister<FormContact>
   errors: FieldErrors<FormContact>
   currentStep: number
   format: 'fisico' | 'digital'
+  reset: UseFormReset<FormContact>
 }
 
-export const FormUser = ({ register, errors, currentStep, format }: Props) => {
+export const FormUser = ({
+  register,
+  errors,
+  currentStep,
+  format,
+  reset,
+}: Props) => {
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className=' space-y-2 text-center'>
@@ -18,7 +25,87 @@ export const FormUser = ({ register, errors, currentStep, format }: Props) => {
           ti.
         </p>
       </header>
+      <div className='flex flex-col gap-4 items-center my-12'>
+        <h3 className='text-center'>Elige el formato que desees recibir:</h3>
+        <div className='flex gap-4'>
+          <div className='inline-flex items-center'>
+            <label
+              className='relative flex items-center cursor-pointer'
+              htmlFor='fisico'
+            >
+              <input
+                {...register('format', {
+                  onChange: (e) => {
+                    const selectedFormat = e.target.value
 
+                    // Resetea los campos solo cuando se selecciona 'digital'
+                    if (selectedFormat === 'digital') {
+                      reset({
+                        city: undefined,
+                        postalCode: undefined,
+                        address: undefined,
+                        format: selectedFormat,
+                      })
+                    }
+                  },
+                })}
+                type='radio'
+                value='fisico'
+                className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
+                id='fisico'
+              />
+              <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
+            </label>
+            <label
+              className='ml-2 text-slate-600 cursor-pointer text-lg'
+              htmlFor='fisico'
+            >
+              Físico
+            </label>
+          </div>
+
+          <div className='inline-flex items-center'>
+            <label
+              className='relative flex items-center cursor-pointer'
+              htmlFor='digital'
+            >
+              <input
+                {...register('format', {
+                  onChange: (e) => {
+                    const selectedFormat = e.target.value
+
+                    // Resetea los campos solo cuando se selecciona 'digital'
+                    if (selectedFormat === 'digital') {
+                      reset({
+                        city: undefined,
+                        postalCode: undefined,
+                        address: undefined,
+                        format: selectedFormat,
+                      })
+                    }
+                  },
+                })}
+                type='radio'
+                value='digital'
+                className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
+                id='digital'
+              />
+              <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
+            </label>
+            <label
+              className='ml-2 text-slate-600 cursor-pointer text-lg'
+              htmlFor='digital'
+            >
+              Digital
+            </label>
+          </div>
+        </div>
+        {errors.format?.message && (
+          <p className='my-4  text-base text-light bg-primary px-3 rounded-lg'>
+            {errors.format?.message}
+          </p>
+        )}
+      </div>
       <div>
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
