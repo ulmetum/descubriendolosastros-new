@@ -3,7 +3,6 @@ import { getAllArticlesAction, getArticlesByPageAction } from '@/actions'
 import { notFound } from 'next/navigation'
 
 export const Posts = async ({ page }: { page: string }) => {
-  // console.log({ page })
   const [resultByPage, resultAllArticles] = await Promise.all([
     getArticlesByPageAction({ page }),
     getAllArticlesAction(),

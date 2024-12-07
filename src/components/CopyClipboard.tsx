@@ -9,8 +9,8 @@ interface Props {
 
 const textColor = {
   light: 'text-light',
-  dark: 'text-zinc-900',
-  amber: 'text-amber-700',
+  dark: 'text-dark',
+  amber: 'text-primary',
 }
 
 export const CopyClipboard = ({ color = 'light' }: Props) => {

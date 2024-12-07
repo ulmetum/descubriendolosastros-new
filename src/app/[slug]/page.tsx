@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const dataArticle = articleBySlug[0]
-  const { metaTitle, metaDescription } = dataArticle.metadata
+  const { metaTitle = 'Título no disponible', metaDescription = '' } =
+    articleBySlug[0]?.metadata || {}
 
   return {
     title: `Descubriendo los Astros | ${metaTitle}`,
@@ -62,12 +62,12 @@ const page = async ({ params }: Props) => {
 
   const articleBySlug = res?.data?.article.data
 
-  // // Si se produce un error
+  // Si se produce un error
   if (res?.serverError) {
     throw new ErrorArticle(res?.serverError)
   }
 
-  // // Si no hay datos de artículos por slug
+  // Si no hay datos de artículos por slug
   if (!articleBySlug || articleBySlug.length === 0) {
     notFound()
     return null
@@ -76,6 +76,15 @@ const page = async ({ params }: Props) => {
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
     articleBySlug[0]
   const imageArticle = featuredImage.url
+
+  if (!writer) {
+    return (
+      <div>
+        <p>Información del autor no está disponible.</p>
+      </div>
+    )
+  }
+
   const { name, picture, social } = writer
 
   const { dataNextArticle, dataPrevArticle } =
@@ -111,37 +120,3 @@ const page = async ({ params }: Props) => {
   )
 }
 export default page
-
-// const replaceOembedWithIframe = (domNode: any) => {
-//   if (domNode.type === 'tag') {
-//     if (domNode.name === 'oembed') {
-//       const url = domNode.attribs?.url
-
-//       if (typeof url === 'string') {
-//         // Convertir URL de YouTube a formato de embed
-//         const embedUrl = url.replace(
-//           'https://www.youtube.com/watch?v=',
-//           'https://www.youtube.com/embed/'
-//         )
-
-//         return (
-//           <iframe
-//             src={embedUrl}
-//             width='560'
-//             height='315'
-//             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-//             allowFullScreen
-//           />
-//         )
-//       } else {
-//         return <p>URL no encontrada</p>
-//       }
-//     } else if (domNode.name === 'iframe') {
-//       // Retornar el iframe sin modificar si ya es un iframe
-//       return <iframe {...domNode.attribs} />
-//     }
-//   }
-
-//   // Para nodos que no son <oembed> ni <iframe>, retornar null para no alterarlos
-//   return null
-// }

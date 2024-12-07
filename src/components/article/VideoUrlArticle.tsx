@@ -20,8 +20,6 @@ const getEmbedCode = (url: string): string | null => {
 }
 
 export const VideoUrlArticle = ({ videoUrl }: Props) => {
-  // console.log({ url: videoUrl?.url })
-
   if (!videoUrl?.url) {
     throw new Error('Video URL no encontrada')
   }

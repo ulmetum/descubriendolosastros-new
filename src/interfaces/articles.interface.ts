@@ -1,5 +1,3 @@
-import { Writer } from './writer.interface'
-
 export interface Articles {
   data: Datum[]
   meta: Meta
@@ -47,6 +45,16 @@ export interface ElementVideo {
   __component: string
   id: number
   videoUrl?: VideoURL
+}
+
+interface Writer {
+  id: number
+  documentId: string
+  name: string
+  description: string
+  email: string
+  picture: FeaturedImage
+  social: Social[]
 }
 
 export interface FeaturedImage {

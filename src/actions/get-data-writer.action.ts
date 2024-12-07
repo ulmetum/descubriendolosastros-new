@@ -1,8 +1,7 @@
 import { z } from 'zod'
 import { safeAction } from './safeAction'
-// import { fetchData } from '@/utils'
 import { getDataWriterQuery } from '@/queries'
-import { Writer } from '@/interfaces'
+import { Writers } from '@/interfaces'
 import { fetchData } from '@/utils'
 
 const schema = z.object({
@@ -15,7 +14,7 @@ export const getDataWriterAction = safeAction
     const query = getDataWriterQuery({ name })
     const url = `writers?${query}`
 
-    const writer = await fetchData<Writer>(url)
+    const writer = await fetchData<Writers>(url)
 
     return { writer }
   })

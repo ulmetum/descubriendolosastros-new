@@ -47,7 +47,7 @@ export default {
           to: { transform: 'translateX(-50%)' },
         },
         'author-text': {
-          to: { color: 'var(--amber-600)' },
+          to: { color: 'var(--primary-light)' },
         },
       },
     },

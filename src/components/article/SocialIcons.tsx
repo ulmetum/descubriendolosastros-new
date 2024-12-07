@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import { SocialWriter } from '@/interfaces'
+import { Social, SocialWriter } from '@/interfaces'
 import { cn } from '@/utils'
 
 interface Props {
-  socials: SocialWriter[] | undefined
+  socials: SocialWriter[] | Social[] | undefined
   color?: 'amber' | 'pampas' | 'zinc'
   size?: 'small' | 'medium' | 'large'
 }

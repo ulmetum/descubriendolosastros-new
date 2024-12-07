@@ -49,10 +49,10 @@ export const FooterInner = ({ menuItems, currentYear, socials }: Props) => {
               pauseOnHover
               autoFill
               gradient
-              gradientColor='var(--zinc-900)'
+              gradientColor='var(--dark)'
               gradientWidth={50}
             >
-              <span className='mx-2 font-headings text-[1.7rem] text-amber-700'>
+              <span className='mx-2 font-headings text-[1.7rem] text-primary '>
                 descubriendolosastros.com
               </span>
               <span className='text-2xl text-light'>-</span>

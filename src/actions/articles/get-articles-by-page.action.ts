@@ -1,11 +1,10 @@
 'use server'
 
+import { z } from 'zod'
 import { safeAction } from '@/actions/safeAction'
 import { Articles } from '@/interfaces'
 import { getArticlesByPageQuery } from '@/queries'
 import { fetchData } from '@/utils'
-import { z } from 'zod'
-// import { fetchData } from '@/utils'
 
 const schema = z.object({
   page: z.string(),

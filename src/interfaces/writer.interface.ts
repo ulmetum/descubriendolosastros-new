@@ -1,4 +1,4 @@
-export interface Writer {
+export interface Writers {
   data: DatumWriter[]
 }
 

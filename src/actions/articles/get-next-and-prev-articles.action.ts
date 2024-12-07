@@ -38,7 +38,6 @@ export const getNextAndPrevArticlesAction = async ({
   const responsePrevArticle = await getArticleByIdAction({ id: prevArticleId })
   const responseNextArticle = await getArticleByIdAction({ id: nextArticleId })
 
-  // console.log({ responseNextArticle, responsePrevArticle })
   const dataPrevArticle = responsePrevArticle?.data?.article.data[0]
   const dataNextArticle = responseNextArticle?.data?.article.data[0]
 

@@ -18,7 +18,6 @@ export const ElementsManager = ({ elements }: Props) => {
   return (
     <article>
       {elements.map((element: Element) => {
-        // console.log({ component: element.__component })
         const Component =
           componentMap[element.__component as keyof typeof componentMap]
 

@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   const pagination = res?.data?.articles.meta.pagination
   const pages = pagination?.pageCount || 0
 
-  const staticPagesBlog = Array.from({ length: pages }, (value, i) => i + 1)
+  const staticPagesBlog = Array.from({ length: pages }, (_, i) => i + 1)
 
   return staticPagesBlog.map((page) => ({
     page: [`${page}`],
@@ -37,8 +37,6 @@ const BlogPage = async ({
 }) => {
   const paramsResolved = await params
   const page = paramsResolved?.page?.[0] ?? '1'
-
-  // console.log({ page })
 
   const res = await getArticlesByPageAction({ page })
 
@@ -59,8 +57,6 @@ const BlogPage = async ({
   if (res?.data?.articles.data.length === 0) {
     return redirect(`/blog/${pageCount}`)
   }
-
-  // console.log({ res })
 
   return (
     <Container className='relative mt-[calc(var(--header-height)+1rem)] min-h-dvh px-1'>
