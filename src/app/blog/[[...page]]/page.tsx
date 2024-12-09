@@ -3,8 +3,7 @@ import { redirect } from 'next/navigation'
 
 import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
 
-import { Posts, Search } from '@/components/blogpage'
-import { Container, Skeleton } from '@/components'
+import { Container, Skeleton, Posts, Search } from '@/components'
 
 import { wrap } from '@/utils'
 
