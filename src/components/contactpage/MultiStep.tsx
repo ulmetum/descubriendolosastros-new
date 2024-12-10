@@ -1,6 +1,7 @@
 'use client'
 
 import { JSX, useState } from 'react'
+import dayjs from 'dayjs'
 
 import {
   FormUser,
@@ -16,6 +17,7 @@ import {
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
 import { FormContact, formContactSchema } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { sendFormSafe } from '@/actions'
 
 export interface Step {
   id: number
@@ -31,7 +33,7 @@ export const steps: Step[] = [
     name: 'Información del Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['name', 'email', 'address', 'city', 'postalCode', 'format'],
+    fields: ['name', 'email', 'address', 'city', 'postalCode', 'formatMap'],
   },
   {
     id: 2,
@@ -66,7 +68,7 @@ export const MultiStep = () => {
   // Observar el campo "format" para mostrar de forma condicional los campos del formulario FormUser
   const format = useWatch({
     control,
-    name: 'format',
+    name: 'formatMap',
   })
 
   const [currentStep, setCurrentStep] = useState(0)
@@ -100,8 +102,10 @@ export const MultiStep = () => {
     }
   }
 
-  const processForm: SubmitHandler<FormContact> = (data) => {
-    console.log({ data })
+  const processForm: SubmitHandler<FormContact> = async (data) => {
+    // console.log({ data })
+    await sendFormSafe(data)
+
     reset()
   }
 

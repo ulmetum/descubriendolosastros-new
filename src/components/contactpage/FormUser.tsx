@@ -36,7 +36,7 @@ Props) => {
               htmlFor='fisico'
             >
               <input
-                {...register('format')}
+                {...register('formatMap')}
                 type='radio'
                 value='fisico'
                 className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
@@ -58,7 +58,7 @@ Props) => {
               htmlFor='digital'
             >
               <input
-                {...register('format')}
+                {...register('formatMap')}
                 type='radio'
                 value='digital'
                 className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
@@ -74,9 +74,9 @@ Props) => {
             </label>
           </div>
         </div>
-        {errors.format?.message && (
+        {errors.formatMap?.message && (
           <p className='my-4  text-base text-light bg-primary px-3 rounded-lg'>
-            {errors.format?.message}
+            {errors.formatMap?.message}
           </p>
         )}
       </div>
@@ -112,7 +112,7 @@ Props) => {
             htmlFor='email'
             className=' block text-sm/6 font-medium text-dark'
           >
-            Email address
+            Correo electrónico
           </label>
           <div className='mt-2 '>
             <input
