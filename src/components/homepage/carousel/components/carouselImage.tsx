@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, TargetAndTransition } from 'motion/react'
 import { ImageProps } from '@/interfaces'
 import { images } from '../carousel'
 
@@ -20,7 +20,7 @@ export const CarouselImage = ({
 
   const position = positions[indexPosition]
 
-  const animations: Record<string, unknown> = {
+  const animations: Record<string, TargetAndTransition> = {
     center: {
       rotateY: '0deg',
       scale: 1.2,

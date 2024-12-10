@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { JSX, useState } from 'react'
 
 import {
   FormUser,
@@ -8,13 +8,10 @@ import {
   FormComplete,
   FormNavigation,
   FormSteps,
-} from '@/components'
-
-import {
   CheckContact,
   PersonalInfoContact,
   StelarMapContact,
-} from '@/components/icons'
+} from '@/components'
 
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
 import { FormContact, formContactSchema } from '@/validations'
