@@ -31,7 +31,7 @@ const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
   return bodyData
 }
 
-const sendFormData = async (formData: Record<string, any>) => {
+const sendFormData = async (formData: Record<string, string>) => {
   // Realizamos la solicitud para el formato 'fisico'
   const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
     method: 'POST',
