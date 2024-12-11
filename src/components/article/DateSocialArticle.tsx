@@ -1,10 +1,6 @@
 'use client'
 import { MotionValue, motion, useTransform } from 'motion/react'
 
-// Componentes
-// import { SocialIcons } from '@/components'
-// import { PostDate } from '@/components/blog'
-
 // Types
 import { Social } from '@/interfaces'
 import { PostDate, SocialIcons } from '@/components/article'

@@ -10,7 +10,9 @@ export const ImagePost = ({
   featuredImageUrl: string
 }) => {
   const [isShow, setIsShow] = useState(false)
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
+  const url = featuredImageUrl.startsWith('http')
+    ? featuredImageUrl
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
 
   return (
     <div className='absolute inset-0'>

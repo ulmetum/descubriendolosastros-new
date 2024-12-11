@@ -2,12 +2,6 @@
 
 import { motion } from 'motion/react'
 
-// const contentVariants = {
-//   animate: {
-//     transition: { staggerChildren: 0.05, delayChildren: 2.5 },
-//   },
-// }
-
 export const IntroTitle = () => {
   return (
     <h1 className='flex items-center text-6xl leading-none md:text-7xl lg:h-[135px] lg:justify-end lg:text-8xl'>
@@ -23,7 +17,6 @@ export const IntroTitle = () => {
           }}
           initial='initial'
           animate='animate'
-          // style={{ transform: "perspective(1000px)" }}
           className='absolute left-0 top-0 flex h-[95px] w-[215px] items-center font-headings text-6xl !leading-normal [transform:perspective(1000px)] md:h-[110px] md:text-7xl lg:h-[135px] lg:text-8xl'
         >
           {'NOMÍA'.split('').map((letter, i) => (

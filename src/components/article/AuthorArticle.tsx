@@ -17,7 +17,9 @@ export function AuthorArticle({
   profileImg,
   name,
 }: Props) {
-  const imageWriter = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
+  const imageWriter = profileImg.startsWith('http')
+    ? profileImg
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
   return (
     <motion.div
       style={{

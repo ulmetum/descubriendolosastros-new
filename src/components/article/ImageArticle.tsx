@@ -11,7 +11,9 @@ interface Props {
 export function ImageArticle({ imageArticle }: Props) {
   const [isShow, setIsShow] = useState(false)
 
-  const image = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${imageArticle}`
+  const image = imageArticle.startsWith('http')
+    ? imageArticle
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${imageArticle}`
 
   return (
     <div className='relative h-[60dvh] w-screen overflow-hidden'>

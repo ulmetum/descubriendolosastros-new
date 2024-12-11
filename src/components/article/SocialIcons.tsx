@@ -31,7 +31,9 @@ export const SocialIcons = ({
       {socials?.map((socialIcon) => {
         const icon = socialIcon.icon.url
         const href = socialIcon.url
-        const urlIcon = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${icon}`
+        const urlIcon = icon.startsWith('http')
+          ? icon
+          : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${icon}`
 
         return (
           <li

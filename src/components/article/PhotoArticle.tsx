@@ -9,8 +9,10 @@ interface Props {
 
 export const PhotoArticle = ({ image, position }: Props) => {
   const url = image
-    ? `${process.env.NEXT_PUBLIC_STRAPI_HOST}${image.url}`
-    : '/placeholder.jpg'
+    ? image.url.startsWith('http')
+      ? image.url
+      : '/universe-04.webp'
+    : '/universe-04.webp'
 
   return (
     <div

@@ -31,8 +31,12 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
   const nextUrlArticle = dataNextArticle.slug
   const nextImageArticle = dataNextArticle.featuredImage.url
 
-  const nextImage = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${nextImageArticle}`
-  const prevImage = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${prevImageArticle}`
+  const nextImage = nextImageArticle.startsWith('http')
+    ? nextImageArticle
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${nextImageArticle}`
+  const prevImage = prevImageArticle.startsWith('http')
+    ? prevImageArticle
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${prevImageArticle}`
 
   return (
     <div className='space-y-8 border-t px-4 py-16 text-center font-headings text-amber-900 lg:flex lg:items-center lg:justify-between lg:space-y-0'>

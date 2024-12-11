@@ -1,8 +1,3 @@
-// import { ErrorMenu, ErrorWriter } from '@/errors'
-// import { getDataMenuAction, getWriter } from '@/actions'
-// import { FooterInner } from '@/components'
-// import { footer } from 'motion/react-client'
-
 import { getDataMenuAction, getDataWriterAction } from '@/actions'
 import { ErrorMenu, ErrorWriter } from '@/errors'
 import { FooterInner } from '@/components'

@@ -102,7 +102,6 @@ export const MultiStep = () => {
   }
 
   const processForm: SubmitHandler<FormContact> = async (data) => {
-    // console.log({ data })
     await sendFormSafe(data)
 
     reset()

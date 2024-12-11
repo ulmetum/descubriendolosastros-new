@@ -2,12 +2,10 @@
 
 import Image from 'next/image'
 
-// import { Post } from '.'
 import { PaginationBlog, Post } from '@/components/blogpage'
 import { Datum, Meta } from '@/interfaces'
 import { useSearchStore } from '@/stores'
 import { useShallow } from 'zustand/shallow'
-// import { PaginationBlog } from '../paginationBlog'
 
 interface Props {
   articlesByPage: Datum[] | undefined

@@ -1,5 +1,5 @@
-import { StaticImageData } from "next/image"
-import { ReactNode } from "react"
+import { StaticImageData } from 'next/image'
+import { ReactNode } from 'react'
 
 export type ImageProps = {
   image: Image
@@ -14,15 +14,13 @@ export type ContentProps = {
 }
 
 export interface Image {
-  type: "image"
+  type: 'image'
   id: number
   url: StaticImageData
-
-  // url: string
 }
 
 export interface Content {
-  type: "content"
+  type: 'content'
   id: number
   title: string
   subtitle: string
@@ -32,7 +30,7 @@ export interface Content {
 export interface CarouselButtonProps {
   children: ReactNode
   movement: (newDirection: number) => void
-  direction: "1" | "-1"
+  direction: '1' | '-1'
 }
 
 export interface BgImageProps {

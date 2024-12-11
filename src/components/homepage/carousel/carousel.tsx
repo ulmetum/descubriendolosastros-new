@@ -78,7 +78,6 @@ export const Carousel = () => {
   }
 
   const slideIndex = wrap(0, content.length, counter)
-  // h-[--carousel-height]
   return (
     <div className='relative mx-auto my-20 flex h-[50vh] w-[min(100%,1024px)] items-center justify-center overflow-hidden'>
       <div className='flex h-full w-full items-center justify-center rounded-xl [perspective:1000px]'>

@@ -14,7 +14,9 @@ export const Post = ({ post }: Props) => {
   const featuredImageUrl = post.featuredImage.url || ''
   const { name = 'Mirova', email, picture } = post.writer || {}
   const profileUrl = picture.url || ''
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileUrl}`
+  const url = profileUrl.startsWith('http')
+    ? profileUrl
+    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileUrl}`
 
   return (
     <article

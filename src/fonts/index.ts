@@ -1,5 +1,4 @@
 import { Oswald, Merriweather_Sans, Shadows_Into_Light } from 'next/font/google'
-// import { Oswald, Montserrat, Jost } from "next/font/google"
 
 export const merriweather = Merriweather_Sans({
   subsets: ['latin'],

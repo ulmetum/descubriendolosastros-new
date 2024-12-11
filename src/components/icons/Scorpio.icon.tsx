@@ -23,7 +23,6 @@ export const IconScorpio = () => {
         <g
           transform='translate(-2 26.567)'
           clipPath='url(#clipPath2002)'
-          //   fill="#f6f2ef"
           className='fill-light group-hover:fill-red-800'
         >
           <polygon

@@ -1,6 +1,3 @@
-// import { Navbar } from "@/components"
-// import { ErrorMenu } from "@/errors"
-// import { getDataMenu } from "@/services"
 import { Navbar } from '@/components/header'
 
 import { getDataMenuAction } from '@/actions'

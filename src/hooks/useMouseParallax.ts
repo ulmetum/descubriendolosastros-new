@@ -14,7 +14,6 @@ export const useMouseParallax = ({ movement }: { movement: number }) => {
     const targetElement = e.currentTarget
 
     const rect = targetElement?.getBoundingClientRect()
-    // const movement = -50
 
     if (rect) {
       const { width, height, top, left } = rect
