@@ -27,7 +27,7 @@ export const SocialIcons = ({
     amber: 'amber-color',
   }
   return (
-    <ul className='flex items-center justify-center space-x-2'>
+    <ul className='flex items-center justify-center gap-2 '>
       {socials?.map((socialIcon) => {
         const icon = socialIcon.icon.url
         const href = socialIcon.url
