@@ -10,19 +10,18 @@ export const BackBlogBtn = () => {
     <motion.div
       animate={isHidden ? 'visible' : 'hidden'}
       variants={{
-        hidden: { opacity: 0, y: '-100%' },
+        hidden: { opacity: 0, y: '100%' },
         visible: { opacity: 1, y: 0 },
       }}
       transition={{
-        delay: isHidden ? 0.45 : 0.2,
         type: 'spring',
         bounce: isHidden ? 0.65 : 0.25,
       }}
-      className='fixed right-2 z-30 top-8 pointer-events-none'
+      className='fixed left-2 lg:left-4 z-30 bottom-2 lg:bottom-4 pointer-events-none backdrop-blur-sm'
     >
       <Link
         href='/blog'
-        className='group relative overflow-hidden rounded-md border border-text bg-light/50 px-2 py-3 leading-none backdrop-blur-sm transition  pointer-events-auto'
+        className='h-[50px] group relative overflow-hidden rounded-md border border-dark bg-light/50 px-2 py-3 leading-none transition pointer-events-auto grid place-content-center'
       >
         <small className='font-semibold  tracking-wide'>Volver Blog</small>
         <small className='absolute inset-0 top-full -z-10 bg-white transition-all duration-300 group-hover:top-1/2' />
