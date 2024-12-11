@@ -37,7 +37,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
   return (
     <div className='space-y-8 border-t px-4 py-16 text-center font-headings text-amber-900 lg:flex lg:items-center lg:justify-between lg:space-y-0'>
       <Link
-        href={`/${nextUrlArticle}`}
+        href={`/${prevUrlArticle}`}
         className='relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2'
       >
         <AnimatePresence>
@@ -64,7 +64,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
                 className='aspect-video h-[125px] w-[200px] rounded object-cover'
                 width={200}
                 height={100}
-                src={`${nextImage}`}
+                src={`${prevImage}`}
                 alt='Imagen destacada del post siguiente'
               />
             </motion.div>
@@ -82,11 +82,11 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           }}
           className='w-max cursor-pointer text-4xl text-primary lg:text-[2.75rem]'
         >
-          {nextTitleArticle}
+          {prevTitleArticle}
         </motion.h4>
       </Link>
       <Link
-        href={`/${prevUrlArticle}`}
+        href={`/${nextUrlArticle}`}
         className='relative mx-auto flex justify-center text-center lg:mx-0 lg:w-1/2'
       >
         <AnimatePresence>
@@ -112,7 +112,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               <Image
                 width={200}
                 height={100}
-                src={prevImage}
+                src={nextImage}
                 alt='Imagen destacada del post previo'
                 className='aspect-video h-[125px] w-[200px] rounded object-cover'
               />
@@ -131,7 +131,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
           }}
           className='w-max cursor-pointer text-4xl text-primary lg:text-[2.75rem]'
         >
-          {prevTitleArticle}
+          {nextTitleArticle}
         </motion.h4>
       </Link>
     </div>
