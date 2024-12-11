@@ -48,6 +48,10 @@ export const FormInfo = () => {
         </span>
         .
       </p>
+      <p className='mt-6 text-xl font-semibold sm:text-xl'>
+        <span className='font-semibold text-lg'>**</span> Debes indicar la hora
+        del evento junto a la fecha del evento.
+      </p>
     </motion.div>
   )
 }
