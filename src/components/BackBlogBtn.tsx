@@ -16,8 +16,7 @@ export const BackBlogBtn = () => {
       transition={{
         delay: isHidden ? 0.45 : 0.2,
         type: 'spring',
-
-        bounce: 0.65,
+        bounce: isHidden ? 0.65 : 0.25,
       }}
       className='fixed right-2 z-30 top-8 pointer-events-none'
     >
