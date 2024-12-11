@@ -52,7 +52,7 @@ export const ListOfPosts = ({
 
   return (
     <div className='flex min-h-[calc(100dvh-var(--header-height))] flex-col'>
-      <div className='posts xl:grid-areas-blog flex flex-col gap-12 py-[calc(var(--header-height)/2)] pt-[calc(41.6px+64px)] md:gap-20 xl:grid xl:grid-cols-4 xl:grid-rows-2 xl:gap-0'>
+      <div className='posts xl:grid-areas-blog flex flex-col gap-12 py-[calc(var(--header-height)/2)] pt-[calc(41.6px+64px)] md:gap-20 xl:grid xl:grid-cols-4 xl:grid-rows-2 xl:gap-4'>
         {filteredPosts.map((post) => (
           <Post
             post={post}
