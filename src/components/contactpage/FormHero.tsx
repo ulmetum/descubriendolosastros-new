@@ -52,7 +52,7 @@ export const FormHero = () => {
                   transition={{
                     delay: 4,
                     ease: [0.83, 0, 0.17, 1],
-                    duration: 1.2,
+                    duration: 1,
                     repeat: Infinity,
                     repeatType: 'reverse',
                     repeatDelay: 5,
@@ -67,7 +67,7 @@ export const FormHero = () => {
                   transition={{
                     delay: 4,
                     ease: [0.83, 0, 0.17, 1],
-                    duration: 1.2,
+                    duration: 1,
                     repeat: Infinity,
                     repeatType: 'reverse',
                     repeatDelay: 5,
