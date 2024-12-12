@@ -3,6 +3,7 @@
 import Image from 'next/image'
 
 import { MotionValue, motion, useTransform } from 'motion/react'
+import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 
 interface Props {
   scrollY: MotionValue<number>
@@ -19,7 +20,7 @@ export function AuthorArticle({
 }: Props) {
   const imageWriter = profileImg.startsWith('http')
     ? profileImg
-    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
+    : `${NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
   return (
     <motion.div
       style={{

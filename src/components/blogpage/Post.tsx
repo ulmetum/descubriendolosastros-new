@@ -4,6 +4,7 @@ import { Link } from 'next-view-transitions'
 
 import { Datum } from '@/interfaces'
 import { ImagePost, PostDate } from '@/components'
+import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 
 interface Props {
   post: Datum
@@ -16,7 +17,7 @@ export const Post = ({ post }: Props) => {
   const profileUrl = picture.url || ''
   const url = profileUrl.startsWith('http')
     ? profileUrl
-    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${profileUrl}`
+    : `${NEXT_PUBLIC_STRAPI_HOST}${profileUrl}`
 
   return (
     <article

@@ -21,7 +21,7 @@ const getEmbedCode = (url: string): string | null => {
 
 export const VideoUrlArticle = ({ videoUrl }: Props) => {
   if (!videoUrl?.url) {
-    throw new Error('Video URL no encontrada')
+    return null
   }
 
   // Obtener el embed de la URL del video
@@ -32,7 +32,7 @@ export const VideoUrlArticle = ({ videoUrl }: Props) => {
   }
 
   return (
-    <div className='my-12 '>
+    <div className='my-20 '>
       <iframe
         src={embedUrl}
         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'

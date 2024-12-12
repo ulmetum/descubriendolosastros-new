@@ -3,6 +3,7 @@ import { Link } from 'next-view-transitions'
 
 import { Social, SocialWriter } from '@/interfaces'
 import { cn } from '@/utils'
+import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 
 interface Props {
   socials: SocialWriter[] | Social[] | undefined
@@ -33,7 +34,7 @@ export const SocialIcons = ({
         const href = socialIcon.url
         const urlIcon = icon.startsWith('http')
           ? icon
-          : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${icon}`
+          : `${NEXT_PUBLIC_STRAPI_HOST}${icon}`
 
         return (
           <li

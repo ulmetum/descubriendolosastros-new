@@ -1,4 +1,4 @@
-const { STRAPI_TOKEN, STRAPI_HOST } = process.env
+import { STRAPI_HOST, STRAPI_TOKEN } from '@/config'
 
 export async function fetchData<T>(url: string): Promise<T> {
   const res = await fetch(`${STRAPI_HOST}/api/${url}`, {

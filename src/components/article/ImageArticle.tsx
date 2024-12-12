@@ -1,4 +1,5 @@
 'use client'
+import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 import { cn } from '@/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
@@ -13,7 +14,7 @@ export function ImageArticle({ imageArticle }: Props) {
 
   const image = imageArticle.startsWith('http')
     ? imageArticle
-    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${imageArticle}`
+    : `${NEXT_PUBLIC_STRAPI_HOST}${imageArticle}`
 
   return (
     <div className='relative h-[60dvh] w-screen overflow-hidden'>

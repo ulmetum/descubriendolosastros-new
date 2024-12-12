@@ -1,5 +1,6 @@
 'use client'
 
+import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 import { cn } from '@/utils'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -12,7 +13,7 @@ export const ImagePost = ({
   const [isShow, setIsShow] = useState(false)
   const url = featuredImageUrl.startsWith('http')
     ? featuredImageUrl
-    : `${process.env.NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
+    : `${NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
 
   return (
     <div className='absolute inset-0'>

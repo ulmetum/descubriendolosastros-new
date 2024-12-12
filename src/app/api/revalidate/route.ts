@@ -1,3 +1,4 @@
+import { MY_SECRET_TOKEN } from '@/config'
 import { revalidatePath } from 'next/cache'
 import type { NextRequest } from 'next/server'
 
@@ -6,7 +7,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret')
 
-  if (secret !== process.env.MY_SECRET_TOKEN) {
+  if (secret !== MY_SECRET_TOKEN) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
 
