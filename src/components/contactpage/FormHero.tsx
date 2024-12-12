@@ -44,7 +44,7 @@ export const FormHero = () => {
             )}
           >
             <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl overflow-hidden pb-2'>
-              Solicita{' '}
+              Solicita tu{' '}
               <span className='inline-block relative leading-none'>
                 <motion.div
                   initial={{ y: 0 }}
@@ -59,7 +59,7 @@ export const FormHero = () => {
                   }}
                   className='text-light  text-4xl font-headings sm:text-6xl md:text-7xl'
                 >
-                  tu mapa estelar
+                  mapa estelar
                 </motion.div>
                 <motion.div
                   initial={{ top: '100%' }}
@@ -74,7 +74,7 @@ export const FormHero = () => {
                   }}
                   className='text-light top-full absolute leading-normal text-4xl font-headings sm:text-6xl md:text-7xl'
                 >
-                  tu carta astral
+                  carta astral
                 </motion.div>
               </span>
             </h1>
