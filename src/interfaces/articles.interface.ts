@@ -10,7 +10,6 @@ export interface Datum {
   subtitle: string
   createdAt: Date
   slug: string
-  excerpt: string
   elements: Element[]
   tags: Tag[]
   featuredImage: FeaturedImage

@@ -3,7 +3,7 @@ import qs from 'qs'
 export const getAllArticlesQuery = () => {
   return qs.stringify(
     {
-      fields: ['title', 'subtitle', 'createdAt', 'slug', 'excerpt'],
+      fields: ['title', 'subtitle', 'createdAt', 'slug'],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
@@ -49,7 +49,7 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
   return qs.stringify(
     {
       filters: { slug: { $eqi: slug } },
-      fields: ['title', 'subtitle', 'createdAt', 'slug', 'excerpt'],
+      fields: ['title', 'subtitle', 'createdAt', 'slug'],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
@@ -94,7 +94,7 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
 export const getArticlesByPageQuery = ({ page }: { page: string }) => {
   return qs.stringify(
     {
-      fields: ['title', 'subtitle', 'createdAt', 'slug', 'excerpt'],
+      fields: ['title', 'subtitle', 'createdAt', 'slug'],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
@@ -144,7 +144,7 @@ export const getArticleByIdQuery = ({ id }: { id: number }) => {
   return qs.stringify(
     {
       filters: { id: { $eq: id } },
-      fields: ['title', 'subtitle', 'createdAt', 'slug', 'excerpt'],
+      fields: ['title', 'subtitle', 'createdAt', 'slug'],
       sort: ['createdAt:desc'],
       populate: {
         elements: {

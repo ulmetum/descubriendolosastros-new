@@ -11,10 +11,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
 
-  // console.log({ request })
-
   const body = await request.json()
-  // console.log({ body })
 
   const model = body.model
   const slug = body.entry.slug
@@ -25,8 +22,6 @@ export async function POST(request: NextRequest) {
   if (model === 'article') {
     pathToRevalidate = `/${slug}`
     paths.push(pathToRevalidate)
-
-    // console.log('Revalidating article', pathToRevalidate)
   }
 
   try {
@@ -40,15 +35,4 @@ export async function POST(request: NextRequest) {
       message: 'Missing path to revalidate',
     })
   }
-
-  // if (path) {
-  //   revalidatePath(path)
-  //   return Response.json({ revalidated: true, now: Date.now() })
-  // }
-
-  // return Response.json({
-  //   revalidated: false,
-  //   now: Date.now(),
-  //   message: "Missing path to revalidate",
-  // })
 }
