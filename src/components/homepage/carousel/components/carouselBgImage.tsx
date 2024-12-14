@@ -1,9 +1,9 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import { BgImageProps } from '@/interfaces'
 import { images } from '../carousel'
 import Image from 'next/image'
+import { BgImageProps } from '@/interfaces/carousel.interface'
 
 const variants = {
   enter: (direction: number) => ({

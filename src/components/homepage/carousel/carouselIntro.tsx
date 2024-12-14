@@ -1,4 +1,5 @@
-import { FadeIn, TitleCarouselIntro } from '@/components'
+import { FadeIn } from '@/components/FadeIn'
+import { TitleCarouselIntro } from '@/components/homepage/carousel/titleCarouselIntro'
 
 export const CarouselIntro = () => {
   return (

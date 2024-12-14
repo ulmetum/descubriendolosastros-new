@@ -1,4 +1,4 @@
-import { FormContact } from '@/validations'
+import { FormContact } from '@/validations/form-contact.schema'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 interface Props {

@@ -1,7 +1,7 @@
-import { Navbar } from '@/components/header'
-
-import { getDataMenuAction } from '@/actions'
 import { ErrorMenu } from '@/errors'
+
+import { Navbar } from '@/components/header/components/navbar'
+import { getDataMenuAction } from '@/actions/get-data-menu.action'
 
 export async function Header() {
   const res = await getDataMenuAction({ name: 'principal' })

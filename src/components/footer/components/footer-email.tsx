@@ -1,4 +1,4 @@
-import { CopyClipboard } from '@/components'
+import { CopyClipboard } from '@/components/CopyClipboard'
 
 export const FooterEmail = () => {
   return (

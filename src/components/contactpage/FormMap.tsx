@@ -1,6 +1,5 @@
 'use client'
 
-import { FormContact } from '@/validations'
 import {
   FieldErrors,
   UseFormRegister,
@@ -11,7 +10,8 @@ import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-import { Calendar } from '@/components'
+import { Calendar } from '@/components/icons/Calendar.icon'
+import { FormContact } from '@/validations/form-contact.schema'
 
 interface Props {
   register: UseFormRegister<FormContact>

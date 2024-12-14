@@ -1,4 +1,6 @@
-import { FormHero, FormInfo, MultiStep } from '@/components'
+import { FormHero } from '@/components/contactpage/FormHero'
+import { FormInfo } from '@/components/contactpage/FormInfo'
+import { MultiStep } from '@/components/contactpage/MultiStep'
 
 export const metadata = {
   title: 'Descubriendo los astros | Contacto',

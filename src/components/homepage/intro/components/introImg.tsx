@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { useMouseParallax } from '@/hooks'
+import { useMouseParallax } from '@/hooks/useMouseParallax'
 import { motion, useAnimate, useMotionTemplate } from 'motion/react'
 import { MouseEvent } from 'react'
 
-export const ImageIntro = () => {
+export const IntroImage = () => {
   const [scope, animate] = useAnimate()
 
   const { handleMouseMove, handleHoverEnd, mousePosition } = useMouseParallax({

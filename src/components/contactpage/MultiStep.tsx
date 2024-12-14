@@ -2,21 +2,23 @@
 
 import { JSX, useState } from 'react'
 
-import {
-  FormUser,
-  FormMap,
-  FormComplete,
-  FormNavigation,
-  FormSteps,
-  CheckContact,
-  PersonalInfoContact,
-  StelarMapContact,
-} from '@/components'
-
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
-import { FormContact, formContactSchema } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { sendFormSafe } from '@/actions'
+
+// Components
+import { PersonalInfoContact } from '@/components/icons/PersonalInfoContact.icon'
+import { StelarMapContact } from '@/components/icons/StelarMapContact.icon'
+import { CheckContact } from '@/components/icons/CheckContact.icon'
+import { FormSteps } from '@/components/contactpage/FormSteps'
+import { FormNavigation } from '@/components/contactpage/FormNavigation'
+import { FormUser } from '@/components/contactpage/FormUser'
+import { FormMap } from '@/components/contactpage/FormMap'
+import { FormComplete } from '@/components/contactpage/FormComplete'
+import { sendFormSafe } from '@/actions/send-form.action'
+import {
+  FormContact,
+  formContactSchema,
+} from '@/validations/form-contact.schema'
 
 export interface Step {
   id: number

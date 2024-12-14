@@ -1,6 +1,6 @@
 'use client'
 
-import { useHidden } from '@/hooks'
+import { useHidden } from '@/hooks/useHidden'
 import {
   motion,
   useMotionTemplate,
@@ -8,8 +8,8 @@ import {
   useSpring,
 } from 'motion/react'
 import { useRef } from 'react'
-import { ArrowUpIcon } from './icons'
-import { cn } from '@/utils'
+import { ArrowUpIcon } from '@/components/icons/ArrowUp.icon'
+import { cn } from '@/utils/mergeClass'
 
 interface Props {
   classNames?: string

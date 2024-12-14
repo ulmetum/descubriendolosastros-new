@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 
 import { useScroll, useMotionValue, useTransform } from 'motion/react'
-import { wrap } from '@/utils'
+import { wrap } from '@/utils/wrap'
 
 export function useBoundedScroll(bound: number) {
   const { scrollY } = useScroll()

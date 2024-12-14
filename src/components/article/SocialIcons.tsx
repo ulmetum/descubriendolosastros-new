@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import { Social, SocialWriter } from '@/interfaces'
-import { cn } from '@/utils'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
+import { SocialWriter } from '@/interfaces/writer.interface'
+import { Social } from '@/interfaces/articles.interface'
+import { cn } from '@/utils/mergeClass'
 
 interface Props {
   socials: SocialWriter[] | Social[] | undefined

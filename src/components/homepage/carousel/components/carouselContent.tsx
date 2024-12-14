@@ -1,10 +1,10 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import { ContentProps } from '@/interfaces'
-import { content } from '../carousel'
-import { useActiveButtonStore } from '@/stores'
+import { content } from '@/components/homepage/carousel/carousel'
 import { useShallow } from 'zustand/shallow'
+import { ContentProps } from '@/interfaces/carousel.interface'
+import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 const containerVariants = {
   center: {

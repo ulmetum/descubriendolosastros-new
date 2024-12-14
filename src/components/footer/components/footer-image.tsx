@@ -1,4 +1,4 @@
-import { IconScorpio } from '@/components'
+import { IconScorpio } from '@/components/icons/Scorpio.icon'
 
 export const FooterImage = () => {
   return (

@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { CarouselButtonProps } from '@/interfaces'
-import { useActiveButtonStore } from '@/stores'
 import { useShallow } from 'zustand/shallow'
+import { CarouselButtonProps } from '@/interfaces/carousel.interface'
+import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 export const CarouselButton = ({
   movement,

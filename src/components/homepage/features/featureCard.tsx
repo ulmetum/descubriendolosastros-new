@@ -3,15 +3,14 @@
 import { ReactNode } from 'react'
 import Image from 'next/image'
 
-import { useFeatureStore } from '@/stores'
-import { cn } from '@/utils'
-
 // Images
 import UniverseFour from '/public/universe-04.webp'
 import ChartAstrology from '/public/chart astrology.webp'
 import Zodiacs from '/public/zodiacs.webp'
 import Planets from '/public/planets-interpretation.webp'
 import { useShallow } from 'zustand/shallow'
+import { useFeatureStore } from '@/stores/featureStore'
+import { cn } from '@/utils/mergeClass'
 
 interface Props extends CardProps {
   gradient: string

@@ -1,5 +1,5 @@
-import { SocialIcons } from '@/components'
-import { SocialWriter } from '@/interfaces'
+import { SocialIcons } from '@/components/article/SocialIcons'
+import { SocialWriter } from '@/interfaces/writer.interface'
 
 interface Props {
   socials: SocialWriter[]

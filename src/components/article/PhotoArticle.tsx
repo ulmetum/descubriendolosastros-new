@@ -1,5 +1,5 @@
-import { FeaturedImage } from '@/interfaces'
-import { cn } from '@/utils'
+import { FeaturedImage } from '@/interfaces/articles.interface'
+import { cn } from '@/utils/mergeClass'
 import Image from 'next/image'
 
 interface Props {

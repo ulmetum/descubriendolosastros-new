@@ -1,1 +1,1 @@
-export * from './form-contact.schema'
+// export * from './form-contact.schema'

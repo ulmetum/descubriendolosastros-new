@@ -1,6 +1,6 @@
 'use client'
 
-import { useHidden } from '@/hooks'
+import { useHidden } from '@/hooks/useHidden'
 import { motion } from 'motion/react'
 import { Link } from 'next-view-transitions'
 

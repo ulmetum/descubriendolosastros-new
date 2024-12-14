@@ -1,8 +1,8 @@
 'use client'
 
 import { motion, TargetAndTransition } from 'motion/react'
-import { ImageProps } from '@/interfaces'
-import { images } from '../carousel'
+import { images } from '@/components/homepage/carousel/carousel'
+import { ImageProps } from '@/interfaces/carousel.interface'
 
 export const CarouselImage = ({
   slideIndex,

@@ -1,17 +1,15 @@
-import {
-  ImageIntro,
-  IntroBg,
-  IntroContent,
-  IntroSmallContent,
-  IntroTitle,
-} from '@/components/homepage/intro'
+import { IntroBg } from '@/components/homepage/intro/components/introBg'
+import { IntroContent } from '@/components/homepage/intro/components/introContent'
+import { IntroSmallContent } from '@/components/homepage/intro/components/introSmallContent'
+import { IntroTitle } from '@/components/homepage/intro/components/introTitle'
+import { IntroImage } from '@/components/homepage/intro/components/introImg'
 
 export const Intro = () => {
   return (
     <div className='grid-intro relative mx-auto h-full w-full px-2'>
       <IntroBg />
       <div className='mt-[calc(var(--header-height)*2)] hidden [grid-area:image] xl:flex xl:items-center xl:justify-center'>
-        <ImageIntro />
+        <IntroImage />
       </div>
       <div className='mt-[calc(var(--header-height)*2)] [grid-area:content] lg:flex lg:items-start'>
         <IntroContent />

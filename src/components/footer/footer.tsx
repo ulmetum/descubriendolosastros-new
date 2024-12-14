@@ -1,6 +1,7 @@
-import { getDataMenuAction, getDataWriterAction } from '@/actions'
 import { ErrorMenu, ErrorWriter } from '@/errors'
-import { FooterInner } from '@/components'
+import { FooterInner } from '@/components/footer/components/footer-inner'
+import { getDataWriterAction } from '@/actions/get-data-writer.action'
+import { getDataMenuAction } from '@/actions/get-data-menu.action'
 
 export const Footer = async () => {
   const currentYear = new Date().getFullYear()

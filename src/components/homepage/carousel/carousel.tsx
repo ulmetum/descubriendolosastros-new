@@ -6,20 +6,17 @@ import { useState } from 'react'
 import UniverseOne from '/public/universe-01.webp'
 import UniverseTwo from '/public/universe-02.webp'
 import UniverseThree from '/public/universe-03.webp'
-
-import {
-  CarouselButton,
-  CarouselContent,
-  CarouselImage,
-  CarouselLeftIcon,
-  CarouselRightIcon,
-} from '@/components'
+import { CarouselImage } from '@/components/homepage/carousel/components/carouselImage'
+import { CarouselContent } from '@/components/homepage/carousel/components/carouselContent'
+import { CarouselButton } from '@/components/homepage/carousel/components/carouselButton'
+import { CarouselLeftIcon } from '@/components/homepage/carousel/components/carouselLeftIcon'
+import { CarouselRightIcon } from '@/components/homepage/carousel/components/carouselRightIcon'
 
 // Various
 import { wrap } from 'motion/react'
-import { Content, Image } from '@/interfaces'
-import { useActiveButtonStore } from '@/stores'
 import { useShallow } from 'zustand/shallow'
+import { Content, Image } from '@/interfaces/carousel.interface'
+import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 export const content: Content[] = [
   {

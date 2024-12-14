@@ -2,9 +2,11 @@
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import { Datum } from '@/interfaces'
-import { ImagePost, PostDate } from '@/components'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
+
+import { PostDate } from '@/components/blogpage/PostDate'
+import { ImagePost } from '@/components/blogpage/ImagePost'
+import { Datum } from '@/interfaces/articles.interface'
 
 interface Props {
   post: Datum

@@ -1,4 +1,4 @@
-import { DataText } from '@/components'
+import { DataText } from '@/components/homepage/services/dataServs'
 
 interface Props {
   data: DataText

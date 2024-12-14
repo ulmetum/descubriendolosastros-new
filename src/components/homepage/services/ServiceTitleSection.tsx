@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { VanishText } from '@/components'
+import { VanishText } from './VanishText'
 
 const variants = {
   hidden: { opacity: 0, y: 30 },

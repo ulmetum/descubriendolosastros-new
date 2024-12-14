@@ -3,10 +3,9 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useMeasure } from 'react-use'
 import { AnimatePresence, MotionConfig, motion } from 'motion/react'
-import { cn } from '@/utils'
 import { Link } from 'next-view-transitions'
-
-import { CheckIcon } from '@/components'
+import { CheckIcon } from '@/components/icons/Check.icon'
+import { cn } from '@/utils/mergeClass'
 
 export const NeuPricing = () => {
   const [selected, setSelected] = useState<ToggleOptionsType>('fisico')

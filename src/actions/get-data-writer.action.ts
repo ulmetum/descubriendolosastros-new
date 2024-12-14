@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import { safeAction } from './safeAction'
-import { getDataWriterQuery } from '@/queries'
-import { Writers } from '@/interfaces'
-import { fetchData } from '@/utils'
+import { Writers } from '@/interfaces/writer.interface'
+import { getDataWriterQuery } from '@/queries/writer.query'
+import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
   name: z.string(),

@@ -1,7 +1,7 @@
 'use client'
 
-import { CopyClipboard } from '@/components'
 import { motion } from 'motion/react'
+import { CopyClipboard } from '@/components/CopyClipboard'
 
 export const FormInfo = () => {
   return (

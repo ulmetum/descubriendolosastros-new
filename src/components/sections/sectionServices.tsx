@@ -1,17 +1,16 @@
 'use client'
 
-import {
-  Carousel,
-  Container,
-  NeuPricing,
-  ServiceText,
-  ServiceTitleSection,
-  dataText,
-} from '@/components'
-
 import { motion } from 'motion/react'
 
-export default function SectionServices() {
+// Components
+import { Container } from '@/components/Container'
+import { ServiceTitleSection } from '@/components/homepage/services/ServiceTitleSection'
+import { ServiceText } from '@/components/homepage/services/ServiceText'
+import { NeuPricing } from '@/components/homepage/services/NeuPricing'
+import { dataText } from '@/components/homepage/services/dataServs'
+import { Carousel } from '@/components/homepage/carousel/carousel'
+
+export function SectionServices() {
   return (
     <section className='relative z-10 mb-48 bg-light'>
       <Container className='px-2'>

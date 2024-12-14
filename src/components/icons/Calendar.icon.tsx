@@ -1,4 +1,4 @@
-import { cn } from '@/utils'
+import { cn } from '@/utils/mergeClass'
 
 export const Calendar = ({ classNames }: { classNames?: string }) => {
   return (

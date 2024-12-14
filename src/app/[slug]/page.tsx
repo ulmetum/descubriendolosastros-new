@@ -1,15 +1,12 @@
-import {
-  getAllArticlesAction,
-  getArticleBySlugAction,
-  getNextAndPrevArticlesAction,
-} from '@/actions'
-import {
-  BackBlogBtn,
-  Container,
-  ElementsManager,
-  PaginationArticle,
-} from '@/components'
+import { getAllArticlesAction } from '@/actions/articles/get-all-articles.action'
+import { getArticleBySlugAction } from '@/actions/articles/get-article-by-slug.action'
+import { getNextAndPrevArticlesAction } from '@/actions/articles/get-next-and-prev-articles.action'
 import { BgImageArticle } from '@/components/article/BgImageArticle'
+import { ElementsManager } from '@/components/article/ElementsManager'
+import { PaginationArticle } from '@/components/article/PaginationArticle'
+import { BackBlogBtn } from '@/components/BackBlogBtn'
+import { Container } from '@/components/Container'
+
 import { ErrorArticle } from '@/errors'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'

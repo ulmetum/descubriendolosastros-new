@@ -1,7 +1,7 @@
 'use client'
 
-import { useSearchStore } from '@/stores'
-import { cn } from '@/utils'
+import { useSearchStore } from '@/stores/searchStore'
+import { cn } from '@/utils/mergeClass'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import { useShallow } from 'zustand/shallow'

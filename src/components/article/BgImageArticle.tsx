@@ -2,18 +2,15 @@
 
 import { useScroll } from 'motion/react'
 
-import { FeaturedImage, Social } from '@/interfaces'
-
 // Componentes
-import {
-  BgArticle,
-  ImageArticle,
-  TitleArticle,
-  LineArticle,
-  SubtitleArticle,
-  AuthorArticle,
-  DateSocialArticle,
-} from '@/components/article'
+import { BgArticle } from '@/components/article/BgArticle'
+import { ImageArticle } from '@/components/article/ImageArticle'
+import { TitleArticle } from '@/components/article/TitleArticle'
+import { SubtitleArticle } from '@/components/article/SubtitleArticle'
+import { AuthorArticle } from '@/components/article/AuthorArticle'
+import { DateSocialArticle } from '@/components/article/DateSocialArticle'
+import { LineArticle } from '@/components/article/LineArticle'
+import { FeaturedImage, Social } from '@/interfaces/articles.interface'
 
 interface Props {
   imageArticle: string

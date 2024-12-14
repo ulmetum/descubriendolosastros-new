@@ -1,6 +1,4 @@
-'use client'
-
-import { cn } from '@/utils'
+import { cn } from '@/utils/mergeClass'
 
 export const CheckContact = ({ classNames }: { classNames?: string }) => {
   return (

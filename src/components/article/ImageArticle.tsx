@@ -1,6 +1,6 @@
 'use client'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
-import { cn } from '@/utils'
+import { cn } from '@/utils/mergeClass'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useState } from 'react'

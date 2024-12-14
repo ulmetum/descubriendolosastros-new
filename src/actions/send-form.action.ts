@@ -1,10 +1,10 @@
 'use server'
 
-import { formContactSchema } from '@/validations'
 import { safeAction } from './safeAction'
 import { z } from 'zod'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
+import { formContactSchema } from '@/validations/form-contact.schema'
 dayjs.locale('es')
 
 const buildBodyData = (data: z.infer<typeof formContactSchema>) => {

@@ -1,5 +1,6 @@
-import { SectionFeatures, SectionIntro } from '@/components'
-import SectionServices from '@/components/sections/sectionServices'
+import { SectionFeatures } from '@/components/sections/sectionFeatures'
+import { SectionIntro } from '@/components/sections/sectionIntro'
+import { SectionServices } from '@/components/sections/sectionServices'
 
 export const metadata = {
   title: 'Descubriendo los astros | Inicio',

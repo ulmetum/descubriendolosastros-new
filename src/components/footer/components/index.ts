@@ -1,5 +1,0 @@
-export * from './footer-menu'
-export * from './footer-inner'
-export * from './footer-image'
-export * from './footer-social-menu'
-export * from './footer-email'

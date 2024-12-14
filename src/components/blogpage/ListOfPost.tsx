@@ -2,10 +2,13 @@
 
 import Image from 'next/image'
 
-import { PaginationBlog, Post } from '@/components/blogpage'
-import { Datum, Meta } from '@/interfaces'
-import { useSearchStore } from '@/stores'
 import { useShallow } from 'zustand/shallow'
+
+// Components
+import { PaginationBlog } from '@/components/blogpage/PaginationBlog'
+import { Post } from '@/components/blogpage/Post'
+import { Datum, Meta } from '@/interfaces/articles.interface'
+import { useSearchStore } from '@/stores/searchStore'
 
 interface Props {
   articlesByPage: Datum[] | undefined

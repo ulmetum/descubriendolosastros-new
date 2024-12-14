@@ -1,8 +1,7 @@
 import { TextArticle } from '@/components/article/TextArticle'
 import { PhotoArticle } from '@/components/article/PhotoArticle'
 import { VideoUrlArticle } from '@/components/article/VideoUrlArticle'
-
-import { Element } from '@/interfaces'
+import { Element } from '@/interfaces/articles.interface'
 
 interface Props {
   elements: Element[]

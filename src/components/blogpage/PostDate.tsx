@@ -1,6 +1,5 @@
-import { cn } from '@/utils'
-
 // Librería para fechas y horas
+import { cn } from '@/utils/mergeClass'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
 

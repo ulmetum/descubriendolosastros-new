@@ -3,9 +3,11 @@ import { redirect } from 'next/navigation'
 
 import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
 
-import { Container, Skeleton, Posts, Search } from '@/components'
-
-import { wrap } from '@/utils'
+import { Container } from '@/components/Container'
+import { Skeleton } from '@/components/Skeleton'
+import { Search } from '@/components/blogpage/Search'
+import { Posts } from '@/components/blogpage/Posts'
+import { wrap } from '@/utils/wrap'
 
 export const metadata = {
   title: 'Descubriendo los astros | Blog',

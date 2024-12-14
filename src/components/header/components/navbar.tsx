@@ -2,9 +2,10 @@
 
 import { motion } from 'motion/react'
 import { Navigation } from './navigation'
-import { MenuElement } from '@/interfaces'
-import { useHidden } from '@/hooks'
-import { Logo, MenuLine } from '@/components'
+import { useHidden } from '@/hooks/useHidden'
+import { Logo } from '@/components/header/components/logo'
+import { MenuLine } from '@/components/header/components/menu-line'
+import { MenuElement } from '@/interfaces/menu.interface'
 
 interface Props {
   menuItems: MenuElement[]

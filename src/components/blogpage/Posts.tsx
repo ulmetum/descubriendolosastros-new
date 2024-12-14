@@ -1,5 +1,6 @@
-import { ListOfPosts } from '@/components/blogpage'
-import { getAllArticlesAction, getArticlesByPageAction } from '@/actions'
+import { getAllArticlesAction } from '@/actions/articles/get-all-articles.action'
+import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
+import { ListOfPosts } from '@/components/blogpage/ListOfPost'
 import { notFound } from 'next/navigation'
 
 export const Posts = async ({ page }: { page: string }) => {

@@ -1,11 +1,11 @@
+import { Container } from '@/components/Container'
 import {
   CardFour,
   CardOne,
   CardThree,
   CardTwo,
-  Container,
-  FeatureTitle,
-} from '@/components'
+} from '@/components/homepage/features/featureCard'
+import { FeatureTitle } from '@/components/homepage/features/featureTitle'
 
 const features = [
   { id: 1, title: 'Análisis de la Carta Astral', card: 'cardone' },

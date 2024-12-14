@@ -5,9 +5,11 @@ import { ViewTransitions } from 'next-view-transitions'
 // Fuentes
 import { oswald, merriweather } from '@/fonts'
 
-import { Footer, Header, MagneticButton } from '@/components'
-import { ScrollTop } from '@/components'
-import { ScrollLayout } from '@/layouts'
+import { ScrollLayout } from '@/layouts/ScrollLayout'
+import { ScrollTop } from '@/components/ScrollTop'
+import { MagneticButton } from '@/components/MagneticButton'
+import { Footer } from '@/components/footer/footer'
+import { Header } from '@/components/header/header'
 
 export const metadata: Metadata = {
   title: 'Create Next App',

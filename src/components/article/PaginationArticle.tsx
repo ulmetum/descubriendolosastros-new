@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 import { AnimatePresence, motion } from 'motion/react'
 
-import { Datum } from '@/interfaces'
-import { useMouseParallax } from '@/hooks'
+import { useMouseParallax } from '@/hooks/useMouseParallax'
 import { Link } from 'next-view-transitions'
 import { MouseEvent } from 'react'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
+import { Datum } from '@/interfaces/articles.interface'
 
 interface Props {
   dataPrevArticle: Datum

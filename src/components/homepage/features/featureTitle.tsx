@@ -1,7 +1,7 @@
 'use client'
 
-import { useFeatureStore } from '@/stores'
-import { cn } from '@/utils'
+import { useFeatureStore } from '@/stores/featureStore'
+import { cn } from '@/utils/mergeClass'
 import { useInView } from 'motion/react'
 import { ReactNode, useEffect, useRef } from 'react'
 import { useShallow } from 'zustand/shallow'

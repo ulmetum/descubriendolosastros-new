@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/utils'
+import { cn } from '@/utils/mergeClass'
 import { useRef, useState } from 'react'
 
 interface Props {

@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import { safeAction } from './safeAction'
-import { getMenuQuery } from '@/queries'
-import { fetchData } from '@/utils'
-import { Menu } from '@/interfaces'
+import { Menu } from '@/interfaces/menu.interface'
+import { getMenuQuery } from '@/queries/menu.query'
+import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
   name: z.string(),

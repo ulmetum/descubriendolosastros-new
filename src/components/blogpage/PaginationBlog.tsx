@@ -1,7 +1,8 @@
 import { Link } from 'next-view-transitions'
 
-import { Meta } from '@/interfaces'
-import { cn, wrap } from '@/utils'
+import { Meta } from '@/interfaces/articles.interface'
+import { wrap } from '@/utils/wrap'
+import { cn } from '@/utils/mergeClass'
 
 interface Props {
   meta: Meta | undefined
