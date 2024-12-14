@@ -1,9 +1,8 @@
 'use client'
 
-import Image from 'next/image'
-
 import { MotionValue, motion, useTransform } from 'motion/react'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
+import { ImageProfile } from '@/components/blogpage/ImageProfile'
 
 interface Props {
   scrollY: MotionValue<number>
@@ -18,7 +17,7 @@ export function AuthorArticle({
   profileImg,
   name,
 }: Props) {
-  const imageWriter = profileImg.startsWith('http')
+  const profileImageSrc = profileImg.startsWith('http')
     ? profileImg
     : `${NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
   return (
@@ -34,14 +33,8 @@ export function AuthorArticle({
       }}
       className='relative z-20 mt-4 flex items-center justify-center opacity-0 transition-all duration-500'
     >
-      <div className='relative h-8 w-8'>
-        <Image
-          sizes='100%'
-          className='rounded-full object-cover object-center'
-          fill
-          src={imageWriter || '/profile-user.svg'}
-          alt={'Imagen de perfil de usuario'}
-        />
+      <div className='relative'>
+        <ImageProfile profileImageSrc={profileImageSrc} />
         <motion.div className='absolute -inset-[.15rem] rounded-full border border-white/[.75] p-[.15rem] transition-all'></motion.div>
       </div>
       <small className='ml-[.5rem] font-headings font-light text-white'>
