@@ -1,5 +1,4 @@
 // Interfaces
-import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
@@ -7,6 +6,7 @@ import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 import { PostDate } from '@/components/blogpage/PostDate'
 import { ImagePost } from '@/components/blogpage/ImagePost'
 import { Datum } from '@/interfaces/articles.interface'
+import { ImageProfile } from '@/components/blogpage/ImageProfile'
 
 interface Props {
   post: Datum
@@ -14,12 +14,16 @@ interface Props {
 
 export const Post = ({ post }: Props) => {
   const { title, subtitle, slug } = post
-  const featuredImageUrl = post.featuredImage.url || ''
   const { name = 'Mirova', email, picture } = post.writer || {}
-  const profileUrl = picture.url || ''
-  const url = profileUrl.startsWith('http')
-    ? profileUrl
-    : `${NEXT_PUBLIC_STRAPI_HOST}${profileUrl}`
+  const featuredImageUrl = post.featuredImage.url || ''
+  const featuredImageSrc = featuredImageUrl.startsWith('http')
+    ? featuredImageUrl
+    : `${NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
+
+  const profileImage = picture.url || ''
+  const profileImageSrc = profileImage.startsWith('http')
+    ? profileImage
+    : `${NEXT_PUBLIC_STRAPI_HOST}${profileImage}`
 
   return (
     <article
@@ -35,7 +39,7 @@ export const Post = ({ post }: Props) => {
             color='white'
             createdAt={post.createdAt}
           />
-          <ImagePost featuredImageUrl={featuredImageUrl} />
+          <ImagePost featuredImageSrc={featuredImageSrc} />
         </Link>
         <div className='info px-2 text-center md:grid md:w-1/2 md:grid-rows-[auto_auto_1fr] md:flex-col md:px-0 md:text-left xl:flex xl:w-full xl:flex-1 xl:pl-0 xl:text-center'>
           <h3 className='my-4 md:mt-0 xl:mt-4'>
@@ -51,13 +55,7 @@ export const Post = ({ post }: Props) => {
           </h5>
           <div className='writtenBy font-headings text-primary md:mb-0 md:flex md:items-end'>
             <div className='profile xs:h-[50px] flex h-10 items-center justify-center md:w-full'>
-              <Image
-                className='xs:h-[50px] xs:w-[50px] h-10 w-10 rounded-full'
-                width={50}
-                height={50}
-                src={url}
-                alt='Imagen perfil usuario'
-              />
+              <ImageProfile profileImageSrc={profileImageSrc} />
               <div className='nickname ml-2 grid w-full grid-cols-[auto_auto_1fr] font-thin'>
                 <small className='xl:text-sm'>Por @</small>
                 <small className='xl:text-sm'>{`${name || 'Mirova'}`}</small>

@@ -6,14 +6,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 export const ImagePost = ({
-  featuredImageUrl,
+  featuredImageSrc,
 }: {
-  featuredImageUrl: string
+  featuredImageSrc: string
 }) => {
   const [isShow, setIsShow] = useState(false)
-  const url = featuredImageUrl.startsWith('http')
-    ? featuredImageUrl
-    : `${NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
 
   return (
     <div className='absolute inset-0'>
@@ -38,7 +35,7 @@ export const ImagePost = ({
         priority
         fill
         alt={'Imagen destacada del artículo'}
-        src={url}
+        src={featuredImageSrc}
         sizes='100%'
       />
     </div>
