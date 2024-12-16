@@ -21,6 +21,12 @@ export const getAllArticlesQuery = () => {
             'elements.video-url': {
               populate: '*',
             },
+            'elements.double-columns': {
+              populate: '*',
+            },
+            'elements.quote': {
+              populate: '*',
+            },
           },
         },
         tags: { fields: ['slug'] },
@@ -67,6 +73,12 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
             'elements.video-url': {
               populate: '*',
             },
+            'elements.double-columns': {
+              populate: '*',
+            },
+            'elements.quote': {
+              populate: '*',
+            },
           },
         },
         tags: { fields: ['slug'] },
@@ -110,6 +122,12 @@ export const getArticlesByPageQuery = ({ page }: { page: string }) => {
               },
             },
             'elements.video-url': {
+              populate: '*',
+            },
+            'elements.double-columns': {
+              populate: '*',
+            },
+            'elements.quote': {
               populate: '*',
             },
           },
@@ -160,6 +178,12 @@ export const getArticleByIdQuery = ({ id }: { id: number }) => {
               },
             },
             'elements.video-url': {
+              populate: '*',
+            },
+            'elements.double-columns': {
+              populate: '*',
+            },
+            'elements.quote': {
               populate: '*',
             },
           },

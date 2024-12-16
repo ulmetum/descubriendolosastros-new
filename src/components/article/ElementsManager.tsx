@@ -1,6 +1,8 @@
 import { TextArticle } from '@/components/article/TextArticle'
 import { PhotoArticle } from '@/components/article/PhotoArticle'
 import { VideoUrlArticle } from '@/components/article/VideoUrlArticle'
+import { QuoteArticle } from '@/components/article/QuoteArticle'
+import { DoubleColumnsArticle } from '@/components/article/DoubleColumnsArticle'
 import { Element } from '@/interfaces/articles.interface'
 
 interface Props {
@@ -11,6 +13,8 @@ const componentMap = {
   'elements.content-text': TextArticle,
   'elements.photo': PhotoArticle,
   'elements.video-url': VideoUrlArticle,
+  'elements.double-columns': DoubleColumnsArticle,
+  'elements.quote': QuoteArticle,
 }
 
 export const ElementsManager = ({ elements }: Props) => {
@@ -22,6 +26,7 @@ export const ElementsManager = ({ elements }: Props) => {
 
         return Component ? (
           <Component
+            classNames='my-24'
             key={element.id}
             {...element}
           />

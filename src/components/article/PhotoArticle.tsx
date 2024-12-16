@@ -4,10 +4,17 @@ import Image from 'next/image'
 
 interface Props {
   image?: FeaturedImage
-  position?: 'left' | 'right' | 'center'
+  textImage?: string
+  positionText?: string
+  classNames?: string
 }
 
-export const PhotoArticle = ({ image, position }: Props) => {
+export const PhotoArticle = ({
+  image,
+  textImage,
+  positionText,
+  classNames,
+}: Props) => {
   const url = image
     ? image.url.startsWith('http')
       ? image.url
@@ -16,19 +23,24 @@ export const PhotoArticle = ({ image, position }: Props) => {
 
   return (
     <div
-      className={cn('photo-article my-12', {
-        'flex justify-start': position === 'left',
-        'flex justify-end': position === 'right',
-        'flex justify-center': position === 'center',
-      })}
+      className={cn(
+        'photo-article my-16 w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
+        classNames,
+        { 'md:justify-start': positionText === 'left' },
+        { 'md:justify-end': positionText === 'right' }
+      )}
     >
       <Image
         src={url}
         alt='Imagen del artículo'
-        width={400}
-        height={400}
-        className='rounded-[6px]'
+        fill
+        className='object-cover object-center'
       />
+      {textImage && (
+        <p className='hidden sm:block relative z-10 bg-light/70 py-8 px-6 md:px-8 mx-6 rounded-lg w-[min(100%,480px)] md:!text-xl xl:w-[640px] '>
+          {textImage}
+        </p>
+      )}
     </div>
   )
 }

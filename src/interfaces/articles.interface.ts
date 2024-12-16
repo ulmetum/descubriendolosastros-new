@@ -21,17 +21,24 @@ export interface Element {
   __component: string
   id: number
   alt?: string
-  position?: 'left' | 'right' | 'center'
   image?: FeaturedImage
   videoUrl?: VideoURL
   richText?: string
+  textImage?: string
+  positionText?: string
+  textColumnLeft?: string
+  textColumnRight?: string
+  textQuote?: string
+  authorQuote?: string
+  classNames?: string
 }
 
 export interface ElementPhoto {
   __component: string
   id: number
   image?: FeaturedImage
-  position?: 'left' | 'right' | 'center'
+  textImage?: string
+  positionText?: string
 }
 
 export interface ElementText {
@@ -44,6 +51,20 @@ export interface ElementVideo {
   __component: string
   id: number
   videoUrl?: VideoURL
+}
+
+export interface ElementDoubleColumns {
+  __component: string
+  id: number
+  textColumnLeft?: string
+  textColumnRight?: string
+}
+
+export interface ElementQuote {
+  __component: string
+  id: number
+  textQuote?: string
+  authorQuote?: string
 }
 
 interface Writer {

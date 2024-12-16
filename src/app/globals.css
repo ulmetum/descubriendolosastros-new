@@ -181,6 +181,13 @@
     }
   }
 
+  .grid-article {
+    display: grid;
+    grid-template-columns: 1fr 4px 1fr;
+    grid-template-rows: auto, auto;
+    grid-template-areas: 'left line right';
+  }
+
   /* Grid para la sección de Intro */
 
   .grid-intro {
