@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     sharedImage,
   } = articleBySlug[0]?.metadata || {}
 
-  const image = sharedImage.url
+  const image = sharedImage?.url || '/default-image.webp'
 
   return {
     title: `${metaTitle}`,
@@ -93,7 +93,7 @@ const page = async ({ params }: Props) => {
 
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
     articleBySlug[0]
-  const imageArticle = featuredImage.url
+  const imageArticle = featuredImage?.url || '/default-featured.jpg'
 
   if (!writer) {
     return (
