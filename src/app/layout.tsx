@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: 'https://descubriendolosastros.com',
     images: [
       {
-        url: 'https://descubriendolosastros.com/opengraph-image.webp',
+        url: 'https://descubriendolosastros.com/opengraph-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Descubriendo los astros',
