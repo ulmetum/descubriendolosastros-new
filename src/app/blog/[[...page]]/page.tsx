@@ -8,11 +8,29 @@ import { Skeleton } from '@/components/Skeleton'
 import { Search } from '@/components/blogpage/Search'
 import { Posts } from '@/components/blogpage/Posts'
 import { wrap } from '@/utils/wrap'
+import { Metadata } from 'next'
 
-export const metadata = {
-  title: 'Descubriendo los astros | Blog',
+export const metadata: Metadata = {
+  title: 'Blog',
   description:
     '"Descubriendo los astros" es tu guía al universo, con artículos sobre planetas, estrellas, fenómenos celestes y diversos temas de astronomía y astrología. Explora el cosmos y mantente al día con nuestras publicaciones',
+  openGraph: {
+    title: 'Blog',
+    description:
+      '"Descubriendo los astros" es tu guía al universo, con artículos sobre planetas, estrellas, fenómenos celestes y diversos temas de astronomía y astrología. Explora el cosmos y mantente al día con nuestras publicaciones',
+    type: 'website',
+    locale: 'es_ES',
+    url: 'https://descubriendolosastros.com',
+    siteName: 'Descubriendo los astros',
+    images: [
+      {
+        url: 'https://descubriendolosastros.com/opengraph-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Descubriendo los astros',
+      },
+    ],
+  },
 }
 
 export async function generateStaticParams() {

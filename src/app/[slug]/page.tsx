@@ -32,12 +32,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const { metaTitle = 'Título no disponible', metaDescription = '' } =
-    articleBySlug[0]?.metadata || {}
+  const {
+    metaTitle = 'Título no disponible',
+    metaDescription = '',
+    sharedImage,
+  } = articleBySlug[0]?.metadata || {}
+
+  const image = sharedImage.url
 
   return {
-    title: `Descubriendo los Astros | ${metaTitle}`,
+    title: `${metaTitle}`,
     description: `${metaDescription}`,
+    openGraph: {
+      title: `${metaTitle}`,
+      description: `${metaDescription}`,
+      type: 'article',
+      locale: 'es_ES',
+      url: `https://descubriendolosastros.com/${slug}`,
+      images: [
+        {
+          url: `${image}`,
+          width: 1200,
+          height: 630,
+          alt: 'Descubriendo los astros',
+        },
+      ],
+      siteName: 'Descubriendo los astros',
+    },
   }
 }
 

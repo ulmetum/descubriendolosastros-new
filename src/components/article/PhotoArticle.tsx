@@ -27,7 +27,7 @@ export const PhotoArticle = ({
         'photo-article my-16 w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
         classNames,
         { 'md:justify-start': positionText === 'left' },
-        { 'md:justify-end': positionText === 'right' }
+        { 'md:justify-end': positionText === 'right' || !positionText }
       )}
     >
       <Image
