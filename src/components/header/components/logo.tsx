@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 
 export const Logo = () => {
   return (
-    <motion.h2
+    <motion.div
       initial={{ clipPath: 'inset(0% 100% 0% 0%)' }}
       animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
       transition={{
@@ -14,6 +14,6 @@ export const Logo = () => {
       className={`xs:text-3xl slg:text-4xl flex items-center pl-3 text-2xl text-dark`}
     >
       Astros
-    </motion.h2>
+    </motion.div>
   )
 }
