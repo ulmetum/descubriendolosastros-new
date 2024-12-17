@@ -43,13 +43,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title:
       metaTitle ||
-      'Articulo del Blog que trata amplia y profundamente de astronomía y astrología',
+      'El Cosmos Revelado: Descubre los Secretos de la Astronomía y la Astrología',
     description:
       metaDescription ||
-      'Explora el misterio del cosmos y los astros a través de artículos sobre fenómenos celestes, astrología y su influencia en nuestro día a día.',
+      'Artículos sobre astronomía y astrología, explorando el universo, los astros y su impacto en nuestra vida cotidiana.',
     openGraph: {
-      title: `${metaTitle}`,
-      description: `${metaDescription}`,
+      title:
+        metaTitle ||
+        'El Cosmos Revelado: Descubre los Secretos de la Astronomía y la Astrología',
+      description:
+        metaDescription ||
+        'Artículos sobre astronomía y astrología, explorando el universo, los astros y su impacto en nuestra vida cotidiana.',
       type: 'article',
       locale: 'es_ES',
       url: `https://descubriendolosastros.com/${slug}`,
@@ -97,7 +101,7 @@ const page = async ({ params }: Props) => {
 
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
     articleBySlug[0]
-  const imageArticle = featuredImage?.url || '/default-featured.jpg'
+  const imageArticle = featuredImage.url
 
   if (!writer) {
     return (
