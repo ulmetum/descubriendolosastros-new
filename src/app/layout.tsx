@@ -17,10 +17,12 @@ export const metadata: Metadata = {
     default: 'Descubriendo los astros',
     template: '%s | Descubriendo los astros',
   },
-  description: 'Un blog para aprender sobre astronomía y astrología',
+  description:
+    'Un blog para aprender sobre astronomía y astrología, explorando el misterio del cosmos, los movimientos planetarios y su influencia en nuestra vida diaria',
   openGraph: {
     title: 'Descubriendo los astros',
-    description: 'Un blog para aprender sobre astronomía y astrología',
+    description:
+      'Un blog para aprender sobre astronomía y astrología, explorando el misterio del cosmos, los movimientos planetarios y su influencia en nuestra vida diaria',
     type: 'website',
     locale: 'es_ES',
     url: 'https://descubriendolosastros.com',
