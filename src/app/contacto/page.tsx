@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contacto',
     description:
-      'Ponte en contacto con Descubriendo los Astros para consultas sobre astrología, astronomía o para la realización de cartas astrales. Estamos aquí para responder tus preguntas y ofrecerte más información sobre el fascinante mundo de los astros.',
+      'Contáctanos para consultas de astrología, astronomía o cartas astrales. Resolvemos tus dudas y te acercamos al fascinante mundo de los astros.',
     type: 'website',
     locale: 'es_ES',
     url: 'https://descubriendolosastros.com',

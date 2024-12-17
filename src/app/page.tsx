@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Inicio | Descubriendo los astros',
   description:
-    'Explora el fascinante universo de la astronomía y la astrología en descubriendolosastros.com. Aprende sobre constelaciones, planetas, fenómenos cósmicos y cómo los astros influyen en nuestras vidas. Una mirada al cielo para descubrir su magia y ciencia.',
+    'Aprende sobre constelaciones, planetas, fenómenos cósmicos y cómo los astros influyen en tu vida. Descubre la magia y ciencia del universo mirando al cielo.',
 }
 
 export default async function HomePage() {

@@ -52,12 +52,12 @@ export const CarouselContent = ({ counter, slideIndex }: ContentProps) => {
           }
         }}
       >
-        <motion.h1
+        <motion.h2
           variants={itemsVariants}
           className='text-5xl font-bold text-white'
         >
           {content[slideIndex].title}
-        </motion.h1>
+        </motion.h2>
         <motion.h3
           variants={itemsVariants}
           className='font-semiboldbold relative mb-7 ml-[40px] mt-2 text-2xl uppercase leading-none text-white before:absolute before:bottom-0 before:left-0 before:h-[5px] before:w-[20px] before:bg-white before:translate-x-[-40px] after:absolute after:bottom-[-15px] after:left-0 after:h-[2px] after:w-[60px] after:bg-white after:translate-x-[-40px]'
