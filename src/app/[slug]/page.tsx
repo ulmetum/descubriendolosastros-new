@@ -41,8 +41,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const image = sharedImage?.url || '/default-image.webp'
 
   return {
-    title: `${metaTitle}`,
-    description: `${metaDescription}`,
+    title:
+      metaTitle ||
+      'Articulo del Blog que trata amplia y profundamente de astronomía y astrología',
+    description:
+      metaDescription ||
+      'Explora el misterio del cosmos y los astros a través de artículos sobre fenómenos celestes, astrología y su influencia en nuestro día a día.',
     openGraph: {
       title: `${metaTitle}`,
       description: `${metaDescription}`,
