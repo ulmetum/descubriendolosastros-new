@@ -22,9 +22,9 @@ export const PhotoArticle = ({
     : '/universe-04.webp'
 
   return (
-    <div
+    <section
       className={cn(
-        'photo-article my-16 w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
+        'photo-article section-article w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
         classNames,
         { 'md:justify-start': positionText === 'left' },
         { 'md:justify-end': positionText === 'right' || !positionText }
@@ -41,6 +41,6 @@ export const PhotoArticle = ({
           {textImage}
         </p>
       )}
-    </div>
+    </section>
   )
 }

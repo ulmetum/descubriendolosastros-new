@@ -8,7 +8,9 @@ interface Props {
 
 export const QuoteArticle = ({ textQuote, authorQuote, classNames }: Props) => {
   return (
-    <div className={cn('w-[min(100%,900px)] mx-auto', classNames)}>
+    <section
+      className={cn('w-[min(100%,900px)] mx-auto section-article', classNames)}
+    >
       <blockquote className='relative flex items-center'>
         <div className='relative'>
           <svg
@@ -42,6 +44,6 @@ export const QuoteArticle = ({ textQuote, authorQuote, classNames }: Props) => {
           </footer>
         </div>
       </blockquote>
-    </div>
+    </section>
   )
 }

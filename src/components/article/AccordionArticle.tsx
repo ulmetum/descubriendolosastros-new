@@ -8,21 +8,19 @@ interface Props {
 
 export const AccordionArticle = ({ items, headingAccordion }: Props) => {
   return (
-    <div className='px-4 py-12'>
-      <div className='mx-auto max-w-3xl'>
-        <h3 className='mb-4 text-center font-semibold text-primary'>
-          {headingAccordion}
-        </h3>
-        {items?.map((item, index) => (
-          <AccordeonItemArticle
-            key={index}
-            title={item.titleAccordion ?? ''}
-            defaultOpen={index === 0}
-          >
-            <p>{item.contentAccordion}</p>
-          </AccordeonItemArticle>
-        ))}
-      </div>
-    </div>
+    <section className='section-article mx-auto max-w-3xl'>
+      <h3 className='mb-4 text-center font-semibold text-primary'>
+        {headingAccordion}
+      </h3>
+      {items?.map((item, index) => (
+        <AccordeonItemArticle
+          key={index}
+          title={item.titleAccordion ?? ''}
+          defaultOpen={index === 0}
+        >
+          <p>{item.contentAccordion}</p>
+        </AccordeonItemArticle>
+      ))}
+    </section>
   )
 }

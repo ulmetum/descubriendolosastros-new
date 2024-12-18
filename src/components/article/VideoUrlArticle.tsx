@@ -32,7 +32,7 @@ export const VideoUrlArticle = ({ videoUrl }: Props) => {
   }
 
   return (
-    <div className='my-20 '>
+    <section className='section-article'>
       <iframe
         src={embedUrl}
         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
@@ -40,6 +40,6 @@ export const VideoUrlArticle = ({ videoUrl }: Props) => {
         allowFullScreen
         className='iframe-article aspect-video w-[min(100%,768px)] mx-auto '
       ></iframe>
-    </div>
+    </section>
   )
 }

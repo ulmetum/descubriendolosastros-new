@@ -6,6 +6,6 @@ interface Props {
 
 export const TextArticle = ({ richText }: Props) => {
   return (
-    <div className='content-text-article'>{richText && parse(richText)}</div>
+    <section className='section-article'>{richText && parse(richText)}</section>
   )
 }

@@ -29,7 +29,6 @@ export const ElementsManager = ({ elements }: Props) => {
 
         return Component ? (
           <Component
-            classNames='my-24'
             key={element.id}
             {...element}
           />

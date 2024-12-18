@@ -12,15 +12,15 @@ export const DoubleColumnsArticle = ({
   classNames,
 }: Props) => {
   return (
-    <div
+    <section
       className={cn(
-        ' lg:grid-article gap-8 w-screen relative left-1/2 -translate-x-1/2 px-4',
+        'section-article lg:grid-article gap-8 w-screen relative left-1/2 -translate-x-1/2',
         classNames
       )}
     >
       <p className='[grid-area:left]  lg:pl-12'>{textColumnLeft}</p>
       <div className='hidden lg:block [grid-area:line] h-full w-[1px] bg-primary/50' />
       <p className='[grid-area:right]  lg:pr-12'>{textColumnRight}</p>
-    </div>
+    </section>
   )
 }
