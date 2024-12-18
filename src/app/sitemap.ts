@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const res = await getAllArticlesAction()
 
   if (res?.serverError || !res?.data?.articles?.data) {
-    console.error('Error fetching articles:', res?.serverError)
+    // console.error('Error fetching articles:', res?.serverError)
     return []
   }
 

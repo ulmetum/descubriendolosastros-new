@@ -3,6 +3,8 @@ import { PhotoArticle } from '@/components/article/PhotoArticle'
 import { VideoUrlArticle } from '@/components/article/VideoUrlArticle'
 import { QuoteArticle } from '@/components/article/QuoteArticle'
 import { DoubleColumnsArticle } from '@/components/article/DoubleColumnsArticle'
+import { AccordionArticle } from '@/components/article/AccordionArticle'
+
 import { Element } from '@/interfaces/articles.interface'
 
 interface Props {
@@ -15,9 +17,11 @@ const componentMap = {
   'elements.video-url': VideoUrlArticle,
   'elements.double-columns': DoubleColumnsArticle,
   'elements.quote': QuoteArticle,
+  'elements.accordion': AccordionArticle,
 }
 
 export const ElementsManager = ({ elements }: Props) => {
+  // console.log({ elements })
   return (
     <article>
       {elements.map((element: Element) => {

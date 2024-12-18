@@ -31,6 +31,9 @@ export interface Element {
   textQuote?: string
   authorQuote?: string
   classNames?: string
+  titleAccordion?: string
+  contentAccordion?: string
+  items?: Item[]
 }
 
 export interface ElementPhoto {
@@ -65,6 +68,18 @@ export interface ElementQuote {
   id: number
   textQuote?: string
   authorQuote?: string
+}
+
+export interface ElementAccordion {
+  __component: string
+  id: number
+  items?: Item[]
+}
+
+export interface Item {
+  id: number
+  titleAccordion?: string
+  contentAccordion?: string
 }
 
 interface Writer {

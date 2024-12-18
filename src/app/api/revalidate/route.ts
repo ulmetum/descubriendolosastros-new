@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ revalidated: true })
   } catch (err) {
-    console.error(err)
+    // console.error(err)
     return NextResponse.json({
       revalidated: false,
       message: 'Missing path to revalidate',

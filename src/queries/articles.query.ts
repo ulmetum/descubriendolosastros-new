@@ -27,6 +27,13 @@ export const getAllArticlesQuery = () => {
             'elements.quote': {
               populate: '*',
             },
+            'elements.accordion': {
+              populate: {
+                items: {
+                  populate: '*',
+                },
+              },
+            },
           },
         },
         tags: { fields: ['slug'] },
@@ -79,6 +86,13 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
             'elements.quote': {
               populate: '*',
             },
+            'elements.accordion': {
+              populate: {
+                items: {
+                  populate: '*',
+                },
+              },
+            },
           },
         },
         tags: { fields: ['slug'] },
@@ -129,6 +143,13 @@ export const getArticlesByPageQuery = ({ page }: { page: string }) => {
             },
             'elements.quote': {
               populate: '*',
+            },
+            'elements.accordion': {
+              populate: {
+                items: {
+                  populate: '*',
+                },
+              },
             },
           },
         },
@@ -185,6 +206,13 @@ export const getArticleByIdQuery = ({ id }: { id: number }) => {
             },
             'elements.quote': {
               populate: '*',
+            },
+            'elements.accordion': {
+              populate: {
+                items: {
+                  populate: '*',
+                },
+              },
             },
           },
         },

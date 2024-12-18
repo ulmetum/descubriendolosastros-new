@@ -13,7 +13,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    '"Descubriendo los astros" es tu guía al universo, con artículos sobre planetas, estrellas, fenómenos celestes y diversos temas de astronomía y astrología. Explora el cosmos y mantente al día con nuestras publicaciones',
+    '"Descubriendo los astros" es tu guía al universo, con artículos sobre planetas, estrellas, fenómenos celestes y diversos temas de astronomía y astrología. ',
   openGraph: {
     title: 'Blog',
     description:
