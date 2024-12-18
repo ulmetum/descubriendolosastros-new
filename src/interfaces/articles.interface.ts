@@ -33,6 +33,7 @@ export interface Element {
   classNames?: string
   titleAccordion?: string
   contentAccordion?: string
+  headingAccordion?: string
   items?: Item[]
 }
 
@@ -74,6 +75,7 @@ export interface ElementAccordion {
   __component: string
   id: number
   items?: Item[]
+  headingAccordion?: string
 }
 
 export interface Item {

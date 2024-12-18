@@ -23,7 +23,7 @@ export const AccordeonItemArticle = ({
     >
       <button
         onClick={() => setOpen((pv) => !pv)}
-        className='flex w-full items-center justify-between gap-4 py-6'
+        className='group flex w-full items-center justify-between gap-4 py-6 '
       >
         <motion.h3
           variants={{
@@ -34,7 +34,7 @@ export const AccordeonItemArticle = ({
               color: 'rgb(var(--dark-rgb))',
             },
           }}
-          className=' bg-clip-text text-left text-2xl font-medium'
+          className='!m-0 bg-clip-text text-left text-2xl font-medium group-hover:!text-primary transition-color duration-500'
         >
           {title}
         </motion.h3>
@@ -50,6 +50,11 @@ export const AccordeonItemArticle = ({
               color: 'rgb(var(--dark-rgb))',
             },
           }}
+          transition={{
+            type: 'spring',
+            stiffness: 150,
+            damping: 10,
+          }}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -61,7 +66,7 @@ export const AccordeonItemArticle = ({
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'
-            className='icon icon-tabler icons-tabler-outline icon-tabler-chevron-up'
+            className='group-hover:text-primary icon icon-tabler icons-tabler-outline icon-tabler-chevron-up transition-color duration-500'
           >
             <path
               stroke='none'

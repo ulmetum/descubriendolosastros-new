@@ -21,7 +21,6 @@ const componentMap = {
 }
 
 export const ElementsManager = ({ elements }: Props) => {
-  // console.log({ elements })
   return (
     <article>
       {elements.map((element: Element) => {

@@ -2,17 +2,16 @@ import { Item } from '@/interfaces/articles.interface'
 import { AccordeonItemArticle } from '@/components/article/AccordionItemArticle'
 
 interface Props {
-  classNames?: string
   items?: Item[]
+  headingAccordion?: string
 }
 
-export const AccordionArticle = ({ classNames, items }: Props) => {
-  // console.log({ items })
+export const AccordionArticle = ({ items, headingAccordion }: Props) => {
   return (
     <div className='px-4 py-12'>
       <div className='mx-auto max-w-3xl'>
         <h3 className='mb-4 text-center font-semibold text-primary'>
-          Frequently asked questions
+          {headingAccordion}
         </h3>
         {items?.map((item, index) => (
           <AccordeonItemArticle
