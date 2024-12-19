@@ -30,9 +30,8 @@ export const IntroTitle = () => {
                 repeatType: 'mirror',
                 duration: 0.5,
                 repeatDelay: 3,
-                // ease: [0.83, 0, 0.17, 1],
                 type: 'spring',
-                damping: 10, // Menor damping para un movimiento más suave
+                damping: 12, // Menor damping para un movimiento más suave
                 stiffness: 250, // Rigidez moderada para un rebote controlado
               }}
               className='font-headings text-6xl !leading-normal text-light mix-blend-difference md:text-7xl lg:text-8xl'
@@ -63,9 +62,8 @@ export const IntroTitle = () => {
                 repeatType: 'mirror',
                 duration: 0.5,
                 repeatDelay: 3,
-                // ease: [0.83, 0, 0.17, 1],
                 type: 'spring',
-                damping: 10, // Menor damping para un movimiento más suave
+                damping: 12, // Menor damping para un movimiento más suave
                 stiffness: 250, // Rigidez moderada para un rebote controlado
               }}
               className='font-headings text-6xl !leading-normal text-light mix-blend-difference md:text-7xl lg:text-8xl'
