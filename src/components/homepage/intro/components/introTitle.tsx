@@ -31,8 +31,7 @@ export const IntroTitle = () => {
                 duration: 0.5,
                 repeatDelay: 3,
                 type: 'spring',
-                damping: 12, // Menor damping para un movimiento más suave
-                stiffness: 250, // Rigidez moderada para un rebote controlado
+                bounce: 0.5,
               }}
               className='font-headings text-6xl !leading-normal text-light mix-blend-difference md:text-7xl lg:text-8xl'
               key={i}
@@ -63,8 +62,7 @@ export const IntroTitle = () => {
                 duration: 0.5,
                 repeatDelay: 3,
                 type: 'spring',
-                damping: 12, // Menor damping para un movimiento más suave
-                stiffness: 250, // Rigidez moderada para un rebote controlado
+                bounce: 0.5,
               }}
               className='font-headings text-6xl !leading-normal text-light mix-blend-difference md:text-7xl lg:text-8xl'
               key={i}
