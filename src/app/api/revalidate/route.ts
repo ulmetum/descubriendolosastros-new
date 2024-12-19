@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     paths.map((path) => revalidatePath(path))
 
     return NextResponse.json({ revalidated: true })
-  } catch (err) {
+  } catch {
     // console.error(err)
     return NextResponse.json({
       revalidated: false,

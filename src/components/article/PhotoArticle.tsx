@@ -37,7 +37,7 @@ export const PhotoArticle = ({
         className='object-cover object-center'
       />
       {textImage && (
-        <p className='hidden sm:block relative z-10 bg-light/70 py-8 px-6 md:px-8 mx-6 rounded-lg w-[min(100%,480px)] md:!text-xl xl:w-[640px] '>
+        <p className='hidden sm:block relative z-10 bg-light/85 py-8 px-6 md:px-8 mx-6 rounded-lg w-[min(100%,480px)] md:!text-xl xl:w-[640px] '>
           {textImage}
         </p>
       )}
