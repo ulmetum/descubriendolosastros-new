@@ -111,7 +111,7 @@ const page = async ({ params }: Props) => {
     )
   }
 
-  const { name, picture, social } = writer
+  const { name, picture, social, email } = writer
 
   const { dataNextArticle, dataPrevArticle } =
     await getNextAndPrevArticlesAction({

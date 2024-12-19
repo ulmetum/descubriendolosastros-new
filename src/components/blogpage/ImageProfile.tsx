@@ -18,7 +18,7 @@ export const ImageProfile = ({
   }
   const [isShow, setIsShow] = useState(false)
   return (
-    <div className={cn('relative', sizes[size])}>
+    <div className={cn('relative shrink-0', sizes[size])}>
       <Image
         onLoad={() => setIsShow(true)}
         className={cn(

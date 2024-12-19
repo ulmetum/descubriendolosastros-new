@@ -5,8 +5,11 @@ import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 
 import { PostDate } from '@/components/blogpage/PostDate'
 import { ImagePost } from '@/components/blogpage/ImagePost'
-import { Datum } from '@/interfaces/articles.interface'
 import { ImageProfile } from '@/components/blogpage/ImageProfile'
+import { NameProfile } from '@/components/blogpage/NameProfile'
+import { EmailProfile } from '@/components/blogpage/EmailProfile'
+
+import { Datum } from '@/interfaces/articles.interface'
 
 interface Props {
   post: Datum
@@ -54,15 +57,13 @@ export const Post = ({ post }: Props) => {
             {subtitle}
           </h5>
           <div className='writtenBy font-headings text-primary md:mb-0 md:flex md:items-end'>
-            <div className='profile xs:h-[50px] flex h-10 items-center justify-center md:w-full'>
+            <div className='profile gap-2 flex items-center  md:w-full'>
               <ImageProfile profileImageSrc={profileImageSrc} />
-              <div className='nickname ml-2 grid w-full grid-cols-[auto_auto_1fr] font-thin'>
-                <small className='xl:text-sm'>Por @</small>
-                <small className='xl:text-sm'>{`${name || 'Mirova'}`}</small>
-                <small className='mail flex justify-end xl:text-sm'>
-                  {email}
-                </small>
-              </div>
+              <NameProfile
+                color='primary'
+                name={name}
+              />
+              <EmailProfile email={email} />
             </div>
           </div>
         </div>

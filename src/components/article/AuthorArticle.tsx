@@ -3,6 +3,7 @@
 import { MotionValue, motion, useTransform } from 'motion/react'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 import { ImageProfile } from '@/components/blogpage/ImageProfile'
+import { NameProfile } from '../blogpage/NameProfile'
 
 interface Props {
   scrollY: MotionValue<number>
@@ -31,15 +32,16 @@ export function AuthorArticle({
           ['0ms', `${transition}ms`]
         ),
       }}
-      className='relative z-20 mt-4 flex items-center justify-center opacity-0 transition-all duration-500'
+      className='relative z-20 gap-2 mt-4 flex items-center justify-center opacity-0 transition-all duration-500'
     >
       <div className='relative'>
         <ImageProfile profileImageSrc={profileImageSrc} />
         <motion.div className='absolute -inset-[.15rem] rounded-full border border-white/[.75] p-[.15rem] transition-all'></motion.div>
       </div>
-      <small className='ml-[.5rem] font-headings font-light text-white'>
-        Por {name}
-      </small>
+      <NameProfile
+        color='light'
+        name={name}
+      />
     </motion.div>
   )
 }
