@@ -12,6 +12,9 @@ export default {
         'landscape-sm': {
           raw: '(max-width: 667px) and (orientation: landscape)',
         },
+        'landscape-xl': {
+          raw: '(max-width: 910px) and (orientation: landscape)',
+        },
       },
       colors: {
         primary: '#b45309',

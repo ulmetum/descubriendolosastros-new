@@ -194,7 +194,7 @@
 
   /* Grid para la sección de Intro */
 
-  .grid-intro {
+  /* .grid-intro {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr 1fr min-content min-content;
@@ -204,9 +204,10 @@
       'content content content content content content'
       'smallContent smallContent smallContent . . .'
       'title title title title title title';
-  }
+  } */
   @media screen and (min-width: 1024px) {
     .grid-intro {
+      display: grid;
       grid-template-areas:
         'content content content content content content'
         'content content content content content content'

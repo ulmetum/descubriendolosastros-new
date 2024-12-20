@@ -37,7 +37,7 @@ const digitalSchema = z.object({
   }),
   comments: z
     .string()
-    .min(1, { message: 'Debe escribir un comentario' })
+    // .min(1, { message: 'Debe escribir un comentario' })
     .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
     .trim(),
   formatMap: z.literal('digital'),
