@@ -12,8 +12,7 @@ export const Footer = async () => {
     throw new ErrorMenu(
       resMenu?.serverError ?? 'No se han podido obtener los datos del Menú'
     )
-
-  if (resWriter?.serverError || resWriter?.data?.writer.data.length === 0)
+  if (resWriter?.serverError)
     throw new ErrorWriter(
       resWriter?.serverError ??
         'No se han podido obtener los datos del Escritor'

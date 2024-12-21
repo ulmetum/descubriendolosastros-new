@@ -2,7 +2,7 @@
 
 import { JSX, useState } from 'react'
 
-import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 // Components
@@ -34,7 +34,7 @@ export const steps: Step[] = [
     name: 'Información del Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['name', 'email', 'address', 'city', 'postalCode', 'formatMap'],
+    fields: ['name', 'email', 'address', 'city', 'postalCode'],
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ export const steps: Step[] = [
 ]
 
 type FieldName = keyof FormContact
-export type Format = 'fisico' | 'digital'
+// export type Format = 'fisico' | 'digital'
 
 export const MultiStep = () => {
   const {
@@ -67,10 +67,10 @@ export const MultiStep = () => {
   })
 
   // Observar el campo "format" para mostrar de forma condicional los campos del formulario FormUser
-  const format = useWatch({
-    control,
-    name: 'formatMap',
-  })
+  // const format = useWatch({
+  //   control,
+  //   name: 'formatMap',
+  // })
 
   const [currentStep, setCurrentStep] = useState(0)
 
@@ -79,12 +79,13 @@ export const MultiStep = () => {
   }
 
   const nextStep = async () => {
-    let fields: string[] = []
-    if (format === 'digital' && currentStep === 0) {
-      fields = ['name', 'email', 'format']
-    } else {
-      fields = steps[currentStep]?.fields ?? []
-    }
+    // let fields: string[] = []
+    // if (format === 'digital' && currentStep === 0) {
+    //   fields = ['name', 'email', 'format']
+    // } else {
+    // fields = steps[currentStep]?.fields ?? []
+    // }
+    const fields = steps[currentStep]?.fields ?? []
     const valid = await trigger(fields as FieldName[], { shouldFocus: true })
 
     if (!valid) return
@@ -139,7 +140,6 @@ export const MultiStep = () => {
                 {step.id === 1 && (
                   <FormUser
                     reset={reset}
-                    format={format}
                     register={register}
                     errors={errors}
                     currentStep={currentStep}
