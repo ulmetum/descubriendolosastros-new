@@ -17,7 +17,7 @@ interface Props {
 
 export const Post = ({ post }: Props) => {
   const { title, subtitle, slug } = post
-  const { name = 'Mirova', email, picture } = post.writer || {}
+  const { name = 'Miriam', email, picture } = post.writer || {}
   const featuredImageUrl = post.featuredImage.url || ''
   const featuredImageSrc = featuredImageUrl.startsWith('http')
     ? featuredImageUrl

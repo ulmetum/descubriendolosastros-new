@@ -69,7 +69,7 @@ const BlogPage = async ({
     max: pageCount,
   })
 
-  if (res?.serverError) {
+  if (res?.serverError || !res?.data?.articles?.data) {
     return redirect('/blog')
   }
 
