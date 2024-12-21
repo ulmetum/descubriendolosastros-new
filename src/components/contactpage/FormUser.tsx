@@ -7,7 +7,7 @@ interface Props {
     FormContact & { address?: string; city?: string; postalCode?: string }
   >
   currentStep: number
-  format: 'fisico' | 'digital'
+  // format: 'fisico' | 'digital'
   reset: UseFormReset<FormContact>
 }
 
@@ -15,8 +15,8 @@ export const FormUser = ({
   register,
   errors,
   currentStep,
-  format,
-}: // reset,
+}: // format,
+// reset,
 Props) => {
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
