@@ -5,14 +5,14 @@ import { getDataMenuAction } from '@/actions/get-data-menu.action'
 
 export const Footer = async () => {
   const currentYear = new Date().getFullYear()
-  const resWriter = await getDataWriterAction({ name: 'mirova' })
+  const resWriter = await getDataWriterAction({ name: 'miriam' })
   const resMenu = await getDataMenuAction({ name: 'principal' })
 
-  if (resMenu?.serverError)
+  if (resMenu?.serverError || resMenu?.data?.menu.data.length === 0)
     throw new ErrorMenu(
       resMenu?.serverError ?? 'No se han podido obtener los datos del Menú'
     )
-  if (resWriter?.serverError)
+  if (resWriter?.serverError || resWriter?.data?.writer.data.length === 0)
     throw new ErrorWriter(
       resWriter?.serverError ??
         'No se han podido obtener los datos del Escritor'

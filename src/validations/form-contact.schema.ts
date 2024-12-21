@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 // Esquema para el formato fisico (incluye los campos adicionales)
-const formContactSchema = z.object({
+export const formContactSchema = z.object({
   name: z
     .string()
     .min(1, { message: 'Debe escribir un nombre' })
@@ -41,7 +41,7 @@ const formContactSchema = z.object({
   }),
   comments: z
     .string()
-    .min(1, { message: 'Debe escribir un comentario' })
+    // .min(1, { message: 'Debe escribir un comentario' })
     .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
     .trim(),
 })

@@ -11,6 +11,9 @@ const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
   const bodyData = {
     Nombre: data.name,
     'Correo electrónico': data.email,
+    Dirección: data.address,
+    Ciudad: data.city,
+    'Código postal': data.postalCode,
     Evento: data.event,
     'Ciudad del evento': data.cityEvent,
     'Fecha del evento': dayjs(data.dateEvent).format(
@@ -19,14 +22,14 @@ const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
     Mensaje: data.comments,
   }
 
-  if (data.formatMap === 'fisico') {
-    return {
-      ...bodyData,
-      Dirección: data.address,
-      Ciudad: data.city,
-      'Código postal': data.postalCode,
-    }
-  }
+  // if (data.formatMap === 'fisico') {
+  //   return {
+  //     ...bodyData,
+  //     Dirección: data.address,
+  //     Ciudad: data.city,
+  //     'Código postal': data.postalCode,
+  //   }
+  // }
 
   return bodyData
 }
