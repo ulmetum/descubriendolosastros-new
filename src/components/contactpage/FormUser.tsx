@@ -7,17 +7,10 @@ interface Props {
     FormContact & { address?: string; city?: string; postalCode?: string }
   >
   currentStep: number
-  // format: 'fisico' | 'digital'
   reset: UseFormReset<FormContact>
 }
 
-export const FormUser = ({
-  register,
-  errors,
-  currentStep,
-}: // format,
-// reset,
-Props) => {
+export const FormUser = ({ register, errors, currentStep }: Props) => {
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className=' space-y-2 text-center'>
@@ -27,60 +20,35 @@ Props) => {
           ti.
         </p>
       </header>
-      {/* <div className='flex flex-col gap-4 items-center my-12'>
-        <h3 className='text-center'>Elige el formato que desees recibir:</h3>
-        <div className='flex gap-4'>
-          <div className='inline-flex items-center'>
-            <label
-              className='relative flex items-center cursor-pointer'
-              htmlFor='fisico'
+      <div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
+          <label
+            htmlFor='product'
+            className=' block text-sm/6 font-medium text-dark'
+          >
+            Producto
+          </label>
+          <div className='mt-2 '>
+            <select
+              id='product'
+              {...register('product')}
+              className='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
             >
-              <input
-                {...register('formatMap')}
-                type='radio'
-                value='fisico'
-                className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
-                id='fisico'
-              />
-              <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
-            </label>
-            <label
-              className='ml-2 text-slate-600 cursor-pointer text-lg'
-              htmlFor='fisico'
-            >
-              Físico
-            </label>
-          </div>
+              <option value=''>Selecciona un producto</option>
+              <option value='map'>Mapa Estelar</option>
+              <option value='chart'>Carta Astral</option>
+              <option value='both'>Ambos</option>
+            </select>
 
-          <div className='inline-flex items-center'>
-            <label
-              className='relative flex items-center cursor-pointer'
-              htmlFor='digital'
-            >
-              <input
-                {...register('formatMap')}
-                type='radio'
-                value='digital'
-                className='peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all'
-                id='digital'
-              />
-              <span className='absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></span>
-            </label>
-            <label
-              className='ml-2 text-slate-600 cursor-pointer text-lg'
-              htmlFor='digital'
-            >
-              Digital
-            </label>
+            {errors.product?.message && (
+              <p className='my-4 w-[max-content] text-base text-primary'>
+                {' - '}
+                {errors.product?.message}
+                {' - '}
+              </p>
+            )}
           </div>
         </div>
-        {errors.formatMap?.message && (
-          <p className='my-4  text-base text-light bg-primary px-3 rounded-lg'>
-            {errors.formatMap?.message}
-          </p>
-        )}
-      </div> */}
-      <div>
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='name'

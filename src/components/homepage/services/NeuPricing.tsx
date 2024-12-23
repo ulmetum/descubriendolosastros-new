@@ -8,7 +8,7 @@ import { CheckIcon } from '@/components/icons/Check.icon'
 import { cn } from '@/utils/mergeClass'
 
 export const NeuPricing = () => {
-  const [selected, setSelected] = useState<ToggleOptionsType>('fisico')
+  const [selected, setSelected] = useState<ToggleOptionsType>('map')
   const [highlighted, setHighlighted] = useState<number>(0)
   const [ref1, { height: height1 }] = useMeasure<HTMLDivElement>()
   const [ref2, { height: height2 }] = useMeasure<HTMLDivElement>()
@@ -34,9 +34,11 @@ export const NeuPricing = () => {
               <PriceColumn
                 highlighted={highlighted}
                 id={0}
-                price={selected === 'fisico' ? '49' : '29'}
+                originalPrice={selected === 'map' ? '37' : null}
+                price={selected === 'map' ? '29' : '137'}
                 selected={selected}
-                title={selected === 'fisico' ? 'ENMARCADO' : 'PDF (20x30)'}
+                title={selected === 'map' ? 'PDF (20x30)' : 'PDF'}
+                position='left'
               />
             </div>
             <div
@@ -44,11 +46,13 @@ export const NeuPricing = () => {
               ref={ref2}
             >
               <PriceColumn
+                originalPrice={selected === 'map' ? '49' : null}
+                position='right'
                 highlighted={highlighted}
                 id={1}
-                price={selected === 'fisico' ? '37' : '34'}
+                price={selected === 'map' ? '34' : '108'}
                 selected={selected}
-                title={selected === 'fisico' ? 'IMPRESO' : 'PDF (30x40)'}
+                title={selected === 'map' ? 'PDF (30x40)' : 'PDF'}
               />
             </div>
             <BackgroundNeuPricing
@@ -95,7 +99,7 @@ const Title = () => {
       <h2 className='max-w-2xl text-end font-headings text-4xl font-semibold md:text-6xl'>
         Precios
       </h2>
-      <span className='inline-block text-2xl'>(Elige un formato)</span>
+      <span className='inline-block text-2xl'>(Elige un producto)</span>
     </div>
   )
 }
@@ -106,27 +110,33 @@ const PriceColumn = ({
   title,
   price,
   selected,
+  position,
+  originalPrice,
 }: PriceColumnProps) => {
-  const statement =
-    selected === 'digital'
-      ? 'IVA incluido'
-      : 'IVA incluido. No incluye gastos de envío'
+  const statement = selected === 'chart' ? 'Carta Astral' : 'Mapa Estelar'
   const itemsToShow =
-    selected === 'digital'
+    selected === 'map'
       ? [
+          { children: 'Formatos PDF y PNG', checked: true },
           { children: 'Constelaciones visibles', checked: true },
-          { children: 'Estrellas visibles', checked: true },
-          { children: 'Planetas visibles', checked: true },
+          { children: 'Planetas Visibles', checked: true },
+          { children: 'Estrellas Principales', checked: true },
+          { children: 'Glosario elementos', checked: true },
+        ]
+      : position === 'left'
+      ? [
+          { children: 'Lectura de Carta Astral', checked: true },
+          { children: 'Lectura general', checked: true },
+          { children: 'Significado planetas', checked: true },
+          { children: 'Aspectos principales', checked: true },
+          { children: 'Recomendaciones según astrología', checked: true },
         ]
       : [
-          { children: 'Constelaciones visibles', checked: true },
-          { children: 'Estrellas visibles', checked: true },
-          { children: 'Planetas visibles', checked: true },
-          { children: 'Papel de buena calidad', checked: true },
-          { children: 'Impresión de buena calidad', checked: true },
+          { children: 'Lectura General de Carta astral', checked: true },
+          { children: 'Especial - Técnicas de yoga', checked: true },
         ]
   return (
-    <div className={`relative z-10 h-full w-full rounded-lg p-6 md:p-8`}>
+    <div className={`relative z-10 h-full w-full rounded-lg px-6 py-16 `}>
       <motion.div
         layout
         className={cn(
@@ -166,6 +176,11 @@ const PriceColumn = ({
               key={price}
               className='block text-6xl font-bold text-dark'
             >
+              {originalPrice && (
+                <span className='line-through text-3xl mr-4'>
+                  {originalPrice} €
+                </span>
+              )}
               <small>{price}</small>
               <small>€</small>
             </motion.span>
@@ -175,7 +190,7 @@ const PriceColumn = ({
               layout
               className='absolute bottom-4 right-4 rounded-md bg-dark px-3 py-1.5 font-headings text-2xl leading-tight text-light'
             >
-              Solicitar Mapa
+              Solicitar
             </motion.p>
           </Link>
         </div>
@@ -188,7 +203,7 @@ const PriceColumn = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className='mb-8 text-lg'
+          className='mb-8 text-2xl font-medium font-headings'
         >
           {statement}
         </motion.p>
@@ -229,10 +244,10 @@ const Toggle = ({
           toggle ? 'pointer-events-auto' : 'pointer-events-none'
         )}
         onClick={() => {
-          setSelected('fisico')
+          setSelected('map')
         }}
       >
-        <span className='relative z-10 text-xl text-white'>Físico</span>
+        <span className='relative z-10 text-xl text-white'>Mapa Estelar</span>
       </button>
       <button
         className={cn(
@@ -240,14 +255,14 @@ const Toggle = ({
           toggle ? 'pointer-events-none' : 'pointer-events-auto'
         )}
         onClick={() => {
-          setSelected('digital')
+          setSelected('chart')
         }}
       >
-        <span className='relative z-10 text-xl text-white'>Digital</span>
+        <span className='relative z-10 text-xl text-white'>Carta Astral</span>
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
-          selected === 'digital' ? 'justify-end' : 'justify-start'
+          selected === 'chart' ? 'justify-end' : 'justify-start'
         }`}
       >
         <motion.span
@@ -275,9 +290,11 @@ type PriceColumnProps = {
   title: string
   price: string
   selected: ToggleOptionsType
+  position: 'left' | 'right'
+  originalPrice: string | null
 }
 
-type ToggleOptionsType = 'fisico' | 'digital'
+type ToggleOptionsType = 'map' | 'chart'
 
 type CheckListItemType = {
   children: string

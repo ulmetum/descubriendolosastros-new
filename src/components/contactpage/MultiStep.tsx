@@ -34,7 +34,7 @@ export const steps: Step[] = [
     name: 'Información del Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['name', 'email', 'address', 'city', 'postalCode'],
+    fields: ['name', 'email', 'address', 'city', 'postalCode', 'product'],
   },
   {
     id: 2,
