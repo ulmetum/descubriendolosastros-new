@@ -66,12 +66,6 @@ export const MultiStep = () => {
     resolver: zodResolver(formContactSchema),
   })
 
-  // Observar el campo "format" para mostrar de forma condicional los campos del formulario FormUser
-  // const format = useWatch({
-  //   control,
-  //   name: 'formatMap',
-  // })
-
   const [currentStep, setCurrentStep] = useState(0)
 
   const initialStep = () => {
@@ -79,12 +73,6 @@ export const MultiStep = () => {
   }
 
   const nextStep = async () => {
-    // let fields: string[] = []
-    // if (format === 'digital' && currentStep === 0) {
-    //   fields = ['name', 'email', 'format']
-    // } else {
-    // fields = steps[currentStep]?.fields ?? []
-    // }
     const fields = steps[currentStep]?.fields ?? []
     const valid = await trigger(fields as FieldName[], { shouldFocus: true })
 
