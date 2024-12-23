@@ -48,7 +48,7 @@ export const FormInfo = () => {
       </p>
       <p className='mt-6 text-xl sm:text-2xl'>
         Si necesitas comunicarme algo tienes la opción de escribirme tu mensaje
-        en el caja de comentario del formulario y me pondré en contacto contigo.
+        en la caja de comentario del formulario y me pondré en contacto contigo.
       </p>
     </motion.div>
   )
