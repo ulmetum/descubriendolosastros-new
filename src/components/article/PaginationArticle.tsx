@@ -6,9 +6,10 @@ import { AnimatePresence, motion } from 'motion/react'
 
 import { useMouseParallax } from '@/hooks/useMouseParallax'
 import { Link } from 'next-view-transitions'
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
 import { Datum } from '@/interfaces/articles.interface'
+import { cn } from '@/utils/mergeClass'
 
 interface Props {
   dataPrevArticle: Datum
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
+  const [isShow, setIsShow] = useState(false)
   const {
     mousePosition,
     hoveredImage,
@@ -66,9 +68,16 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               exit={{ opacity: 0, scale: 0.6 }}
             >
               <Image
-                className='aspect-video h-[125px] w-[200px] rounded object-cover'
+                className={cn(
+                  'aspect-video h-[125px] w-[200px] rounded object-cover',
+                  {
+                    'opacity-100': isShow,
+                    'opacity-0': !isShow,
+                  }
+                )}
                 width={200}
                 height={100}
+                onLoad={() => setIsShow(true)}
                 src={`${prevImage}`}
                 alt='Imagen destacada del post siguiente'
               />
@@ -119,7 +128,14 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
                 height={100}
                 src={nextImage}
                 alt='Imagen destacada del post previo'
-                className='aspect-video h-[125px] w-[200px] rounded object-cover'
+                className={cn(
+                  'aspect-video h-[125px] w-[200px] rounded object-cover',
+                  {
+                    'opacity-100': isShow,
+                    'opacity-0': !isShow,
+                  }
+                )}
+                onLoad={() => setIsShow(true)}
               />
             </motion.div>
           )}
