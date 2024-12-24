@@ -20,7 +20,14 @@ export const SectionFeatures = async () => {
           <ul>
             {landingPagesData.map((page, index) => (
               <li key={page.id}>
-                <FeatureTitle id={index + 1}>{page.title}</FeatureTitle>
+                <FeatureTitle
+                  slug={page.slug}
+                  subtitle={page.subtitle}
+                  id={index + 1}
+                  classNames='hover:text-primary'
+                >
+                  {page.title}
+                </FeatureTitle>
               </li>
             ))}
           </ul>
@@ -30,7 +37,7 @@ export const SectionFeatures = async () => {
             {landingPagesData.map((page, index) => {
               return (
                 <Link
-                  href={page.slug}
+                  href={`/features/${page.slug}`}
                   key={index + 1}
                 >
                   <LandingPageCard

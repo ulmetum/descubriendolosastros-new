@@ -8,6 +8,7 @@ export interface DatumLandingPages {
   title: string
   description: string
   createdAt: Date
+  subtitle: string
   slug: string
   elements: Element[]
   featuredImage: FeaturedImageLandingPages

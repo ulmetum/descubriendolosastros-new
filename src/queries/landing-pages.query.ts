@@ -3,7 +3,7 @@ import qs from 'qs'
 export const getLandingPagesQuery = () => {
   return qs.stringify(
     {
-      fields: ['title', 'description', 'createdAt', 'slug'],
+      fields: ['title', 'description', 'createdAt', 'slug', 'subtitle'],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
