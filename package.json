@@ -16,7 +16,7 @@
     "lenis": "^1.1.18",
     "motion": "11.13.5",
     "next": "15.1.0",
-    "next-safe-action": "^7.9.9",
+    "next-safe-action": "^7.10.2",
     "next-view-transitions": "^0.3.4",
     "qs": "^6.13.1",
     "react": "19.0.0",

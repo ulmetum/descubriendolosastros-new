@@ -90,7 +90,9 @@ const page = async ({ params }: Props) => {
 
   // Si se produce un error
   if (res?.serverError) {
-    throw new ErrorArticle(res?.serverError)
+    throw new ErrorArticle(
+      res?.serverError.message || 'Error al obtener datos de los artículos.'
+    )
   }
 
   // Si no hay datos de artículos por slug

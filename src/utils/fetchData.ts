@@ -8,7 +8,7 @@ export async function fetchData<T>(url: string): Promise<T> {
   })
 
   if (res.status !== 200) {
-    throw new Error('Hubo un error al obtener los datos')
+    throw new Error('Hubo un error al obtener los datos del servidor')
   }
 
   const data: T = await res.json()

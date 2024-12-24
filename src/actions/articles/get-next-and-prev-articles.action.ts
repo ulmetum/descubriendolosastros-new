@@ -13,7 +13,8 @@ export const getNextAndPrevArticlesAction = async ({
   // Verificamos que `allArticles` esté definido
   if (res?.serverError || !articles) {
     throw new ErrorArticles(
-      res?.serverError || 'Hubo un error al obtener los datos del artículos.'
+      res?.serverError?.message ||
+        'Hubo un error al obtener los datos del artículos.'
     )
   }
 
