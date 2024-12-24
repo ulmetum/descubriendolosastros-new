@@ -3,7 +3,6 @@
 import { useFeatureStore } from '@/stores/featureStore'
 import { cn } from '@/utils/mergeClass'
 import { useInView } from 'motion/react'
-import { sub } from 'motion/react-client'
 import { Link } from 'next-view-transitions'
 import { ReactNode, useEffect, useRef } from 'react'
 import { useShallow } from 'zustand/shallow'
