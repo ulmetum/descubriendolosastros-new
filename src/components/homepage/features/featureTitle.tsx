@@ -22,7 +22,6 @@ export const FeatureTitle = ({
   subtitle,
   slug,
 }: Props) => {
-  console.log({ subtitle })
   const ref = useRef<HTMLParagraphElement>(null)
   const isInView = useInView(ref, { margin: '-50% 0% -50% 0%' })
 
@@ -61,7 +60,7 @@ export const FeatureTitle = ({
       >
         {children}
         {subtitle && (
-          <span className='block mt-2 font-headings'>{subtitle}</span>
+          <span className='block mt-2 font-headings'> - {subtitle} - </span>
         )}
       </p>
     </Link>
