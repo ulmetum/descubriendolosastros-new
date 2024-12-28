@@ -53,14 +53,22 @@ export const FeatureTitle = ({
       <p
         ref={ref}
         className={cn(
-          'py-32 font-headings text-5xl font-semibold text-zinc-300 transition-colors duration-300 xl:text-6xl',
+          'py-44 font-headings text-5xl font-semibold text-zinc-300 transition-colors duration-300 xl:text-6xl group hover:text-primary',
           classNames,
           isInView ? 'text-dark ' : 'text-zinc-300 '
         )}
       >
         {children}
         {subtitle && (
-          <span className='block mt-2 font-headings'> - {subtitle} - </span>
+          <span
+            className={cn(
+              'block mt-2 font-headings group-hover:text-primary transition-colors duration-300',
+              isInView ? 'text-dark ' : 'text-zinc-300 '
+            )}
+          >
+            {' '}
+            - {subtitle} -{' '}
+          </span>
         )}
       </p>
     </Link>

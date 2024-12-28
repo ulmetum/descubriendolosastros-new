@@ -24,7 +24,6 @@ export const SectionFeatures = async () => {
                   slug={page.slug}
                   subtitle={page.subtitle}
                   id={index + 1}
-                  classNames='hover:text-primary'
                 >
                   {page.title}
                 </FeatureTitle>
