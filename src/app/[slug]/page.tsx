@@ -121,7 +121,7 @@ const page = async ({ params }: Props) => {
     })
 
   return (
-    <div className='article ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
+    <section className='article ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
       <BackBlogBtn />
       <BgImageArticle
         createdAt={createdAt}
@@ -144,7 +144,7 @@ const page = async ({ params }: Props) => {
           />
         )}
       </Container>
-    </div>
+    </section>
   )
 }
 export default page

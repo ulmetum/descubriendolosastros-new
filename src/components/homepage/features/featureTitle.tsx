@@ -44,7 +44,7 @@ export const FeatureTitle = ({
 
   return (
     <Link
-      href={`/features/${slug}`}
+      href={`/tema/${slug}`}
       className={cn(
         '',
         isInView ? 'pointer-events-auto' : 'pointer-events-none'

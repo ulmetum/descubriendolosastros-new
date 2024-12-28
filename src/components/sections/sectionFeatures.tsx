@@ -1,4 +1,4 @@
-import { getDataLandingPagesAction } from '@/actions/get-data-landing-pages.action'
+import { getDataLandingPagesAction } from '@/actions/landing-pages/get-data-landing-pages.action'
 import { Container } from '@/components/Container'
 
 import { FeatureTitle } from '@/components/homepage/features/featureTitle'
@@ -37,7 +37,7 @@ export const SectionFeatures = async () => {
             {landingPagesData.map((page, index) => {
               return (
                 <Link
-                  href={`/features/${page.slug}`}
+                  href={`/tema/${page.slug}`}
                   key={index + 1}
                 >
                   <LandingPageCard
