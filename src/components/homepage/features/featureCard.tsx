@@ -10,6 +10,7 @@ import { cn } from '@/utils/mergeClass'
 interface CardProps {
   id: number
   featuredImage: string
+  slug: string
 }
 
 interface Props {
@@ -38,7 +39,7 @@ const FeatureCard = ({ gradient, children, id }: Props) => {
   )
 }
 
-export const LandingPageCard = ({ id, featuredImage }: CardProps) => {
+export const LandingPageCard = ({ id, featuredImage, slug }: CardProps) => {
   return (
     <FeatureCard
       id={id}

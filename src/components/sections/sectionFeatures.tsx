@@ -2,7 +2,6 @@ import { getDataLandingPagesAction } from '@/actions/landing-pages/get-data-land
 import { Container } from '@/components/Container'
 
 import { FeatureTitle } from '@/components/homepage/features/featureTitle'
-import { Link } from 'next-view-transitions'
 import { LandingPageCard } from '@/components/homepage/features/featureCard'
 
 export const SectionFeatures = async () => {
@@ -35,15 +34,13 @@ export const SectionFeatures = async () => {
           <div className='relative hidden aspect-square w-full max-w-96 rounded-2xl bg-light sm:flex'>
             {landingPagesData.map((page, index) => {
               return (
-                <Link
-                  href={`/tema/${page.slug}`}
-                  key={index + 1}
-                >
+                <div key={index + 1}>
                   <LandingPageCard
+                    slug={page.slug}
                     id={index + 1}
                     featuredImage={page.featuredImage.url}
                   />
-                </Link>
+                </div>
               )
             })}
           </div>
