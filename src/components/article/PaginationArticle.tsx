@@ -48,7 +48,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
         <AnimatePresence>
           {hoveredImage === 2 && (
             <motion.div
-              className='pointer-events-none absolute bottom-[170%] aspect-video h-[100px] w-[200px] object-cover'
+              className='pointer-events-none absolute bottom-[170%] aspect-video h-[125px] w-[200px] object-cover'
               style={{
                 x: mousePosition.x,
                 y: mousePosition.y,
@@ -66,9 +66,9 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               exit={{ opacity: 0, scale: 0.6 }}
             >
               <Image
-                className='aspect-video h-[125px] w-[200px] rounded object-cover'
-                width={200}
-                height={100}
+                className='aspect-video  rounded object-cover'
+                fill
+                sizes='100%'
                 src={`${prevImage}`}
                 alt='Imagen destacada del post siguiente'
               />
@@ -97,7 +97,7 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
         <AnimatePresence>
           {hoveredImage === 1 && (
             <motion.div
-              className='pointer-events-none absolute bottom-[170%] aspect-video h-[100px] w-[200px] object-cover'
+              className='pointer-events-none absolute bottom-[170%] aspect-video h-[125px] w-[200px] object-cover'
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{
                 opacity: 1,
@@ -115,11 +115,11 @@ export function PaginationArticle({ dataPrevArticle, dataNextArticle }: Props) {
               }}
             >
               <Image
-                width={200}
-                height={100}
+                fill
+                sizes='100%'
                 src={nextImage}
                 alt='Imagen destacada del post previo'
-                className='aspect-video h-[125px] w-[200px] rounded object-cover'
+                className='aspect-video  rounded object-cover'
               />
             </motion.div>
           )}

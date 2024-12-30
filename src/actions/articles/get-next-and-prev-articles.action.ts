@@ -5,7 +5,7 @@ import { getArticleByIdAction } from '@/actions/articles/get-article-by-id.actio
 export const getNextAndPrevArticlesAction = async ({
   currentArticleId,
 }: {
-  currentArticleId: number
+  currentArticleId: string
 }) => {
   const res = await getAllArticlesAction()
   const articles = res?.data?.articles.data
@@ -18,7 +18,7 @@ export const getNextAndPrevArticlesAction = async ({
     )
   }
 
-  const idsArticles = articles.map((article) => article.id)
+  const idsArticles = articles.map((article) => article.documentId)
 
   const currentIndexArticle = idsArticles.indexOf(currentArticleId)
 
@@ -35,6 +35,8 @@ export const getNextAndPrevArticlesAction = async ({
         ? idsArticles?.length - 1
         : currentIndexArticle - 1
     ]
+
+  console.log({ prevArticleId, nextArticleId })
 
   const responsePrevArticle = await getArticleByIdAction({ id: prevArticleId })
   const responseNextArticle = await getArticleByIdAction({ id: nextArticleId })

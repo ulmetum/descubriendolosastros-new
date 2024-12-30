@@ -5,7 +5,7 @@ import { getArticleByIdQuery } from '@/queries/articles.query'
 import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
-  id: z.number(),
+  id: z.string(),
 })
 
 export const getArticleByIdAction = safeAction

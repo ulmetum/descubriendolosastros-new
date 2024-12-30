@@ -39,7 +39,7 @@ const FeatureCard = ({ gradient, children, id }: Props) => {
   )
 }
 
-export const LandingPageCard = ({ id, featuredImage, slug }: CardProps) => {
+export const LandingPageCard = ({ id, featuredImage }: CardProps) => {
   return (
     <FeatureCard
       id={id}

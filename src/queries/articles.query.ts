@@ -179,10 +179,10 @@ export const getArticlesByPageQuery = ({ page }: { page: string }) => {
   )
 }
 
-export const getArticleByIdQuery = ({ id }: { id: number }) => {
+export const getArticleByIdQuery = ({ id }: { id: string }) => {
   return qs.stringify(
     {
-      filters: { id: { $eq: id } },
+      filters: { documentId: { $eq: id } },
       fields: ['title', 'subtitle', 'createdAt', 'slug'],
       sort: ['createdAt:desc'],
       populate: {

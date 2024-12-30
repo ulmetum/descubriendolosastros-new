@@ -117,7 +117,7 @@ const page = async ({ params }: Props) => {
 
   const { dataNextArticle, dataPrevArticle } =
     await getNextAndPrevArticlesAction({
-      currentArticleId: articleBySlug[0].id,
+      currentArticleId: articleBySlug[0].documentId,
     })
 
   return (
@@ -133,9 +133,7 @@ const page = async ({ params }: Props) => {
         socials={social}
       />
       <Container className='min-h-screen px-4 py-16'>
-        <article>
-          <ElementsManager elements={elements} />
-        </article>
+        <ElementsManager elements={elements} />
       </Container>
 
       <Container>
