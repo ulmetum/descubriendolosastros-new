@@ -11,7 +11,7 @@ interface Props {
   children: ReactNode
   classNames?: string
   id: number
-  subtitle?: string
+  type?: string
   slug: string
 }
 
@@ -19,7 +19,7 @@ export const FeatureTitle = ({
   children,
   classNames,
   id,
-  subtitle,
+  type,
   slug,
 }: Props) => {
   const ref = useRef<HTMLParagraphElement>(null)
@@ -59,7 +59,7 @@ export const FeatureTitle = ({
         )}
       >
         {children}
-        {subtitle && (
+        {type && (
           <span
             className={cn(
               'block mt-2 font-headings group-hover:text-primary transition-colors duration-300',
@@ -67,7 +67,7 @@ export const FeatureTitle = ({
             )}
           >
             {' '}
-            - {subtitle} -{' '}
+            - {type} -{' '}
           </span>
         )}
       </p>

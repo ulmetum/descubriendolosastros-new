@@ -21,7 +21,7 @@ export const SectionFeatures = async () => {
               <li key={page.id}>
                 <FeatureTitle
                   slug={page.slug}
-                  subtitle={page.subtitle}
+                  type={page.type}
                   id={index + 1}
                 >
                   {page.title}

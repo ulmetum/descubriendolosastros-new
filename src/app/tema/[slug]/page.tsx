@@ -99,9 +99,13 @@ const ThemePage = async ({ params }: Props) => {
     return null
   }
 
-  const { elements, title, featuredImage, description, subtitle } =
+  const { elements, title, featuredImage, description, type, podcastUrl } =
     landingPagesBySlug[0]
   const imageUrl = featuredImage.url || '/default-image.webp'
+
+  const url =
+    podcastUrl ??
+    'https://www.ivoox.com/podcast-descubriendo-astros_sq_f1795095_1.html'
 
   return (
     <section className=' ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
@@ -126,15 +130,24 @@ const ThemePage = async ({ params }: Props) => {
             <div
               className={cn(
                 'flex items-center',
-                subtitle ? 'justify-between' : 'justify-end'
+                type ? 'justify-between' : 'justify-end'
               )}
             >
-              {subtitle && (
+              {type === 'podcast' ? (
                 <Link
-                  href='#'
+                  href={url}
+                  target='_blank'
                   className='font-headings text-primary hover:underline'
                 >
-                  Accede al {subtitle}
+                  Accede al {type}
+                </Link>
+              ) : (
+                <Link
+                  href='/contacto'
+                  target='_blank'
+                  className='font-headings text-primary hover:underline'
+                >
+                  Adquiere el {type}
                 </Link>
               )}
               <Image
@@ -144,9 +157,6 @@ const ThemePage = async ({ params }: Props) => {
                 height={100}
               />
             </div>
-            {/* <small className='block text-right font-headings text-base text-primary '>
-              Míriam
-            </small> */}
           </div>
         </div>
       </Container>

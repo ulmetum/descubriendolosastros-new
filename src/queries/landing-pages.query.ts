@@ -3,7 +3,14 @@ import qs from 'qs'
 export const getLandingPagesQuery = () => {
   return qs.stringify(
     {
-      fields: ['title', 'description', 'createdAt', 'slug', 'subtitle'],
+      fields: [
+        'title',
+        'description',
+        'createdAt',
+        'slug',
+        'type',
+        'podcastUrl',
+      ],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
@@ -51,7 +58,14 @@ export const getLandingPagesBySlugQuery = ({ slug }: { slug: string }) => {
   return qs.stringify(
     {
       filters: { slug: { $eqi: slug } },
-      fields: ['title', 'description', 'createdAt', 'slug', 'subtitle'],
+      fields: [
+        'title',
+        'description',
+        'createdAt',
+        'slug',
+        'type',
+        'podcastUrl',
+      ],
       sort: ['createdAt:desc'],
       populate: {
         elements: {
