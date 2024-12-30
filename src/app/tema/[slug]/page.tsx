@@ -144,7 +144,6 @@ const ThemePage = async ({ params }: Props) => {
               ) : (
                 <Link
                   href='/contacto'
-                  target='_blank'
                   className='font-headings text-primary hover:underline'
                 >
                   Adquiere el {type}
