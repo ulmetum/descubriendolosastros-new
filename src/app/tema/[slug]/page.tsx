@@ -7,6 +7,8 @@ import { ErrorLandingPages } from '@/errors'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
 import { ElementsManager } from '@/components/article/ElementsManager'
+import { cn } from '@/utils/mergeClass'
+import { Link } from 'next-view-transitions'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -97,12 +99,13 @@ const ThemePage = async ({ params }: Props) => {
     return null
   }
 
-  const { elements, title, featuredImage, description } = landingPagesBySlug[0]
+  const { elements, title, featuredImage, description, subtitle } =
+    landingPagesBySlug[0]
   const imageUrl = featuredImage.url || '/default-image.webp'
 
   return (
     <section className=' ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
-      <Container>
+      <Container className='w-[min(100%,1640px)]  border-b border-primary/25 pb-14'>
         <div className='lg:flex lg:items-center lg:justify-center'>
           <div className='relative lg:w-1/3 min-h-[50vh] '>
             <Image
@@ -112,7 +115,7 @@ const ThemePage = async ({ params }: Props) => {
               className='rounded-lg object-cover  '
             />
           </div>
-          <div className='lg:w-2/3 px-4 py-8 lg:flex lg:flex-col lg:justify-between lg:min-h-[50vh]'>
+          <div className='lg:w-2/3 px-4 pt-8 lg:flex lg:flex-col lg:justify-between lg:min-h-[50vh]'>
             <p className='font-headings text-2xl text-primary '>
               ¿Qué trataremos en este espacio?
             </p>
@@ -120,7 +123,20 @@ const ThemePage = async ({ params }: Props) => {
               <h1 className='lg:text-6xl mb-6 text-primary'>{title}</h1>
               <p>{description}</p>
             </div>
-            <div className='flex justify-end'>
+            <div
+              className={cn(
+                'flex items-center',
+                subtitle ? 'justify-between' : 'justify-end'
+              )}
+            >
+              {subtitle && (
+                <Link
+                  href='#'
+                  className='font-headings text-primary hover:underline'
+                >
+                  Accede al {subtitle}
+                </Link>
+              )}
               <Image
                 src='/miriam-name.svg'
                 alt='Míriam'

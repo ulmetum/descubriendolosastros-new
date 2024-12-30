@@ -24,7 +24,7 @@ export const PhotoArticle = ({
   return (
     <section
       className={cn(
-        'photo-article section-article w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
+        'py-12 w-screen relative min-h-[450px] xl:min-h-[50vh] left-1/2 -translate-x-1/2 flex items-center justify-center ',
         classNames,
         { 'md:justify-start': positionText === 'left' },
         { 'md:justify-end': positionText === 'right' || !positionText }
