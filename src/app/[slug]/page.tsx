@@ -133,7 +133,9 @@ const page = async ({ params }: Props) => {
         socials={social}
       />
       <Container className='min-h-screen px-4 py-16'>
-        <ElementsManager elements={elements} />
+        <article>
+          <ElementsManager elements={elements} />
+        </article>
       </Container>
 
       <Container>

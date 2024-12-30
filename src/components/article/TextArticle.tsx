@@ -5,7 +5,5 @@ interface Props {
 }
 
 export const TextArticle = ({ richText }: Props) => {
-  return (
-    <section className='section-article'>{richText && parse(richText)}</section>
-  )
+  return <section className='py-12 '>{richText && parse(richText)}</section>
 }

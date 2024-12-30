@@ -22,7 +22,7 @@ const componentMap = {
 
 export const ElementsManager = ({ elements }: Props) => {
   return (
-    <article>
+    <div>
       {elements.map((element: Element) => {
         const Component =
           componentMap[element.__component as keyof typeof componentMap]
@@ -34,6 +34,6 @@ export const ElementsManager = ({ elements }: Props) => {
           />
         ) : null
       })}
-    </article>
+    </div>
   )
 }

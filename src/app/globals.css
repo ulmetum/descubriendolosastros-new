@@ -156,10 +156,6 @@
     bottom: -4rem;
   }
 
-  .section-article {
-    @apply px-4 py-12;
-  }
-
   /* Grid para el slider */
   .grid-slider {
     overflow: hidden;

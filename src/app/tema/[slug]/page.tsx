@@ -6,6 +6,7 @@ import { getDataLandingPagesAction } from '@/actions/landing-pages/get-data-land
 import { ErrorLandingPages } from '@/errors'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
+import { ElementsManager } from '@/components/article/ElementsManager'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -103,27 +104,40 @@ const ThemePage = async ({ params }: Props) => {
     <section className=' ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
       <Container>
         <div className='lg:flex lg:items-center lg:justify-center'>
-          <div className='relative lg:w-1/3 h-[50vh] '>
+          <div className='relative lg:w-1/3 min-h-[50vh] '>
             <Image
               src={imageUrl}
               alt='Imagen destacada'
               fill
-              className='rounded-lg'
+              className='rounded-lg object-cover  '
             />
           </div>
-          <div className='lg:w-2/3 px-4 py-8 lg:flex lg:flex-col lg:justify-between h-[50vh]'>
-            <p className='font-headings text-2xl text-primary'>
-              ¿De qué tratará este tema?
+          <div className='lg:w-2/3 px-4 py-8 lg:flex lg:flex-col lg:justify-between lg:min-h-[50vh]'>
+            <p className='font-headings text-2xl text-primary '>
+              ¿Qué trataremos en este espacio?
             </p>
-            <div className='lg:my-auto'>
+            <div className='lg:my-auto max-w-lg:my-10'>
               <h1 className='lg:text-6xl mb-6 text-primary'>{title}</h1>
               <p>{description}</p>
             </div>
-            <p className='lg:text-right font-headings text-xl text-primary underline'>
+            <div className='flex justify-end'>
+              <Image
+                src='/miriam-name.svg'
+                alt='Míriam'
+                width={150}
+                height={100}
+              />
+            </div>
+            {/* <small className='block text-right font-headings text-base text-primary '>
               Míriam
-            </p>
+            </small> */}
           </div>
         </div>
+      </Container>
+      <Container>
+        <article className='max-w-xl:px-4'>
+          <ElementsManager elements={elements} />
+        </article>
       </Container>
     </section>
   )
