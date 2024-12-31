@@ -26,7 +26,6 @@ const products: Product[] = [
 
 const ProductPage = () => {
   const handlePay = async (product: Product) => {
-    console.log('Comprando', product)
     const response = await fetch('/api/checkout', {
       method: 'POST',
       body: JSON.stringify(product),

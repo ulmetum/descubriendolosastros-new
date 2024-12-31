@@ -3,4 +3,5 @@ export const {
   STRAPI_HOST,
   MY_SECRET_TOKEN,
   STRAPI_TOKEN,
+  STRIPE_SECRET_KEY,
 } = process.env
