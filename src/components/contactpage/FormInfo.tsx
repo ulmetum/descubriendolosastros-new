@@ -16,16 +16,9 @@ export const FormInfo = () => {
         solicitar tu Mapa Estelar o tu Carta Astral contactando conmigo a través
         del formulario que verás a continuación:
       </p>
-      {/* <div className='my-10 sm:my-16'>
-        <CopyClipboard color='amber' />
-      </div> */}
-
       <p className='mt-6 text-xl sm:text-2xl'>
         Una vez procesados los datos,{' '}
-        <span className='mt-6 text-xl  sm:text-2xl relative'>
-          previo pago*
-          {/* <span className='text-base absolute -top-1 -right-2'>*</span> */}
-        </span>
+        <span className='mt-6 text-xl  sm:text-2xl relative'>previo pago*</span>
         , procederé a elaborar el producto**.
       </p>
 

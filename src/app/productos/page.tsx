@@ -1,5 +1,8 @@
 'use client'
 
+import { MultiStep } from '@/components/contactpage/MultiStep'
+import { MultiStepProducts } from '@/components/contactpage/MultiStepProducts'
+
 interface Product {
   id: number
   name: string
@@ -39,13 +42,16 @@ const ProductPage = () => {
 
   return (
     <div>
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.price}</p>
-          <button onClick={() => handlePay(product)}>Comprar</button>
-        </div>
-      ))}
+      <div>
+        {products.map((product) => (
+          <div key={product.id}>
+            <h2>{product.name}</h2>
+            <p>{product.price}</p>
+            <button onClick={() => handlePay(product)}>Comprar</button>
+          </div>
+        ))}
+      </div>
+      <MultiStepProducts />
     </div>
   )
 }

@@ -31,29 +31,29 @@ export interface Step {
 export const steps: Step[] = [
   {
     id: 1,
-    name: 'Información del Usuario',
+    name: 'Usuario',
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
-    fields: ['name', 'email', 'address', 'city', 'postalCode', 'product'],
+    fields: ['name', 'email', 'address', 'city', 'postalCode'],
   },
   {
     id: 2,
-    name: 'Mapa Estelar',
-    description: 'Datos del mapa estelar',
+    name: 'Producto',
+    description: 'Información del producto',
     icon: () => <StelarMapContact />,
-    fields: ['event', 'cityEvent', 'dateEvent', 'comments', 'terms'],
+    fields: ['product', 'event', 'cityEvent', 'dateEvent', 'terms'],
   },
   {
     id: 3,
     name: 'Completado',
-    icon: () => <CheckContact />,
     description: 'Formulario completado',
+    icon: () => <CheckContact />,
   },
 ]
 
 type FieldName = keyof FormContact
 
-export const MultiStep = () => {
+export const MultiStepProducts = () => {
   const {
     control,
     register,

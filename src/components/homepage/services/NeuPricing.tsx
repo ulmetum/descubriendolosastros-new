@@ -7,6 +7,33 @@ import { Link } from 'next-view-transitions'
 import { CheckIcon } from '@/components/icons/Check.icon'
 import { cn } from '@/utils/mergeClass'
 
+export const products = [
+  {
+    id: 'ba149034',
+    title: 'Mapa Estelar (20x30)',
+    type: 'small',
+    price: '29',
+  },
+  {
+    id: '82b28685',
+    title: 'Mapa Estelar (30x40)',
+    type: 'big',
+    price: '34',
+  },
+  {
+    id: '7166539e',
+    title: 'Carta Astral ',
+    type: 'Complete',
+    price: '137',
+  },
+  {
+    id: 'd5590ae9',
+    title: 'Carta Astral ',
+    type: 'Simple',
+    price: '108',
+  },
+]
+
 export const NeuPricing = () => {
   const [selected, setSelected] = useState<ToggleOptionsType>('map')
   const [highlighted, setHighlighted] = useState<number>(0)
@@ -135,6 +162,7 @@ const PriceColumn = ({
           { children: 'Lectura General de Carta astral', checked: true },
           { children: 'Especial - Técnicas de yoga', checked: true },
         ]
+
   return (
     <div className={`relative z-10 h-full w-full rounded-lg px-6 py-16 `}>
       <motion.div
@@ -185,7 +213,7 @@ const PriceColumn = ({
               <small>€</small>
             </motion.span>
           </AnimatePresence>
-          <Link href='/contacto'>
+          <Link href='/productos'>
             <motion.p
               layout
               className='absolute bottom-4 right-4 rounded-md bg-dark px-3 py-1.5 font-headings text-2xl leading-tight text-light'
