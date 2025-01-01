@@ -1,56 +1,76 @@
 'use client'
 
-import { MultiStep } from '@/components/contactpage/MultiStep'
 import { MultiStepProducts } from '@/components/contactpage/MultiStepProducts'
 
 interface Product {
-  id: number
+  id: string
   name: string
   price: number
+  type: string
 }
 
-const products: Product[] = [
+// const products: Product[] = [
+//   {
+//     id: 1,
+//     name: 'Product 1',
+//     price: 100,
+//   },
+//   {
+//     id: 2,
+//     name: 'Product 2',
+//     price: 200,
+//   },
+//   {
+//     id: 3,
+//     name: 'Product 3',
+//     price: 300,
+//   },
+// ]
+
+export const products: Product[] = [
   {
-    id: 1,
-    name: 'Product 1',
-    price: 100,
+    id: 'ba149034',
+    name: 'Mapa Estelar (20x30)',
+    type: 'small',
+    price: 29,
   },
   {
-    id: 2,
-    name: 'Product 2',
-    price: 200,
+    id: '82b28685',
+    name: 'Mapa Estelar (30x40)',
+    type: 'big',
+    price: 34,
   },
   {
-    id: 3,
-    name: 'Product 3',
-    price: 300,
+    id: '7166539e',
+    name: 'Carta astral completa',
+    type: 'Complete',
+    price: 137,
+  },
+  {
+    id: 'd5590ae9',
+    name: 'Carta astral simple',
+    type: 'Simple',
+    price: 108,
   },
 ]
 
 const ProductPage = () => {
-  const handlePay = async (product: Product) => {
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      body: JSON.stringify(product),
-      headers: { 'Content-Type': 'application/json' },
-    })
+  // const handlePay = async (productId: string) => {
+  //   const product = products.find((product) => product.id === productId)
 
-    const data = await response.json()
+  //   const response = await fetch('/api/checkout', {
+  //     method: 'POST',
+  //     body: JSON.stringify(product),
+  //     headers: { 'Content-Type': 'application/json' },
+  //   })
 
-    console.log({ data })
-  }
+  //   const data = await response.json()
+
+  //   console.log({ data })
+  // }
 
   return (
     <div>
-      <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.price}</p>
-            <button onClick={() => handlePay(product)}>Comprar</button>
-          </div>
-        ))}
-      </div>
       <MultiStepProducts />
     </div>
   )

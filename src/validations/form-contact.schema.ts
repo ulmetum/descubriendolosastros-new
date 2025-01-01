@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const products = ['map', 'chart', 'both'] as const
+const products = ['ba149034', '82b28685', '7166539e', 'd5590ae9'] as const
 
 // Esquema para el formato fisico (incluye los campos adicionales)
 export const formContactSchema = z.object({
@@ -44,11 +44,6 @@ export const formContactSchema = z.object({
   product: z.enum(products, {
     errorMap: () => ({ message: 'Debes seleccionar un producto' }),
   }),
-  comments: z
-    .string()
-    // .min(1, { message: 'Debe escribir un comentario' })
-    .max(200, { message: 'El contenido no puede superar los 200 caracteres' })
-    .trim(),
 })
 
 export type FormContact = z.infer<typeof formContactSchema>

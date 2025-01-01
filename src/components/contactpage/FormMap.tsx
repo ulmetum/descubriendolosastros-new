@@ -33,6 +33,35 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
         </p>
       </header>
       <div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
+          <label
+            htmlFor='product'
+            className=' block text-sm/6 font-medium text-dark'
+          >
+            Producto
+          </label>
+          <div className='mt-2 '>
+            <select
+              id='product'
+              {...register('product')}
+              className='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+            >
+              <option value=''>Selecciona un producto</option>
+              <option value='ba149034'>Mapa estelar (20x30)</option>
+              <option value='82b28685'>Mapa estelar (30x40)</option>
+              <option value='7166539e'>Carta astral completa</option>
+              <option value='d5590ae9'>Carta astral simple</option>
+            </select>
+
+            {errors.product?.message && (
+              <p className='my-4 w-[max-content] text-base text-primary'>
+                {' - '}
+                {errors.product?.message}
+                {' - '}
+              </p>
+            )}
+          </div>
+        </div>
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='event'
@@ -126,7 +155,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
+        {/* <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='city-event'
             className=' block text-sm/6 font-medium text-dark'
@@ -149,7 +178,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
               {' - '}
             </p>
           )}
-        </div>
+        </div> */}
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <div className='flex items-center gap-2'>
             <div className='inline-flex items-center'>

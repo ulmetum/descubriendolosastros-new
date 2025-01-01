@@ -19,6 +19,7 @@ import {
   FormContact,
   formContactSchema,
 } from '@/validations/form-contact.schema'
+import { products } from '@/app/productos/page'
 
 export interface Step {
   id: number
@@ -85,6 +86,21 @@ export const MultiStepProducts = () => {
     }
   }
 
+  const handlePay = async (productId: string) => {
+    const product = products.find((product) => product.id === productId)
+
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    const data = await response.json()
+
+    console.log({ data })
+    return data
+  }
+
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep((step) => step - 1)
@@ -92,9 +108,14 @@ export const MultiStepProducts = () => {
   }
 
   const processForm: SubmitHandler<FormContact> = async (data) => {
-    await sendFormSafe(data)
+    console.log({ data })
+    console.log('Sending form...')
+    const res = await handlePay(data.product)
 
-    reset()
+    console.log({ res })
+    // await sendFormSafe(data)
+
+    // reset()
   }
 
   return (
