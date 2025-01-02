@@ -19,7 +19,7 @@ const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
     'Fecha del evento': dayjs(data.dateEvent).format(
       'dddd, D [de] MMMM [de] YYYY, HH:mm'
     ),
-    Mensaje: data.comments,
+    // Mensaje: data.comments,
   }
 
   // if (data.formatMap === 'fisico') {

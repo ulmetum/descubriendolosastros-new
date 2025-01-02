@@ -20,6 +20,7 @@ import {
   formContactSchema,
 } from '@/validations/form-contact.schema'
 import { products } from '@/app/productos/page'
+import { redirect } from 'next/navigation'
 
 export interface Step {
   id: number
@@ -98,7 +99,7 @@ export const MultiStepProducts = () => {
     const data = await response.json()
 
     console.log({ data })
-    return data
+    redirect(data.session.url)
   }
 
   const prevStep = () => {
@@ -110,12 +111,12 @@ export const MultiStepProducts = () => {
   const processForm: SubmitHandler<FormContact> = async (data) => {
     console.log({ data })
     console.log('Sending form...')
+    await sendFormSafe(data)
     const res = await handlePay(data.product)
 
     console.log({ res })
-    // await sendFormSafe(data)
 
-    // reset()
+    reset()
   }
 
   return (
