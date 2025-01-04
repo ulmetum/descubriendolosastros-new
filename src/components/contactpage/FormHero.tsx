@@ -14,8 +14,8 @@ export const FormHero = () => {
         <div className='relative flex h-full w-full flex-col items-center justify-center gap-2 bg-cover bg-center bg-no-repeat'>
           <Image
             onLoad={() => setIsShow(true)}
-            src='/contact-hero.webp'
-            alt='hero'
+            src='/hero-contact-image.webp'
+            alt='Hero contact image'
             fill
             className={cn(
               'transition-all duration-[750ms] ease-[var(--transition-ease)]',

@@ -11,13 +11,13 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 import { Calendar } from '@/components/icons/Calendar.icon'
-import { FormContact } from '@/validations/form-contact.schema'
+import { formProducts } from '@/validations/form-products.schema'
 
 interface Props {
-  register: UseFormRegister<FormContact>
-  errors: FieldErrors<FormContact>
+  register: UseFormRegister<formProducts>
+  errors: FieldErrors<formProducts>
   currentStep: number
-  control: Control<FormContact>
+  control: Control<formProducts>
 }
 
 export const FormMap = ({ register, errors, currentStep, control }: Props) => {

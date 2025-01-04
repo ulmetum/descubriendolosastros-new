@@ -16,9 +16,9 @@ import { FormMap } from '@/components/contactpage/FormMap'
 import { FormComplete } from '@/components/contactpage/FormComplete'
 import { sendFormSafe } from '@/actions/send-form.action'
 import {
-  FormContact,
-  formContactSchema,
-} from '@/validations/form-contact.schema'
+  formProducts,
+  formProductsSchema,
+} from '@/validations/form-products.schema'
 import { products } from '@/app/productos/page'
 import { redirect } from 'next/navigation'
 
@@ -53,7 +53,7 @@ export const steps: Step[] = [
   },
 ]
 
-type FieldName = keyof FormContact
+type FieldName = keyof formProducts
 
 export const MultiStepProducts = () => {
   const {
@@ -63,8 +63,8 @@ export const MultiStepProducts = () => {
     reset,
     trigger,
     formState: { errors },
-  } = useForm<FormContact>({
-    resolver: zodResolver(formContactSchema),
+  } = useForm<formProducts>({
+    resolver: zodResolver(formProductsSchema),
   })
 
   const [currentStep, setCurrentStep] = useState(0)
@@ -87,6 +87,12 @@ export const MultiStepProducts = () => {
     }
   }
 
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep((step) => step - 1)
+    }
+  }
+
   const handlePay = async (productId: string) => {
     const product = products.find((product) => product.id === productId)
 
@@ -102,19 +108,13 @@ export const MultiStepProducts = () => {
     redirect(data.session.url)
   }
 
-  const prevStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep((step) => step - 1)
-    }
-  }
-
-  const processForm: SubmitHandler<FormContact> = async (data) => {
+  const processForm: SubmitHandler<formProducts> = async (data) => {
     console.log({ data })
     console.log('Sending form...')
     await sendFormSafe(data)
     const res = await handlePay(data.product)
 
-    console.log({ res })
+    // console.log({ res })
 
     reset()
   }
@@ -133,10 +133,7 @@ export const MultiStepProducts = () => {
           initialStep={initialStep}
           steps={steps}
         />
-        <form
-          className=' '
-          onSubmit={handleSubmit(processForm)}
-        >
+        <form onSubmit={handleSubmit(processForm)}>
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
             style={{ translate: `-${currentStep * 100}%` }}

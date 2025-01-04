@@ -37,20 +37,6 @@ export const products: Product[] = [
 ]
 
 const ProductPage = () => {
-  // const handlePay = async (productId: string) => {
-  //   const product = products.find((product) => product.id === productId)
-
-  //   const response = await fetch('/api/checkout', {
-  //     method: 'POST',
-  //     body: JSON.stringify(product),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   })
-
-  //   const data = await response.json()
-
-  //   console.log({ data })
-  // }
-
   return (
     <div>
       <MultiStepProducts />

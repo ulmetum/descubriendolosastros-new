@@ -16,9 +16,9 @@ import { FormMap } from '@/components/contactpage/FormMap'
 import { FormComplete } from '@/components/contactpage/FormComplete'
 import { sendFormSafe } from '@/actions/send-form.action'
 import {
-  FormContact,
-  formContactSchema,
-} from '@/validations/form-contact.schema'
+  formProducts,
+  formProductsSchema,
+} from '@/validations/form-products.schema'
 
 export interface Step {
   id: number
@@ -51,7 +51,7 @@ export const steps: Step[] = [
   },
 ]
 
-type FieldName = keyof FormContact
+type FieldName = keyof formProducts
 
 export const MultiStep = () => {
   const {
@@ -61,8 +61,8 @@ export const MultiStep = () => {
     reset,
     trigger,
     formState: { errors },
-  } = useForm<FormContact>({
-    resolver: zodResolver(formContactSchema),
+  } = useForm<formProducts>({
+    resolver: zodResolver(formProductsSchema),
   })
 
   const [currentStep, setCurrentStep] = useState(0)
@@ -91,7 +91,7 @@ export const MultiStep = () => {
     }
   }
 
-  const processForm: SubmitHandler<FormContact> = async (data) => {
+  const processForm: SubmitHandler<formProducts> = async (data) => {
     await sendFormSafe(data)
 
     reset()

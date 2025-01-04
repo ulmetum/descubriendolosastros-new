@@ -4,10 +4,10 @@ import { safeAction } from './safeAction'
 import { z } from 'zod'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
-import { formContactSchema } from '@/validations/form-contact.schema'
+import { formProductsSchema } from '@/validations/form-products.schema'
 dayjs.locale('es')
 
-const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
+const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
   const bodyData = {
     Nombre: data.name,
     'Correo electrónico': data.email,
@@ -19,17 +19,7 @@ const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
     'Fecha del evento': dayjs(data.dateEvent).format(
       'dddd, D [de] MMMM [de] YYYY, HH:mm'
     ),
-    // Mensaje: data.comments,
   }
-
-  // if (data.formatMap === 'fisico') {
-  //   return {
-  //     ...bodyData,
-  //     Dirección: data.address,
-  //     Ciudad: data.city,
-  //     'Código postal': data.postalCode,
-  //   }
-  // }
 
   return bodyData
 }
@@ -56,11 +46,11 @@ const sendFormData = async (formData: Record<string, string>) => {
   return json
 }
 
-export const sendFormSafe = safeAction.schema(formContactSchema).action(
+export const sendFormSafe = safeAction.schema(formProductsSchema).action(
   async ({
     parsedInput,
   }: {
-    parsedInput: z.infer<typeof formContactSchema> // Inferir el tipo correctamente
+    parsedInput: z.infer<typeof formProductsSchema> // Inferir el tipo correctamente
   }) => {
     try {
       // Construir los datos del formulario

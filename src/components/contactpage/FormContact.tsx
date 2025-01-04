@@ -1,24 +1,28 @@
-import { formProducts } from '@/validations/form-products.schema'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import {
+  formContact,
+  formContactSchema,
+} from '@/validations/form-contact.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-interface Props {
-  register: UseFormRegister<formProducts>
-  errors: FieldErrors<formProducts>
-  currentStep: number
-}
+export const FormContact = () => {
+  const {
+    control,
+    register,
+    handleSubmit,
+    reset,
+    trigger,
+    formState: { errors },
+  } = useForm<formContact>({
+    resolver: zodResolver(formContactSchema),
+  })
 
-export const FormUserSimple = ({ register, errors, currentStep }: Props) => {
+  const processForm: SubmitHandler<formContact> = async (data) => {
+    console.log({ data })
+  }
   return (
-    <div className='space-y-12 w-full flex-shrink-0'>
-      <header className=' space-y-2 text-center'>
-        <h2 className='text-primary'>Información Personal</h2>
-        <p className='text-lg'>
-          Para poder hacerte llegar el pedido necesito saber algunos datos sobre
-          ti.
-        </p>
-      </header>
-
-      <div>
+    <div>
+      <form onSubmit={handleSubmit(processForm)}>
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='name'
@@ -28,7 +32,6 @@ export const FormUserSimple = ({ register, errors, currentStep }: Props) => {
           </label>
           <div className='mt-2 '>
             <input
-              tabIndex={currentStep === 0 ? 0 : -1}
               placeholder='José Luis Campos Ruíz'
               id='name'
               type='text'
@@ -50,7 +53,7 @@ export const FormUserSimple = ({ register, errors, currentStep }: Props) => {
             htmlFor='email'
             className=' block text-sm/6 font-medium text-dark'
           >
-            Email address
+            Correo electrónico
           </label>
           <div className='mt-2 '>
             <input
@@ -70,7 +73,7 @@ export const FormUserSimple = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
