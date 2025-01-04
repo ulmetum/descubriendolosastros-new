@@ -1,3 +1,5 @@
+'use client'
+
 import {
   formContact,
   formContactSchema,
@@ -72,6 +74,38 @@ export const FormContact = () => {
               </p>
             )}
           </div>
+        </div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
+          <label
+            htmlFor='city-event'
+            className=' block text-sm/6 font-medium text-dark'
+          >
+            Comentario
+          </label>
+          <div className='flex items-center gap-2'>
+            <textarea
+              {...register('message')}
+              id='message'
+              rows={4}
+              className='block w-full resize-none rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-lg text-dark focus:outline-primary focus:ring-sky-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:primary dark:focus:ring-sky-600'
+              placeholder='Escribe aquí tu comentario...'
+            ></textarea>
+          </div>
+          {errors.message?.message && (
+            <p className='my-4 w-[max-content] text-base text-primary'>
+              {' - '}
+              {errors.message?.message}
+              {' - '}
+            </p>
+          )}
+        </div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
+          <button
+            type='submit'
+            className='text-white bg-primary/90 hover:bg-primary focus:ring-4 focus:outline-none tracking-wider rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center  font-headings'
+          >
+            Enviar Mensaje
+          </button>
         </div>
       </form>
     </div>

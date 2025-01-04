@@ -5,7 +5,11 @@ import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useState } from 'react'
 
-export const FormHero = () => {
+export const FormHero = ({
+  image = '/hero-contact-image.webp',
+}: {
+  image?: string
+}) => {
   const [isShow, setIsShow] = useState(false)
 
   return (
@@ -14,7 +18,7 @@ export const FormHero = () => {
         <div className='relative flex h-full w-full flex-col items-center justify-center gap-2 bg-cover bg-center bg-no-repeat'>
           <Image
             onLoad={() => setIsShow(true)}
-            src='/hero-contact-image.webp'
+            src={image}
             alt='Hero contact image'
             fill
             className={cn(
