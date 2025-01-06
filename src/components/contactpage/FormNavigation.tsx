@@ -38,9 +38,7 @@ export const FormNavigation = ({
         layout
         onClick={nextStep}
         className={`${
-          currentStep + 1 > steps.length - 1
-            ? 'pointer-events-none opacity-50'
-            : ''
+          currentStep + 1 > steps.length ? 'pointer-events-none opacity-50' : ''
         } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
         transition={{
           duration: 1.2,
@@ -54,12 +52,12 @@ export const FormNavigation = ({
           transition={{ duration: 0.2 }}
           className='font-headings text-lg text-white'
         >
-          {currentStep + 1 === steps.length - 1
+          {/* {currentStep + 1 === steps.length - 1
             ? 'Completar'
             : currentStep + 1 === steps.length
             ? 'Completado'
-            : 'Siguiente'}
-          {/* {currentStep + 1 === steps.length ? 'Completado' : 'Siguiente'} */}
+            : 'Siguiente'} */}
+          {currentStep + 1 === steps.length ? 'Completar' : 'Siguiente'}
         </motion.span>
       </motion.button>
     </div>

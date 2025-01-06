@@ -54,12 +54,12 @@ export const steps: Step[] = [
       'terms',
     ],
   },
-  {
-    id: 3,
-    name: 'Completado',
-    description: 'Formulario completado',
-    icon: () => <CheckContact />,
-  },
+  // {
+  //   id: 3,
+  //   name: 'Completado',
+  //   description: 'Formulario completado',
+  //   icon: () => <CheckContact />,
+  // },
 ]
 
 type FieldName = keyof formProducts
@@ -92,12 +92,10 @@ export const MultiStepProducts = () => {
 
     const valid = await trigger(fields as FieldName[], { shouldFocus: true })
 
-    console.log({ valid })
-
     if (!valid) return
 
     if (currentStep <= steps.length - 1) {
-      if (currentStep === steps.length - 2) {
+      if (currentStep === steps.length - 1) {
         await handleSubmit(processForm)()
       }
       setCurrentStep((step) => step + 1)
@@ -120,20 +118,16 @@ export const MultiStepProducts = () => {
     })
 
     const data = await response.json()
-
-    console.log({ data })
-    redirect(data.session.url)
+    return { url: data.session.url }
+    // redirect(data.session.url)
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    console.log({ data })
-    console.log('Sending form...')
-    await sendFormSafe(data)
-    // const res = await handlePay(data.product)
-
-    // console.log({ res })
-
+    const res = await sendFormSafe(data)
+    if (res?.serverError) return
+    const { url } = await handlePay(data.product)
     reset()
+    redirect(url)
   }
 
   return (
@@ -153,7 +147,7 @@ export const MultiStepProducts = () => {
         <form onSubmit={handleSubmit(processForm)}>
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
-            style={{ translate: `-${currentStep * 100}%` }}
+            style={{ transform: `translateX(-${currentStep * 100}%)` }}
           >
             {steps.map((step) => (
               <div
@@ -177,7 +171,7 @@ export const MultiStepProducts = () => {
                     selectedProduct={selectedProduct}
                   />
                 )}
-                {step.id === 3 && <FormComplete />}
+                {/* {step.id === 3 && <FormComplete />} */}
               </div>
             ))}
           </div>

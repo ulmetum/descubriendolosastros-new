@@ -31,7 +31,7 @@ const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
     bodyData.Evento = data.event
   }
 
-  console.log({ productName, products })
+  // console.log({ productName, products })
 
   return bodyData
 }
@@ -65,7 +65,7 @@ export const sendFormSafe = safeAction.schema(formProductsSchema).action(
     parsedInput: z.infer<typeof formProductsSchema> // Inferir el tipo correctamente
   }) => {
     try {
-      console.log({ parsedInput })
+      // console.log({ parsedInput })
       // Construir los datos del formulario
       const formData = buildBodyData(parsedInput)
 
@@ -73,9 +73,9 @@ export const sendFormSafe = safeAction.schema(formProductsSchema).action(
       await sendFormData(formData)
 
       // Retornar respuesta exitosa
-      return { name: parsedInput.name }
+      return { success: true, name: parsedInput.name }
     } catch (error) {
-      return { error: (error as Error).message }
+      return { success: false, error: (error as Error).message }
     }
   }
 )
