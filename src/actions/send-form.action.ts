@@ -9,45 +9,29 @@ import { products } from '@/app/productos/data'
 dayjs.locale('es')
 
 const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
-  const product = products.find((product) => product.id === data.product)
-  const productName = product ? product.name : 'Producto no encontrado'
+  const productName =
+    products.find((product) => product.id === data.product)?.name ??
+    'Producto no encontrado'
 
-  console.log({ productName })
-
-  let bodyData = {}
-  if (data.event) {
-    bodyData = {
-      Nombre: data.name,
-      'Correo electrónico': data.email,
-      Ciudad: data.city,
-      'Código postal': data.postalCode,
-      Evento: data.event,
-      producto: productName,
-      'País del Evento': data.countryEvent,
-      'Ciudad del evento': data.cityEvent,
-      'Fecha del evento': dayjs(data.dateEvent).format(
-        'dddd, D [de] MMMM [de] YYYY, HH:mm'
-      ),
-      'Hora del evento': data.timeEvent,
-    }
-  } else {
-    bodyData = {
-      Nombre: data.name,
-      'Correo electrónico': data.email,
-      // Dirección: data.address,
-      Ciudad: data.city,
-      'Código postal': data.postalCode,
-      producto: productName,
-      'País del Evento': data.countryEvent,
-      'Ciudad del evento': data.cityEvent,
-      'Fecha del evento': dayjs(data.dateEvent).format(
-        'dddd, D [de] MMMM [de] YYYY, HH:mm'
-      ),
-      'Hora del evento': data.timeEvent,
-    }
+  const bodyData: Record<string, string> = {
+    Nombre: data.name,
+    'Correo electrónico': data.email,
+    Ciudad: data.city,
+    'Código postal': data.postalCode,
+    producto: productName,
+    'País del Evento': data.countryEvent,
+    'Ciudad del evento': data.cityEvent,
+    'Fecha del evento': dayjs(data.dateEvent).format(
+      'dddd, D [de] MMMM [de] YYYY'
+    ),
+    'Hora del evento': data.timeEvent,
   }
 
-  console.log({ products })
+  if (data.event) {
+    bodyData.Evento = data.event
+  }
+
+  console.log({ productName, products })
 
   return bodyData
 }
