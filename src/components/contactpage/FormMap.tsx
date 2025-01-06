@@ -18,9 +18,19 @@ interface Props {
   errors: FieldErrors<formProducts>
   currentStep: number
   control: Control<formProducts>
+  selectedProduct: string
 }
 
-export const FormMap = ({ register, errors, currentStep, control }: Props) => {
+export const FormMap = ({
+  register,
+  errors,
+  currentStep,
+  control,
+  selectedProduct,
+}: Props) => {
+  const charAstralSelected =
+    selectedProduct === 'ba149034' || selectedProduct === '82b28685'
+
   const handleColor = (time: Date) => {
     return time.getHours() > 12 ? 'text-primary' : 'text-secondary'
   }
@@ -29,7 +39,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
       <header className='space-y-2 text-center'>
         <h2 className='text-primary'>Datos del Mapa Estelar</h2>
         <p className='text-lg'>
-          ¿Qué evento quieres que se vea reflejado en tu mapa estelar?
+          ¿Qué evento quieres que se vea reflejado en tu pedido?
         </p>
       </header>
       <div>
@@ -38,19 +48,39 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
             htmlFor='product'
             className=' block text-sm/6 font-medium text-dark'
           >
-            Producto
+            ¿Qué producto deseas?
           </label>
           <div className='mt-2 '>
             <select
               id='product'
               {...register('product')}
-              className='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+              className='block py-2.5 px-0 w-full text-2xl text-primary font-medium bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
             >
               <option value=''>Selecciona un producto</option>
-              <option value='ba149034'>Mapa estelar (20x30)</option>
-              <option value='82b28685'>Mapa estelar (30x40)</option>
-              <option value='7166539e'>Carta astral completa</option>
-              <option value='d5590ae9'>Carta astral simple</option>
+              <option
+                className='text-dark/60 '
+                value='ba149034'
+              >
+                Mapa estelar (20x30)
+              </option>
+              <option
+                className='text-dark/60 '
+                value='82b28685'
+              >
+                Mapa estelar (30x40)
+              </option>
+              <option
+                className='text-dark/60 '
+                value='7166539e'
+              >
+                Carta astral completa
+              </option>
+              <option
+                className='text-dark/60 '
+                value='d5590ae9'
+              >
+                Carta astral simple
+              </option>
             </select>
 
             {errors.product?.message && (
@@ -63,31 +93,35 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
           </div>
         </div>
 
-        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
-          <label
-            htmlFor='event'
-            className=' block text-sm/6 font-medium text-dark'
-          >
-            Evento
-          </label>
-          <div className='mt-2'>
-            <input
-              tabIndex={currentStep === 1 ? 0 : -1}
-              placeholder='Nacimiento, bautizo, boda...'
-              id='event'
-              type='text'
-              className=' block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
-              {...register('event')}
-            />
-            {errors.event?.message && (
-              <p className='my-4 w-[max-content]  text-base text-primary'>
-                {' - '}
-                {errors.event?.message}
-                {' - '}
-              </p>
-            )}
+        {charAstralSelected && (
+          <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
+            <label
+              htmlFor='event'
+              className=' block text-sm/6 font-medium text-dark'
+            >
+              Evento
+            </label>
+            <div className='mt-2'>
+              <input
+                tabIndex={currentStep === 1 ? 0 : -1}
+                placeholder='Nacimiento, bautizo, boda...'
+                id='event'
+                type='text'
+                className=' block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+                {...register('event')}
+                // value={charAstralSelected && 'Nacimiento'}
+              />
+              {errors.event?.message && (
+                <p className='my-4 w-[max-content]  text-base text-primary'>
+                  {' - '}
+                  {errors.event?.message}
+                  {' - '}
+                </p>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='countryEvent'

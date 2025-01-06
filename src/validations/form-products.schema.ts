@@ -20,13 +20,11 @@ export const formProductsSchema = z.object({
     .string()
     .min(1, 'Debe ingresar una hora') // Asegura que no esté vacío
     .regex(
-      /^([01]\d|2[0-3]):([0-5]\d)$/,
+      /^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$/,
+      // /^([01]\d|2[0-3]):([0-5]\d)$/,
       'Debe ser un tiempo válido en formato HH:mm'
     ),
-  // address: z
-  //   .string()
-  //   .min(1, { message: 'Debe introducir una dirección postal' })
-  //   .min(5, { message: 'La dirección es demasiado corta' }),
+
   city: z
     .string()
     .min(1, { message: 'Debe introducir la ciudad donde vive' })
@@ -37,7 +35,8 @@ export const formProductsSchema = z.object({
   event: z
     .string()
     .min(1, { message: 'Debe escribir el nombre del evento' })
-    .min(5, { message: 'El nombre del evento es demasiado corto' }),
+    .min(5, { message: 'El nombre del evento es demasiado corto' })
+    .optional(),
   cityEvent: z
     .string()
     .min(1, { message: 'Debe escribir la ciudad del evento' }),

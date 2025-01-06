@@ -19,8 +19,8 @@ import {
   formProducts,
   formProductsSchema,
 } from '@/validations/form-products.schema'
-import { products } from '@/app/productos/page'
 import { redirect } from 'next/navigation'
+import { products } from '@/app/productos/data'
 
 export interface Step {
   id: number
@@ -63,6 +63,7 @@ export const steps: Step[] = [
 ]
 
 type FieldName = keyof formProducts
+// type FieldNameWithoutEvent = Exclude<FieldName, 'event'>
 
 export const MultiStepProducts = () => {
   const {
@@ -71,10 +72,14 @@ export const MultiStepProducts = () => {
     handleSubmit,
     reset,
     trigger,
+    watch,
     formState: { errors },
   } = useForm<formProducts>({
+    // Esto permite que solo se validen los campos visibles en el DOM
+    shouldUnregister: true,
     resolver: zodResolver(formProductsSchema),
   })
+  const selectedProduct = watch('product')
 
   const [currentStep, setCurrentStep] = useState(0)
 
@@ -84,7 +89,10 @@ export const MultiStepProducts = () => {
 
   const nextStep = async () => {
     const fields = steps[currentStep]?.fields ?? []
+
     const valid = await trigger(fields as FieldName[], { shouldFocus: true })
+
+    console.log({ valid })
 
     if (!valid) return
 
@@ -121,7 +129,7 @@ export const MultiStepProducts = () => {
     console.log({ data })
     console.log('Sending form...')
     await sendFormSafe(data)
-    const res = await handlePay(data.product)
+    // const res = await handlePay(data.product)
 
     // console.log({ res })
 
@@ -166,6 +174,7 @@ export const MultiStepProducts = () => {
                     errors={errors}
                     currentStep={currentStep}
                     control={control}
+                    selectedProduct={selectedProduct}
                   />
                 )}
                 {step.id === 3 && <FormComplete />}
