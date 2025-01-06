@@ -62,6 +62,7 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
             )}
           </div>
         </div>
+
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label
             htmlFor='event'
@@ -82,6 +83,31 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
               <p className='my-4 w-[max-content]  text-base text-primary'>
                 {' - '}
                 {errors.event?.message}
+                {' - '}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
+          <label
+            htmlFor='countryEvent'
+            className=' block text-sm/6 font-medium text-dark'
+          >
+            País del evento
+          </label>
+          <div className='mt-2'>
+            <input
+              tabIndex={currentStep === 1 ? 0 : -1}
+              placeholder='Suecia, Chile, Japón...'
+              id='countryEvent'
+              type='text'
+              className=' block h-12 w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6'
+              {...register('countryEvent')}
+            />
+            {errors.countryEvent?.message && (
+              <p className='my-4 w-[max-content]  text-base text-primary'>
+                {' - '}
+                {errors.countryEvent?.message}
                 {' - '}
               </p>
             )}
@@ -128,7 +154,6 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
                   <DatePicker
                     showIcon
                     isClearable
-                    showTimeSelect
                     icon={
                       <Calendar classNames='absolute top-1/2 left-1 -translate-y-1/2 h-[1em] w-[1em] text-dark' />
                     }
@@ -154,6 +179,45 @@ export const FormMap = ({ register, errors, currentStep, control }: Props) => {
               </p>
             )}
           </div>
+        </div>
+        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
+          <label
+            htmlFor='timeEvent'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Hora del evento:
+          </label>
+          <div className='relative max-w-40'>
+            <div className='absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none'>
+              <svg
+                className='w-4 h-4 text-primary dark:text-light'
+                aria-hidden='true'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z'
+                  clipRule='evenodd'
+                />
+              </svg>
+            </div>
+            <input
+              {...register('timeEvent')}
+              type='time'
+              id='timeEvent'
+              className=' bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary'
+              required
+            />
+          </div>
+          {errors.timeEvent?.message && (
+            <p className='my-4 w-[max-content] text-base text-primary'>
+              {' - '}
+              {errors.timeEvent?.message}
+              {' - '}
+            </p>
+          )}
         </div>
         {/* <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto '>
           <label

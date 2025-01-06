@@ -12,10 +12,21 @@ export const formProductsSchema = z.object({
     .string()
     .min(1, { message: 'Debe escribir un correo electrónico' })
     .email({ message: 'El correo electrónico no es válido' }),
-  address: z
+  countryEvent: z
     .string()
-    .min(1, { message: 'Debe introducir una dirección postal' })
-    .min(5, { message: 'La dirección es demasiado corta' }),
+    .min(1, { message: 'Debe escribir el país donde ocurrió el evento' }),
+  // timeEvent:z.string(),
+  timeEvent: z
+    .string()
+    .min(1, 'Debe ingresar una hora') // Asegura que no esté vacío
+    .regex(
+      /^([01]\d|2[0-3]):([0-5]\d)$/,
+      'Debe ser un tiempo válido en formato HH:mm'
+    ),
+  // address: z
+  //   .string()
+  //   .min(1, { message: 'Debe introducir una dirección postal' })
+  //   .min(5, { message: 'La dirección es demasiado corta' }),
   city: z
     .string()
     .min(1, { message: 'Debe introducir la ciudad donde vive' })

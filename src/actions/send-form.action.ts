@@ -11,14 +11,16 @@ const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
   const bodyData = {
     Nombre: data.name,
     'Correo electrónico': data.email,
-    Dirección: data.address,
+    // Dirección: data.address,
     Ciudad: data.city,
     'Código postal': data.postalCode,
     Evento: data.event,
+    'País del Evento': data.countryEvent,
     'Ciudad del evento': data.cityEvent,
     'Fecha del evento': dayjs(data.dateEvent).format(
       'dddd, D [de] MMMM [de] YYYY, HH:mm'
     ),
+    'Hora del evento': data.timeEvent,
   }
 
   return bodyData

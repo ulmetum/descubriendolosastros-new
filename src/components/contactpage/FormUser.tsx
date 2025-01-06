@@ -4,7 +4,8 @@ import { FieldErrors, UseFormRegister, UseFormReset } from 'react-hook-form'
 interface Props {
   register: UseFormRegister<formProducts>
   errors: FieldErrors<
-    formProducts & { address?: string; city?: string; postalCode?: string }
+    formProducts & { city?: string; postalCode?: string }
+    // formProducts & { address?: string; city?: string; postalCode?: string }
   >
   currentStep: number
   reset: UseFormReset<formProducts>
@@ -72,7 +73,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
             )}
           </div>
         </div>
-        <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
+        {/* <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='address'
             className=' block text-sm/6 font-medium text-dark'
@@ -96,7 +97,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
               </p>
             )}
           </div>
-        </div>
+        </div> */}
         <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
           <label
             htmlFor='city'
