@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useState } from 'react'
 
-export const FormHero = ({
+export const FormHeroContact = ({
   image = '/hero-contact-image.webp',
 }: {
   image?: string
@@ -22,7 +22,7 @@ export const FormHero = ({
             alt='Hero contact image'
             fill
             className={cn(
-              'transition-all duration-[750ms] ease-[var(--transition-ease)]',
+              'transition-all duration-[750ms] ease-[var(--transition-ease)] object-cover',
               {
                 'opacity-100': isShow,
                 'opacity-0': !isShow,
@@ -48,39 +48,7 @@ export const FormHero = ({
             )}
           >
             <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl overflow-hidden pb-2'>
-              Solicita tu{' '}
-              <span className='inline-block relative leading-none'>
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: '-115%' }}
-                  transition={{
-                    delay: 4,
-                    ease: [0.83, 0, 0.17, 1],
-                    duration: 1,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    repeatDelay: 5,
-                  }}
-                  className='text-light  text-4xl font-headings sm:text-6xl md:text-7xl'
-                >
-                  mapa estelar
-                </motion.div>
-                <motion.div
-                  initial={{ top: '100%' }}
-                  animate={{ top: 0 }}
-                  transition={{
-                    delay: 4,
-                    ease: [0.83, 0, 0.17, 1],
-                    duration: 1,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    repeatDelay: 5,
-                  }}
-                  className='text-light top-full absolute leading-normal text-4xl font-headings sm:text-6xl md:text-7xl'
-                >
-                  carta astral
-                </motion.div>
-              </span>
+              ¿Tienes alguna pregunta?
             </h1>
           </div>
           <div
@@ -93,7 +61,7 @@ export const FormHero = ({
             )}
           >
             <h3 className='text-light text-center'>
-              Descubre tu vínculo con el cosmos
+              Estamos aquí para guiarte en tu viaje hacia las estrellas
             </h3>
           </div>
         </div>

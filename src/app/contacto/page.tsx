@@ -1,6 +1,7 @@
 import { FormContact } from '@/components/contactpage/FormContact'
-import { FormHero } from '@/components/contactpage/FormHero'
+import { FormHeroContact } from '@/components/contactpage/FormHeroContact'
 import { FormInfo } from '@/components/contactpage/FormInfo'
+import { FormInfoContentContact } from '@/components/contactpage/FormInfoContentContact'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -29,8 +30,10 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <section className='mt-[calc(var(--main-header-height)*1.25)] min-h-[100dvh] flex-col flex justify-center w-full pb-16'>
-      <FormHero />
-      <FormInfo />
+      <FormHeroContact image='/image-contact.webp' />
+      <FormInfo>
+        <FormInfoContentContact />
+      </FormInfo>
       <FormContact />
     </section>
   )
