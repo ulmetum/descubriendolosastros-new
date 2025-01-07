@@ -32,8 +32,11 @@ export const formProductsSchema = z.object({
   }),
   event: z
     .string()
-    .min(1, { message: 'Debe escribir el nombre del evento' })
+    .min(1, { message: 'Debe escribir el tipo de evento' })
     .min(5, { message: 'El nombre del evento es demasiado corto' })
+    .max(20, {
+      message: 'La descripción del evento debe tener de max 20 caracteres',
+    })
     .optional(),
   cityEvent: z
     .string()
