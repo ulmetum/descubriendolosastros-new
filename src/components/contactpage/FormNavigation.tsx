@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Step } from '@/components/contactpage/MultiStep'
+import { Step } from '@/components/productspage/MultiStepProducts'
 
 interface Props {
   currentStep: number

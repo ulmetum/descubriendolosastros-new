@@ -1,6 +1,11 @@
 import { z } from 'zod'
 
 export const formContactSchema = z.object({
+  subject: z
+    .string()
+    .min(1, { message: 'Debe escribir un asunto para el mensaje' })
+    .min(5, { message: 'Debe escribir un asunto de al menos 5 caracteres' })
+    .max(50, { message: 'El asunto es demasiado largo' }),
   name: z
     .string()
     .min(1, { message: 'Debe escribir un nombre' })

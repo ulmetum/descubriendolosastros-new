@@ -3,7 +3,7 @@
 import { FormHeroProducts } from '@/components/productspage/FormHeroProducts'
 import { FormInfo } from '@/components/contactpage/FormInfo'
 import { FormInfoContentProducts } from '@/components/productspage/FormInfoContentProducts'
-import { MultiStepProducts } from '@/components/contactpage/MultiStepProducts'
+import { MultiStepProducts } from '@/components/productspage/MultiStepProducts'
 
 const ProductPage = () => {
   return (

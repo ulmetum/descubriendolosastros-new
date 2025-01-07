@@ -47,7 +47,7 @@ export const FormHeroContact = ({
               }
             )}
           >
-            <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl overflow-hidden pb-2'>
+            <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl  pb-2'>
               ¿Tienes alguna pregunta?
             </h1>
           </div>
@@ -61,7 +61,7 @@ export const FormHeroContact = ({
             )}
           >
             <h3 className='text-light text-center'>
-              Estamos aquí para guiarte en tu viaje hacia las estrellas
+              Estoy aquí para guiarte en tu viaje hacia las estrellas
             </h3>
           </div>
         </div>

@@ -57,7 +57,7 @@ export const FormUser = ({ register, errors, currentStep }: Props) => {
           </label>
           <div className='mt-2 '>
             <input
-              placeholder='joseluiscamposruiz@gmail.com'
+              placeholder='joseluiscamposruiz@mail.com'
               id='email'
               type='email'
               autoComplete='email'

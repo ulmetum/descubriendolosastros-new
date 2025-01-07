@@ -8,13 +8,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Components
 import { PersonalInfoContact } from '@/components/icons/PersonalInfoContact.icon'
 import { StelarMapContact } from '@/components/icons/StelarMapContact.icon'
-import { CheckContact } from '@/components/icons/CheckContact.icon'
 import { FormSteps } from '@/components/contactpage/FormSteps'
 import { FormNavigation } from '@/components/contactpage/FormNavigation'
 import { FormUser } from '@/components/contactpage/FormUser'
 import { FormMap } from '@/components/contactpage/FormMap'
-import { FormComplete } from '@/components/contactpage/FormComplete'
-import { sendFormSafe } from '@/actions/send-form.action'
+import { sendFormProductsSafe } from '@/actions/send-form-products.action'
 import {
   formProducts,
   formProductsSchema,
@@ -37,7 +35,6 @@ export const steps: Step[] = [
     description: 'Información del usuario',
     icon: () => <PersonalInfoContact />,
     fields: ['name', 'email', 'city', 'postalCode'],
-    // fields: ['name', 'email', 'address', 'city', 'postalCode'],
   },
   {
     id: 2,
@@ -121,7 +118,7 @@ export const MultiStepProducts = () => {
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    const res = await sendFormSafe(data)
+    const res = await sendFormProductsSafe(data)
     if (res?.serverError) return
     const { url } = await handlePay(data.product)
     reset()
