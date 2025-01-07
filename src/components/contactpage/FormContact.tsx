@@ -9,11 +9,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const FormContact = () => {
   const {
-    control,
     register,
     handleSubmit,
     reset,
-    trigger,
     formState: { errors },
   } = useForm<formContact>({
     resolver: zodResolver(formContactSchema),
@@ -21,6 +19,7 @@ export const FormContact = () => {
 
   const processForm: SubmitHandler<formContact> = async (data) => {
     console.log({ data })
+    reset()
   }
   return (
     <div>

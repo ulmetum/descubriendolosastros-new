@@ -37,7 +37,7 @@ export const FormMap = ({
   return (
     <div className='space-y-12 w-full flex-shrink-0'>
       <header className='space-y-2 text-center'>
-        <h2 className='text-primary'>Datos del Mapa Estelar</h2>
+        <h2 className='text-primary'>Datos del Pedido</h2>
         <p className='text-lg'>
           ¿Qué evento quieres que se vea reflejado en tu pedido?
         </p>

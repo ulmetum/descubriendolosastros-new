@@ -31,7 +31,7 @@ export const FormNavigation = ({
           currentStep === 0 ? 'pointer-events-none opacity-50' : ''
         } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
       >
-        {currentStep === steps.length - 1 ? 'Inicio' : 'Atrás'}
+        Atrás
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}
@@ -52,11 +52,6 @@ export const FormNavigation = ({
           transition={{ duration: 0.2 }}
           className='font-headings text-lg text-white'
         >
-          {/* {currentStep + 1 === steps.length - 1
-            ? 'Completar'
-            : currentStep + 1 === steps.length
-            ? 'Completado'
-            : 'Siguiente'} */}
           {currentStep + 1 === steps.length ? 'Completar' : 'Siguiente'}
         </motion.span>
       </motion.button>

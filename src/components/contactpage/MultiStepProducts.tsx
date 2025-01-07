@@ -41,8 +41,8 @@ export const steps: Step[] = [
   },
   {
     id: 2,
-    name: 'Producto',
-    description: 'Información del producto',
+    name: 'Pedido',
+    description: 'Información del pedido',
     icon: () => <StelarMapContact />,
     fields: [
       'product',
@@ -63,7 +63,6 @@ export const steps: Step[] = [
 ]
 
 type FieldName = keyof formProducts
-// type FieldNameWithoutEvent = Exclude<FieldName, 'event'>
 
 export const MultiStepProducts = () => {
   const {
@@ -119,7 +118,6 @@ export const MultiStepProducts = () => {
 
     const data = await response.json()
     return { url: data.session.url }
-    // redirect(data.session.url)
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
