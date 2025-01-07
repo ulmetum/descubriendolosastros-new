@@ -35,9 +35,8 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    console.log({ data })
-    // const res = await sendFormContactSafe(data)
-    // if (res?.data?.success) setIsSuccess(false)
+    const res = await sendFormContactSafe(data)
+    // if (res?.data?.success) updateIsSuccess()
     updateIsSuccess()
     reset()
   }

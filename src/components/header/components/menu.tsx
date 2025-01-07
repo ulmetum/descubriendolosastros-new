@@ -16,7 +16,9 @@ export function Menu({ menuItems }: Props) {
 
   const menuPaths = menuItems.map((item) => item.url)
   const isPageArticle =
-    !menuPaths.includes(pathname) && !pathname.includes('/tema')
+    !menuPaths.includes(pathname) &&
+    !pathname.includes('/tema') &&
+    !pathname.includes('/completado')
 
   return (
     <ul className='flex justify-end'>

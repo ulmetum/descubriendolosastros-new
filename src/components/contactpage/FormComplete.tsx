@@ -57,7 +57,7 @@ export const FormComplete = ({ updateIsSuccess }: Props) => {
             damping: 10,
           }}
         >
-          Nuevo Mensaje
+          Escribe un nuevo mensaje
         </motion.button>
       </motion.div>
     </div>

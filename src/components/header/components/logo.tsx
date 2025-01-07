@@ -11,7 +11,7 @@ export const Logo = () => {
         duration: 2,
         ease: [0.83, 0, 0.17, 1],
       }}
-      className={`xs:text-3xl slg:text-4xl flex items-center pl-3 text-2xl text-dark`}
+      className={`text-xl slg:text-4xl flex items-center pl-3 sm:text-2xl text-dark`}
     >
       Astros
     </motion.div>
