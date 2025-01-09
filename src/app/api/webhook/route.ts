@@ -1,3 +1,4 @@
+import { products } from '@/app/productos/data'
 import { STRAPI_HOST, STRIPE_SIGNIN_SECRET, TOKEN_PRODUCTS } from '@/config'
 import { stripe } from '@/utils/stripe'
 import dayjs from 'dayjs'
@@ -28,12 +29,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
       const checkoutSessionCompleted = event.data
         .object as Stripe.Checkout.Session
 
-      // console.log('Sesión completada:', checkoutSessionCompleted)
+      console.log({ checkoutSessionCompleted })
 
       // Obtener el PaymentIntent
       const paymentIntentId = checkoutSessionCompleted.payment_intent as string
 
       try {
+        const productId = checkoutSessionCompleted.metadata?.productId
+        const product = products.find((product) => product.id === productId)
         // Recuperar el PaymentIntent primero
         const paymentIntent = await stripe.paymentIntents.retrieve(
           paymentIntentId,
@@ -44,13 +47,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
         const paymentMethod =
           paymentIntent.payment_method as Stripe.PaymentMethod
 
-        const sessionId = checkoutSessionCompleted.id
-
         const timestamp = paymentMethod.created
         const email = paymentMethod.billing_details.email
         const date = dayjs.unix(timestamp).format('YYYY-MM-DD HH:mm:ss')
         const last4 = paymentMethod.card?.last4
         const brand = paymentMethod.card?.brand
+        const productName = product?.name
+        const productPrice = product?.price
 
         await fetch(`${STRAPI_HOST}/api/products`, {
           method: 'POST',
@@ -65,7 +68,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
               lastDigits: last4,
               brand,
               email,
-              sessionId,
+              productName,
+              productPrice,
             },
           }),
         })

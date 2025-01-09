@@ -23,7 +23,7 @@ export const getDataProductsAction = safeAction
     try {
       const session = await stripe.checkout.sessions.retrieve(sessionId)
 
-      console.log({ session })
+      // console.log({ session })
 
       // Validar el session
       if (session.payment_status !== 'paid') {
