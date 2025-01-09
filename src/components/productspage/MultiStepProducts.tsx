@@ -118,8 +118,8 @@ export const MultiStepProducts = () => {
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    const res = await sendFormProductsSafe(data)
-    if (res?.serverError) return
+    // const res = await sendFormProductsSafe(data)
+    // if (res?.serverError) return
     const { url } = await handlePay(data.product)
     reset()
     redirect(url)

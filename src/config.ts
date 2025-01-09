@@ -5,4 +5,5 @@ export const {
   STRAPI_TOKEN,
   STRIPE_SECRET_KEY,
   STRIPE_SIGNIN_SECRET,
+  TOKEN_PRODUCTS,
 } = process.env

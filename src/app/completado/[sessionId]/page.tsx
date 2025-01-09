@@ -1,6 +1,24 @@
+import { getDataProductsAction } from '@/actions/products/get-data-products.action'
 import { SuccessIcon } from '@/components/icons/success.icon'
+import { data } from 'motion/react-client'
 
-const PageSuccess = () => {
+interface Props {
+  params: Promise<{ sessionId: string }>
+}
+
+const PageSuccess = async ({ params }: Props) => {
+  const { sessionId } = await params
+
+  const res = await getDataProductsAction({ sessionId })
+
+  if (res?.serverError) {
+    throw new Error('No se pudieron recuperar los datos')
+  }
+
+  const dataUser = res?.data
+
+  console.log({ dataUser })
+
   return (
     <div className='flex flex-col items-center justify-center min-h-screen gap-4 p-4 md:p-6'>
       <div className='flex flex-col items-center gap-2 text-center'>
@@ -9,9 +27,7 @@ const PageSuccess = () => {
           classNames='text-primary'
         />
         {/* <CircleCheckIcon className='h-12 w-12 text-green-500' /> */}
-        <h1 className='font-semibold text-4xl text-primary'>
-          Payment successful
-        </h1>
+        <h1 className='font-semibold text-4xl text-primary'>Pago realizado</h1>
         <p className='max-w-[678px] mb-8 text-gray-500 text-xl sm:text-2xl'>
           Tu pedido ha sido confirmado y pronto será procesado y enviado.
           ¡Muchas gracias por apoyarme comprando mis productos!
@@ -24,23 +40,29 @@ const PageSuccess = () => {
               <div className='text-lg font-medium text-primary brightness-90'>
                 Pedido:
               </div>
-              <div className='text-lg '>Carta Astral Simple</div>
+              <div className='text-lg '>{dataUser && dataUser.productName}</div>
               <div className='text-lg text-dark border border-dark px-2 rounded-md font-medium'>
                 {' '}
-                108 €{' '}
+                <span>{dataUser && dataUser.productPrice} €</span>{' '}
               </div>
             </div>
             <div className='flex items-center gap-2'>
               <div className='text-lg font-medium text-primary brightness-90'>
                 Fecha:
               </div>
-              <div className='text-lg '>March 28, 2023, 10:32 AM</div>
+              <div className='text-lg '>{dataUser && dataUser.date}</div>
+              {/* <div className='text-lg '>March 28, 2023, 10:32 AM</div> */}
             </div>
             <div className='flex items-center gap-2'>
               <div className='text-lg font-medium text-primary brightness-90'>
                 Método de pago:
               </div>
-              <div className='text-lg '>Visa ending in 4242</div>
+              <div className='text-lg '>
+                <span className='capitalize text-lg'>
+                  {dataUser && dataUser.brand}
+                </span>{' '}
+                acabada en {dataUser && dataUser.last4}
+              </div>
             </div>
           </div>
           <div className='shrink-0 bg-dark/30 h-[1px] w-full my-4 ' />
@@ -49,7 +71,7 @@ const PageSuccess = () => {
               <div className='text-lg font-medium text-primary brightness-90'>
                 Correo Electrónico:
               </div>
-              <div className='text-lg '>sophia@example.com</div>
+              <div className='text-lg '>{dataUser && dataUser.email}</div>
             </div>
             {/* <div className='flex items-center gap-2'>
               <div className='font-medium'>Phone:</div>
