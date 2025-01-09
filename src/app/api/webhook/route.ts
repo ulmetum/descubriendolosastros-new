@@ -46,8 +46,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         const sessionId = checkoutSessionCompleted.id
 
-        console.log({ paymentMethod, checkoutSessionCompleted })
-
         const timestamp = paymentMethod.created
         const email = paymentMethod.billing_details.email
         const date = dayjs.unix(timestamp).format('YYYY-MM-DD HH:mm:ss')

@@ -23,6 +23,13 @@ export const getDataProductsAction = safeAction
     try {
       const session = await stripe.checkout.sessions.retrieve(sessionId)
 
+      console.log({ session })
+
+      // Validar el session
+      if (session.payment_status !== 'paid') {
+        throw new Error('El pago no ha sido completado.')
+      }
+
       // Verifica que el payment_intent sea válido
       if (
         !session.payment_intent ||
@@ -37,12 +44,9 @@ export const getDataProductsAction = safeAction
         }
       )
 
-      console.log({ session })
       const productId = session.metadata?.productId
 
       const product = products.find((product) => product.id === productId)
-
-      console.log({ product })
 
       const paymentMethod = paymentIntent.payment_method as Stripe.PaymentMethod
 
@@ -56,6 +60,10 @@ export const getDataProductsAction = safeAction
 
       return { timestamp, email, date, last4, brand, productName, productPrice }
     } catch (error) {
-      return false
+      return {
+        error: true,
+        message:
+          (error as Error).message || 'No se pudo obtener los datos del pago.',
+      }
     }
   })

@@ -1,6 +1,12 @@
+import { Metadata } from 'next'
 import { getDataProductsAction } from '@/actions/products/get-data-products.action'
 import { SuccessIcon } from '@/components/icons/success.icon'
-import { data } from 'motion/react-client'
+
+export const metadata: Metadata = {
+  title: 'Completado | Descubriendo los astros',
+  description:
+    'Aprende sobre constelaciones, planetas, fenómenos cósmicos y cómo los astros influyen en tu vida. Descubre la magia y ciencia del universo mirando al cielo.',
+}
 
 interface Props {
   params: Promise<{ sessionId: string }>
@@ -17,7 +23,9 @@ const PageSuccess = async ({ params }: Props) => {
 
   const dataUser = res?.data
 
-  console.log({ dataUser })
+  if (!dataUser) {
+    return <h1>No se pudo recuperar la información del pago.</h1>
+  }
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen gap-4 p-4 md:p-6'>
@@ -28,8 +36,10 @@ const PageSuccess = async ({ params }: Props) => {
         />
         {/* <CircleCheckIcon className='h-12 w-12 text-green-500' /> */}
         <h1 className='font-semibold text-4xl text-primary'>Pago realizado</h1>
-        <p className='max-w-[678px] mb-8 text-gray-500 text-xl sm:text-2xl'>
+        <p className='max-w-[768px]  text-gray-500 text-xl sm:text-2xl'>
           Tu pedido ha sido confirmado y pronto será procesado y enviado.
+        </p>
+        <p className='max-w-[768px] mb-8 text-gray-500 text-xl sm:text-2xl'>
           ¡Muchas gracias por apoyarme comprando mis productos!
         </p>
       </div>
@@ -40,17 +50,17 @@ const PageSuccess = async ({ params }: Props) => {
               <div className='text-lg font-medium text-primary brightness-90'>
                 Pedido:
               </div>
-              <div className='text-lg '>{dataUser && dataUser.productName}</div>
+              <div className='text-lg '>{dataUser.productName}</div>
               <div className='text-lg text-dark border border-dark px-2 rounded-md font-medium'>
                 {' '}
-                <span>{dataUser && dataUser.productPrice} €</span>{' '}
+                <span>{dataUser.productPrice} €</span>{' '}
               </div>
             </div>
             <div className='flex items-center gap-2'>
               <div className='text-lg font-medium text-primary brightness-90'>
                 Fecha:
               </div>
-              <div className='text-lg '>{dataUser && dataUser.date}</div>
+              <div className='text-lg '>{dataUser.date}</div>
               {/* <div className='text-lg '>March 28, 2023, 10:32 AM</div> */}
             </div>
             <div className='flex items-center gap-2'>
@@ -58,10 +68,8 @@ const PageSuccess = async ({ params }: Props) => {
                 Método de pago:
               </div>
               <div className='text-lg '>
-                <span className='capitalize text-lg'>
-                  {dataUser && dataUser.brand}
-                </span>{' '}
-                acabada en {dataUser && dataUser.last4}
+                <span className='capitalize text-lg'>{dataUser.brand}</span>{' '}
+                acabada en {dataUser.last4}
               </div>
             </div>
           </div>
@@ -71,7 +79,7 @@ const PageSuccess = async ({ params }: Props) => {
               <div className='text-lg font-medium text-primary brightness-90'>
                 Correo Electrónico:
               </div>
-              <div className='text-lg '>{dataUser && dataUser.email}</div>
+              <div className='text-lg '>{dataUser.email}</div>
             </div>
             {/* <div className='flex items-center gap-2'>
               <div className='font-medium'>Phone:</div>
