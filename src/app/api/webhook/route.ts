@@ -29,7 +29,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       const checkoutSessionCompleted = event.data
         .object as Stripe.Checkout.Session
 
-      console.log({ checkoutSessionCompleted })
+      // console.log({ checkoutSessionCompleted })
 
       // Obtener el PaymentIntent
       const paymentIntentId = checkoutSessionCompleted.payment_intent as string
@@ -55,11 +55,20 @@ export async function POST(req: NextRequest, res: NextResponse) {
         const productName = product?.name
         const productPrice = product?.price
 
-        await fetch(`${STRAPI_HOST}/api/products`, {
+        // console.log({
+        //   timestamp,
+        //   email,
+        //   date,
+        //   last4,
+        //   brand,
+        //   productName,
+        //   productPrice,
+        // })
+
+        const response = await fetch(`${STRAPI_HOST}/api/products`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Accept: 'application/json',
             Authorization: `Bearer ${TOKEN_PRODUCTS}`,
           },
           body: JSON.stringify({
@@ -74,12 +83,18 @@ export async function POST(req: NextRequest, res: NextResponse) {
           }),
         })
 
+        const data = await response.json()
+
+        console.log({ data })
+
         return NextResponse.json(
           {
             date,
             last4,
             brand,
             email,
+            productName,
+            productPrice,
           },
           { status: 200 }
         )
