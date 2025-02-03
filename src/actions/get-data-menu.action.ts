@@ -15,7 +15,7 @@ export const getDataMenuAction = safeAction
 
     const url = `menus?${query}`
 
-    const menu = await fetchData<Menu>(url)
+    const menu = await fetchData<Menu>(url, 'ErrorMenu')
 
     return { menu }
   })

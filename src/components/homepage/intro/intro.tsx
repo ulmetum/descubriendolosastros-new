@@ -30,21 +30,3 @@ export const Intro = () => {
     </div>
   )
 }
-
-// <div className='grid-intro relative mx-auto h-full w-full px-2'>
-//   <IntroBg />
-//   <IntroCosmos />
-//   <div className='mt-[calc(var(--header-height)*2)] hidden [grid-area:image] xl:flex xl:items-center xl:justify-center'>
-//     <IntroImage />
-//   </div>
-//   <div className='mt-[calc(var(--header-height)*2)] [grid-area:content] lg:flex lg:items-start landscape-xl:mt-[calc(var(--header-height)+3rem)]'>
-//     <IntroContent />
-//   </div>
-
-//   <div className='[grid-area:smallContent] lg:flex lg:items-end'>
-//     <IntroSmallContent />
-//   </div>
-//   <div className='[grid-area:title]'>
-//     <IntroTitle />
-//   </div>
-// </div>

@@ -10,7 +10,7 @@ export const getAllArticlesAction = safeAction.action(async () => {
 
   const url = `articles?${query}`
 
-  const articles = await fetchData<Articles>(url)
+  const articles = await fetchData<Articles>(url, 'ErrorArticles')
 
   return { articles }
 })

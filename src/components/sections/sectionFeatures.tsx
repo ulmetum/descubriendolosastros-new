@@ -8,7 +8,12 @@ export const SectionFeatures = async () => {
   const res = await getDataLandingPagesAction()
 
   if (res?.serverError) {
-    return <div>{res.serverError.message}</div>
+    return (
+      <div className='min-h-screen flex flex-col items-center justify-center space-y-4'>
+        <h2>Something went wrong!</h2>
+        <p>{res.serverError}</p>
+      </div>
+    )
   }
 
   const landingPagesData = res?.data?.landingPages.data || []

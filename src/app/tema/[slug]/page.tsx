@@ -90,7 +90,7 @@ const ThemePage = async ({ params }: Props) => {
   // Si se produce un error
   if (res?.serverError) {
     throw new ErrorLandingPages(
-      res?.serverError.message || 'Error al obtener datos de los artículos.'
+      res?.serverError || 'Error al obtener datos de los artículos.'
     )
   }
 

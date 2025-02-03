@@ -14,7 +14,7 @@ export const getDataWriterAction = safeAction
     const query = getDataWriterQuery({ name })
     const url = `writers?${query}`
 
-    const writer = await fetchData<Writers>(url)
+    const writer = await fetchData<Writers>(url, 'ErrorWriter')
 
     return { writer }
   })

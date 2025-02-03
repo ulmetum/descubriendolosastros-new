@@ -14,7 +14,7 @@ export const getArticleByIdAction = safeAction
     const query = getArticleByIdQuery({ id })
     const url = `articles?${query}`
 
-    const article = await fetchData<Articles>(url)
+    const article = await fetchData<Articles>(url, 'ErrorArticles')
 
     return { article }
   })

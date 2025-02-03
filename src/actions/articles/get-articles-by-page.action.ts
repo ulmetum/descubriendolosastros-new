@@ -17,7 +17,7 @@ export const getArticlesByPageAction = safeAction
 
     const url = `articles?${query}`
 
-    const articles = await fetchData<Articles>(url)
+    const articles = await fetchData<Articles>(url, 'ErrorArticles')
 
     return { articles }
   })

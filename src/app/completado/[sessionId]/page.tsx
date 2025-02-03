@@ -18,14 +18,14 @@ const PageSuccess = async ({ params }: Props) => {
   const res = await getDataProductsAction({ sessionId })
 
   if (res?.serverError) {
-    throw new Error('No se pudieron recuperar los datos')
+    return <h1>Error: No se pudieron recuperar los datos</h1>
   }
 
-  const dataUser = res?.data
-
-  if (!dataUser) {
+  if (!res?.data) {
     return <h1>No se pudo recuperar la información del pago.</h1>
   }
+
+  const dataUser = res.data
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen gap-4 p-4 md:p-6'>

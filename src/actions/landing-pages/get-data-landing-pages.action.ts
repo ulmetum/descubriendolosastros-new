@@ -8,7 +8,7 @@ export const getDataLandingPagesAction = safeAction.action(async () => {
 
   const url = `landing-pages?${query}`
 
-  const landingPages = await fetchData<LandingPages>(url)
+  const landingPages = await fetchData<LandingPages>(url, 'ErrorLandingPages')
 
   return { landingPages }
 })

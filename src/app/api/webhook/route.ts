@@ -2,7 +2,7 @@ import { products } from '@/app/productos/data'
 import { STRAPI_HOST, STRIPE_SIGNIN_SECRET, TOKEN_PRODUCTS } from '@/config'
 import { stripe } from '@/utils/stripe'
 import dayjs from 'dayjs'
-import { cookies, headers } from 'next/headers'
+import { headers } from 'next/headers'
 import { NextResponse, NextRequest } from 'next/server'
 import Stripe from 'stripe'
 
@@ -64,6 +64,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
         //   productName,
         //   productPrice,
         // })
+
+        const url = `${STRAPI_HOST}/api/products`
+
+        // console.log({ url })
 
         const response = await fetch(`${STRAPI_HOST}/api/products`, {
           method: 'POST',
