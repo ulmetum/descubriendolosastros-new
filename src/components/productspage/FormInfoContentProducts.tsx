@@ -4,8 +4,8 @@ export const FormInfoContentProducts = () => {
       <p className='text-xl sm:text-2xl'>
         Si quieres conocer cómo era el cielo en ese momento tan especial, o
         quieres conocer qué mensajes tienen para ti las estrellas, puedes
-        solicitar tu Mapa Estelar o tu Carta Astral contactando conmigo a través
-        del formulario que verás a continuación:
+        solicitar tu Mapa Estelar o tu Carta Astral a través del formulario que
+        verás a continuación:
       </p>
       <p className='mt-6 text-xl sm:text-2xl'>
         Una vez procesados los datos,{' '}
@@ -24,7 +24,7 @@ export const FormInfoContentProducts = () => {
         15 días (la Carta Astral) a la dirección de correo electrónico
         facilitada.
       </p>
-      <p className='mt-6 text-xl sm:text-2xl italic'>
+      <p className='mt-6 text-xl sm:text-2xl italic font-semibold underline'>
         Por favor, es muy importante que rellenes correctamente todos los
         campos.
       </p>

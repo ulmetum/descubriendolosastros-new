@@ -13,7 +13,7 @@ export const getDataLandingPagesBySlugAction = safeAction
   .action(async ({ parsedInput: { slug } }) => {
     const query = getLandingPagesBySlugQuery({ slug })
 
-    const url = `landing-page?${query}`
+    const url = `landing-pages?${query}`
 
     const landingPages = await fetchData<LandingPages>(url, 'ErrorLandingPages')
 

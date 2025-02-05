@@ -9,7 +9,7 @@ type ErrorType =
 
 const errorMessages: Record<ErrorType, string> = {
   ErrorLandingPages: 'Hubo un error al obtener los datos de los temas',
-  ErrorMenu: 'Hubo un error al obtener los datos del menú',
+  ErrorMenu: 'Hubo un error al obtener los datos del menú principal del sitio',
   ErrorWriter: 'Hubo un error al obtener los datos del escritor',
   ErrorArticles: 'Hubo un error al obtener los datos de los artículos',
 }
@@ -24,7 +24,9 @@ export async function fetchData<T>(
     },
   })
 
-  if (res.status !== 200 && errorMessages[typeError]) {
+  // console.log({ res })
+
+  if (!res.ok && errorMessages[typeError]) {
     throw new ActionError(errorMessages[typeError])
   }
 

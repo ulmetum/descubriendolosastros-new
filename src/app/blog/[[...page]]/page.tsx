@@ -9,6 +9,7 @@ import { Search } from '@/components/blogpage/Search'
 import { Posts } from '@/components/blogpage/Posts'
 import { wrap } from '@/utils/wrap'
 import { Metadata } from 'next'
+import { CustomError } from '@/components/CustomError'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -59,6 +60,15 @@ const BlogPage = async ({
 
   const res = await getArticlesByPageAction({ page })
 
+  if (res?.serverError) {
+    return (
+      <CustomError
+        classNames='min-h-screen'
+        error={res.serverError}
+      />
+    )
+  }
+
   const pagination = res?.data?.articles?.meta.pagination
   const pageCount = pagination?.pageCount ?? 0
   const numberOfPosts = pagination?.pageSize ?? 0
@@ -69,9 +79,9 @@ const BlogPage = async ({
     max: pageCount,
   })
 
-  if (res?.serverError || !res?.data?.articles?.data) {
-    return redirect('/blog')
-  }
+  // if (res?.serverError || !res?.data?.articles?.data) {
+  //   return redirect('/blog')
+  // }
 
   if (res?.data?.articles.data.length === 0) {
     return redirect(`/blog/${pageCount}`)

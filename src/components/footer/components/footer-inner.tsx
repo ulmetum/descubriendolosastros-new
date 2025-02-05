@@ -23,11 +23,11 @@ export const FooterInner = ({ menuItems, currentYear, socials }: Props) => {
   const y = useTransform(scrollYProgress, [0.65, 1], [250, 0])
 
   return (
-    <div className='relative -top-[100vh] h-[calc(100vh+500px)] w-full px-8'>
+    <div className='relative -top-[100vh] h-[calc(100vh+600px)] w-full px-8'>
       <div className='sticky top-0 flex h-screen items-end'>
         <motion.div
           style={{ y }}
-          className='relative flex h-[500px] w-full flex-col'
+          className='relative flex h-[600px] w-full flex-col'
         >
           <div className='relative z-10 mx-auto flex w-[min(100%,1120px)] justify-between pt-12 md:pt-14'>
             <FooterMenu menuItems={menuItems} />
