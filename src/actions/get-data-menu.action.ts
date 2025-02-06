@@ -5,7 +5,7 @@ import { getMenuQuery } from '@/queries/menu.query'
 import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
-  name: z.string(),
+  name: z.literal('principal'),
 })
 
 export const getDataMenuAction = safeAction

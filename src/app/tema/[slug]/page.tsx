@@ -9,6 +9,8 @@ import Image from 'next/image'
 import { ElementsManager } from '@/components/article/ElementsManager'
 import { cn } from '@/utils/mergeClass'
 import { Link } from 'next-view-transitions'
+import { ImageTheme } from '@/components/themepage/ImageTheme'
+import { HeroTheme } from '@/components/themepage/HeroTheme'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -112,51 +114,14 @@ const ThemePage = async ({ params }: Props) => {
       <Container className='w-[min(100%,1640px)]  border-b border-primary/25 pb-14'>
         <div className='lg:flex lg:items-center lg:justify-center'>
           <div className='relative lg:w-1/3 min-h-[50vh] '>
-            <Image
-              src={imageUrl}
-              alt='Imagen destacada'
-              fill
-              className='rounded-lg object-cover  '
-            />
+            <ImageTheme imageUrl={imageUrl} />
           </div>
-          <div className='lg:w-2/3 px-4 pt-8 lg:flex lg:flex-col lg:justify-between lg:min-h-[50vh]'>
-            <p className='font-headings text-2xl text-primary '>
-              ¿Qué trataremos en este espacio?
-            </p>
-            <div className='lg:my-auto max-w-lg:my-10'>
-              <h1 className='lg:text-6xl mb-6 text-primary'>{title}</h1>
-              <p>{description}</p>
-            </div>
-            <div
-              className={cn(
-                'flex items-center',
-                type ? 'justify-between' : 'justify-end'
-              )}
-            >
-              {type === 'podcast' ? (
-                <Link
-                  href={url}
-                  target='_blank'
-                  className='font-headings text-primary hover:underline'
-                >
-                  Accede al {type}
-                </Link>
-              ) : (
-                <Link
-                  href='/contacto'
-                  className='font-headings text-primary hover:underline'
-                >
-                  Adquiere el {type}
-                </Link>
-              )}
-              <Image
-                src='/miriam-name.svg'
-                alt='Míriam'
-                width={150}
-                height={100}
-              />
-            </div>
-          </div>
+          <HeroTheme
+            description={description}
+            type={type}
+            title={title}
+            url={url}
+          />
         </div>
       </Container>
       <Container>

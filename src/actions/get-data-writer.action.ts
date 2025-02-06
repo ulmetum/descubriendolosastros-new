@@ -5,7 +5,7 @@ import { getDataWriterQuery } from '@/queries/writer.query'
 import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
-  name: z.string(),
+  name: z.literal('miriam'),
 })
 
 export const getDataWriterAction = safeAction

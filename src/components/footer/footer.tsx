@@ -11,14 +11,9 @@ export const Footer = async () => {
 
   if (resMenu?.serverError || resMenu?.data?.menu.data.length === 0)
     return <CustomError error={resMenu.serverError} />
-  // throw new ErrorMenu(
-  //   resMenu?.serverError || 'No se han podido obtener los datos del Menú'
-  // )
+
   if (resWriter?.serverError)
-    throw new ErrorWriter(
-      resWriter?.serverError ||
-        'No se han podido obtener los datos del Escritor'
-    )
+    return <CustomError error={resWriter.serverError} />
 
   const menuItems = resMenu?.data?.menu.data[0].menuElements ?? []
 

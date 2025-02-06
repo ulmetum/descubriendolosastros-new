@@ -9,7 +9,10 @@ export async function Header() {
   if (res?.serverError || res?.data?.menu.data.length === 0) {
     return (
       <header>
-        <CustomError error={res.serverError} />
+        <CustomError
+          classNames='min-h-[var(--main-header-height)]'
+          error={res.serverError}
+        />
       </header>
     )
   }
