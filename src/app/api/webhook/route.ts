@@ -6,7 +6,7 @@ import { headers } from 'next/headers'
 import { NextResponse, NextRequest } from 'next/server'
 import Stripe from 'stripe'
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const body = await req.text()
 
   const headersList = await headers()
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         // console.log({ url })
 
-        const response = await fetch(`${STRAPI_HOST}/api/products`, {
+        const response = await fetch(`${url}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -87,7 +87,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
           }),
         })
 
-        const data = await response.json()
+        console.log({ response })
+
+        // const data = await response.json()
 
         // console.log({ data })
 

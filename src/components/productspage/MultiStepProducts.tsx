@@ -12,7 +12,6 @@ import { FormSteps } from '@/components/contactpage/FormSteps'
 import { FormNavigation } from '@/components/contactpage/FormNavigation'
 import { FormUser } from '@/components/contactpage/FormUser'
 import { FormMap } from '@/components/contactpage/FormMap'
-import { sendFormProductsSafe } from '@/actions/send-form-products.action'
 import {
   formProducts,
   formProductsSchema,

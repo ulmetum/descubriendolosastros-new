@@ -1,8 +1,6 @@
 'use client'
 
 import { MenuElement } from '@/interfaces/menu.interface'
-import { motion } from 'motion/react'
-import { Link } from 'next-view-transitions'
 import { FooterMenuItem } from './footer-menu-item'
 
 interface Props {

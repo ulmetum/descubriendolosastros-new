@@ -1,5 +1,5 @@
-import { Step } from '@/components/contactpage/MultiStep'
 import { cn } from '@/utils/mergeClass'
+import { Step } from '@/components/productspage/MultiStepProducts'
 
 interface Props {
   currentStep: number

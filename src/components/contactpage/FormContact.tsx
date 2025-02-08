@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { sendFormContactSafe } from '@/actions/send-form-contact.action'
+// import { sendFormContactSafe } from '@/actions/send-form-contact.action'
 
 import {
   formContact,
@@ -35,7 +35,8 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    const res = await sendFormContactSafe(data)
+    console.log({ data })
+    // const res = await sendFormContactSafe(data)
     // if (res?.data?.success) updateIsSuccess()
     updateIsSuccess()
     reset()

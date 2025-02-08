@@ -9,6 +9,6 @@ export const safeAction = createSafeActionClient({
       return error.message
     }
 
-    return 'Generic server error action'
+    return 'No se pudieron recuperar los datos del servidor. Inténtalo de nuevo más tarde...'
   },
 })

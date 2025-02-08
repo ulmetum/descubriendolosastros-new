@@ -5,10 +5,7 @@ import { getDataLandingPagesBySlugAction } from '@/actions/landing-pages/get-dat
 import { getDataLandingPagesAction } from '@/actions/landing-pages/get-data-landing-pages.action'
 import { ErrorLandingPages } from '@/errors'
 import { Container } from '@/components/Container'
-import Image from 'next/image'
 import { ElementsManager } from '@/components/article/ElementsManager'
-import { cn } from '@/utils/mergeClass'
-import { Link } from 'next-view-transitions'
 import { ImageTheme } from '@/components/themepage/ImageTheme'
 import { HeroTheme } from '@/components/themepage/HeroTheme'
 

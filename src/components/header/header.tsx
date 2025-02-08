@@ -1,5 +1,3 @@
-import { ErrorMenu } from '@/errors'
-
 import { Navbar } from '@/components/header/components/navbar'
 import { getDataMenuAction } from '@/actions/get-data-menu.action'
 import { CustomError } from '@/components/CustomError'

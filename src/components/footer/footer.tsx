@@ -1,4 +1,3 @@
-import { ErrorMenu, ErrorWriter } from '@/errors'
 import { FooterInner } from '@/components/footer/components/footer-inner'
 import { getDataWriterAction } from '@/actions/get-data-writer.action'
 import { getDataMenuAction } from '@/actions/get-data-menu.action'
