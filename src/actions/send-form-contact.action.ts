@@ -5,6 +5,7 @@ import { z } from 'zod'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
 import { formContactSchema } from '@/validations/form-contact.schema'
+import { ActionError, errorMessages } from '@/errors'
 dayjs.locale('es')
 
 const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
@@ -30,13 +31,11 @@ const sendFormData = async (formData: Record<string, string>) => {
     body: JSON.stringify(formData),
   })
 
-  const json = await result.json()
-
-  if (json.status !== 'success') {
-    throw new Error(
-      'Se ha producido un error en el envío de tu comentario. Por favor, vuelve a intentarlo más tarde o ponte en contacto conmigo directamente a través del correo electrónico'
-    )
+  if (!result.ok && errorMessages['ErrorFormContact']) {
+    throw new ActionError(errorMessages['ErrorFormContact'])
   }
+
+  const json = await result.json()
 
   return json
 }

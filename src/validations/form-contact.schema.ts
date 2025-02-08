@@ -1,4 +1,13 @@
+import { ErrorType } from '@/errors'
 import { z } from 'zod'
+
+const errorTypes = [
+  'ErrorLandingPages',
+  'ErrorMenu',
+  'ErrorWriter',
+  'ErrorArticles',
+  'ErrorFormContact',
+] as const
 
 export const formContactSchema = z.object({
   subject: z
@@ -19,6 +28,7 @@ export const formContactSchema = z.object({
     .min(1, { message: 'Debe escribir un mensaje' })
     .min(5, { message: 'El mensaje es demasiado corto' })
     .max(500, { message: 'El mensaje es demasiado largo' }),
+  typeError: z.enum(errorTypes).optional(),
 })
 
 export type formContact = z.infer<typeof formContactSchema>

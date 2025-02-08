@@ -1,18 +1,5 @@
 import { STRAPI_HOST, STRAPI_TOKEN } from '@/config'
-import { ActionError } from '@/errors'
-
-type ErrorType =
-  | 'ErrorLandingPages'
-  | 'ErrorMenu'
-  | 'ErrorWriter'
-  | 'ErrorArticles'
-
-const errorMessages: Record<ErrorType, string> = {
-  ErrorLandingPages: 'Hubo un error al obtener los datos de los temas',
-  ErrorMenu: 'Hubo un error al obtener los datos del menú principal del sitio',
-  ErrorWriter: 'Hubo un error al obtener los datos del autor',
-  ErrorArticles: 'Hubo un error al obtener los datos de los artículos',
-}
+import { ActionError, errorMessages, ErrorType } from '@/errors'
 
 export async function fetchData<T>(
   url: string,

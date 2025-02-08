@@ -37,10 +37,13 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    const res = await sendFormContactSafe(data)
+    const res = await sendFormContactSafe({
+      ...data,
+      typeError: 'ErrorFormContact',
+    })
     if (!res?.data?.success) {
       toast(
-        <div className='text-dark bg-primary p-4 rounded-lg '>
+        <div className='text-dark bg-primary p-4 rounded-lg w-full '>
           <h3 className=' font-medium text-light '>
             Error al enviar el formulario
           </h3>
