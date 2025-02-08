@@ -10,6 +10,7 @@ import { ScrollTop } from '@/components/ScrollTop'
 import { MagneticButton } from '@/components/MagneticButton'
 import { Footer } from '@/components/footer/footer'
 import { Header } from '@/components/header/header'
+import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://descubriendolosastros.com'),
@@ -52,6 +53,10 @@ export default function RootLayout({
         >
           <ScrollLayout>
             <Header />
+            <Toaster
+              position='top-center'
+              duration={9999999999999}
+            />
             <main className='min-h-[100dvh]'>
               {children}
               <MagneticButton size='sm' />

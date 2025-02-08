@@ -12,6 +12,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { AnimatePresence, motion } from 'motion/react'
 import { FormComplete } from '@/components/contactpage/FormComplete'
+import { sendFormContactSafe } from '@/actions/send-form-contact.action'
+import { toast } from 'sonner'
 
 const variants = {
   hidden: { opacity: 0 },
@@ -35,9 +37,33 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    console.log({ data })
-    // const res = await sendFormContactSafe(data)
-    // if (res?.data?.success) updateIsSuccess()
+    const res = await sendFormContactSafe(data)
+    if (!res?.data?.success) {
+      toast(
+        <div className='text-dark bg-primary p-4 rounded-lg '>
+          <h3 className=' font-medium text-light '>
+            Error al enviar el formulario
+          </h3>
+          <p className='text-lg my-4 text-light'>{res?.data?.error}</p>
+          <div className='flex justify-end'>
+            <button
+              className='bg-light text-primary p-2 rounded-lg '
+              onClick={() => toast.dismiss()}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>,
+        {
+          dismissible: false,
+          classNames: {
+            toast: 'w-[80vw] left-1/2 -translate-x-1/2 p-0 ',
+          },
+        }
+      )
+      // reset()
+      return
+    }
     updateIsSuccess()
     reset()
   }
@@ -159,7 +185,7 @@ export const FormContact = () => {
               <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
                 <button
                   type='submit'
-                  className='text-white bg-primary/90 hover:bg-primary focus:ring-4 focus:outline-none tracking-wider rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center  font-headings'
+                  className='text-white bg-primary/90 hover:bg-primary focus:ring-4 focus:outline-none tracking-wider rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center transition-all font-headings'
                 >
                   Enviar Mensaje
                 </button>
