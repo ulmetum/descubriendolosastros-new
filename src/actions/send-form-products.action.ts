@@ -50,7 +50,7 @@ const sendFormData = async (formData: Record<string, string>) => {
   })
 
   if (!result.ok && errorMessages['ErrorFormContact']) {
-    throw new ActionError(errorMessages['ErrorFormContact'])
+    throw new ActionError(errorMessages['ErrorFormProducts'])
   }
 
   const json = await result.json()
