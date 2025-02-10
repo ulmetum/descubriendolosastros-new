@@ -6,4 +6,5 @@ export const {
   STRIPE_SECRET_KEY,
   STRIPE_SIGNIN_SECRET,
   TOKEN_PRODUCTS,
+  BASE_URL,
 } = process.env
