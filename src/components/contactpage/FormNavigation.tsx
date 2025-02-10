@@ -16,6 +16,7 @@ export const FormNavigation = ({
   initialStep,
   steps,
 }: Props) => {
+  // console.log({ currentStep, lenght: steps.length })
   return (
     <div className='my-14 px-2 flex justify-around '>
       <motion.button
@@ -31,14 +32,14 @@ export const FormNavigation = ({
           currentStep === 0 ? 'pointer-events-none opacity-50' : ''
         } border border-dark/40  rounded-full font-headings py-1.5 px-3.5 text-dark  text-lg`}
       >
-        Atrás
+        {currentStep + 1 === steps.length ? 'Inicio' : 'Atrás'}
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}
         layout
         onClick={nextStep}
         className={`${
-          currentStep + 1 > steps.length ? 'pointer-events-none opacity-50' : ''
+          currentStep > steps.length - 2 ? 'pointer-events-none opacity-50' : ''
         } rounded-full bg-primary py-1.5 px-3.5 font-medium  flex items-center justify-center`}
         transition={{
           duration: 1.2,
@@ -52,7 +53,11 @@ export const FormNavigation = ({
           transition={{ duration: 0.2 }}
           className='font-headings text-lg text-white'
         >
-          {currentStep + 1 === steps.length ? 'Completar' : 'Siguiente'}
+          {currentStep === steps.length - 2
+            ? 'Completar'
+            : currentStep > steps.length - 2
+            ? 'Completado'
+            : 'Siguiente'}
         </motion.span>
       </motion.button>
     </div>

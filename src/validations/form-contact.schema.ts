@@ -1,4 +1,3 @@
-import { ErrorType } from '@/errors'
 import { z } from 'zod'
 
 const errorTypes = [

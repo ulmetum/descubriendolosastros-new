@@ -47,7 +47,12 @@ export const FormContact = () => {
           <h3 className=' font-medium text-light '>
             Error al enviar el formulario
           </h3>
-          <p className='text-lg my-4 text-light'>{res?.data?.error}</p>
+          <div className='my-4 space-y-4'>
+            <p className='text-lg text-light'>{res?.data?.error}</p>
+            <h4 className='text-3xl text-light text-center'>
+              descubriendolosastros@gmail.com
+            </h4>
+          </div>
           <div className='flex justify-end'>
             <button
               className='bg-light text-primary p-2 rounded-lg '

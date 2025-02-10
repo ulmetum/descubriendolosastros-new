@@ -12,12 +12,18 @@ import { FormSteps } from '@/components/contactpage/FormSteps'
 import { FormNavigation } from '@/components/contactpage/FormNavigation'
 import { FormUser } from '@/components/contactpage/FormUser'
 import { FormMap } from '@/components/contactpage/FormMap'
+import { FormProductComplete } from '@/components/contactpage/FormProductComplete'
+import { CheckContact } from '@/components/icons/CheckContact.icon'
+import { toast } from 'sonner'
+
 import {
   formProducts,
   formProductsSchema,
 } from '@/validations/form-products.schema'
 import { redirect } from 'next/navigation'
 import { products } from '@/app/productos/data'
+import { sendFormProductsSafe } from '@/actions/send-form-products.action'
+import { delay } from '@/utils/delay'
 
 export interface Step {
   id: number
@@ -50,12 +56,12 @@ export const steps: Step[] = [
       'terms',
     ],
   },
-  // {
-  //   id: 3,
-  //   name: 'Completado',
-  //   description: 'Formulario completado',
-  //   icon: () => <CheckContact />,
-  // },
+  {
+    id: 3,
+    name: 'Completado',
+    description: 'Formulario completado',
+    icon: () => <CheckContact />,
+  },
 ]
 
 type FieldName = keyof formProducts
@@ -90,8 +96,9 @@ export const MultiStepProducts = () => {
     if (!valid) return
 
     if (currentStep <= steps.length - 1) {
-      if (currentStep === steps.length - 1) {
+      if (currentStep === steps.length - 2) {
         await handleSubmit(processForm)()
+        return
       }
       setCurrentStep((step) => step + 1)
     }
@@ -117,8 +124,41 @@ export const MultiStepProducts = () => {
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    // const res = await sendFormProductsSafe(data)
-    // if (res?.serverError) return
+    const res = await sendFormProductsSafe(data)
+    // console.log({ res })
+    if (!res?.data?.success) {
+      toast(
+        <div className='text-dark bg-primary p-4 rounded-lg w-full '>
+          <h3 className=' font-medium text-light '>
+            Error al enviar el formulario
+          </h3>
+          <div className='my-4 space-y-4'>
+            <p className='text-lg text-light'>{res?.data?.error}</p>
+            <h4 className='text-3xl text-light text-center'>
+              descubriendolosastros@gmail.com
+            </h4>
+          </div>
+          <div className='flex justify-end'>
+            <button
+              className='bg-light text-primary p-2 rounded-lg '
+              onClick={() => toast.dismiss()}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>,
+        {
+          dismissible: false,
+          classNames: {
+            toast: 'w-[80vw] left-1/2 -translate-x-1/2 p-0 ',
+          },
+        }
+      )
+      return
+    }
+    setCurrentStep((step) => step + 1)
+
+    await delay(3000)
     const { url } = await handlePay(data.product)
     reset()
     redirect(url)
@@ -165,7 +205,7 @@ export const MultiStepProducts = () => {
                     selectedProduct={selectedProduct}
                   />
                 )}
-                {/* {step.id === 3 && <FormComplete />} */}
+                {step.id === 3 && <FormProductComplete />}
               </div>
             ))}
           </div>
