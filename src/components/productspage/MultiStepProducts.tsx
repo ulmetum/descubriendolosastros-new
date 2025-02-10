@@ -83,6 +83,7 @@ export const MultiStepProducts = () => {
   const selectedProduct = watch('product')
 
   const [currentStep, setCurrentStep] = useState(0)
+  const [hasErrorSend, setHasErrorSend] = useState(false)
 
   const initialStep = () => {
     setCurrentStep(0)
@@ -130,6 +131,7 @@ export const MultiStepProducts = () => {
     })
     // console.log({ res })
     if (!res?.data?.success) {
+      setHasErrorSend(true)
       toast(
         <div className='text-dark bg-primary p-4 rounded-lg w-full '>
           <h3 className=' font-medium text-light text-center'>
@@ -144,7 +146,10 @@ export const MultiStepProducts = () => {
           <div className='flex justify-center mt-6'>
             <button
               className='bg-light text-primary p-2 rounded-lg text-base w-[20vw]'
-              onClick={() => toast.dismiss()}
+              onClick={() => {
+                toast.dismiss()
+                setHasErrorSend(false)
+              }}
             >
               Cerrar
             </button>
@@ -153,7 +158,7 @@ export const MultiStepProducts = () => {
         {
           dismissible: false,
           classNames: {
-            toast: 'w-[80vw] sm:left-1/2 sm:-translate-x-1/2 p-0',
+            toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
           },
         }
       )
@@ -174,14 +179,21 @@ export const MultiStepProducts = () => {
         steps={steps}
       />
       <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden '>
-        <FormNavigation
-          currentStep={currentStep}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          initialStep={initialStep}
-          steps={steps}
-        />
-        <form onSubmit={handleSubmit(processForm)}>
+        {!hasErrorSend && (
+          <FormNavigation
+            currentStep={currentStep}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            initialStep={initialStep}
+            steps={steps}
+            classNames='mt-14'
+          />
+        )}
+
+        <form
+          className='my-14'
+          onSubmit={handleSubmit(processForm)}
+        >
           <div
             className='flex transition-all duration-1000 ease-[var(--ease)]'
             style={{ transform: `translateX(-${currentStep * 100}%)` }}
@@ -213,13 +225,16 @@ export const MultiStepProducts = () => {
             ))}
           </div>
         </form>
-        <FormNavigation
-          currentStep={currentStep}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          initialStep={initialStep}
-          steps={steps}
-        />
+        {!hasErrorSend && (
+          <FormNavigation
+            currentStep={currentStep}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            initialStep={initialStep}
+            steps={steps}
+            classNames='mb-14'
+          />
+        )}
       </div>
     </div>
   )
