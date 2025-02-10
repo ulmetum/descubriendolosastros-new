@@ -55,7 +55,7 @@ export default function RootLayout({
             <Header />
             <Toaster
               position='top-center'
-              duration={10000}
+              duration={7000}
               // duration={9999999999999}
             />
             <main className='min-h-[100dvh]'>
