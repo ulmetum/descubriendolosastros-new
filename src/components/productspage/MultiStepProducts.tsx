@@ -124,12 +124,15 @@ export const MultiStepProducts = () => {
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    const res = await sendFormProductsSafe(data)
+    const res = await sendFormProductsSafe({
+      ...data,
+      typeError: 'ErrorFormContact',
+    })
     // console.log({ res })
     if (!res?.data?.success) {
       toast(
         <div className='text-dark bg-primary p-4 rounded-lg w-full '>
-          <h3 className=' font-medium text-light '>
+          <h3 className=' font-medium text-light text-center'>
             Error al enviar el formulario
           </h3>
           <div className='my-4 space-y-4'>
@@ -138,9 +141,9 @@ export const MultiStepProducts = () => {
               descubriendolosastros@gmail.com
             </h4>
           </div>
-          <div className='flex justify-end'>
+          <div className='flex justify-center mt-6'>
             <button
-              className='bg-light text-primary p-2 rounded-lg '
+              className='bg-light text-primary p-2 rounded-lg text-base w-[20vw]'
               onClick={() => toast.dismiss()}
             >
               Cerrar
@@ -150,7 +153,7 @@ export const MultiStepProducts = () => {
         {
           dismissible: false,
           classNames: {
-            toast: 'w-[80vw] left-1/2 -translate-x-1/2 p-0 ',
+            toast: 'w-[80vw] sm:left-1/2 sm:-translate-x-1/2 p-0',
           },
         }
       )
