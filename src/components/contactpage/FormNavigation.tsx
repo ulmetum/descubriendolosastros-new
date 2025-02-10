@@ -1,5 +1,8 @@
+'use client'
+
 import { motion } from 'motion/react'
 import { Step } from '@/components/productspage/MultiStepProducts'
+import { cn } from '@/utils/mergeClass'
 
 interface Props {
   currentStep: number
@@ -7,6 +10,7 @@ interface Props {
   prevStep: () => void
   initialStep: () => void
   steps: Step[]
+  classNames?: string
 }
 
 export const FormNavigation = ({
@@ -15,10 +19,11 @@ export const FormNavigation = ({
   prevStep,
   initialStep,
   steps,
+  classNames,
 }: Props) => {
   // console.log({ currentStep, lenght: steps.length })
   return (
-    <div className='my-14 px-2 flex justify-around '>
+    <div className={cn(`px-2 flex justify-around `, classNames)}>
       <motion.button
         whileHover={{ scale: 1.1 }}
         transition={{

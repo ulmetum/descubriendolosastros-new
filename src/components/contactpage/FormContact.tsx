@@ -65,7 +65,7 @@ export const FormContact = () => {
         {
           dismissible: false,
           classNames: {
-            toast: 'w-[80vw] sm:left-1/2 sm:-translate-x-1/2 p-0 ',
+            toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
           },
         }
       )
