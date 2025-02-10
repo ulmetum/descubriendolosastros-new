@@ -120,6 +120,10 @@ export const MultiStepProducts = () => {
       headers: { 'Content-Type': 'application/json' },
     })
 
+    if (!response.ok) {
+      throw new Error('Error al procesar el pago')
+    }
+
     const data = await response.json()
     return { url: data.session.url }
   }
