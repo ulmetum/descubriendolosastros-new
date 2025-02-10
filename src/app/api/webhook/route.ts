@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
 
         // console.log({ url })
 
-        const response = await fetch(`${url}`, {
+        await fetch(`${url}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
