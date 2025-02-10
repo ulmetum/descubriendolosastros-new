@@ -7,6 +7,7 @@ const errorTypes = [
   'ErrorWriter',
   'ErrorArticles',
   'ErrorFormContact',
+  'ErrorFormProducts',
 ] as const
 
 // Esquema para el formato fisico (incluye los campos adicionales)

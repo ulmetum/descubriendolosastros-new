@@ -4,6 +4,7 @@ export type ErrorType =
   | 'ErrorWriter'
   | 'ErrorArticles'
   | 'ErrorFormContact'
+  | 'ErrorFormProducts'
 
 export const errorMessages: Record<ErrorType, string> = {
   ErrorLandingPages: 'Hubo un error al obtener los datos de los temas',
@@ -12,6 +13,8 @@ export const errorMessages: Record<ErrorType, string> = {
   ErrorArticles: 'Hubo un error al obtener los datos de los artículos',
   ErrorFormContact:
     'Se ha producido un error en el envío de tu comentario. Por favor, vuelve a intentarlo más tarde o ponte en contacto conmigo directamente a través del correo electrónico',
+  ErrorFormProducts:
+    'Se ha producido un error en el envío de los datos del pedido. Por favor, vuelve a intentarlo más tarde o ponte en contacto conmigo directamente a través del correo electrónico',
 }
 
 export class ActionError extends Error {
