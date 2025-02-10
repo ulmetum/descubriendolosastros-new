@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/config'
 import { stripe } from '@/utils/stripe'
 import { NextResponse, NextRequest } from 'next/server'
 
@@ -5,9 +6,8 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
 
   const session = await stripe.checkout.sessions.create({
-    success_url: 'http://localhost:3000/completado/{CHECKOUT_SESSION_ID}',
-    // success_url:
-    //   'http://localhost:3000/completado?sessionId={CHECKOUT_SESSION_ID}',
+    success_url: `${BASE_URL}/completado/{CHECKOUT_SESSION_ID}`,
+
     line_items: [
       {
         price_data: {
