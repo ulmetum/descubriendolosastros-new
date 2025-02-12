@@ -7,29 +7,43 @@ import 'dayjs/locale/es' // Importa el idioma español
 import { formProductsSchema } from '@/validations/form-products.schema'
 import { products } from '@/app/productos/data'
 import { ActionError, errorMessages } from '@/errors'
+import { sendEmail } from '@/utils/brevo'
 dayjs.locale('es')
+
+interface BodyData {
+  name: string
+  email: string
+  countryEvent: string
+  timeEvent: string
+  city: string
+  postalCode: string
+  cityEvent: string
+  dateEvent: string
+  terms: boolean
+  product: string
+  event?: string | undefined
+}
 
 const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
   const productName =
     products.find((product) => product.id === data.product)?.name ??
     'Producto no encontrado'
 
-  const bodyData: Record<string, string> = {
-    Nombre: data.name,
-    'Correo electrónico': data.email,
-    Ciudad: data.city,
-    'Código postal': data.postalCode,
-    producto: productName,
-    'País del Evento': data.countryEvent,
-    'Ciudad del evento': data.cityEvent,
-    'Fecha del evento': dayjs(data.dateEvent).format(
-      'dddd, D [de] MMMM [de] YYYY'
-    ),
-    'Hora del evento': data.timeEvent,
+  const bodyData: BodyData = {
+    name: data.name,
+    email: data.email,
+    city: data.city,
+    postalCode: data.postalCode,
+    product: productName,
+    countryEvent: data.countryEvent,
+    cityEvent: data.cityEvent,
+    dateEvent: dayjs(data.dateEvent).format('dddd, D [de] MMMM [de] YYYY'),
+    timeEvent: data.timeEvent,
+    terms: data.terms,
   }
 
   if (data.event) {
-    bodyData.Evento = data.event
+    bodyData.event = data.event
   }
 
   // console.log({ productName, products })
@@ -37,26 +51,26 @@ const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
   return bodyData
 }
 
-const sendFormData = async (formData: Record<string, string>) => {
-  // Realizamos la solicitud para el formato 'fisico'
-  const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-    // const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
+// const sendFormData = async (formData: Record<string, string>) => {
+//   // Realizamos la solicitud para el formato 'fisico'
+//   const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
+//     // const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Accept: 'application/json',
+//     },
+//     body: JSON.stringify(formData),
+//   })
 
-  if (!result.ok && errorMessages['ErrorFormContact']) {
-    throw new ActionError(errorMessages['ErrorFormProducts'])
-  }
+//   if (!result.ok && errorMessages['ErrorFormContact']) {
+//     throw new ActionError(errorMessages['ErrorFormProducts'])
+//   }
 
-  const json = await result.json()
+//   const json = await result.json()
 
-  return json
-}
+//   return json
+// }
 
 export const sendFormProductsSafe = safeAction
   .schema(formProductsSchema)
@@ -71,8 +85,26 @@ export const sendFormProductsSafe = safeAction
         // Construir los datos del formulario
         const formData = buildBodyData(parsedInput)
 
+        await sendEmail({
+          to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
+          templateId: 4, // Plantilla para descubriendolosastros
+          params: {
+            ...formData,
+            website: 'descubriendolosastros.com',
+          },
+        })
+
+        await sendEmail({
+          to: [{ name: formData.name, email: formData.email }],
+          templateId: 1, // Plantilla para usuario
+          params: {
+            ...formData,
+            website: 'descubriendolosastros.com',
+          },
+        })
+
         // Enviar los datos al servidor
-        await sendFormData(formData)
+        // await sendFormData(formData)
 
         // Retornar respuesta exitosa
         return { success: true, name: parsedInput.name }
