@@ -6,38 +6,25 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
 import { formContactSchema } from '@/validations/form-contact.schema'
 import { ActionError, errorMessages } from '@/errors'
+import { sendEmailContact } from '@/utils/brevo'
 dayjs.locale('es')
 
+interface BodyData {
+  subject: string
+  name: string
+  email: string
+  message: string
+}
+
 const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
-  const bodyData: Record<string, string> = {
-    Asunto: data.subject,
-    Nombre: data.name,
-    'Correo electrónico': data.email,
-    Comentario: data.message,
+  const bodyData: BodyData = {
+    subject: data.subject,
+    name: data.name,
+    email: data.email,
+    message: data.message,
   }
 
   return bodyData
-}
-
-const sendFormData = async (formData: Record<string, string>) => {
-  // Realizamos la solicitud para el formato 'fisico'
-  const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-    // const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-
-  if (!result.ok && errorMessages['ErrorFormContact']) {
-    throw new ActionError(errorMessages['ErrorFormContact'])
-  }
-
-  const json = await result.json()
-
-  return json
 }
 
 export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
@@ -51,8 +38,17 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
       // Construir los datos del formulario
       const formData = buildBodyData(parsedInput)
 
-      // Enviar los datos al servidor
-      await sendFormData(formData)
+      await sendEmailContact({
+        to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
+        templateId: 2, // Plantilla para descubriendolosastros
+        params: {
+          subject: formData.subject,
+          email: formData.email,
+          name: formData.name,
+          message: formData.message,
+          website: 'descubriendolosastros.com',
+        },
+      })
 
       // Retornar respuesta exitosa
       return { success: true, name: parsedInput.name }
