@@ -8,12 +8,6 @@ apiInstance.setApiKey(
   API_KEY_BREVO as string
 )
 
-// interface Props {
-//   to: { email: string; name: string }[]
-//   subject: string
-//   htmlContent: string
-// }
-
 interface Props {
   to: { email: string; name: string }[]
   templateId: number
@@ -21,12 +15,7 @@ interface Props {
   params: Record<string, any>
 }
 
-export const sendEmailContact = async ({
-  to,
-  templateId,
-  params,
-  subject,
-}: Props) => {
+export const sendEmail = async ({ to, templateId, params, subject }: Props) => {
   // export const sendEmail = async ({ to, subject, htmlContent }: Props) => {
   try {
     const smtpEmail = new brevo.SendSmtpEmail()
@@ -42,7 +31,7 @@ export const sendEmailContact = async ({
     }
     const response = await apiInstance.sendTransacEmail(smtpEmail)
 
-    console.log('Correo enviado correctamente:', response)
+    // console.log('Correo enviado correctamente:', response)
 
     return response
   } catch (error) {

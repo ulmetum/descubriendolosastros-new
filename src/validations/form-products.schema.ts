@@ -30,7 +30,6 @@ export const formProductsSchema = z.object({
       /^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$/,
       'Debe ser un tiempo válido en formato HH:mm'
     ),
-
   city: z
     .string()
     .min(1, { message: 'Debe introducir la ciudad donde vive' })

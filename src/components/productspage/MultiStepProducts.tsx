@@ -171,9 +171,9 @@ export const MultiStepProducts = () => {
     setCurrentStep((step) => step + 1)
 
     await delay(3000)
-    const { url } = await handlePay(data.product)
+    // const { url } = await handlePay(data.product)
     reset()
-    redirect(url)
+    // redirect(url)
   }
 
   return (

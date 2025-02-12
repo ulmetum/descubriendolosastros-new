@@ -5,8 +5,7 @@ import { z } from 'zod'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
 import { formContactSchema } from '@/validations/form-contact.schema'
-import { ActionError, errorMessages } from '@/errors'
-import { sendEmailContact } from '@/utils/brevo'
+import { sendEmail } from '@/utils/brevo'
 dayjs.locale('es')
 
 interface BodyData {
@@ -38,7 +37,7 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
       // Construir los datos del formulario
       const formData = buildBodyData(parsedInput)
 
-      await sendEmailContact({
+      await sendEmail({
         to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
         templateId: 2, // Plantilla para descubriendolosastros
         params: {
