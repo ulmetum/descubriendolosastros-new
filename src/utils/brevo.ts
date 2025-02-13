@@ -1,5 +1,6 @@
-import { API_KEY_BREVO } from '@/config'
+import { API_KEY_BREVO, CRYPTO_KEY } from '@/config'
 import * as brevo from '@getbrevo/brevo'
+import CryptoJS from 'crypto-js'
 
 const apiInstance = new brevo.TransactionalEmailsApi()
 
@@ -16,11 +17,21 @@ interface Props {
 }
 
 export const sendEmail = async ({ to, templateId, params, subject }: Props) => {
-  // export const sendEmail = async ({ to, subject, htmlContent }: Props) => {
   try {
     const smtpEmail = new brevo.SendSmtpEmail()
+    const customHeader = {
+      name: params.name,
+      email: params.email,
+    }
 
-    // smtpEmail.htmlContent = `<html><body><div>${htmlContent}</div></body></html>`
+    const iv = CryptoJS.lib.WordArray.random(16)
+
+    const encryptedData = CryptoJS.AES.encrypt(
+      JSON.stringify(customHeader),
+      CRYPTO_KEY as string,
+      { iv }
+    ).toString()
+
     smtpEmail.subject = subject
     smtpEmail.templateId = templateId
     smtpEmail.to = to
@@ -29,9 +40,10 @@ export const sendEmail = async ({ to, templateId, params, subject }: Props) => {
       email: 'hola@descubriendolosastros.com',
       name: 'Mirova',
     }
+    smtpEmail.headers = {
+      'X-Mailin-Custom': encryptedData, // Agregar el header personalizado
+    }
     const response = await apiInstance.sendTransacEmail(smtpEmail)
-
-    // console.log('Correo enviado correctamente:', response)
 
     return response
   } catch (error) {

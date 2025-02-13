@@ -33,13 +33,12 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
     parsedInput: z.infer<typeof formContactSchema> // Inferir el tipo correctamente
   }) => {
     try {
-      // console.log({ parsedInput })
       // Construir los datos del formulario
       const formData = buildBodyData(parsedInput)
 
       await sendEmail({
         to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
-        templateId: 2, // Plantilla para descubriendolosastros
+        templateId: 2, // Plantilla para la web descubriendolosastros.com
         params: {
           subject: formData.subject,
           email: formData.email,
