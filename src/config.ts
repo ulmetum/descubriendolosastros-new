@@ -8,4 +8,5 @@ export const {
   TOKEN_PRODUCTS,
   BASE_URL,
   API_KEY_BREVO,
+  CRYPTO_KEY,
 } = process.env
