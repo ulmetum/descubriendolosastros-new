@@ -3,15 +3,11 @@ import { NextResponse, NextRequest } from 'next/server'
 import CryptoJS from 'crypto-js'
 import { sendEmail } from '@/utils/brevo'
 
-interface DataUser {
-  name: string
-  email: string
-}
-
 export async function POST(req: NextRequest) {
   try {
     // Obtener los datos del body (respuesta del webhook de Brevo)
     const data = await req.json()
+    console.log({ data })
 
     const encryptedData = data['X-Mailin-custom']
     const key = CRYPTO_KEY as string
@@ -28,8 +24,10 @@ export async function POST(req: NextRequest) {
     const decryptedData = CryptoJS.AES.decrypt(encryptedData, key).toString(
       CryptoJS.enc.Utf8
     )
-    const dataUser: DataUser = JSON.parse(decryptedData)
-    const { name, email } = dataUser
+    const dataUser = JSON.parse(decryptedData)
+    // const { name, email } = dataUser
+
+    console.log({ dataUser })
 
     // Verifica si tienes datos en el body de la respuesta del webhook
     if (!data) {
@@ -39,15 +37,27 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    if (data.event === 'delivered') {
-      await sendEmail({
-        to: [{ name, email }],
-        templateId: 5, // Plantilla de contestación automática para usuarios del formulario de contacto
-        params: {
-          name: name,
-          website: 'descubriendolosastros.com',
-        },
-      })
+    console.log({ tags: data.tags })
+
+    if (data.event === 'delivered' && data.tags.includes('resend')) {
+      // Se ha enviado un mail desde el formulario de contacto
+      if (data.tags.includes('contact')) {
+        console.log('enviar confirm contact')
+        // await sendEmail({
+        //   type: 'contact',
+        //   action: 'not-resend',
+        //   to: [{ name: dataUser.name, email: dataUser.email }],
+        //   templateId: 5, // Plantilla de contestación automática para usuarios del formulario de contacto
+        //   params: {
+        //     name: dataUser.name,
+        //     website: 'descubriendolosastros.com',
+        //   },
+        // })
+      }
+      // Se ha enviado un mail desde el formulario de productos
+      if (data.tags.includes('products')) {
+        console.log('enviar confirm products')
+      }
     }
 
     // Aquí puedes procesar los datos recibidos por el webhook

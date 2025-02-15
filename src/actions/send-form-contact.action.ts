@@ -37,6 +37,8 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
       const formData = buildBodyData(parsedInput)
 
       await sendEmail({
+        type: 'contact',
+        action: 'resend',
         to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
         templateId: 2, // Plantilla para la web descubriendolosastros.com
         params: {

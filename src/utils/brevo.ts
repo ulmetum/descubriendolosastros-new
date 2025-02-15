@@ -14,14 +14,34 @@ interface Props {
   templateId: number
   subject?: string
   params: Record<string, any>
+  action: 'resend' | 'not-resend'
+  type: 'contact' | 'products'
 }
 
-export const sendEmail = async ({ to, templateId, params, subject }: Props) => {
+export const sendEmail = async ({
+  to,
+  templateId,
+  params,
+  subject,
+  action,
+  type,
+}: Props) => {
   try {
     const smtpEmail = new brevo.SendSmtpEmail()
-    const customHeader = {
+    const customHeader: Record<string, any> = {
       name: params.name,
       email: params.email,
+    }
+
+    if (type === 'products') {
+      customHeader['city'] = params.city
+      customHeader['postalCode'] = params.postalCode
+      customHeader['product'] = params.product
+      customHeader['countryEvent'] = params.countryEvent
+      customHeader['cityEvent'] = params.cityEvent
+      customHeader['dateEvent'] = params.dateEvent
+      customHeader['timeEvent'] = params.timeEvent
+      customHeader['event'] = params.event
     }
 
     const iv = CryptoJS.lib.WordArray.random(16)
@@ -35,13 +55,14 @@ export const sendEmail = async ({ to, templateId, params, subject }: Props) => {
     smtpEmail.subject = subject
     smtpEmail.templateId = templateId
     smtpEmail.to = to
+    smtpEmail.tags = [action, type]
     smtpEmail.params = params
     smtpEmail.sender = {
       email: 'hola@descubriendolosastros.com',
-      name: 'Mirova',
+      name: 'Míriam',
     }
     smtpEmail.headers = {
-      'X-Mailin-Custom': encryptedData, // Agregar el header personalizado
+      'X-Mailin-Custom': encryptedData,
     }
     const response = await apiInstance.sendTransacEmail(smtpEmail)
 
