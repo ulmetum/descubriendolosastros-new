@@ -14,7 +14,7 @@ interface Props {
   templateId: number
   subject?: string
   params: Record<string, any>
-  action: 'resend' | 'not-resend'
+  action: 'respond' | 'not-respond'
   type: 'contact' | 'products'
 }
 
@@ -23,7 +23,7 @@ export const sendEmail = async ({
   templateId,
   params,
   subject,
-  action, // Indica si se debe reenviar o no el correo tras recibir una respuesta del webhook
+  action, // Indica si se debe enviar un correo de respuesta automática tras recibir una respuesta del webhook
   type, // El tipo de formulario que se envía
 }: Props) => {
   try {

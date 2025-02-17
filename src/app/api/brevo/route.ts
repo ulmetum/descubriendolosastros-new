@@ -33,12 +33,12 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    if (data.event === 'delivered' && data.tags.includes('resend')) {
+    if (data.event === 'delivered' && data.tags.includes('respond')) {
       // Se ha enviado un mail desde el formulario de contacto
       if (data.tags.includes('contact')) {
         await sendEmail({
           type: 'contact',
-          action: 'not-resend',
+          action: 'not-respond', // No se debe enviar un correo de respuesta automática
           to: [{ name: dataUser.name, email: dataUser.email }],
           templateId: 5, // Plantilla de contestación automática para usuarios del formulario de contacto
           params: {
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
       if (data.tags.includes('products')) {
         await sendEmail({
           type: 'products',
-          action: 'not-resend',
+          action: 'not-respond', // No se debe enviar un correo de respuesta automática
           to: [{ name: dataUser.name, email: dataUser.email }],
           templateId: 1, // Plantilla de contestación automática para usuarios del formulario de contacto
           params: {
@@ -60,9 +60,6 @@ export async function POST(req: NextRequest) {
         })
       }
     }
-
-    // Aquí puedes procesar los datos recibidos por el webhook
-    // console.log('Webhook recibido:', data)
 
     // Si quieres enviar una respuesta al webhook de Brevo (dependiendo de lo que espera Brevo)
     return NextResponse.json(

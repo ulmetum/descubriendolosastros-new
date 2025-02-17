@@ -38,7 +38,7 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
 
       await sendEmail({
         type: 'contact',
-        action: 'resend',
+        action: 'respond', // Se debe enviar un coreo de respuesta automática
         to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
         templateId: 2, // Plantilla para la web descubriendolosastros.com
         params: {

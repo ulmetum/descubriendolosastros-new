@@ -63,7 +63,7 @@ export const sendFormProductsSafe = safeAction
 
         await sendEmail({
           type: 'products',
-          action: 'resend',
+          action: 'respond', // Se debe enviar un coreo de respuesta automática
           to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
           templateId: 4, // Plantilla para descubriendolosastros
           params: {
