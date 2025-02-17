@@ -7,7 +7,6 @@ export async function POST(req: NextRequest) {
   try {
     // Obtener los datos del body (respuesta del webhook de Brevo)
     const data = await req.json()
-    console.log({ data })
 
     const encryptedData = data['X-Mailin-custom']
     const key = CRYPTO_KEY as string
@@ -25,9 +24,6 @@ export async function POST(req: NextRequest) {
       CryptoJS.enc.Utf8
     )
     const dataUser = JSON.parse(decryptedData)
-    // const { name, email } = dataUser
-
-    // console.log({ dataUser })
 
     // Verifica si tienes datos en el body de la respuesta del webhook
     if (!data) {
@@ -37,12 +33,9 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // console.log({ tags: data.tags })
-
     if (data.event === 'delivered' && data.tags.includes('resend')) {
       // Se ha enviado un mail desde el formulario de contacto
       if (data.tags.includes('contact')) {
-        // console.log('enviar confirm contact')
         await sendEmail({
           type: 'contact',
           action: 'not-resend',
@@ -56,7 +49,6 @@ export async function POST(req: NextRequest) {
       }
       // Se ha enviado un mail desde el formulario de productos
       if (data.tags.includes('products')) {
-        // console.log('enviar confirm products')
         await sendEmail({
           type: 'products',
           action: 'not-resend',
