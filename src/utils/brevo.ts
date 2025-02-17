@@ -23,8 +23,8 @@ export const sendEmail = async ({
   templateId,
   params,
   subject,
-  action,
-  type,
+  action, // Indica si se debe reenviar o no el correo tras recibir una respuesta del webhook
+  type, // El tipo de formulario que se envía
 }: Props) => {
   try {
     const smtpEmail = new brevo.SendSmtpEmail()
