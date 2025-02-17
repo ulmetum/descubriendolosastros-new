@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const dataUser = JSON.parse(decryptedData)
     // const { name, email } = dataUser
 
-    console.log({ dataUser })
+    // console.log({ dataUser })
 
     // Verifica si tienes datos en el body de la respuesta del webhook
     if (!data) {
@@ -37,26 +37,35 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    console.log({ tags: data.tags })
+    // console.log({ tags: data.tags })
 
     if (data.event === 'delivered' && data.tags.includes('resend')) {
       // Se ha enviado un mail desde el formulario de contacto
       if (data.tags.includes('contact')) {
-        console.log('enviar confirm contact')
-        // await sendEmail({
-        //   type: 'contact',
-        //   action: 'not-resend',
-        //   to: [{ name: dataUser.name, email: dataUser.email }],
-        //   templateId: 5, // Plantilla de contestación automática para usuarios del formulario de contacto
-        //   params: {
-        //     name: dataUser.name,
-        //     website: 'descubriendolosastros.com',
-        //   },
-        // })
+        // console.log('enviar confirm contact')
+        await sendEmail({
+          type: 'contact',
+          action: 'not-resend',
+          to: [{ name: dataUser.name, email: dataUser.email }],
+          templateId: 5, // Plantilla de contestación automática para usuarios del formulario de contacto
+          params: {
+            name: dataUser.name,
+            website: 'descubriendolosastros.com',
+          },
+        })
       }
       // Se ha enviado un mail desde el formulario de productos
       if (data.tags.includes('products')) {
-        console.log('enviar confirm products')
+        // console.log('enviar confirm products')
+        await sendEmail({
+          type: 'products',
+          action: 'not-resend',
+          to: [{ name: dataUser.name, email: dataUser.email }],
+          templateId: 1, // Plantilla de contestación automática para usuarios del formulario de contacto
+          params: {
+            ...dataUser,
+          },
+        })
       }
     }
 

@@ -20,8 +20,10 @@ export const FormHeroContact = ({
             src={image}
             alt='Hero contact image'
             fill
+            placeholder='blur'
+            blurDataURL={image}
             className={cn(
-              'transition-all duration-[750ms] ease-[var(--transition-ease)] object-cover',
+              'transition-all  duration-[750ms] ease-[var(--transition-ease)] object-cover',
               {
                 'opacity-100': isShow,
                 'opacity-0': !isShow,

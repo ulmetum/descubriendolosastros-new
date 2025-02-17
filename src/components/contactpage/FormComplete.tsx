@@ -33,7 +33,7 @@ export const FormComplete = ({ updateIsSuccess }: Props) => {
           alt='astronaut'
           width={400}
           height={400}
-          className='mx-auto'
+          className='mx-auto w-[400px] h-[400px]'
         />
       </motion.div>
       <motion.div
