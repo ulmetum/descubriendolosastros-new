@@ -46,31 +46,8 @@ const buildBodyData = (data: z.infer<typeof formProductsSchema>) => {
     bodyData.event = data.event
   }
 
-  // console.log({ productName, products })
-
   return bodyData
 }
-
-// const sendFormData = async (formData: Record<string, string>) => {
-//   // Realizamos la solicitud para el formato 'fisico'
-//   const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-//     // const result = await fetch('https://formcarry.com/s/etL-VYlEn3t', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Accept: 'application/json',
-//     },
-//     body: JSON.stringify(formData),
-//   })
-
-//   if (!result.ok && errorMessages['ErrorFormContact']) {
-//     throw new ActionError(errorMessages['ErrorFormProducts'])
-//   }
-
-//   const json = await result.json()
-
-//   return json
-// }
 
 export const sendFormProductsSafe = safeAction
   .schema(formProductsSchema)
@@ -81,7 +58,6 @@ export const sendFormProductsSafe = safeAction
       parsedInput: z.infer<typeof formProductsSchema> // Inferir el tipo correctamente
     }) => {
       try {
-        // console.log({ parsedInput })
         // Construir los datos del formulario
         const formData = buildBodyData(parsedInput)
 
@@ -95,18 +71,6 @@ export const sendFormProductsSafe = safeAction
             website: 'descubriendolosastros.com',
           },
         })
-
-        // await sendEmail({
-        //   to: [{ name: formData.name, email: formData.email }],
-        //   templateId: 1, // Plantilla para usuario
-        //   params: {
-        //     ...formData,
-        //     website: 'descubriendolosastros.com',
-        //   },
-        // })
-
-        // Enviar los datos al servidor
-        // await sendFormData(formData)
 
         // Retornar respuesta exitosa
         return { success: true, name: parsedInput.name }
