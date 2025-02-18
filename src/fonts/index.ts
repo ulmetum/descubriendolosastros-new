@@ -1,13 +1,13 @@
 import { Oswald, Merriweather_Sans, Shadows_Into_Light } from 'next/font/google'
 
-export const merriweather = Merriweather_Sans({
+export const fontBody = Merriweather_Sans({
   subsets: ['latin'],
   weight: ['300', '400'],
   variable: '--font-body',
   display: 'fallback',
 })
 
-export const oswald = Oswald({
+export const fontHeadings = Oswald({
   subsets: ['latin'],
   weight: ['400', '300'],
   variable: '--font-headings',

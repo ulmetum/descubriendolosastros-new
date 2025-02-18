@@ -3,7 +3,7 @@ import './globals.css'
 import { ViewTransitions } from 'next-view-transitions'
 
 // Fuentes
-import { oswald, merriweather } from '@/fonts'
+import { fontHeadings, fontBody } from '@/fonts'
 
 import { ScrollLayout } from '@/layouts/ScrollLayout'
 import { ScrollTop } from '@/components/ScrollTop'
@@ -49,7 +49,7 @@ export default function RootLayout({
       <html lang='en'>
         <ScrollTop />
         <body
-          className={`${oswald.variable} ${merriweather.variable} antialiased`}
+          className={`${fontHeadings.variable} ${fontBody.variable} antialiased`}
         >
           <ScrollLayout>
             <Header />
