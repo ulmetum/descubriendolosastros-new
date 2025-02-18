@@ -86,14 +86,14 @@ const page = async ({ params }: Props) => {
 
   const res = await getArticleBySlugAction({ slug })
 
-  const articleBySlug = res?.data?.article.data
-
   // Si se produce un error
   if (res?.serverError) {
     throw new ErrorArticle(
       res?.serverError || 'Error al obtener datos de los artículos.'
     )
   }
+
+  const articleBySlug = res?.data?.article.data
 
   // Si no hay datos de artículos por slug
   if (!articleBySlug || articleBySlug.length === 0) {
