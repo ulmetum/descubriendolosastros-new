@@ -1,4 +1,4 @@
-export interface BodyData {
+export interface BodyDataContact {
   subject: string
   name: string
   email: string
