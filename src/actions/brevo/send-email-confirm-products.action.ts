@@ -7,7 +7,7 @@ import { formProductsSchema } from '@/validations/form-products.schema'
 import { sendEmail } from '@/utils/brevo'
 import { buildBodyDataProducts } from '@/utils/buildBodyDataProducts'
 
-export const sendEmailConfirmProductAction = safeAction
+export const sendEmailConfirmProductsAction = safeAction
   .schema(formProductsSchema)
   .action(
     async ({
