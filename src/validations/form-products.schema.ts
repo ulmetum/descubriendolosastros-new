@@ -1,14 +1,14 @@
 import { z } from 'zod'
 
 const products = ['ba149034', '82b28685', '7166539e', 'd5590ae9'] as const
-const errorTypes = [
-  'ErrorLandingPages',
-  'ErrorMenu',
-  'ErrorWriter',
-  'ErrorArticles',
-  'ErrorFormContact',
-  'ErrorFormProducts',
-] as const
+// const errorTypes = [
+//   'ErrorLandingPages',
+//   'ErrorMenu',
+//   'ErrorWriter',
+//   'ErrorArticles',
+//   'ErrorFormContact',
+//   'ErrorFormProducts',
+// ] as const
 
 // Esquema para el formato fisico (incluye los campos adicionales)
 export const formProductsSchema = z.object({

@@ -1,12 +1,12 @@
 import { z } from 'zod'
 
-const errorTypes = [
-  'ErrorLandingPages',
-  'ErrorMenu',
-  'ErrorWriter',
-  'ErrorArticles',
-  'ErrorFormContact',
-] as const
+// const errorTypes = [
+//   'ErrorLandingPages',
+//   'ErrorMenu',
+//   'ErrorWriter',
+//   'ErrorArticles',
+//   'ErrorFormContact',
+// ] as const
 
 export const formContactSchema = z.object({
   subject: z
