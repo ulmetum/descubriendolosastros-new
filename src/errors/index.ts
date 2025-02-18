@@ -23,12 +23,6 @@ export class ActionError extends Error {
     this.name = 'ActionError'
   }
 }
-export class ErrorImage extends Error {
-  constructor(message: string) {
-    super(message)
-    this.name = 'ErrorImage'
-  }
-}
 
 export class ErrorMenu extends Error {
   constructor(message: string) {
