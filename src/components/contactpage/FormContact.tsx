@@ -12,7 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { AnimatePresence, motion } from 'motion/react'
 import { FormComplete } from '@/components/contactpage/FormComplete'
-import { sendFormContactSafe } from '@/actions/send-form-contact.action'
+import { sendFormContactAction } from '@/actions/send-form-contact.action'
 import { toast } from 'sonner'
 
 const variants = {
@@ -37,42 +37,40 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    const res = await sendFormContactSafe({
-      ...data,
-      typeError: 'ErrorFormContact',
-    })
+    await sendFormContactAction(data)
 
-    if (!res?.data?.success) {
-      toast(
-        <div className='text-dark bg-primary p-4 rounded-lg w-full '>
-          <h3 className='font-medium text-light text-center'>
-            Error al enviar el formulario
-          </h3>
-          <div className='my-4 space-y-4'>
-            <p className='text-lg text-light'>{res?.data?.error}</p>
-            <h4 className='text-3xl text-light text-center'>
-              descubriendolosastros@gmail.com
-            </h4>
-          </div>
-          <div className='flex justify-center mt-6'>
-            <button
-              className='bg-light text-primary p-2 rounded-lg w-[20vw] text-base'
-              onClick={() => toast.dismiss()}
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>,
-        {
-          dismissible: false,
-          classNames: {
-            toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
-          },
-        }
-      )
-      // reset()
-      return
-    }
+    // if (!res?.data?.success) {
+    //   toast(
+    //     <div className='text-dark bg-primary p-4 rounded-lg w-full '>
+    //       <h3 className='font-medium text-light text-center'>
+    //         Error al enviar el formulario
+    //       </h3>
+    //       <div className='my-4 space-y-4'>
+    //         <p className='text-lg text-light'>{res?.data?.error}</p>
+    //         <h4 className='text-3xl text-light text-center'>
+    //           descubriendolosastros@gmail.com
+    //         </h4>
+    //       </div>
+    //       <div className='flex justify-center mt-6'>
+    //         <button
+    //           className='bg-light text-primary p-2 rounded-lg w-[20vw] text-base'
+    //           onClick={() => toast.dismiss()}
+    //         >
+    //           Cerrar
+    //         </button>
+    //       </div>
+    //     </div>,
+    //     {
+    //       dismissible: false,
+    //       classNames: {
+    //         toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
+    //       },
+    //     }
+    //   )
+    //   // reset()
+    //   return
+    // }
+
     updateIsSuccess()
     reset()
   }

@@ -30,7 +30,7 @@ export const formContactSchema = z.object({
   terms: z.boolean().refine((value) => value === true, {
     message: 'Debes aceptar los términos y condiciones',
   }),
-  typeError: z.enum(errorTypes).optional(),
+  // typeError: z.enum(errorTypes).optional(),
 })
 
 export type formContact = z.infer<typeof formContactSchema>
