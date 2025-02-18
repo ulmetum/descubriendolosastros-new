@@ -2,29 +2,13 @@
 
 import { safeAction } from './safeAction'
 import { z } from 'zod'
-import dayjs from 'dayjs'
-import 'dayjs/locale/es' // Importa el idioma español
 import { formContactSchema } from '@/validations/form-contact.schema'
 import { sendEmail } from '@/utils/brevo'
+import { buildBodyDataContact } from '@/utils/buildBodyDataContact'
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/es' // Importa el idioma español
 dayjs.locale('es')
-
-interface BodyData {
-  subject: string
-  name: string
-  email: string
-  message: string
-}
-
-const buildBodyData = (data: z.infer<typeof formContactSchema>) => {
-  const bodyData: BodyData = {
-    subject: data.subject,
-    name: data.name,
-    email: data.email,
-    message: data.message,
-  }
-
-  return bodyData
-}
 
 export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
   async ({
@@ -34,7 +18,7 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
   }) => {
     try {
       // Construir los datos del formulario
-      const formData = buildBodyData(parsedInput)
+      const formData = buildBodyDataContact(parsedInput)
 
       await sendEmail({
         type: 'contact',
@@ -42,10 +26,7 @@ export const sendFormContactSafe = safeAction.schema(formContactSchema).action(
         to: [{ name: 'Míriam', email: 'descubriendolosastros@gmail.com' }],
         templateId: 2, // Plantilla para la web descubriendolosastros.com
         params: {
-          subject: formData.subject,
-          email: formData.email,
-          name: formData.name,
-          message: formData.message,
+          ...formData,
           website: 'descubriendolosastros.com',
         },
       })
