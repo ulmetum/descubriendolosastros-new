@@ -1,6 +1,6 @@
 'use server'
 
-import { safeAction } from './safeAction'
+import { safeAction } from '../safeAction'
 import { z } from 'zod'
 import { formContactSchema } from '@/validations/form-contact.schema'
 import { sendEmail } from '@/utils/brevo'
@@ -10,7 +10,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/es' // Importa el idioma español
 dayjs.locale('es')
 
-export const sendFormContactAction = safeAction
+export const sendEmailContactAction = safeAction
   .schema(formContactSchema)
   .action(
     async ({

@@ -22,8 +22,8 @@ import {
 } from '@/validations/form-products.schema'
 import { redirect } from 'next/navigation'
 import { products } from '@/app/productos/data'
-import { sendEmailProductsAction } from '@/actions/send-email-products.action'
-import { sendEmailConfirmProductsAction } from '@/actions/brevo/send-email-confirm-products.action'
+import { sendEmailProductsAction } from '@/actions/brevo/send-email-products.action'
+import { sendEmailResponseProductsAction } from '@/actions/brevo/send-email-response-products.action'
 
 export interface Step {
   id: number
@@ -184,7 +184,7 @@ export const MultiStepProducts = () => {
       return
     }
 
-    await sendEmailConfirmProductsAction(data)
+    await sendEmailResponseProductsAction(data)
 
     reset()
     redirect(url)

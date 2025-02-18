@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-// import { sendFormContactSafe } from '@/actions/send-form-contact.action'
 
 import {
   formContact,
@@ -12,8 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { AnimatePresence, motion } from 'motion/react'
 import { FormComplete } from '@/components/contactpage/FormComplete'
-import { sendFormContactAction } from '@/actions/send-form-contact.action'
-import { toast } from 'sonner'
+import { sendEmailContactAction } from '@/actions/brevo/send-email-contact.action'
 
 const variants = {
   hidden: { opacity: 0 },
@@ -37,7 +35,7 @@ export const FormContact = () => {
   }
 
   const processForm: SubmitHandler<formContact> = async (data) => {
-    await sendFormContactAction(data)
+    await sendEmailContactAction(data)
 
     // if (!res?.data?.success) {
     //   toast(
