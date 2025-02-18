@@ -22,8 +22,8 @@ import {
 } from '@/validations/form-products.schema'
 import { redirect } from 'next/navigation'
 import { products } from '@/app/productos/data'
-import { sendFormProductsSafe } from '@/actions/send-form-products.action'
-import { delay } from '@/utils/delay'
+import { sendEmailProductsAction } from '@/actions/send-email-products.action'
+import { sendEmailConfirmProductAction } from '@/actions/brevo/send-email-confirm-products.action'
 
 export interface Step {
   id: number
@@ -114,66 +114,80 @@ export const MultiStepProducts = () => {
   const handlePay = async (productId: string) => {
     const product = products.find((product) => product.id === productId)
 
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      body: JSON.stringify(product),
-      headers: { 'Content-Type': 'application/json' },
-    })
-
-    if (!response.ok) {
-      throw new Error('Error al procesar el pago')
+    if (!product) {
+      throw new Error('Producto no encontrado') // Esto está bien
     }
 
-    const data = await response.json()
-    return { url: data.session.url }
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        body: JSON.stringify(product),
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      const data = await response.json()
+
+      if (data.error) {
+        throw new Error(data.error || 'Error desconocido en el pago')
+      }
+
+      return { url: data.session.url as string }
+    } catch (error) {
+      return {
+        error,
+      }
+    }
   }
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
-    const res = await sendFormProductsSafe({
-      ...data,
-      typeError: 'ErrorFormContact',
-    })
-    // console.log({ res })
-    if (!res?.data?.success) {
-      setHasErrorSend(true)
-      toast(
-        <div className='text-dark bg-primary p-4 rounded-lg w-full '>
-          <h3 className=' font-medium text-light text-center'>
-            Error al enviar el formulario
-          </h3>
-          <div className='my-4 space-y-4'>
-            <p className='text-lg text-light'>{res?.data?.error}</p>
-            <h4 className='text-3xl text-light text-center'>
-              descubriendolosastros@gmail.com
-            </h4>
-          </div>
-          <div className='flex justify-center mt-6'>
-            <button
-              className='bg-light text-primary p-2 rounded-lg text-base w-[20vw]'
-              onClick={() => {
-                toast.dismiss()
-                setHasErrorSend(false)
-              }}
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>,
-        {
-          dismissible: false,
-          classNames: {
-            toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
-          },
-        }
-      )
-      return
-    }
+    await sendEmailProductsAction(data)
+    // if (!res?.data?.success) {
+    //   setHasErrorSend(true)
+    //   toast(
+    //     <div className='text-dark bg-primary p-4 rounded-lg w-full '>
+    //       <h3 className=' font-medium text-light text-center'>
+    //         Error al enviar el formulario
+    //       </h3>
+    //       <div className='my-4 space-y-4'>
+    //         <p className='text-lg text-light'>{res?.data?.error}</p>
+    //         <h4 className='text-3xl text-light text-center'>
+    //           descubriendolosastros@gmail.com
+    //         </h4>
+    //       </div>
+    //       <div className='flex justify-center mt-6'>
+    //         <button
+    //           className='bg-light text-primary p-2 rounded-lg text-base w-[20vw]'
+    //           onClick={() => {
+    //             toast.dismiss()
+    //             setHasErrorSend(false)
+    //           }}
+    //         >
+    //           Cerrar
+    //         </button>
+    //       </div>
+    //     </div>,
+    //     {
+    //       dismissible: false,
+    //       classNames: {
+    //         toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
+    //       },
+    //     }
+    //   )
+    //   return
+    // }
+
     setCurrentStep((step) => step + 1)
 
-    await delay(3000)
-    // const { url } = await handlePay(data.product)
+    const { url, error } = await handlePay(data.product)
+    if (error || !url) {
+      console.log({ error })
+      return
+    }
+
+    await sendEmailConfirmProductAction(data)
+
     reset()
-    // redirect(url)
+    redirect(url)
   }
 
   return (

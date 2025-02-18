@@ -49,15 +49,15 @@ export async function POST(req: NextRequest) {
       }
       // Se ha enviado un mail desde el formulario de productos
       if (data.tags.includes('products')) {
-        await sendEmail({
-          type: 'products',
-          action: 'not-respond', // No se debe enviar un correo de respuesta automática
-          to: [{ name: dataUser.name, email: dataUser.email }],
-          templateId: 1, // Plantilla de contestación automática para usuarios del formulario de contacto
-          params: {
-            ...dataUser,
-          },
-        })
+        // await sendEmail({
+        //   type: 'products',
+        //   action: 'not-respond', // No se debe enviar un correo de respuesta automática
+        //   to: [{ name: dataUser.name, email: dataUser.email }],
+        //   templateId: 1, // Plantilla de contestación automática para usuarios del formulario de contacto
+        //   params: {
+        //     ...dataUser,
+        //   },
+        // })
       }
     }
 

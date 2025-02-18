@@ -62,7 +62,7 @@ export const formProductsSchema = z.object({
   product: z.enum(products, {
     errorMap: () => ({ message: 'Debes seleccionar un producto' }),
   }),
-  typeError: z.enum(errorTypes).optional(),
+  // typeError: z.enum(errorTypes).optional(),
 })
 
 export type formProducts = z.infer<typeof formProductsSchema>

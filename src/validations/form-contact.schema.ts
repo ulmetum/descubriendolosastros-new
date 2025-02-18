@@ -27,10 +27,10 @@ export const formContactSchema = z.object({
     .min(1, { message: 'Debe escribir un mensaje' })
     .min(5, { message: 'El mensaje es demasiado corto' })
     .max(350, { message: 'El mensaje es demasiado largo' }),
-  typeError: z.enum(errorTypes).optional(),
   terms: z.boolean().refine((value) => value === true, {
     message: 'Debes aceptar los términos y condiciones',
   }),
+  typeError: z.enum(errorTypes).optional(),
 })
 
 export type formContact = z.infer<typeof formContactSchema>
