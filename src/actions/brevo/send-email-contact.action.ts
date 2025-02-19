@@ -36,7 +36,15 @@ export const sendEmailContactAction = safeAction
         // Retornar respuesta exitosa
         return { success: true, name: parsedInput.name }
       } catch (error) {
-        return { success: false, error: (error as Error).message }
+        console.error('Error al enviar el correo de contacto:', error)
+
+        return {
+          success: false,
+          error:
+            error instanceof Error
+              ? error.message
+              : 'Ha ocurrido un error desconocido al enviar el correo.',
+        }
       }
     }
   )

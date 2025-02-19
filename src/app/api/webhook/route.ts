@@ -17,9 +17,15 @@ export async function POST(req: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, sign, STRIPE_SIGNIN_SECRET!)
   } catch (error) {
-    console.log('Error verificando la firma:', error)
+    console.error('❌ Error verificando la firma del webhook:', error)
+
     return NextResponse.json(
-      { error: (error as Error).message },
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Error desconocido al verificar la firma.',
+      },
       { status: 400 }
     )
   }
@@ -28,8 +34,6 @@ export async function POST(req: NextRequest) {
     case 'checkout.session.completed':
       const checkoutSessionCompleted = event.data
         .object as Stripe.Checkout.Session
-
-      // console.log({ checkoutSessionCompleted })
 
       // Obtener el PaymentIntent
       const paymentIntentId = checkoutSessionCompleted.payment_intent as string
@@ -55,19 +59,7 @@ export async function POST(req: NextRequest) {
         const productName = product?.name
         const productPrice = product?.price
 
-        // console.log({
-        //   timestamp,
-        //   email,
-        //   date,
-        //   last4,
-        //   brand,
-        //   productName,
-        //   productPrice,
-        // })
-
         const url = `${STRAPI_HOST}/api/products`
-
-        // console.log({ url })
 
         await fetch(`${url}`, {
           method: 'POST',
@@ -87,12 +79,6 @@ export async function POST(req: NextRequest) {
           }),
         })
 
-        // console.log({ response })
-
-        // const data = await response.json()
-
-        // console.log({ data })
-
         return NextResponse.json(
           {
             date,
@@ -107,14 +93,26 @@ export async function POST(req: NextRequest) {
 
         // Guardar en la base de datos, enviar correos, etc.
       } catch (error) {
-        console.log('Error recuperando el PaymentIntent:', error)
+        console.error(
+          '❌ Error recuperando el PaymentIntent o enviando datos a Strapi:',
+          error
+        )
+
+        return NextResponse.json(
+          {
+            error:
+              error instanceof Error
+                ? error.message
+                : 'No se pudo recuperar el PaymentIntent o enviar los datos.',
+          },
+          { status: 500 }
+        )
       }
 
       break
 
     default:
-      console.log('Evento no manejado:', event.type)
-      break
+      console.warn('⚠️ Evento no manejado:', event.type)
   }
 
   return NextResponse.json('ok', { status: 200 })

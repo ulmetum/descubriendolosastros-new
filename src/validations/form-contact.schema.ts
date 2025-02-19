@@ -1,13 +1,5 @@
 import { z } from 'zod'
 
-// const errorTypes = [
-//   'ErrorLandingPages',
-//   'ErrorMenu',
-//   'ErrorWriter',
-//   'ErrorArticles',
-//   'ErrorFormContact',
-// ] as const
-
 export const formContactSchema = z.object({
   subject: z
     .string()
@@ -30,7 +22,6 @@ export const formContactSchema = z.object({
   terms: z.boolean().refine((value) => value === true, {
     message: 'Debes aceptar los términos y condiciones',
   }),
-  // typeError: z.enum(errorTypes).optional(),
 })
 
 export type formContact = z.infer<typeof formContactSchema>

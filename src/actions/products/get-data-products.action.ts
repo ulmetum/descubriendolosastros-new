@@ -60,10 +60,14 @@ export const getDataProductsAction = safeAction
 
       return { timestamp, email, date, last4, brand, productName, productPrice }
     } catch (error) {
+      console.error('Error al obtener los datos del pago:', error)
+
       return {
         error: true,
         message:
-          (error as Error).message || 'No se pudo obtener los datos del pago.',
+          error instanceof Error
+            ? error.message
+            : 'No se pudo obtener los datos del pago debido a un error desconocido.',
       }
     }
   })

@@ -29,7 +29,18 @@ export const sendEmailResponseProductsAction = safeAction
         })
         return { success: true, name: parsedInput.name }
       } catch (error) {
-        return { success: false, error: (error as Error).message }
+        console.error(
+          'Error al enviar la respuesta del formulario de productos:',
+          error
+        )
+
+        return {
+          success: false,
+          error:
+            error instanceof Error
+              ? error.message
+              : 'Ha ocurrido un error desconocido al enviar la respuesta.',
+        }
       }
     }
   )
