@@ -4,19 +4,41 @@ import { ListOfPosts } from '@/components/blogpage/ListOfPost'
 import { notFound } from 'next/navigation'
 
 export const Posts = async ({ page }: { page: string }) => {
-  const [resultByPage, resultAllArticles] = await Promise.all([
+  // const [resultByPage, resultAllArticles] = await Promise.all([
+  //   getArticlesByPageAction({ page }),
+  //   getAllArticlesAction(),
+  // ])
+
+  // if (resultByPage?.serverError || resultAllArticles?.serverError) {
+  //   notFound()
+  //   return null
+  // }
+
+  // const articlesByPage = resultByPage?.data?.articles.data
+  // const meta = resultByPage?.data?.articles.meta
+  // const allArticles = resultAllArticles?.data?.articles.data
+
+  const results = await Promise.allSettled([
     getArticlesByPageAction({ page }),
     getAllArticlesAction(),
   ])
 
-  if (resultByPage?.serverError || resultAllArticles?.serverError) {
+  const [resultByPage, resultAllArticles] = results
+
+  const hasError =
+    resultByPage.status === 'rejected' ||
+    resultAllArticles.status === 'rejected' ||
+    resultByPage.value?.serverError ||
+    resultAllArticles.value?.serverError
+
+  if (hasError) {
     notFound()
     return null
   }
 
-  const articlesByPage = resultByPage?.data?.articles.data
-  const meta = resultByPage?.data?.articles.meta
-  const allArticles = resultAllArticles?.data?.articles.data
+  const articlesByPage = resultByPage.value?.data?.articles.data
+  const meta = resultByPage.value?.data?.articles.meta
+  const allArticles = resultAllArticles.value?.data?.articles.data
 
   return (
     <>
