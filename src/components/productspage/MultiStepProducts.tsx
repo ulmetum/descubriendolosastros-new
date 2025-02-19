@@ -14,7 +14,6 @@ import { FormUser } from '@/components/contactpage/FormUser'
 import { FormMap } from '@/components/contactpage/FormMap'
 import { FormProductComplete } from '@/components/contactpage/FormProductComplete'
 import { CheckContact } from '@/components/icons/CheckContact.icon'
-import { toast } from 'sonner'
 
 import {
   formProducts,
@@ -83,7 +82,7 @@ export const MultiStepProducts = () => {
   const selectedProduct = watch('product')
 
   const [currentStep, setCurrentStep] = useState(0)
-  const [hasErrorSend, setHasErrorSend] = useState(false)
+  // const [hasErrorSend, setHasErrorSend] = useState(false)
 
   const initialStep = () => {
     setCurrentStep(0)
@@ -197,16 +196,16 @@ export const MultiStepProducts = () => {
         steps={steps}
       />
       <div className='relative flex flex-col max-w-3xl mx-auto overflow-hidden '>
-        {!hasErrorSend && (
-          <FormNavigation
-            currentStep={currentStep}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            initialStep={initialStep}
-            steps={steps}
-            classNames='mt-14'
-          />
-        )}
+        {/* {!hasErrorSend && ( */}
+        <FormNavigation
+          currentStep={currentStep}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          initialStep={initialStep}
+          steps={steps}
+          classNames='mt-14'
+        />
+        {/* )} */}
 
         <form
           className='my-14'
@@ -243,16 +242,16 @@ export const MultiStepProducts = () => {
             ))}
           </div>
         </form>
-        {!hasErrorSend && (
-          <FormNavigation
-            currentStep={currentStep}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            initialStep={initialStep}
-            steps={steps}
-            classNames='mb-14'
-          />
-        )}
+        {/* {!hasErrorSend && ( */}
+        <FormNavigation
+          currentStep={currentStep}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          initialStep={initialStep}
+          steps={steps}
+          classNames='mb-14'
+        />
+        {/* )} */}
       </div>
     </div>
   )

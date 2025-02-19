@@ -12,7 +12,7 @@ export const ImageTheme = ({ imageUrl }: { imageUrl: string }) => {
       alt='Imagen destacada'
       fill
       className={cn(
-        `rounded-lg object-cover transition-opacity duration-[1000ms] ease-[cubic-bezier(0.76,0,0.24,1)]`,
+        `rounded-md object-cover transition-opacity duration-[1000ms] ease-[cubic-bezier(0.76,0,0.24,1)]`,
         {
           'opacity-100': isShow,
           'opacity-0': !isShow,

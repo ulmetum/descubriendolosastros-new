@@ -109,7 +109,7 @@ const ThemePage = async ({ params }: Props) => {
   return (
     <section className=' ml-[calc(50%-50vw)] mt-[calc(var(--main-header-height)+1rem)] min-h-dvh w-screen'>
       <Container className='w-[min(100%,1640px)]  border-b border-primary/25 pb-14'>
-        <div className='lg:flex lg:items-center lg:justify-center'>
+        <div className='lg:flex lg:items-center lg:justify-center lg:px-3'>
           <div className='relative lg:w-1/3 min-h-[50vh] '>
             <ImageTheme imageUrl={imageUrl} />
           </div>
