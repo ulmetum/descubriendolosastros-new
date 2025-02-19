@@ -1,7 +1,7 @@
 'use server'
 
 import { safeAction } from '@/actions/safeAction'
-import { Articles } from '@/interfaces/articles.interface'
+import type { Articles } from '@/interfaces/articles.interface'
 import { getAllArticlesQuery } from '@/queries/articles.query'
 import { fetchData } from '@/utils/fetchData'
 

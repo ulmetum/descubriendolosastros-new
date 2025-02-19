@@ -5,7 +5,7 @@ import { Navigation } from './navigation'
 import { useHidden } from '@/hooks/useHidden'
 import { Logo } from '@/components/header/components/logo'
 import { MenuLine } from '@/components/header/components/menu-line'
-import { MenuElement } from '@/interfaces/menu.interface'
+import type { MenuElement } from '@/interfaces/menu.interface'
 
 interface Props {
   menuItems: MenuElement[]

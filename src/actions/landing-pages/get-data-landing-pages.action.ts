@@ -1,7 +1,7 @@
 import { safeAction } from '@/actions/safeAction'
 import { fetchData } from '@/utils/fetchData'
 import { getLandingPagesQuery } from '@/queries/landing-pages.query'
-import { LandingPages } from '@/interfaces/landing-pages.interface'
+import type { LandingPages } from '@/interfaces/landing-pages.interface'
 
 export const getDataLandingPagesAction = safeAction.action(async () => {
   const query = getLandingPagesQuery()

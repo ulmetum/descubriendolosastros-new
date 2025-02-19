@@ -8,8 +8,8 @@ import { FooterMenu } from '@/components/footer/components/footer-menu'
 import { FooterSocialMenu } from '@/components/footer/components/footer-social-menu'
 import { FooterEmail } from '@/components/footer/components/footer-email'
 import { FooterImage } from '@/components/footer/components/footer-image'
-import { MenuElement } from '@/interfaces/menu.interface'
-import { SocialWriter } from '@/interfaces/writer.interface'
+import type { MenuElement } from '@/interfaces/menu.interface'
+import type { SocialWriter } from '@/interfaces/writer.interface'
 
 interface Props {
   menuItems: MenuElement[] | undefined

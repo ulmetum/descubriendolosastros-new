@@ -1,4 +1,4 @@
-import { Item } from '@/interfaces/articles.interface'
+import type { Item } from '@/interfaces/articles.interface'
 import { AccordeonItemArticle } from '@/components/article/AccordionItemArticle'
 
 interface Props {

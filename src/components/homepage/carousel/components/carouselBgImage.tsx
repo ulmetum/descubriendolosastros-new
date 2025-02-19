@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { images } from '../carousel'
 import Image from 'next/image'
-import { BgImageProps } from '@/interfaces/carousel.interface'
+import type { BgImageProps } from '@/interfaces/carousel.interface'
 
 const variants = {
   enter: (direction: number) => ({

@@ -2,7 +2,7 @@
 
 import { motion, TargetAndTransition } from 'motion/react'
 import { images } from '@/components/homepage/carousel/carousel'
-import { ImageProps } from '@/interfaces/carousel.interface'
+import type { ImageProps } from '@/interfaces/carousel.interface'
 
 export const CarouselImage = ({
   slideIndex,

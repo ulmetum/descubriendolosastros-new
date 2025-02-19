@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { safeAction } from './safeAction'
-import { Menu } from '@/interfaces/menu.interface'
+import type { Menu } from '@/interfaces/menu.interface'
 import { getMenuQuery } from '@/queries/menu.query'
 import { fetchData } from '@/utils/fetchData'
 

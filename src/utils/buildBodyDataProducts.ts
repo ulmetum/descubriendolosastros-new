@@ -1,5 +1,5 @@
 import { products } from '@/app/productos/data'
-import { BodyDataProducts } from '@/interfaces/products.interface'
+import type { BodyDataProducts } from '@/interfaces/products.interface'
 import { formProductsSchema } from '@/validations/form-products.schema'
 import dayjs from 'dayjs'
 import { z } from 'zod'

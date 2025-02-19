@@ -9,7 +9,7 @@ import { ImageProfile } from '@/components/blogpage/ImageProfile'
 import { NameProfile } from '@/components/blogpage/NameProfile'
 import { EmailProfile } from '@/components/blogpage/EmailProfile'
 
-import { Datum } from '@/interfaces/articles.interface'
+import type { Datum } from '@/interfaces/articles.interface'
 
 interface Props {
   post: Datum

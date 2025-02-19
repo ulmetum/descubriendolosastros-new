@@ -1,4 +1,4 @@
-import { VideoURL } from '@/interfaces/articles.interface'
+import type { VideoURL } from '@/interfaces/articles.interface'
 
 interface Props {
   videoUrl?: VideoURL

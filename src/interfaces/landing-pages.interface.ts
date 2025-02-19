@@ -1,4 +1,4 @@
-import { Element } from '@/interfaces/articles.interface'
+import type { Element } from '@/interfaces/articles.interface'
 
 export interface LandingPages {
   data: DatumLandingPages[]

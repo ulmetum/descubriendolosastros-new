@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { safeAction } from '@/actions/safeAction'
-import { Articles } from '@/interfaces/articles.interface'
+import type { Articles } from '@/interfaces/articles.interface'
 import { getArticlesByPageQuery } from '@/queries/articles.query'
 import { fetchData } from '@/utils/fetchData'
 

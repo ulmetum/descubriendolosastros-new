@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { content } from '@/components/homepage/carousel/carousel'
 import { useShallow } from 'zustand/shallow'
-import { ContentProps } from '@/interfaces/carousel.interface'
+import type { ContentProps } from '@/interfaces/carousel.interface'
 import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 const containerVariants = {

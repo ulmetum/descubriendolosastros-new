@@ -15,7 +15,7 @@ import { CarouselRightIcon } from '@/components/homepage/carousel/components/car
 // Various
 import { wrap } from 'motion/react'
 import { useShallow } from 'zustand/shallow'
-import { Content, Image } from '@/interfaces/carousel.interface'
+import type { Content, Image } from '@/interfaces/carousel.interface'
 import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 export const content: Content[] = [

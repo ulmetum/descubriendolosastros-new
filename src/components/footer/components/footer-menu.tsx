@@ -1,7 +1,7 @@
 'use client'
 
-import { MenuElement } from '@/interfaces/menu.interface'
-import { FooterMenuItem } from './footer-menu-item'
+import type { MenuElement } from '@/interfaces/menu.interface'
+import { FooterMenuItem } from '@/components/footer/components/footer-menu-item'
 
 interface Props {
   menuItems: MenuElement[] | undefined

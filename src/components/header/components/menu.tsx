@@ -4,7 +4,7 @@ import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 
 import { motion } from 'motion/react'
-import { MenuElement } from '@/interfaces/menu.interface'
+import type { MenuElement } from '@/interfaces/menu.interface'
 import { cn } from '@/utils/mergeClass'
 
 interface Props {

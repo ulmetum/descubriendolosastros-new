@@ -8,7 +8,7 @@ import { useMouseParallax } from '@/hooks/useMouseParallax'
 import { Link } from 'next-view-transitions'
 import { MouseEvent } from 'react'
 import { NEXT_PUBLIC_STRAPI_HOST } from '@/config'
-import { Datum } from '@/interfaces/articles.interface'
+import type { Datum } from '@/interfaces/articles.interface'
 
 interface Props {
   dataPrevArticle: Datum

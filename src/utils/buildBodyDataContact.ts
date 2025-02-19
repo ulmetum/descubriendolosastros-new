@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { formContactSchema } from '@/validations/form-contact.schema'
-import { BodyDataContact } from '@/interfaces/contact.interface'
+import type { BodyDataContact } from '@/interfaces/contact.interface'
 
 export const buildBodyDataContact = (
   data: z.infer<typeof formContactSchema>

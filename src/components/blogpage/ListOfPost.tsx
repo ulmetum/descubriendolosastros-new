@@ -7,7 +7,7 @@ import { useShallow } from 'zustand/shallow'
 // Components
 import { PaginationBlog } from '@/components/blogpage/PaginationBlog'
 import { Post } from '@/components/blogpage/Post'
-import { Datum, Meta } from '@/interfaces/articles.interface'
+import type { Datum, Meta } from '@/interfaces/articles.interface'
 import { useSearchStore } from '@/stores/searchStore'
 
 interface Props {

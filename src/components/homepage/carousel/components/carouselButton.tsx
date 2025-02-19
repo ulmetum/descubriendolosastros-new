@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { useShallow } from 'zustand/shallow'
-import { CarouselButtonProps } from '@/interfaces/carousel.interface'
+import type { CarouselButtonProps } from '@/interfaces/carousel.interface'
 import { useActiveButtonStore } from '@/stores/activeButtonStore'
 
 export const CarouselButton = ({

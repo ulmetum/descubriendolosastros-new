@@ -5,7 +5,7 @@ import { MotionValue, motion, useTransform } from 'motion/react'
 
 import { PostDate } from '@/components/article/PostDate'
 import { SocialIcons } from '@/components/article/SocialIcons'
-import { Social } from '@/interfaces/articles.interface'
+import type { Social } from '@/interfaces/articles.interface'
 
 interface Props {
   scrollY: MotionValue<number>

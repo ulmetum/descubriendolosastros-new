@@ -5,7 +5,7 @@ import { QuoteArticle } from '@/components/article/QuoteArticle'
 import { DoubleColumnsArticle } from '@/components/article/DoubleColumnsArticle'
 import { AccordionArticle } from '@/components/article/AccordionArticle'
 
-import { Element } from '@/interfaces/articles.interface'
+import type { Element } from '@/interfaces/articles.interface'
 
 interface Props {
   elements: Element[]

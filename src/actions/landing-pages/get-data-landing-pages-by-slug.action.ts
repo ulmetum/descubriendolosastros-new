@@ -1,7 +1,7 @@
 import { safeAction } from '@/actions/safeAction'
 import { fetchData } from '@/utils/fetchData'
 import { getLandingPagesBySlugQuery } from '@/queries/landing-pages.query'
-import { LandingPages } from '@/interfaces/landing-pages.interface'
+import type { LandingPages } from '@/interfaces/landing-pages.interface'
 import { z } from 'zod'
 
 const schema = z.object({

@@ -1,6 +1,6 @@
 import { safeAction } from '../safeAction'
 import { z } from 'zod'
-import { Articles } from '@/interfaces/articles.interface'
+import type { Articles } from '@/interfaces/articles.interface'
 import { getArticleByIdQuery } from '@/queries/articles.query'
 import { fetchData } from '@/utils/fetchData'
 

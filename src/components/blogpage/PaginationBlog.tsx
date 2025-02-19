@@ -1,6 +1,6 @@
 import { Link } from 'next-view-transitions'
 
-import { Meta } from '@/interfaces/articles.interface'
+import type { Meta } from '@/interfaces/articles.interface'
 import { wrap } from '@/utils/wrap'
 import { cn } from '@/utils/mergeClass'
 

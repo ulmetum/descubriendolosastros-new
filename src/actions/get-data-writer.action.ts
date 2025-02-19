@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { safeAction } from './safeAction'
-import { Writers } from '@/interfaces/writer.interface'
+import type { Writers } from '@/interfaces/writer.interface'
 import { getDataWriterQuery } from '@/queries/writer.query'
 import { fetchData } from '@/utils/fetchData'
 

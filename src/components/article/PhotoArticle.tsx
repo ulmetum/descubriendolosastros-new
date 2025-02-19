@@ -1,4 +1,4 @@
-import { FeaturedImage } from '@/interfaces/articles.interface'
+import type { FeaturedImage } from '@/interfaces/articles.interface'
 import { cn } from '@/utils/mergeClass'
 import Image from 'next/image'
 

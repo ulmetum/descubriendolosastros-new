@@ -1,5 +1,5 @@
 import { Menu } from '@/components/header/components/menu'
-import { MenuElement } from '@/interfaces/menu.interface'
+import type { MenuElement } from '@/interfaces/menu.interface'
 
 interface Props {
   menuItems: MenuElement[]
