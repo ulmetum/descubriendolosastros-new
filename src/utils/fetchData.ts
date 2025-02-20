@@ -11,8 +11,6 @@ export async function fetchData<T>(
     },
   })
 
-  // console.log({ res })
-
   if (!res.ok && errorMessages[typeError]) {
     throw new ActionError(errorMessages[typeError])
   }

@@ -12,6 +12,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AnimatePresence, motion } from 'motion/react'
 import { FormComplete } from '@/components/contactpage/FormComplete'
 import { sendEmailContactAction } from '@/actions/brevo/send-email-contact.action'
+import { cn } from '@/utils/mergeClass'
+import { delay } from '@/utils/delay'
 
 const variants = {
   hidden: { opacity: 0 },
@@ -23,7 +25,7 @@ export const FormContact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<formContact>({
     resolver: zodResolver(formContactSchema),
   })
@@ -247,9 +249,15 @@ export const FormContact = () => {
               <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto'>
                 <button
                   type='submit'
-                  className='text-white bg-primary/90 hover:bg-primary focus:ring-4 focus:outline-none tracking-wider rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center transition-all font-headings'
+                  className={cn(
+                    'text-white bg-primary/90 hover:bg-primary focus:ring-4 focus:outline-none tracking-wider rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center transition-all font-headings',
+                    {
+                      'bg-dark/45 pointer-events-none': isSubmitting,
+                    }
+                  )}
+                  disabled={isSubmitting}
                 >
-                  Enviar Mensaje
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                 </button>
               </div>
             </form>

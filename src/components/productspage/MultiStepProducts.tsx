@@ -73,7 +73,7 @@ export const MultiStepProducts = () => {
     reset,
     trigger,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<formProducts>({
     // Esto permite que solo se validen los campos visibles en el DOM
     shouldUnregister: true,

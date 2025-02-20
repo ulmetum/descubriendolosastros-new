@@ -2,6 +2,7 @@ import { getAllArticlesAction } from '@/actions/articles/get-all-articles.action
 import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
 import { ListOfPosts } from '@/components/blogpage/ListOfPost'
 import { notFound } from 'next/navigation'
+import { CustomError } from '@/components/CustomError'
 
 export const Posts = async ({ page }: { page: string }) => {
   // const [resultByPage, resultAllArticles] = await Promise.all([
@@ -32,8 +33,9 @@ export const Posts = async ({ page }: { page: string }) => {
     resultAllArticles.value?.serverError
 
   if (hasError) {
-    notFound()
-    return null
+    // notFound()
+    // return null
+    return <CustomError error={hasError as string} />
   }
 
   const articlesByPage = resultByPage.value?.data?.articles.data

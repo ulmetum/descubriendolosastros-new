@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
   const res = await getAllArticlesAction()
 
-  const allArticles = res?.data?.articles.data || []
+  const allArticles = res?.data?.articles.data ?? []
 
   return allArticles.map((article) => ({
     slug: article.slug,
@@ -98,7 +98,7 @@ const page = async ({ params }: Props) => {
   // Si no hay datos de artículos por slug
   if (!articleBySlug || articleBySlug.length === 0) {
     notFound()
-    return null
+    // return null
   }
 
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
