@@ -117,7 +117,7 @@ export const getArticleBySlugQuery = ({ slug }: { slug: string }) => {
   )
 }
 
-export const getArticlesByPageQuery = ({ page }: { page: string }) => {
+export const getArticlesByPageQuery = ({ page }: { page: number }) => {
   return qs.stringify(
     {
       fields: ['title', 'subtitle', 'createdAt', 'slug'],

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export async function generateStaticParams() {
-  const res = await getArticlesByPageAction({ page: '1' })
+  const res = await getArticlesByPageAction({ page: 1 })
   const pagination = res?.data?.articles.meta.pagination
   const pages = pagination?.pageCount || 0
 
@@ -56,7 +56,9 @@ const BlogPage = async ({
   params: Promise<{ page: string[] }>
 }) => {
   const paramsResolved = await params
-  const page = paramsResolved?.page?.[0] ?? '1'
+  // const page = paramsResolved?.page?.[0] ?? '1'
+  let page = paramsResolved.page?.[0] ? parseInt(paramsResolved.page?.[0]) : 1
+  if (isNaN(page) || page < 1) page = 1
 
   const res = await getArticlesByPageAction({ page })
 

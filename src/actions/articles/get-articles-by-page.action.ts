@@ -7,13 +7,12 @@ import { getArticlesByPageQuery } from '@/queries/articles.query'
 import { fetchData } from '@/utils/fetchData'
 
 const schema = z.object({
-  page: z.string(),
+  page: z.number(),
 })
 
 export const getArticlesByPageAction = safeAction
   .schema(schema)
   .action(async ({ parsedInput: { page } }) => {
-    console.log({ page })
     const query = getArticlesByPageQuery({ page })
 
     const url = `articles?${query}`
