@@ -69,21 +69,20 @@ const BlogPage = async ({
     )
   }
 
-  const pagination = res?.data?.articles?.meta.pagination
+  const articlesByPage = res?.data?.articles.data
+  const meta = res?.data?.articles.meta
+  const pagination = meta && meta.pagination
   const pageCount = pagination?.pageCount ?? 0
   const numberOfPosts = pagination?.pageSize ?? 0
 
+  // Garantizar que la pagina actual esta dentro del rango de paginas que existen
   const currentPage = wrap({
     number: Number(page),
     min: 1,
     max: pageCount,
   })
 
-  // if (res?.serverError || !res?.data?.articles?.data) {
-  //   return redirect('/blog')
-  // }
-
-  if (res?.data?.articles.data.length === 0) {
+  if (articlesByPage?.length === 0) {
     return redirect(`/blog/${pageCount}`)
   }
 
@@ -94,7 +93,10 @@ const BlogPage = async ({
         fallback={<Skeleton numberOfPosts={numberOfPosts} />}
       >
         <Search className='absolute left-1/2 top-0 -translate-x-1/2' />
-        <Posts page={currentPage.toString()} />
+        <Posts
+          meta={meta}
+          articlesByPage={articlesByPage}
+        />
       </Suspense>
     </Container>
   )
