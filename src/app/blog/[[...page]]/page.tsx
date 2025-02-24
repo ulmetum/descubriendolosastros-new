@@ -85,7 +85,7 @@ const BlogPage = async ({
   })
 
   if (articlesByPage?.length === 0) {
-    return redirect(`/blog/${pageCount}`)
+    return redirect(`/blog`)
   }
 
   return (
