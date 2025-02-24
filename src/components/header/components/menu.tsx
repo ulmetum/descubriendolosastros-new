@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from 'next-view-transitions'
+import { useTransitionRouter } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 
 import { motion } from 'motion/react'
@@ -11,8 +11,42 @@ interface Props {
   menuItems: MenuElement[]
 }
 
+function slideInOut() {
+  document.documentElement.animate(
+    [
+      { opacity: 1, transform: 'translateY(0)' },
+      { opacity: 0, transform: 'translateY(-35%)' },
+    ],
+    {
+      duration: 1300,
+      delay: 200,
+      easing: 'cubic-bezier(0.87, 0, 0.13 , 1)',
+      fill: 'forwards',
+      pseudoElement: '::view-transition-old(root)',
+    }
+  )
+
+  document.documentElement.animate(
+    [
+      {
+        clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+      },
+      {
+        clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
+      },
+    ],
+    {
+      duration: 1500,
+      easing: 'cubic-bezier(0.87, 0, 0.13 , 1)',
+      fill: 'forwards',
+      pseudoElement: '::view-transition-new(root)',
+    }
+  )
+}
+
 export function Menu({ menuItems }: Props) {
   const pathname = usePathname()
+  const router = useTransitionRouter()
 
   const menuPaths = menuItems.map((item) => item.url)
   const isPageArticle =
@@ -55,7 +89,18 @@ export function Menu({ menuItems }: Props) {
                 }}
                 transition={{ duration: 0.75, type: 'spring', bounce: 0.5 }}
               >
-                <Link href={item.url}>{item.label}</Link>
+                {/* <Link href={item.url}>{item.label}</Link> */}
+                <a
+                  href={item.url}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.push(`${item.url}`, {
+                      onTransitionReady: slideInOut,
+                    })
+                  }}
+                >
+                  {item.label}
+                </a>
               </motion.div>
               <motion.div
                 className={`absolute inset-0 font-headings uppercase text-primary sm:text-xl`}
@@ -65,12 +110,23 @@ export function Menu({ menuItems }: Props) {
                 }}
                 transition={{ duration: 0.75, type: 'spring', bounce: 0.5 }}
               >
-                <Link
+                {/* <Link
                   id={item.label}
                   href={item.url}
                 >
                   {item.label}
-                </Link>
+                </Link> */}
+                <a
+                  href={item.url}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.push(`${item.url}`, {
+                      onTransitionReady: slideInOut,
+                    })
+                  }}
+                >
+                  {item.label}
+                </a>
               </motion.div>
             </motion.li>
           </motion.div>
