@@ -38,19 +38,19 @@ export const FormHeroProducts = ({
           />
           <div
             className={cn(
-              'relative z-10 max-w-2xl text-center font-medium  transition-all delay-500 duration-[3500ms] ease-[var(--transition-ease)]   ',
+              'relative z-10 max-w-2xl text-center  transition-all delay-500 duration-[3500ms] ease-[var(--transition-ease)]',
               {
                 'opacity-100': isShow,
                 'opacity-0': !isShow,
               }
             )}
           >
-            <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl overflow-hidden pb-2'>
+            <h1 className='text-light pb-4 overflow-hidden font-semibold text-center text-4xl sm:text-6xl md:text-7xl  '>
               Solicita tu{' '}
-              <span className='inline-block relative leading-none'>
+              <span className='inline-block relative '>
                 <motion.div
                   initial={{ y: 0 }}
-                  animate={{ y: '-115%' }}
+                  animate={{ y: '-120%' }}
                   transition={{
                     delay: 4,
                     ease: [0.83, 0, 0.17, 1],
@@ -59,12 +59,12 @@ export const FormHeroProducts = ({
                     repeatType: 'reverse',
                     repeatDelay: 5,
                   }}
-                  className='text-light  text-4xl font-headings sm:text-6xl md:text-7xl'
+                  className='text-light text-4xl font-headings sm:text-6xl md:text-7xl font-semibold'
                 >
                   mapa estelar
                 </motion.div>
                 <motion.div
-                  initial={{ top: '100%' }}
+                  initial={{ top: '115%' }}
                   animate={{ top: 0 }}
                   transition={{
                     delay: 4,
@@ -74,7 +74,7 @@ export const FormHeroProducts = ({
                     repeatType: 'reverse',
                     repeatDelay: 5,
                   }}
-                  className='text-light top-full absolute leading-normal text-4xl font-headings sm:text-6xl md:text-7xl'
+                  className='text-light absolute text-4xl font-headings sm:text-6xl md:text-7xl font-semibold'
                 >
                   carta astral
                 </motion.div>
@@ -83,7 +83,7 @@ export const FormHeroProducts = ({
           </div>
           <div
             className={cn(
-              'relative z-10 max-w-2xl   transition-all delay-1000 duration-[3500ms] ease-[var(--transition-ease)] lg:max-w-none',
+              'relative z-10 max-w-2xl transition-all delay-1000 duration-[3500ms] ease-[var(--transition-ease)] lg:max-w-none',
               {
                 'opacity-100': isShow,
                 'opacity-0': !isShow,

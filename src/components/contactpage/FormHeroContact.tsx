@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utils/mergeClass'
+import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -39,32 +40,36 @@ export const FormHeroContact = ({
               }
             )}
           />
-          <div
-            className={cn(
-              'relative z-10 max-w-2xl text-center font-medium  transition-all delay-500 duration-[3500ms] ease-[var(--transition-ease)]   ',
-              {
-                'opacity-100': isShow,
-                'opacity-0': !isShow,
-              }
-            )}
-          >
-            <h1 className='text-light text-center text-4xl sm:text-6xl md:text-7xl  pb-2'>
+
+          <div className='overflow-hidden leading-none pb-4 '>
+            <motion.h1
+              initial={{ y: 'calc(100% + 1rem)' }}
+              animate={{ y: '0%' }}
+              transition={{
+                duration: 2,
+                ease: [0.83, 0, 0.17, 1],
+              }}
+              className='text-light font-semibold text-center text-4xl sm:text-6xl md:text-7xl  '
+            >
               ¿Tienes alguna pregunta?
-            </h1>
+            </motion.h1>
           </div>
-          <div
-            className={cn(
-              'relative z-10 max-w-2xl   transition-all delay-1000 duration-[3500ms] ease-[var(--transition-ease)] lg:max-w-none',
-              {
-                'opacity-100': isShow,
-                'opacity-0': !isShow,
-              }
-            )}
-          >
-            <h3 className='text-light text-center'>
+
+          <div className='relative z-10 overflow-hidden leading-none  '>
+            <motion.h3
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 1.25,
+                duration: 2,
+                ease: 'easeOut',
+              }}
+              className='text-light text-center'
+            >
               Estoy aquí para guiarte en tu viaje hacia las estrellas
-            </h3>
+            </motion.h3>
           </div>
+          {/* </div> */}
         </div>
       </div>
     </div>
