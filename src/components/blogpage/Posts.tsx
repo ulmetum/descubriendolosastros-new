@@ -1,5 +1,4 @@
 import { getAllArticlesAction } from '@/actions/articles/get-all-articles.action'
-import { getArticlesByPageAction } from '@/actions/articles/get-articles-by-page.action'
 import { ListOfPosts } from '@/components/blogpage/ListOfPost'
 import { CustomError } from '@/components/CustomError'
 import type { Datum, Meta } from '@/interfaces/articles.interface'

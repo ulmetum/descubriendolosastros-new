@@ -2,18 +2,17 @@
 
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import {
   formContact,
   formContactSchema,
 } from '@/validations/form-contact.schema'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 import { AnimatePresence, motion } from 'motion/react'
 import { FormComplete } from '@/components/contactpage/FormComplete'
 import { sendEmailContactAction } from '@/actions/brevo/send-email-contact.action'
 import { cn } from '@/utils/mergeClass'
-import { delay } from '@/utils/delay'
 
 const variants = {
   hidden: { opacity: 0 },

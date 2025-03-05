@@ -73,7 +73,7 @@ export const MultiStepProducts = () => {
     reset,
     trigger,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<formProducts>({
     // Esto permite que solo se validen los campos visibles en el DOM
     shouldUnregister: true,
@@ -82,7 +82,6 @@ export const MultiStepProducts = () => {
   const selectedProduct = watch('product')
 
   const [currentStep, setCurrentStep] = useState(0)
-  // const [hasErrorSend, setHasErrorSend] = useState(false)
 
   const initialStep = () => {
     setCurrentStep(0)
@@ -140,40 +139,6 @@ export const MultiStepProducts = () => {
 
   const processForm: SubmitHandler<formProducts> = async (data) => {
     await sendEmailProductsAction(data)
-    // if (!res?.data?.success) {
-    //   setHasErrorSend(true)
-    //   toast(
-    //     <div className='text-dark bg-primary p-4 rounded-lg w-full '>
-    //       <h3 className=' font-medium text-light text-center'>
-    //         Error al enviar el formulario
-    //       </h3>
-    //       <div className='my-4 space-y-4'>
-    //         <p className='text-lg text-light'>{res?.data?.error}</p>
-    //         <h4 className='text-3xl text-light text-center'>
-    //           descubriendolosastros@gmail.com
-    //         </h4>
-    //       </div>
-    //       <div className='flex justify-center mt-6'>
-    //         <button
-    //           className='bg-light text-primary p-2 rounded-lg text-base w-[20vw]'
-    //           onClick={() => {
-    //             toast.dismiss()
-    //             setHasErrorSend(false)
-    //           }}
-    //         >
-    //           Cerrar
-    //         </button>
-    //       </div>
-    //     </div>,
-    //     {
-    //       dismissible: false,
-    //       classNames: {
-    //         toast: 'w-[min(95vw,900px)] sm:left-1/2 sm:-translate-x-1/2 p-0',
-    //       },
-    //     }
-    //   )
-    //   return
-    // }
 
     setCurrentStep((step) => step + 1)
 
