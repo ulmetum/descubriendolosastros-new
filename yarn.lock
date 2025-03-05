@@ -3863,7 +3863,7 @@ __metadata:
     react-hook-form: "npm:^7.54.2"
     react-use: "npm:^17.6.0"
     sonner: "npm:^1.7.4"
-    stripe: "npm:^17.6.0"
+    stripe: "npm:^17.7.0"
     tailwind-merge: "npm:^3.0.1"
     tailwindcss: "npm:^3.4.16"
     tailwindcss-3d: "npm:^1.0.7"
@@ -5294,13 +5294,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^17.6.0":
-  version: 17.6.0
-  resolution: "stripe@npm:17.6.0"
+"stripe@npm:^17.7.0":
+  version: 17.7.0
+  resolution: "stripe@npm:17.7.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10c0/78b5570fffeae5e197392d5ab506a4713f1ee7316df4359d5cc7628a31d86e6b29c464684b5de46420ef52d3a39c6a27e3e715c88d0f2968a48104a68285e8a7
+  checksum: 10c0/df67c6d455bd0dd87140640924c220fa9581fc00c3267d171f407c8d088f946f61e3ae7e88a89e7dd705b10fd5254630fc943222eb6f003390ebafbd391f81b2
   languageName: node
   linkType: hard
 
