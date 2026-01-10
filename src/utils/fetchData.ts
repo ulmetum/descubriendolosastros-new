@@ -5,6 +5,7 @@ export async function fetchData<T>(
   url: string,
   typeError: ErrorType
 ): Promise<T> {
+  console.log({ STRAPI_HOST, url })
   const res = await fetch(`${STRAPI_HOST}/api/${url}`, {
     headers: {
       Authorization: `Bearer ${STRAPI_TOKEN}`,
