@@ -20,7 +20,7 @@ export function AuthorArticle({
 }: Props) {
   const profileImageSrc = profileImg.startsWith('http')
     ? profileImg
-    : `${NEXT_PUBLIC_STRAPI_HOST}${profileImg}`
+    : `/profile-miriam.png`
   return (
     <motion.div
       style={{
@@ -29,7 +29,7 @@ export function AuthorArticle({
         transitionDelay: useTransform(
           scrollY,
           [0, 1],
-          ['0ms', `${transition}ms`]
+          ['0ms', `${transition}ms`],
         ),
       }}
       className='relative z-20 gap-2 mt-4 flex items-center justify-center opacity-0 transition-all duration-500'

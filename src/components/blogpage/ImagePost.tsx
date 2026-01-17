@@ -11,6 +11,7 @@ export const ImagePost = ({
 }) => {
   const [isShow, setIsShow] = useState(false)
 
+  // console.log({ featuredImageSrc })
   return (
     <div className='absolute inset-0'>
       <div
@@ -19,7 +20,7 @@ export const ImagePost = ({
           {
             'opacity-90': isShow,
             'opacity-0': !isShow,
-          }
+          },
         )}
       />
       <Image
@@ -28,13 +29,13 @@ export const ImagePost = ({
           {
             'opacity-100': isShow,
             'opacity-0': !isShow,
-          }
+          },
         )}
         onLoad={() => setIsShow(true)}
         priority
         fill
         alt={'Imagen destacada del artículo'}
-        src={featuredImageSrc}
+        src={featuredImageSrc || ''}
         sizes='100%'
       />
     </div>

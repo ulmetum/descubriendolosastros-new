@@ -24,13 +24,13 @@ export const ListOfPosts = ({
   const { search } = useSearchStore(
     useShallow((state) => ({
       search: state.search,
-    }))
+    })),
   )
 
   const filteredPosts =
     search !== ''
       ? allArticles.filter((allArticles) =>
-          allArticles.title.toLowerCase().includes(search.toLowerCase())
+          allArticles.title.toLowerCase().includes(search.toLowerCase()),
         )
       : articlesByPage
 

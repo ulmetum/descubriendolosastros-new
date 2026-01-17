@@ -9,7 +9,7 @@ export const ImageProfile = ({
   profileImageSrc,
 }: {
   size?: 'sm' | 'md' | 'lg'
-  profileImageSrc: string
+  profileImageSrc: undefined | string
 }) => {
   const sizes = {
     sm: 'w-10 h-10 ',
@@ -26,11 +26,11 @@ export const ImageProfile = ({
           {
             'opacity-90': isShow,
             'opacity-0': !isShow,
-          }
+          },
         )}
         fill
         sizes='100%'
-        src={profileImageSrc}
+        src={profileImageSrc || '/profile-miriam.png'}
         alt='Imagen perfil usuario'
       />
     </div>

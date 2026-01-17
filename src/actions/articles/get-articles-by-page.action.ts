@@ -11,7 +11,7 @@ const schema = z.object({
 })
 
 export const getArticlesByPageAction = safeAction
-  .schema(schema)
+  .inputSchema(schema)
   .action(async ({ parsedInput: { page } }) => {
     const query = getArticlesByPageQuery({ page })
 

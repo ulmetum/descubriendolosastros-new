@@ -9,7 +9,7 @@ const schema = z.object({
 })
 
 export const getArticleByIdAction = safeAction
-  .schema(schema)
+  .inputSchema(schema)
   .action(async ({ parsedInput: { id } }) => {
     const query = getArticleByIdQuery({ id })
     const url = `articles?${query}`

@@ -3,9 +3,9 @@ import { ActionError, errorMessages, ErrorType } from '@/errors'
 
 export async function fetchData<T>(
   url: string,
-  typeError: ErrorType
+  typeError: ErrorType,
 ): Promise<T> {
-  console.log({ STRAPI_HOST, url })
+  // console.log({ STRAPI_HOST, url })
   const res = await fetch(`${STRAPI_HOST}/api/${url}`, {
     headers: {
       Authorization: `Bearer ${STRAPI_TOKEN}`,

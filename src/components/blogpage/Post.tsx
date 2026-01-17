@@ -10,23 +10,28 @@ import { NameProfile } from '@/components/blogpage/NameProfile'
 import { EmailProfile } from '@/components/blogpage/EmailProfile'
 
 import type { Datum } from '@/interfaces/articles.interface'
+import { div } from 'motion/react-client'
+import { write } from 'node:fs'
 
 interface Props {
   post: Datum
 }
 
 export const Post = ({ post }: Props) => {
+  // console.log({ post })
   const { title, subtitle, slug } = post
-  const { name = 'Miriam', email, picture } = post.writer || {}
-  const featuredImageUrl = post.featuredImage.url || ''
+  const writer = post?.writer
+  const featuredImageUrl = post?.featuredImage.url
   const featuredImageSrc = featuredImageUrl.startsWith('http')
     ? featuredImageUrl
     : `${NEXT_PUBLIC_STRAPI_HOST}${featuredImageUrl}`
 
-  const profileImage = picture.url || ''
-  const profileImageSrc = profileImage.startsWith('http')
+  // console.log({ picture })
+
+  const profileImage = writer?.picture?.url
+  const profileImageSrc = profileImage?.startsWith('http')
     ? profileImage
-    : `${NEXT_PUBLIC_STRAPI_HOST}${profileImage}`
+    : '/profile-miriam.png'
 
   return (
     <article
@@ -59,11 +64,14 @@ export const Post = ({ post }: Props) => {
           <div className='writtenBy font-headings text-primary md:mb-0 md:flex md:items-end'>
             <div className='profile gap-2 flex items-center  md:w-full'>
               <ImageProfile profileImageSrc={profileImageSrc} />
+
               <NameProfile
                 color='primary'
-                name={name}
+                name={writer?.name || 'Míriam'}
               />
-              <EmailProfile email={email} />
+              <EmailProfile
+                email={writer?.email || 'descubriendolosastros@gmail.com'}
+              />
             </div>
           </div>
         </div>

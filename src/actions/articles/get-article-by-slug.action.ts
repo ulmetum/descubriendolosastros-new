@@ -11,7 +11,7 @@ const schema = z.object({
 })
 
 export const getArticleBySlugAction = safeAction
-  .schema(schema)
+  .inputSchema(schema)
   .action(async ({ parsedInput: { slug } }) => {
     const query = getArticleBySlugQuery({ slug })
 
