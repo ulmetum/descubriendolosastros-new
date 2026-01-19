@@ -18,7 +18,7 @@ interface Props {
   subtitle: string
   createdAt: Date
   name: string
-  picture: FeaturedImage
+  picture: string
   socials?: Social[]
 }
 
@@ -36,7 +36,7 @@ export function BgImageArticle({
 }: Props) {
   const { scrollY } = useScroll()
 
-  const profileImg = picture.url
+  const profileImg = picture
 
   return (
     <div className='relative'>

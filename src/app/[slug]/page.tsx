@@ -89,7 +89,7 @@ const page = async ({ params }: Props) => {
   // Si se produce un error
   if (res?.serverError) {
     throw new ErrorArticle(
-      res?.serverError || 'Error al obtener datos de los artículos.'
+      res?.serverError || 'Error al obtener datos de los artículos.',
     )
   }
 
@@ -104,16 +104,10 @@ const page = async ({ params }: Props) => {
   const { title, subtitle, createdAt, writer, featuredImage, elements } =
     articleBySlug[0]
   const imageArticle = featuredImage.url
-
-  if (!writer) {
-    return (
-      <div>
-        <p>Información del autor no está disponible.</p>
-      </div>
-    )
-  }
-
-  const { name, picture, social } = writer
+  const name = writer?.name || 'Míriam'
+  const email = writer?.email || 'descubriendolosastros@gmail.com'
+  const picture = writer?.picture?.url || '/profile-miriam.png'
+  const social = writer?.social || []
 
   const { dataNextArticle, dataPrevArticle } =
     await getNextAndPrevArticlesAction({
