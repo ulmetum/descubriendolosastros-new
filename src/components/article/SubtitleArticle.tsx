@@ -1,28 +1,60 @@
 'use client'
 import { MotionValue, motion, useTransform } from 'motion/react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { SplitText } from 'gsap/SplitText'
+import { useRef } from 'react'
+
+gsap.registerPlugin(useGSAP, SplitText)
 
 interface Props {
-  scrollY: MotionValue<number>
-  transition: number
   subtitle: string
 }
 
-export function SubtitleArticle({ scrollY, transition, subtitle }: Props) {
+export function SubtitleArticle({ subtitle }: Props) {
+  const containerSubtitleRef = useRef<HTMLDivElement>(null)
+  useGSAP(
+    () => {
+      if (!containerSubtitleRef.current) return
+
+      gsap.set('.container-subtitle', { opacity: 1 })
+
+      // 1️⃣ Crear las líneas reales
+      const splitWrappers = new SplitText('.subtitle', {
+        type: 'lines',
+        linesClass: ' line-wrapper overflow-hidden',
+      })
+
+      // 2️⃣ Envolver cada línea en un wrapper con overflow hidden
+      const splitLines = new SplitText(splitWrappers.lines, {
+        type: 'lines',
+        linesClass: 'line text-2xl',
+      })
+
+      // 3️⃣ Animar SOLO las líneas internas
+      gsap.from(splitLines.lines, {
+        yPercent: 100,
+        duration: 1,
+        stagger: 0.1,
+        delay: 1.75,
+        ease: 'power2.out',
+      })
+    },
+    { scope: containerSubtitleRef },
+  )
+
   return (
-    <motion.h3
-      style={{
-        opacity: useTransform(scrollY, [0, 1], [0, 1]),
-        y: useTransform(scrollY, [0, 1], ['50%', '0%']),
-        transitionDelay: useTransform(
-          scrollY,
-          [0, 1],
-          ['0s', `${transition - transition * 0.15}ms`]
-        ),
-        margin: '1.5rem 0',
-      }}
-      className={`text-md relative z-20 mx-auto flex w-[min(100%,768px)] items-center justify-center text-center text-lg text-white opacity-0 transition-all duration-500`}
-    >
-      <div className='block font-headings sm:w-[75%]'>{subtitle}</div>
-    </motion.h3>
+    <h3 className={`!my-8 relative z-20 mx-auto text-md w-[min(100%,1000px)]`}>
+      <div
+        ref={containerSubtitleRef}
+        className='block font-headings  '
+      >
+        <div className='container-subtitle opacity-0'>
+          <div className='subtitle text-white text-center w-full '>
+            {subtitle}
+          </div>
+        </div>
+      </div>
+    </h3>
   )
 }

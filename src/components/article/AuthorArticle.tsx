@@ -25,14 +25,14 @@ export function AuthorArticle({
     <motion.div
       style={{
         opacity: useTransform(scrollY, [0, 1], [0, 1]),
-        y: useTransform(scrollY, [0, 1], ['50%', '0%']),
+        y: useTransform(scrollY, [0, 1], ['75%', '0%']),
         transitionDelay: useTransform(
           scrollY,
           [0, 1],
           ['0ms', `${transition}ms`],
         ),
       }}
-      className='relative z-20 gap-2 mt-4 flex items-center justify-center opacity-0 transition-all duration-500'
+      className='relative z-20 gap-2 mt-0 flex items-center justify-center opacity-0 transition-all duration-500'
     >
       <div className='relative'>
         <ImageProfile profileImageSrc={profileImageSrc} />

@@ -55,11 +55,7 @@ export function BgImageArticle({
             transition={transition}
           />
         </div>
-        <SubtitleArticle
-          scrollY={scrollY}
-          transition={transition}
-          subtitle={subtitle}
-        />
+        <SubtitleArticle subtitle={subtitle} />
         <AuthorArticle
           name={name}
           scrollY={scrollY}
