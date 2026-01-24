@@ -14,26 +14,22 @@ export const IntroContent = () => {
     () => {
       if (!containerIntroText.current) return
 
-      gsap.set('.intro-text', {
+      gsap.set(containerIntroText.current, {
         opacity: 1,
       })
 
-      const split = new SplitText('.intro-text', {
+      const wrapperSplit = new SplitText('.intro-text', {
+        type: 'lines',
+        linesClass: 'wrapper-split overflow-hidden',
+      })
+
+      const split = new SplitText(wrapperSplit.lines, {
         type: 'lines',
         linesClass: 'line-child',
       })
 
-      // Envolver cada línea en un contenedor con overflow hidden
-      split.lines.forEach((line) => {
-        const wrapper = document.createElement('div')
-        wrapper.className = 'line-wrapper'
-        wrapper.style.overflow = 'hidden'
-        line.parentNode?.insertBefore(wrapper, line)
-        wrapper.appendChild(line)
-      })
-
       // Animar solo el movimiento vertical
-      gsap.from('.line-child', {
+      gsap.from(split.lines, {
         y: '100%',
         duration: 1,
         stagger: 0.1,
@@ -49,9 +45,9 @@ export const IntroContent = () => {
   return (
     <div
       ref={containerIntroText}
-      className='container-intro-text'
+      className='container-intro-text opacity-0'
     >
-      <p className='intro-text mx-auto opacity-0 w-[min(100%,1024px)] text-2xl font-light leading-snug text-white mix-blend-difference sm:text-4xl sm:leading-tight landscape-sm:text-base landscape-xl:mb-4 landscape-xl:w-full'>
+      <p className='intro-text mx-auto w-[min(100%,1024px)] text-2xl font-light leading-snug text-white mix-blend-difference sm:text-4xl sm:leading-tight landscape-sm:text-base landscape-xl:mb-4 landscape-xl:w-full'>
         La contemplación de los astros representados en el firmamento es un
         regalo para los sentidos. Su vastedad y profundidad hacen que el cosmos
         sea un lugar de encanto e inspiración para el ser humano. Acompáñame en
