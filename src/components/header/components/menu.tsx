@@ -11,7 +11,7 @@ interface Props {
   menuItems: MenuElement[]
 }
 
-function slideInOut() {
+export function slideInOut() {
   document.documentElement.animate(
     [
       { opacity: 1, transform: 'translateY(0)' },
@@ -23,7 +23,7 @@ function slideInOut() {
       easing: 'cubic-bezier(0.87, 0, 0.13 , 1)',
       fill: 'forwards',
       pseudoElement: '::view-transition-old(root)',
-    }
+    },
   )
 
   document.documentElement.animate(
@@ -40,7 +40,7 @@ function slideInOut() {
       easing: 'cubic-bezier(0.87, 0, 0.13 , 1)',
       fill: 'forwards',
       pseudoElement: '::view-transition-new(root)',
-    }
+    },
   )
 }
 
@@ -78,7 +78,7 @@ export function Menu({ menuItems }: Props) {
                 'xs:px-2 relative mx-1.5 overflow-hidden leading-tight sm:mx-3',
                 isActive || isArticlePage
                   ? 'pointer-events-none text-primary'
-                  : 'pointer-events-auto text-dark'
+                  : 'pointer-events-auto text-dark',
               )}
             >
               <motion.div

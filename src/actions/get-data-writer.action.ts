@@ -9,7 +9,7 @@ const schema = z.object({
 })
 
 export const getDataWriterAction = safeAction
-  .schema(schema)
+  .inputSchema(schema)
   .action(async ({ parsedInput: { name } }) => {
     const query = getDataWriterQuery({ name })
     const url = `writers?${query}`

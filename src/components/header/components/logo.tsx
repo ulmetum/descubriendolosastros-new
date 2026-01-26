@@ -1,8 +1,12 @@
 'use client'
 
+import { LogoDescubriendolosastros } from '@/components/icons/LogoDescubriendolosastros.icon'
 import { motion } from 'motion/react'
+import { useTransitionRouter } from 'next-view-transitions'
+import { slideInOut } from './menu'
 
 export const Logo = () => {
+  const router = useTransitionRouter()
   return (
     <motion.div
       initial={{ clipPath: 'inset(0% 100% 0% 0%)' }}
@@ -13,7 +17,17 @@ export const Logo = () => {
       }}
       className={`text-xl slg:text-4xl flex items-center pl-3 sm:text-2xl text-dark`}
     >
-      Astros
+      <a
+        href='/'
+        onClick={(e) => {
+          e.preventDefault()
+          router.push(`/`, {
+            onTransitionReady: slideInOut,
+          })
+        }}
+      >
+        <LogoDescubriendolosastros classNames='w-14 h-14' />
+      </a>
     </motion.div>
   )
 }

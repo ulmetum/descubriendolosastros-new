@@ -10,8 +10,6 @@ import { NameProfile } from '@/components/blogpage/NameProfile'
 import { EmailProfile } from '@/components/blogpage/EmailProfile'
 
 import type { Datum } from '@/interfaces/articles.interface'
-import { div } from 'motion/react-client'
-import { write } from 'node:fs'
 
 interface Props {
   post: Datum

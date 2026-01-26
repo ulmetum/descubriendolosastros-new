@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, easeInOut, easeOut, motion } from 'motion/react'
 import { content } from '@/components/homepage/carousel/carousel'
 import { useShallow } from 'zustand/shallow'
 import type { ContentProps } from '@/interfaces/carousel.interface'
@@ -22,12 +22,12 @@ const itemsVariants = {
   center: {
     opacity: 1,
     y: 0,
-    transition: { ease: 'easeOut' },
+    transition: { ease: easeOut },
   },
   exit: {
     opacity: 0,
     y: -95,
-    transition: { ease: 'easeInOut' },
+    transition: { ease: easeInOut },
   },
 }
 
@@ -35,7 +35,7 @@ export const CarouselContent = ({ counter, slideIndex }: ContentProps) => {
   const { setIsActiveButton } = useActiveButtonStore(
     useShallow((state) => ({
       setIsActiveButton: state.setIsActiveButton,
-    }))
+    })),
   )
   return (
     <AnimatePresence initial={false}>

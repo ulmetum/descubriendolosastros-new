@@ -11,7 +11,7 @@ import 'dayjs/locale/es' // Importa el idioma español
 dayjs.locale('es')
 
 export const sendEmailContactAction = safeAction
-  .schema(formContactSchema)
+  .inputSchema(formContactSchema)
   .action(
     async ({
       parsedInput,
@@ -46,5 +46,5 @@ export const sendEmailContactAction = safeAction
               : 'Ha ocurrido un error desconocido al enviar el correo.',
         }
       }
-    }
+    },
   )

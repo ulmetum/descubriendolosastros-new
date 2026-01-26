@@ -14,6 +14,9 @@ import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://descubriendolosastros.com'),
+  icons: {
+    icon: '/fav-descubriendolosastros.svg',
+  },
   title: {
     default: 'Descubriendo los astros',
     template: '%s | Descubriendo los astros',
