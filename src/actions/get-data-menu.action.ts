@@ -9,7 +9,7 @@ const schema = z.object({
 })
 
 export const getDataMenuAction = safeAction
-  .schema(schema)
+  .inputSchema(schema)
   .action(async ({ parsedInput: { name } }) => {
     const query = getMenuQuery({ name })
 
