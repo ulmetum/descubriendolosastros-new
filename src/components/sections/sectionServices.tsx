@@ -35,9 +35,9 @@ const ServicesContent = () => {
       <div className='hidden h-full md:block xl:[grid-area:carousel]'>
         <Carousel />
       </div>
-      <div className='flex h-full flex-col gap-8 xl:flex-row xl:[grid-area:items]'>
+      {/* <div className='flex h-full flex-col gap-8 xl:flex-row xl:[grid-area:items]'>
         <NeuPricing />
-      </div>
+      </div> */}
     </motion.div>
   )
 }
