@@ -58,10 +58,10 @@ export const FormContact = () => {
             transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
             <form
-              className='flex justify-center w-full'
+              className='flex justify-center h-[50dvh] items-center my-32 lg:my-0'
               onSubmit={handleSubmit(processForm)}
             >
-              <div className='lg:flex justify-center w-full gap-10'>
+              <div className='lg:flex justify-center w-[min(100%,900px)] gap-10 '>
                 <div className='w-full lg:w-1/2 flex flex-col items-end'>
                   <div className='sm:col-span-3 mb-6 w-[min(100%,480px)] mx-auto lg:mx-0'>
                     <label

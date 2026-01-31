@@ -2,6 +2,7 @@ import { FormContact } from '@/components/contactpage/FormContact'
 import { FormHeroContact } from '@/components/contactpage/FormHeroContact'
 import { FormInfo } from '@/components/contactpage/FormInfo'
 import { FormInfoContentContact } from '@/components/contactpage/FormInfoContentContact'
+import { FormPricing } from '@/components/contactpage/FormPricing'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ const ContactPage = () => {
         <FormInfoContentContact />
       </FormInfo>
       <FormContact />
+      <FormPricing />
     </section>
   )
 }
