@@ -36,8 +36,8 @@ export function SubtitleArticle({ subtitle }: Props) {
         yPercent: 100,
         duration: 1,
         stagger: 0.1,
-        delay: 1.75,
-        ease: 'power2.out',
+        delay: 2.5,
+        ease: 'power4.out',
       })
     },
     { scope: containerSubtitleRef },

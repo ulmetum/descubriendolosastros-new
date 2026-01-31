@@ -25,21 +25,21 @@ export function AuthorArticle({
     <motion.div
       style={{
         opacity: useTransform(scrollY, [0, 1], [0, 1]),
-        y: useTransform(scrollY, [0, 1], ['75%', '0%']),
+        y: useTransform(scrollY, [0, 1], ['-30%', '0%']),
         transitionDelay: useTransform(
           scrollY,
           [0, 1],
           ['0ms', `${transition}ms`],
         ),
       }}
-      className='relative z-20 gap-2 mt-0 flex items-center justify-center opacity-0 transition-all duration-500'
+      className='absolute -bottom-[7px] z-20 gap-2 mt-0 flex items-center justify-center opacity-0 transition-all duration-500'
     >
       <div className='relative'>
         <ImageProfile profileImageSrc={profileImageSrc} />
-        <motion.div className='absolute -inset-[.15rem] rounded-full border border-white/[.75] p-[.15rem] transition-all'></motion.div>
+        <motion.div className='absolute -inset-[.15rem] rounded-full border border-dark/[.25] p-[.15rem] transition-all'></motion.div>
       </div>
       <NameProfile
-        color='light'
+        color='dark'
         name={name}
       />
     </motion.div>

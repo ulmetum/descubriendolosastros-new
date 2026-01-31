@@ -5,7 +5,7 @@ export const NameProfile = ({
   color,
 }: {
   name: string
-  color: 'primary' | 'light'
+  color: 'primary' | 'light' | 'dark'
 }) => {
   return (
     <div className='nickname grid w-full grid-cols-[auto_auto_1fr] font-thin'>
@@ -13,6 +13,7 @@ export const NameProfile = ({
         className={cn('xl:text-sm font-headings', {
           'text-primary': color === 'primary',
           'text-light': color === 'light',
+          'text-dark': color === 'dark',
         })}
       >
         Por @

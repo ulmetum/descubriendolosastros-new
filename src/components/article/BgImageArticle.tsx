@@ -10,7 +10,7 @@ import { SubtitleArticle } from '@/components/article/SubtitleArticle'
 import { AuthorArticle } from '@/components/article/AuthorArticle'
 import { DateSocialArticle } from '@/components/article/DateSocialArticle'
 import { LineArticle } from '@/components/article/LineArticle'
-import type { FeaturedImage, Social } from '@/interfaces/articles.interface'
+import type { Social } from '@/interfaces/articles.interface'
 
 interface Props {
   imageArticle: string
